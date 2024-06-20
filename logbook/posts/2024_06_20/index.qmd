@@ -2,7 +2,8 @@
 title: "Day 1"
 author: "Amy Heather"
 date: "2024-06-20"
-categories: [setup]
+categories: [setup, scope]
+bibliography: ../../../quarto_site/references.bib
 ---
 
 ## 10.16-10.35: Set up repository
@@ -22,7 +23,7 @@ Model code from: https://github.com/shoaibiocl/PHC-. Downloaded repository and c
 
 They shared under MIT license, so no amendments to our license required.
 
-## 10.44-11.15: Upload journal article to repository and compare between pre-print and published version
+## 10.44-11.15: Upload journal article to repository and compare between arxiv and simulation version
 
 Article is published with SIMULATION and is not open access: <https://journals.sagepub.com/doi/10.1177/00375497211030931> (<https://doi.org/10.1177/00375497211030931>). Button to request reuse takes you to reuse which has charges for reuse.
 
@@ -44,8 +45,133 @@ SIMULATION first published online 18 July 2021. The pre-print was first submit 1
 
 Embed in `study_publication.qmd` with links.
 
-Some reflections:
+## 11.40-12.00: Detailed comparison of exercept from the two papers
 
-* Do I need to do more thorough comparison of content (e.g. software to compare text itself?)
-* Images not provided as seperate files, will need to screenshot to upload
-* Took a while to do this stage
+Decided to do a more thorough comparison of the text content, to confirm that the arxiv version was appropriate to use. Converted files from arxiv and simulation to text using `pdftotext` on the command line. Then copied section-by-section into <https://text-compare.com/> to look carefully for differences.
+
+Compared Abstract through to section 3.3. Found no cause for concern. Only differences were in spelling and grammar, or minor differences in phrasing (e.g. abbreviating words, abbreviating numbers, "etc" v.s. "among others", "et al." vs using second author surname). As such, stopped comparing at this point.
+
+::: {.callout-tip}
+## Reflection
+
+Took a while to do this stage (for simplicity, including all set-up in timing, but worth being aware that this has added a fair bit of extra time to if we could have just used the original article, so worth reflecting on whether should definitely be included in time, or if be aware of set-up times but perhaps would want to subtract from the overall times?)
+:::
+
+## 13.10-13.15: Add proper citations to study_publication.qmd
+
+Updated references.bib to include citations for SIMULATION and arXiv sources, and included those on `study_publication.qmd`, as well as a link to the license.
+
+## 13.18-14.00, 14.15-14.36: Read journal article
+
+Took some notes whilst reading the first part of the paper, but mostly just highlighted the paper after that. Not shared highlights as license under [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/) so doesn't allow modifications.
+
+Took some initial notes on scope which have incorporated in scope section below
+
+::: {.callout-note appearance="minimal" collapse=true}
+## Reading notes
+
+Discrete-event simulations to model primary health centres (PHC) in India
+
+* PHC are first point of contact with trained doctor
+
+Rationale:
+
+* Efforts in India towards "establishing new PHCs, upgrading existing primary health infrastructure, and increasing medical personnel numbers", but "their operational effectiveness and influence on improving public health
+accessibility is not adequately quantified." and there is a need for "assessment of theoperational aspects of these facilities before more resources are invested in their upgradation and/or establishing new PHC infrastructure."
+* Provides "template for developing models of similar primary/secondary healthcare facilities"
+* "limited literature regarding whole facility simulation models that cater to multiple patient types with distinct clinical and operational flows through the facility (similar to PHCs). This is likely because most healthcare DES studies are undertaken to help analyse and/or solve specific problems associated with a facility, whereas our study aims to contribute towards establishing the computational infrastructure required to analyse the public health system in a region."
+* "our research contribution here involves the inclusion of limited inpatient care and childbirth care in our PHC models inaddition to modelling general OPD consultations and emergency cases"
+* "our literature search did not yield any study that computationally examined: a) PHC operations, and b) how their operational performance would respond to changes in demand and/or capacity. Further, there appears to be very limited healthcare facility simulations in general in the Indian context. Our study aims to address these gaps."
+
+Model design:
+
+* Visited "multiple PHCs in a semi- urban/rural district in North India and collecting data regarding their operational patterns."
+* Then designed "archetypal or ‘generic’ DES model of PHC operations based on the commonalities" and "adapt (reuse with modification) this generic model to represent the different operational configurations encountered in our visits."
+* Also compared with "benchmark configuration conforming to government-mandated operational guidelines, with demand estimated from disease burden data and service times closer to international estimates, which are significantly higher than observed service times at the PHCs."
+
+Four patient types:
+
+* Outpatients
+* Inpatients and/or emergency ("requiring care and observation for brief periods" e.g. injuries, diarrhoea)
+* Childbirth
+* Antenatal
+
+Resources:
+
+* Doctors (1 or 2, depending on configuration)
+* Nurses: (a) non-communicable disease trained, present during outpatient hours (b) staff nurses, for inpatient/emergency/childbird
+* Pharmacists (outpatient hours)
+* Laboratory technician (outpatient hours)
+* Inpatient and childbirth beds
+
+Focus:
+
+* "operational outcomes such as the average waiting time of patients for various resources (e.g., doctors, pharmacy, clinical laboratory), resource utilisation levels across the PHC, and the proportions of childbirth patients who wait longer than a certain time threshold."
+* "experiments to quantify how these PHC configurations respond to changes (increases) in demand, and identify solutions to potentially improve operational efficiency under conditions of high demand."
+:::
+
+## 14.37-15.01: Defining scope
+
+Tables:
+
+* Table 1 - n/a
+* Table 2 - n/a
+* Table 3 - n/a
+* Table 4 - n/a
+* Table 5 - no - about internal validation of model rather than results of model - don't think focus is on validation of parameters, but instead, outcome of model built on those parameters, so would class as not in scope
+* Table 6 - definitely in scope!
+
+Figures:
+
+* Figure 1 - n/a
+* Figure 2 - definitely in scope - but **uncertain** over whether to treat A / B / C / D as seperate figures or as one figure? In arXiv paper, they are presented quite seperately (although they are put together more in the simulation paper). 
+* Figure 3 - as for figure 2
+* Figure 4 - in scope
+
+Results from the abstract or results section that I can't currently spot as being covered by the tables and figures:
+
+| Sections quoted from @shoaib_simulation_2021 | Precise result to be reproduced | Thoughts on whether to include in scope |
+| --- | --- | --- |
+| 4.3 "We also note that waiting times for outpatient-related resources (laboratory, OPD consultation, etc. - not depicted in Figures 3a – 3d) increase marginally because the associated resources are also required by inpatient/childbirth/ANC cases, which increase in number in the above scenarios" | No - just marginal increase | **No?** Could argue not in scope, as all you're aiming for is "seeing a marginal increase" - but likewise, if you saw the opposite of that, you could argue it's not being reproduced. However, leaning towards the latter as nothing precise |
+| 4.3.1 "To address this, we experimented with letting the staff nurse (whose utilisation is approximately 32%) take over the administrative work. This led to a 12% drop in the utilisation level, which implied that the doctor’s utilisation still exceeded 100%. Implementing this measure resulted in increasing the staff nurse utilisation to nearly 40%." | Staff nurse does all administrative work (none to doctor). Look at impact on doctor's utilisation. When have outpatient load 170 patients per day. | **Maybe?** - depends if I have interpreted the described scenario correctly |
+| 4.3.1 "then considered a situation wherein the staff nurses require minimal intervention in childbirth cases. We assumed that in 50% of childbirth cases, staff nurses require no intervention by the doctor; require only one- third of the typical amount of intervention in 30% of cases, and require full intervention in the remaining 20% of cases. This led to a decrease of the doctor’s utilisation to 101% (a further decrease of approximately 1%), and an increase in the nurse’s utilisation to 40%." | 50% childbirth have no doctor. 30% have one-third of typical amount of doctor intervention. 20% have full doctor intervention. Look at doctor and nurse utilisation. Normal doctor attendance described in 3.3.3 is that, if doctor is available, patient is attended by both a doctor and a staff nurse - and if not available, then they attend once available, with first-come first-serve alongside inpatient. In Table 4, can see doctor childbirth service time is from uniform distribution with min 30 max 60. | **Yes?** Think it might be in scope, and has precise results to reproduce | 
+| 4.3.1 "investigated the effect of stationing an additional doctor in the PHC. This yielded an average utilisation of well below 100% for each doctor." | No precise result | **No?** Potentially not as doesn't have a precise result, just "well below 100%" |
+| 4.3.2 "We also observe that if the number of beds is reduced to four from six, the utilisation level is observed to be approximately thirty-three percent even under higher demand conditions (two inpatient and childbirth cases/day)." | Apx. 33% inpatient bed utilisation when there are four bed and there are 2 inpatient and childbirth cases per day | **Maybe?** Only gives an approximate result which it says holders "even under higher demand" but is not specific to those conditions, and so could be a few percent different or more, depending on interpretation of "approximate". Hence, not sure if precise enough to reproduce. | 
+| 4.3.3 "When the administrative work alone is assigned to the staff nurse the average utilisation of the NCD nurse decreases to 100%" | Outpatient IAT 3 min and administrative work just performed by staff nurse (and not NCD nurse), NCD nurse utilisation 100% | **Maybe?** Might be precise enough? |
+| 4.3.3 "Further, in addition to the administrative work when the staff nurse assisted for NCD checks (for 10% cases) the utilisation of NCD nurse dropped to 71%." | If 10% cases assigned to staff nurse instead of NCD, when outpatient IAT 3 min, NCD utilisation is 71% | **Maybe?** Might be precise enough, assuming I've interpreted scenario correctly? |
+
+Appendix C - not relevant, focused on validation.
+
+## 15.15-15.36: Discussed scope with Tom
+
+* Treat sub-figures as seperate figures.
+* For marginal/non-precise results in text, decided to include in scope and to see if we get a result that meets our judgement (e.g. our judgement of "big change" and so on), but if we think it doesn't, can check with the original study authors if they know what the actual change they observed was, to confirm if the result is definitely different or just down to subjective differences
+* Agreed on how I had interpreted some of the scenarios described in the text
+* Suggested including results from the discussion as well, and found one more result, but agree it was covered by the text - "For example, as the sensitivity analyses with consultation times for doctors closer to international levels showed, PHC resources become stressed even when only 30% of current healthcare demand is addressed at a PHC. Further, we also find that a significant proportion of childbirth patients (approximately 16- 28% when the number of childbirth cases/day varies from 1-2) wait longer than two hours before receiving admission into the childbirth facility (bed) at a PHC"
+
+
+
+## Timings
+
+```{python}
+import sys
+sys.path.append('../')
+from timings import calculate_times
+
+# Minutes used prior to today
+used_to_date = 0
+
+# Times from today
+times = [
+    ('10.16', '10.35'),
+    ('10.41', '10.43'),
+    ('10.44', '11.15'),
+    ('11.40', '12.00'),
+    ('13.10', '13.15'),
+    ('13.18', '14.00'),
+    ('14.15', '14.36'),
+    ('14.37', '15.01'),
+    ('15.15', '15.36')]
+
+calculate_times(used_to_date, times)
+```
