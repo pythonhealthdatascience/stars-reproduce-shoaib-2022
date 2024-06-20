@@ -20,10 +20,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -67,6 +121,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -191,27 +248,530 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!-- TODO: Remove this warning once filled out page -->
-<p><strong>Please note: This is a template page and has not yet been completed</strong></p>
-<!-- TODO: Use skeleton to create page describing scope -->
-<!-- NOTE: If you do not have a license allowing you to upload and reuse images from the article, then you should describe them below, and direct the reader to a link to the article -->
 <p>This page outlines that parts of the journal article which we will attempt to reproduce.</p>
+<p>As cited throughout, images on this page are sourced from <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span>, which is shared under <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND</a>.</p>
 <section id="within-scope" class="level2">
 <h2 class="anchored" data-anchor-id="within-scope">Within scope</h2>
+<p>There are 17 items in the scope (1 table, 9 figures, and 7 in-text results).</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Figure X
+Table 6
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>[Figure with full legend from paper] <!-- e.g.
-![Figure 2. "Patient state over time by unit. The patient population progresses through infection over three months (with 80% infected). The bold line shows the median results of 30 trials, and the fainter lines show the minimum and maximum from the 30 trials." @allen_simulation_2020](../original_study/article_fig2.png){width=80%}--></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/tab6.png" class="img-fluid figure-img"></p>
+<figcaption>Table 6. “Operational outcomes for each PHC configuration simulation. * Number of doctors/OPD cases/IPD cases/childbirth/ANC (patients)/inpatient beds/labour room” <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+<p>CSV version:</p>
+<div id="37f722f4" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>tab6 <span class="op">=</span> pd.read_csv(<span class="st">'../original_study/tab6.csv'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>tab6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">outcome</th>
+<th data-quarto-table-cell-role="th">config1_mean</th>
+<th data-quarto-table-cell-role="th">config1_sd</th>
+<th data-quarto-table-cell-role="th">config2_mean</th>
+<th data-quarto-table-cell-role="th">config2_sd</th>
+<th data-quarto-table-cell-role="th">config3_mean</th>
+<th data-quarto-table-cell-role="th">config3_sd</th>
+<th data-quarto-table-cell-role="th">benchmark_mean</th>
+<th data-quarto-table-cell-role="th">benchmark_sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Doctor utilization</td>
+<td>0.268</td>
+<td>0.003</td>
+<td>0.372</td>
+<td>0.004</td>
+<td>0.354</td>
+<td>0.002</td>
+<td>1.142</td>
+<td>0.006</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>NCD nurse utilization</td>
+<td>0.865</td>
+<td>0.011</td>
+<td>0.469</td>
+<td>0.005</td>
+<td>0.468</td>
+<td>0.005</td>
+<td>1.232</td>
+<td>0.019</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Staff nurse utilization</td>
+<td>0.323</td>
+<td>0.008</td>
+<td>0.243</td>
+<td>0.006</td>
+<td>0.160</td>
+<td>0.001</td>
+<td>0.322</td>
+<td>0.008</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Pharmacist utilization</td>
+<td>0.643</td>
+<td>0.004</td>
+<td>0.288</td>
+<td>0.003</td>
+<td>0.289</td>
+<td>0.003</td>
+<td>0.855</td>
+<td>0.005</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Lab utilization</td>
+<td>0.559</td>
+<td>0.008</td>
+<td>0.254</td>
+<td>0.004</td>
+<td>0.239</td>
+<td>0.004</td>
+<td>0.736</td>
+<td>0.011</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Inpatient bed utilization</td>
+<td>0.093</td>
+<td>0.004</td>
+<td>0.055</td>
+<td>0.003</td>
+<td>0.011</td>
+<td>0.001</td>
+<td>0.093</td>
+<td>0.004</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Labor bed utilization</td>
+<td>0.283</td>
+<td>0.010</td>
+<td>0.153</td>
+<td>0.009</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.281</td>
+<td>0.012</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Mean length of OPD queue (number of patients)</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.007</td>
+<td>0.001</td>
+<td>0.001</td>
+<td>0.000</td>
+<td>0.817</td>
+<td>0.027</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>OPD queue waiting time (min)</td>
+<td>0.009</td>
+<td>0.004</td>
+<td>0.171</td>
+<td>0.032</td>
+<td>0.034</td>
+<td>0.001</td>
+<td>6.789</td>
+<td>0.268</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Mean length of pharmacy queue (number of patie...</td>
+<td>0.090</td>
+<td>0.002</td>
+<td>0.010</td>
+<td>0.001</td>
+<td>0.009</td>
+<td>0.000</td>
+<td>0.150</td>
+<td>0.002</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>Pharmacy queue waiting time (min)</td>
+<td>1.025</td>
+<td>0.021</td>
+<td>0.244</td>
+<td>0.008</td>
+<td>0.232</td>
+<td>0.006</td>
+<td>1.282</td>
+<td>0.018</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>Mean length of Lab queue (number of patients)</td>
+<td>0.094</td>
+<td>0.003</td>
+<td>0.012</td>
+<td>0.001</td>
+<td>0.011</td>
+<td>0.000</td>
+<td>0.188</td>
+<td>0.001</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>Lab queue waiting time (min)</td>
+<td>2.084</td>
+<td>0.054</td>
+<td>0.606</td>
+<td>0.023</td>
+<td>0.571</td>
+<td>0.020</td>
+<td>3.135</td>
+<td>0.005</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>Fraction of childbirth cases referred</td>
+<td>0.156</td>
+<td>0.019</td>
+<td>0.088</td>
+<td>0.022</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.157</td>
+<td>0.180</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Figure 2a
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/fig2a.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 2a. “Impact on doctor’s utilisation.” <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Figure 2b
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/fig2b.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 2b. “Impact on the NCD nurse’s utilisation.” <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Figure 2c
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/fig2c.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 2c. “Impact on the average waiting time (minutes) in the OPD”. <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Figure 2d
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/fig2d.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 2d. “Impact on the average waiting time (minutes) in the pharmacy”. <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Figure 3a
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/fig3a.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 3a. “Impact on the doctor’s utilisation. Two levels of outpatient consultation times (minutes) are used”. <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Figure 3b
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/fig3b.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 3b. “Impact on the staff nurse’s utilisation”. <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Figure 3c
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/fig3c.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 3c. “Impact on the inpatient bed’s utilisation”. <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Figure 3d
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/fig3d.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 3d. “Impact on the proportion of childbirth cases referred elsewhere”. <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Figure 4
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/fig4.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 4. “Effect of including additional labour beds on proportion of childbirth patients referred elsewhere”. <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In-text result 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From section 4.3: “We also note that waiting times for outpatient-related resources (laboratory, OPD consultation, etc. - not depicted in Figures 3a – 3d) increase marginally because the associated resources are also required by inpatient/childbirth/ANC cases, which increase in number in the above scenarios”</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In-text result 2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From section 4.3.1: “To address this, we experimented with letting the staff nurse (whose utilisation is approximately 32%) take over the administrative work. This led to a 12% drop in the utilisation level, which implied that the doctor’s utilisation still exceeded 100%. Implementing this measure resulted in increasing the staff nurse utilisation to nearly 40%.”</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In-text result 3
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From section 4.3.1: “then considered a situation wherein the staff nurses require minimal intervention in childbirth cases. We assumed that in 50% of childbirth cases, staff nurses require no intervention by the doctor; require only one- third of the typical amount of intervention in 30% of cases, and require full intervention in the remaining 20% of cases. This led to a decrease of the doctor’s utilisation to 101% (a further decrease of approximately 1%), and an increase in the nurse’s utilisation to 40%.”</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In-text result 4
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From section 4.3.1: “investigated the effect of stationing an additional doctor in the PHC. This yielded an average utilisation of well below 100% for each doctor.”</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In-text result 5
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From section 4.3.2: “We also observe that if the number of beds is reduced to four from six, the utilisation level is observed to be approximately thirty-three percent even under higher demand conditions (two inpatient and childbirth cases/day).”</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In-text result 6
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From section 4.3.3: “When the administrative work alone is assigned to the staff nurse the average utilisation of the NCD nurse decreases to 100%”</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In-text result 7
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From section 4.3.3: “Further, in addition to the administrative work when the staff nurse assisted for NCD checks (for 10% cases) the utilisation of NCD nurse dropped to 71%.”</p>
 </div>
 </div>
 </div>
@@ -219,27 +779,141 @@ Figure X
 <section id="outside-scope" class="level2">
 <h2 class="anchored" data-anchor-id="outside-scope">Outside scope</h2>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Table X
+Figure 1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>[Explanation of why it is outside scope]</p>
-<p>[Display table, including full legend from paper]</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/fig1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 1. “Patient flow in the archetypal PHC”. <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
 </div>
 </div>
 </div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Table 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/tab1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Table 1. “Data summary of staffing level, patient load, and other facilities at PHCs”. <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Table 2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/tab2.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Table 2. “Service time data summary for key PHC resources”. <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Table 3
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/tab3.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Table 3. “PHC configurations”. <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Table 4
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/tab4.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Table 4. “Facility independent input parameters”. <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Table 5
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../original_study/tab5.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Table 5. “Internal validation outcomes for doctor’s utilisation”. <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-shoaib_simulation_2021" class="csl-entry" role="listitem">
+Shoaib, Mohd, and Varun Ramamohan. 2021. <span>“Simulation <span>Modelling</span> and <span>Analysis</span> of <span>Primary</span> <span>Health</span> <span>Centre</span> <span>Operations</span>.”</span> <em>arXiv</em>, June. <a href="https://doi.org/10.48550/arXiv.2104.12492">https://doi.org/10.48550/arXiv.2104.12492</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
