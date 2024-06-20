@@ -1,0 +1,23 @@
+---
+title: "Day 1"
+author: "Amy Heather"
+date: "2024-06-20"
+categories: [setup]
+---
+
+## 10.16-10.35: Set up repository
+
+* Create repository from template
+* Set up environment
+* Set up site on GitHub pages (`quarto publish gh-pages`)
+* Amendments to files to reflect current paper (e.g. author name, citation):
+    * `README.md`
+    * quarto site `index.qmd`
+    * `CITATION.cff`
+    * `_quarto.yml`
+
+## 10.41-10.43: Upload code to repository and check license
+
+Model code from: https://github.com/shoaibiocl/PHC-. Downloaded repository and copied folder `PHC--main` into `original_study/`.
+
+They shared under MIT license, so no amendments to our license required.
