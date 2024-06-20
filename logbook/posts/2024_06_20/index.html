@@ -22,7 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -164,6 +218,7 @@ ul.task-list li input[type="checkbox"] {
       <h1 class="title">Day 1</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">setup</div>
+                <div class="quarto-category">scope</div>
               </div>
                   </div>
   </div>
@@ -199,7 +254,13 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#set-up-repository" id="toc-set-up-repository" class="nav-link active" data-scroll-target="#set-up-repository">10.16-10.35: Set up repository</a></li>
   <li><a href="#upload-code-to-repository-and-check-license" id="toc-upload-code-to-repository-and-check-license" class="nav-link" data-scroll-target="#upload-code-to-repository-and-check-license">10.41-10.43: Upload code to repository and check license</a></li>
-  <li><a href="#upload-journal-article-to-repository-and-compare-between-pre-print-and-published-version" id="toc-upload-journal-article-to-repository-and-compare-between-pre-print-and-published-version" class="nav-link" data-scroll-target="#upload-journal-article-to-repository-and-compare-between-pre-print-and-published-version">10.44-11.15: Upload journal article to repository and compare between pre-print and published version</a></li>
+  <li><a href="#upload-journal-article-to-repository-and-compare-between-arxiv-and-simulation-version" id="toc-upload-journal-article-to-repository-and-compare-between-arxiv-and-simulation-version" class="nav-link" data-scroll-target="#upload-journal-article-to-repository-and-compare-between-arxiv-and-simulation-version">10.44-11.15: Upload journal article to repository and compare between arxiv and simulation version</a></li>
+  <li><a href="#detailed-comparison-of-exercept-from-the-two-papers" id="toc-detailed-comparison-of-exercept-from-the-two-papers" class="nav-link" data-scroll-target="#detailed-comparison-of-exercept-from-the-two-papers">11.40-12.00: Detailed comparison of exercept from the two papers</a></li>
+  <li><a href="#add-proper-citations-to-study_publication.qmd" id="toc-add-proper-citations-to-study_publication.qmd" class="nav-link" data-scroll-target="#add-proper-citations-to-study_publication.qmd">13.10-13.15: Add proper citations to study_publication.qmd</a></li>
+  <li><a href="#read-journal-article" id="toc-read-journal-article" class="nav-link" data-scroll-target="#read-journal-article">13.18-14.00, 14.15-14.36: Read journal article</a></li>
+  <li><a href="#defining-scope" id="toc-defining-scope" class="nav-link" data-scroll-target="#defining-scope">14.37-15.01: Defining scope</a></li>
+  <li><a href="#discussed-scope-with-tom" id="toc-discussed-scope-with-tom" class="nav-link" data-scroll-target="#discussed-scope-with-tom">15.15-15.36: Discussed scope with Tom</a></li>
+  <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_20/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -230,8 +291,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Model code from: https://github.com/shoaibiocl/PHC-. Downloaded repository and copied folder <code>PHC--main</code> into <code>original_study/</code>.</p>
 <p>They shared under MIT license, so no amendments to our license required.</p>
 </section>
-<section id="upload-journal-article-to-repository-and-compare-between-pre-print-and-published-version" class="level2">
-<h2 class="anchored" data-anchor-id="upload-journal-article-to-repository-and-compare-between-pre-print-and-published-version">10.44-11.15: Upload journal article to repository and compare between pre-print and published version</h2>
+<section id="upload-journal-article-to-repository-and-compare-between-arxiv-and-simulation-version" class="level2">
+<h2 class="anchored" data-anchor-id="upload-journal-article-to-repository-and-compare-between-arxiv-and-simulation-version">10.44-11.15: Upload journal article to repository and compare between arxiv and simulation version</h2>
 <p>Article is published with SIMULATION and is not open access: <a href="https://journals.sagepub.com/doi/10.1177/00375497211030931" class="uri">https://journals.sagepub.com/doi/10.1177/00375497211030931</a> (<a href="https://doi.org/10.1177/00375497211030931" class="uri">https://doi.org/10.1177/00375497211030931</a>). Button to request reuse takes you to reuse which has charges for reuse.</p>
 <p>Searched for green open access version of article and identified pre-print on arxiv: <a href="https://arxiv.org/abs/2104.12492" class="uri">https://arxiv.org/abs/2104.12492</a> (<a href="https://doi.org/10.48550/arXiv.2104.12492" class="uri">https://doi.org/10.48550/arXiv.2104.12492</a>). That is shared via <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>. This means we can:</p>
 <ul>
@@ -251,17 +312,208 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 <p>Embed in <code>study_publication.qmd</code> with links.</p>
-<p>Some reflections:</p>
+</section>
+<section id="detailed-comparison-of-exercept-from-the-two-papers" class="level2">
+<h2 class="anchored" data-anchor-id="detailed-comparison-of-exercept-from-the-two-papers">11.40-12.00: Detailed comparison of exercept from the two papers</h2>
+<p>Decided to do a more thorough comparison of the text content, to confirm that the arxiv version was appropriate to use. Converted files from arxiv and simulation to text using <code>pdftotext</code> on the command line. Then copied section-by-section into <a href="https://text-compare.com/" class="uri">https://text-compare.com/</a> to look carefully for differences.</p>
+<p>Compared Abstract through to section 3.3. Found no cause for concern. Only differences were in spelling and grammar, or minor differences in phrasing (e.g.&nbsp;abbreviating words, abbreviating numbers, “etc” v.s. “among others”, “et al.” vs using second author surname). As such, stopped comparing at this point.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reflection
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Took a while to do this stage (for simplicity, including all set-up in timing, but worth being aware that this has added a fair bit of extra time to if we could have just used the original article, so worth reflecting on whether should definitely be included in time, or if be aware of set-up times but perhaps would want to subtract from the overall times?)</p>
+</div>
+</div>
+</section>
+<section id="add-proper-citations-to-study_publication.qmd" class="level2">
+<h2 class="anchored" data-anchor-id="add-proper-citations-to-study_publication.qmd">13.10-13.15: Add proper citations to study_publication.qmd</h2>
+<p>Updated references.bib to include citations for SIMULATION and arXiv sources, and included those on <code>study_publication.qmd</code>, as well as a link to the license.</p>
+</section>
+<section id="read-journal-article" class="level2">
+<h2 class="anchored" data-anchor-id="read-journal-article">13.18-14.00, 14.15-14.36: Read journal article</h2>
+<p>Took some notes whilst reading the first part of the paper, but mostly just highlighted the paper after that. Not shared highlights as license under <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND</a> so doesn’t allow modifications.</p>
+<p>Took some initial notes on scope which have incorporated in scope section below</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reading notes
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Discrete-event simulations to model primary health centres (PHC) in India</p>
 <ul>
-<li>Do I need to do more thorough comparison of content (e.g.&nbsp;software to compare text itself?)</li>
-<li>Images not provided as seperate files, will need to screenshot to upload</li>
-<li>Took a while to do this stage</li>
+<li>PHC are first point of contact with trained doctor</li>
 </ul>
+<p>Rationale:</p>
+<ul>
+<li>Efforts in India towards “establishing new PHCs, upgrading existing primary health infrastructure, and increasing medical personnel numbers”, but “their operational effectiveness and influence on improving public health accessibility is not adequately quantified.” and there is a need for “assessment of theoperational aspects of these facilities before more resources are invested in their upgradation and/or establishing new PHC infrastructure.”</li>
+<li>Provides “template for developing models of similar primary/secondary healthcare facilities”</li>
+<li>“limited literature regarding whole facility simulation models that cater to multiple patient types with distinct clinical and operational flows through the facility (similar to PHCs). This is likely because most healthcare DES studies are undertaken to help analyse and/or solve specific problems associated with a facility, whereas our study aims to contribute towards establishing the computational infrastructure required to analyse the public health system in a region.”</li>
+<li>“our research contribution here involves the inclusion of limited inpatient care and childbirth care in our PHC models inaddition to modelling general OPD consultations and emergency cases”</li>
+<li>“our literature search did not yield any study that computationally examined: a) PHC operations, and b) how their operational performance would respond to changes in demand and/or capacity. Further, there appears to be very limited healthcare facility simulations in general in the Indian context. Our study aims to address these gaps.”</li>
+</ul>
+<p>Model design:</p>
+<ul>
+<li>Visited “multiple PHCs in a semi- urban/rural district in North India and collecting data regarding their operational patterns.”</li>
+<li>Then designed “archetypal or ‘generic’ DES model of PHC operations based on the commonalities” and “adapt (reuse with modification) this generic model to represent the different operational configurations encountered in our visits.”</li>
+<li>Also compared with “benchmark configuration conforming to government-mandated operational guidelines, with demand estimated from disease burden data and service times closer to international estimates, which are significantly higher than observed service times at the PHCs.”</li>
+</ul>
+<p>Four patient types:</p>
+<ul>
+<li>Outpatients</li>
+<li>Inpatients and/or emergency (“requiring care and observation for brief periods” e.g.&nbsp;injuries, diarrhoea)</li>
+<li>Childbirth</li>
+<li>Antenatal</li>
+</ul>
+<p>Resources:</p>
+<ul>
+<li>Doctors (1 or 2, depending on configuration)</li>
+<li>Nurses: (a) non-communicable disease trained, present during outpatient hours (b) staff nurses, for inpatient/emergency/childbird</li>
+<li>Pharmacists (outpatient hours)</li>
+<li>Laboratory technician (outpatient hours)</li>
+<li>Inpatient and childbirth beds</li>
+</ul>
+<p>Focus:</p>
+<ul>
+<li>“operational outcomes such as the average waiting time of patients for various resources (e.g., doctors, pharmacy, clinical laboratory), resource utilisation levels across the PHC, and the proportions of childbirth patients who wait longer than a certain time threshold.”</li>
+<li>“experiments to quantify how these PHC configurations respond to changes (increases) in demand, and identify solutions to potentially improve operational efficiency under conditions of high demand.”</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="defining-scope" class="level2">
+<h2 class="anchored" data-anchor-id="defining-scope">14.37-15.01: Defining scope</h2>
+<p>Tables:</p>
+<ul>
+<li>Table 1 - n/a</li>
+<li>Table 2 - n/a</li>
+<li>Table 3 - n/a</li>
+<li>Table 4 - n/a</li>
+<li>Table 5 - no - about internal validation of model rather than results of model - don’t think focus is on validation of parameters, but instead, outcome of model built on those parameters, so would class as not in scope</li>
+<li>Table 6 - definitely in scope!</li>
+</ul>
+<p>Figures:</p>
+<ul>
+<li>Figure 1 - n/a</li>
+<li>Figure 2 - definitely in scope - but <strong>uncertain</strong> over whether to treat A / B / C / D as seperate figures or as one figure? In arXiv paper, they are presented quite seperately (although they are put together more in the simulation paper).</li>
+<li>Figure 3 - as for figure 2</li>
+<li>Figure 4 - in scope</li>
+</ul>
+<p>Results from the abstract or results section that I can’t currently spot as being covered by the tables and figures:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sections quoted from <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span></th>
+<th>Precise result to be reproduced</th>
+<th>Thoughts on whether to include in scope</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4.3 “We also note that waiting times for outpatient-related resources (laboratory, OPD consultation, etc. - not depicted in Figures 3a – 3d) increase marginally because the associated resources are also required by inpatient/childbirth/ANC cases, which increase in number in the above scenarios”</td>
+<td>No - just marginal increase</td>
+<td><strong>No?</strong> Could argue not in scope, as all you’re aiming for is “seeing a marginal increase” - but likewise, if you saw the opposite of that, you could argue it’s not being reproduced. However, leaning towards the latter as nothing precise</td>
+</tr>
+<tr class="even">
+<td>4.3.1 “To address this, we experimented with letting the staff nurse (whose utilisation is approximately 32%) take over the administrative work. This led to a 12% drop in the utilisation level, which implied that the doctor’s utilisation still exceeded 100%. Implementing this measure resulted in increasing the staff nurse utilisation to nearly 40%.”</td>
+<td>Staff nurse does all administrative work (none to doctor). Look at impact on doctor’s utilisation. When have outpatient load 170 patients per day.</td>
+<td><strong>Maybe?</strong> - depends if I have interpreted the described scenario correctly</td>
+</tr>
+<tr class="odd">
+<td>4.3.1 “then considered a situation wherein the staff nurses require minimal intervention in childbirth cases. We assumed that in 50% of childbirth cases, staff nurses require no intervention by the doctor; require only one- third of the typical amount of intervention in 30% of cases, and require full intervention in the remaining 20% of cases. This led to a decrease of the doctor’s utilisation to 101% (a further decrease of approximately 1%), and an increase in the nurse’s utilisation to 40%.”</td>
+<td>50% childbirth have no doctor. 30% have one-third of typical amount of doctor intervention. 20% have full doctor intervention. Look at doctor and nurse utilisation. Normal doctor attendance described in 3.3.3 is that, if doctor is available, patient is attended by both a doctor and a staff nurse - and if not available, then they attend once available, with first-come first-serve alongside inpatient. In Table 4, can see doctor childbirth service time is from uniform distribution with min 30 max 60.</td>
+<td><strong>Yes?</strong> Think it might be in scope, and has precise results to reproduce</td>
+</tr>
+<tr class="even">
+<td>4.3.1 “investigated the effect of stationing an additional doctor in the PHC. This yielded an average utilisation of well below 100% for each doctor.”</td>
+<td>No precise result</td>
+<td><strong>No?</strong> Potentially not as doesn’t have a precise result, just “well below 100%”</td>
+</tr>
+<tr class="odd">
+<td>4.3.2 “We also observe that if the number of beds is reduced to four from six, the utilisation level is observed to be approximately thirty-three percent even under higher demand conditions (two inpatient and childbirth cases/day).”</td>
+<td>Apx. 33% inpatient bed utilisation when there are four bed and there are 2 inpatient and childbirth cases per day</td>
+<td><strong>Maybe?</strong> Only gives an approximate result which it says holders “even under higher demand” but is not specific to those conditions, and so could be a few percent different or more, depending on interpretation of “approximate”. Hence, not sure if precise enough to reproduce.</td>
+</tr>
+<tr class="even">
+<td>4.3.3 “When the administrative work alone is assigned to the staff nurse the average utilisation of the NCD nurse decreases to 100%”</td>
+<td>Outpatient IAT 3 min and administrative work just performed by staff nurse (and not NCD nurse), NCD nurse utilisation 100%</td>
+<td><strong>Maybe?</strong> Might be precise enough?</td>
+</tr>
+<tr class="odd">
+<td>4.3.3 “Further, in addition to the administrative work when the staff nurse assisted for NCD checks (for 10% cases) the utilisation of NCD nurse dropped to 71%.”</td>
+<td>If 10% cases assigned to staff nurse instead of NCD, when outpatient IAT 3 min, NCD utilisation is 71%</td>
+<td><strong>Maybe?</strong> Might be precise enough, assuming I’ve interpreted scenario correctly?</td>
+</tr>
+</tbody>
+</table>
+<p>Appendix C - not relevant, focused on validation.</p>
+</section>
+<section id="discussed-scope-with-tom" class="level2">
+<h2 class="anchored" data-anchor-id="discussed-scope-with-tom">15.15-15.36: Discussed scope with Tom</h2>
+<ul>
+<li>Treat sub-figures as seperate figures.</li>
+<li>For marginal/non-precise results in text, decided to include in scope and to see if we get a result that meets our judgement (e.g.&nbsp;our judgement of “big change” and so on), but if we think it doesn’t, can check with the original study authors if they know what the actual change they observed was, to confirm if the result is definitely different or just down to subjective differences</li>
+<li>Agreed on how I had interpreted some of the scenarios described in the text</li>
+<li>Suggested including results from the discussion as well, and found one more result, but agree it was covered by the text - “For example, as the sensitivity analyses with consultation times for doctors closer to international levels showed, PHC resources become stressed even when only 30% of current healthcare demand is addressed at a PHC. Further, we also find that a significant proportion of childbirth patients (approximately 16- 28% when the number of childbirth cases/day varies from 1-2) wait longer than two hours before receiving admission into the childbirth facility (bed) at a PHC”</li>
+</ul>
+</section>
+<section id="timings" class="level2">
+<h2 class="anchored" data-anchor-id="timings">Timings</h2>
+<div id="9da82ad8" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.16'</span>, <span class="st">'10.35'</span>),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.41'</span>, <span class="st">'10.43'</span>),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.44'</span>, <span class="st">'11.15'</span>),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.40'</span>, <span class="st">'12.00'</span>),</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.10'</span>, <span class="st">'13.15'</span>),</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.18'</span>, <span class="st">'14.00'</span>),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.15'</span>, <span class="st">'14.36'</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.37'</span>, <span class="st">'15.01'</span>),</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.15'</span>, <span class="st">'15.36'</span>)]</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time spent today: 185m, or 3h 5m
+Total used to date: 185m, or 3h 5m
+Time remaining: 2215m, or 36h 55m
+Used 7.7% of 40 hours max</code></pre>
+</div>
+</div>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-shoaib_simulation_2021" class="csl-entry" role="listitem">
+Shoaib, Mohd, and Varun Ramamohan. 2021. <span>“Simulation <span>Modelling</span> and <span>Analysis</span> of <span>Primary</span> <span>Health</span> <span>Centre</span> <span>Operations</span>.”</span> <em>arXiv</em>, June. <a href="https://doi.org/10.48550/arXiv.2104.12492">https://doi.org/10.48550/arXiv.2104.12492</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
