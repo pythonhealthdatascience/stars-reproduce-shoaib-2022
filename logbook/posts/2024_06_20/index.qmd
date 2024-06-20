@@ -6,6 +6,12 @@ categories: [setup, scope]
 bibliography: ../../../quarto_site/references.bib
 ---
 
+::: {.callout-note}
+
+Set up and scope. Total time used: 3h 59m (10.0%)
+
+:::
+
 ## 10.16-10.35: Set up repository
 
 * Create repository from template
@@ -148,8 +154,18 @@ Appendix C - not relevant, focused on validation.
 * For marginal/non-precise results in text, decided to include in scope and to see if we get a result that meets our judgement (e.g. our judgement of "big change" and so on), but if we think it doesn't, can check with the original study authors if they know what the actual change they observed was, to confirm if the result is definitely different or just down to subjective differences
 * Agreed on how I had interpreted some of the scenarios described in the text
 * Suggested including results from the discussion as well, and found one more result, but agree it was covered by the text - "For example, as the sensitivity analyses with consultation times for doctors closer to international levels showed, PHC resources become stressed even when only 30% of current healthcare demand is addressed at a PHC. Further, we also find that a significant proportion of childbirth patients (approximately 16- 28% when the number of childbirth cases/day varies from 1-2) wait longer than two hours before receiving admission into the childbirth facility (bed) at a PHC"
+* After, Tom double-checked discussion again and spotted no further items
 
+## 15.59-16.53: Uploading items from scope
 
+Uploading:
+
+* Figures as images
+* Tables as images
+* Tables as CSV
+* Results from text as CSV
+
+Displaying uploads within `scope.qmd`, along with description of decision.
 
 ## Timings
 
@@ -171,7 +187,8 @@ times = [
     ('13.18', '14.00'),
     ('14.15', '14.36'),
     ('14.37', '15.01'),
-    ('15.15', '15.36')]
+    ('15.15', '15.36'),
+    ('15.59', '16.53')]
 
 calculate_times(used_to_date, times)
 ```
