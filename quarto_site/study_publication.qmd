@@ -1,5 +1,6 @@
 ---
 title: "Publication"
+bibliography: references.bib
 ---
 
 ## Code and data
@@ -8,8 +9,14 @@ View at: <https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022
 
 ## Journal article
 
-Article uploaded from arxiv (shared under CC BY-NC-ND) from: <https://doi.org/10.48550/arXiv.2104.12492>
+Article published with SIMULATION:
 
-Link to article published with SIMULATION: <https://doi.org/10.1177/00375497211030931>
+* DOI: <https://doi.org/10.1177/00375497211030931>
+* Reference: @shoaib_simulation_2022
+
+Instead, uploaded article from ArXiv (shared under [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/)):
+
+* DOI: <https://doi.org/10.48550/arXiv.2104.12492>
+* Reference: @shoaib_simulation_2021
 
 <iframe width="100%" height="800" src="../original_study/arxiv_paper.pdf"></iframe>
