@@ -3,3 +3,4 @@ _freeze/
 /.quarto/
 __pycache__/
 .vscode/
+ignore/
