@@ -2,8 +2,7 @@
   {
     "listing": "/logbook/logbook.html",
     "items": [
-      "/logbook/posts/year_month_date/index.html",
-      "/logbook/posts/2024_06_20/index.html"
+      "/logbook/posts/year_month_date/index.html"
     ]
   }
 ]
