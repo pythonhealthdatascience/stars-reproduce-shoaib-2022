@@ -12,7 +12,7 @@ View at: <https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022
 Article published with SIMULATION:
 
 * DOI: <https://doi.org/10.1177/00375497211030931>
-* Reference: @shoaib_simulation_2022
+* Reference: @shoaib_simulation_2022 (citation from 2022 as first published online in 2021 but journal publication was March 2022 Volume 98 Issue 3)
 
 Instead, uploaded article from ArXiv (shared under [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/)):
 
