@@ -260,6 +260,7 @@ div.csl-indent {
   <li><a href="#read-journal-article" id="toc-read-journal-article" class="nav-link" data-scroll-target="#read-journal-article">13.18-14.00, 14.15-14.36: Read journal article</a></li>
   <li><a href="#defining-scope" id="toc-defining-scope" class="nav-link" data-scroll-target="#defining-scope">14.37-15.01: Defining scope</a></li>
   <li><a href="#discussed-scope-with-tom" id="toc-discussed-scope-with-tom" class="nav-link" data-scroll-target="#discussed-scope-with-tom">15.15-15.36: Discussed scope with Tom</a></li>
+  <li><a href="#uploading-items-from-scope" id="toc-uploading-items-from-scope" class="nav-link" data-scroll-target="#uploading-items-from-scope">15.59-16.53: Uploading items from scope</a></li>
   <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_20/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -271,6 +272,19 @@ div.csl-indent {
 
 
 
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Set up and scope. Total time used: 3h 59m (10.0%)</p>
+</div>
+</div>
 <section id="set-up-repository" class="level2">
 <h2 class="anchored" data-anchor-id="set-up-repository">10.16-10.35: Set up repository</h2>
 <ul>
@@ -340,7 +354,7 @@ Reflection
 <p>Took some notes whilst reading the first part of the paper, but mostly just highlighted the paper after that. Not shared highlights as license under <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND</a> so doesn’t allow modifications.</p>
 <p>Took some initial notes on scope which have incorporated in scope section below</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -349,7 +363,7 @@ Reading notes
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Discrete-event simulations to model primary health centres (PHC) in India</p>
 <ul>
@@ -472,11 +486,23 @@ Reading notes
 <li>For marginal/non-precise results in text, decided to include in scope and to see if we get a result that meets our judgement (e.g.&nbsp;our judgement of “big change” and so on), but if we think it doesn’t, can check with the original study authors if they know what the actual change they observed was, to confirm if the result is definitely different or just down to subjective differences</li>
 <li>Agreed on how I had interpreted some of the scenarios described in the text</li>
 <li>Suggested including results from the discussion as well, and found one more result, but agree it was covered by the text - “For example, as the sensitivity analyses with consultation times for doctors closer to international levels showed, PHC resources become stressed even when only 30% of current healthcare demand is addressed at a PHC. Further, we also find that a significant proportion of childbirth patients (approximately 16- 28% when the number of childbirth cases/day varies from 1-2) wait longer than two hours before receiving admission into the childbirth facility (bed) at a PHC”</li>
+<li>After, Tom double-checked discussion again and spotted no further items</li>
 </ul>
+</section>
+<section id="uploading-items-from-scope" class="level2">
+<h2 class="anchored" data-anchor-id="uploading-items-from-scope">15.59-16.53: Uploading items from scope</h2>
+<p>Uploading:</p>
+<ul>
+<li>Figures as images</li>
+<li>Tables as images</li>
+<li>Tables as CSV</li>
+<li>Results from text as CSV</li>
+</ul>
+<p>Displaying uploads within <code>scope.qmd</code>, along with description of decision.</p>
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="6f8acb75" class="cell" data-execution_count="1">
+<div id="88687124" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -494,14 +520,15 @@ Reading notes
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.18'</span>, <span class="st">'14.00'</span>),</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.15'</span>, <span class="st">'14.36'</span>),</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.37'</span>, <span class="st">'15.01'</span>),</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.15'</span>, <span class="st">'15.36'</span>)]</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.15'</span>, <span class="st">'15.36'</span>),</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.59'</span>, <span class="st">'16.53'</span>)]</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time spent today: 185m, or 3h 5m
-Total used to date: 185m, or 3h 5m
-Time remaining: 2215m, or 36h 55m
-Used 7.7% of 40 hours max</code></pre>
+<pre><code>Time spent today: 239m, or 3h 59m
+Total used to date: 239m, or 3h 59m
+Time remaining: 2161m, or 36h 1m
+Used 10.0% of 40 hours max</code></pre>
 </div>
 </div>
 
