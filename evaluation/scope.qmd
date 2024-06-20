@@ -3,35 +3,199 @@ title: "Scope"
 bibliography: ../quarto_site/references.bib
 ---
 
-<!-- TODO: Remove this warning once filled out page -->
-**Please note: This is a template page and has not yet been completed**
-
-<!-- TODO: Use skeleton to create page describing scope -->
-
-<!-- NOTE: If you do not have a license allowing you to upload and reuse images from the article, then you should describe them below, and direct the reader to a link to the article -->
-
 This page outlines that parts of the journal article which we will attempt to reproduce.
+
+As cited throughout, images on this page are sourced from @shoaib_simulation_2021, which is shared under [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/).
 
 ## Within scope
 
+There are 17 items in the scope (1 table, 9 figures, and 7 in-text results).
+
 ::: {.callout-note appearance="minimal" collapse=true}
 
-## Figure X
+## Table 6
 
-[Figure with full legend from paper]
-<!-- e.g.
-![Figure 2. "Patient state over time by unit. The patient population progresses through infection over three months (with 80% infected). The bold line shows the median results of 30 trials, and the fainter lines show the minimum and maximum from the 30 trials." @allen_simulation_2020](../original_study/article_fig2.png){width=80%}-->
+![Table 6. "Operational outcomes for each PHC configuration simulation. * Number of doctors/OPD cases/IPD cases/childbirth/ANC (patients)/inpatient beds/labour room" @shoaib_simulation_2021](../original_study/tab6.png)
 
+CSV version:
+```{python}
+import pandas as pd
+
+tab6 = pd.read_csv('../original_study/tab6.csv')
+tab6
+```
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 2a
+
+![Figure 2a. "Impact on doctor's utilisation." @shoaib_simulation_2021](../original_study/fig2a.png){width=80%}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 2b
+
+![Figure 2b. "Impact on the NCD nurse’s utilisation." @shoaib_simulation_2021](../original_study/fig2b.png){width=80%}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 2c
+
+![Figure 2c. "Impact on the average waiting time (minutes) in the OPD". @shoaib_simulation_2021](../original_study/fig2c.png){width=80%}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 2d
+
+![Figure 2d. "Impact on the average waiting time (minutes) in the pharmacy". @shoaib_simulation_2021](../original_study/fig2d.png){width=80%}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 3a
+
+![Figure 3a. "Impact on the doctor’s utilisation. Two levels of outpatient consultation times (minutes) are used". @shoaib_simulation_2021](../original_study/fig3a.png){width=80%}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 3b
+
+![Figure 3b. "Impact on the staff nurse’s utilisation". @shoaib_simulation_2021](../original_study/fig3b.png){width=80%}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 3c
+
+![Figure 3c. "Impact on the inpatient bed’s utilisation". @shoaib_simulation_2021](../original_study/fig3c.png){width=80%}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 3d
+
+![Figure 3d. "Impact on the proportion of childbirth cases referred elsewhere". @shoaib_simulation_2021](../original_study/fig3d.png){width=80%}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 4
+
+![Figure 4. "Effect of including additional labour beds on proportion of childbirth patients referred elsewhere". @shoaib_simulation_2021](../original_study/fig4.png){width=80%}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 1
+
+From section 4.3: "We also note that waiting times for outpatient-related resources (laboratory, OPD consultation, etc. - not depicted in Figures 3a – 3d) increase marginally because the associated resources are also required by inpatient/childbirth/ANC cases, which increase in number in the above scenarios"
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 2
+
+From section 4.3.1: "To address this, we experimented with letting the staff nurse (whose utilisation is approximately 32%) take over the administrative work. This led to a 12% drop in the utilisation level, which implied that the doctor’s utilisation still exceeded 100%. Implementing this measure resulted in increasing the staff nurse utilisation to nearly 40%."
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 3
+
+From section 4.3.1: "then considered a situation wherein the staff nurses require minimal intervention in childbirth cases. We assumed that in 50% of childbirth cases, staff nurses require no intervention by the doctor; require only one- third of the typical amount of intervention in 30% of cases, and require full intervention in the remaining 20% of cases. This led to a decrease of the doctor’s utilisation to 101% (a further decrease of approximately 1%), and an increase in the nurse’s utilisation to 40%."
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 4
+
+From section 4.3.1: "investigated the effect of stationing an additional doctor in the PHC. This yielded an average utilisation of well below 100% for each doctor."
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 5
+
+From section 4.3.2: "We also observe that if the number of beds is reduced to four from six, the utilisation level is observed to be approximately thirty-three percent even under higher demand conditions (two inpatient and childbirth cases/day)."
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 6
+
+From section 4.3.3: "When the administrative work alone is assigned to the staff nurse the average utilisation of the NCD nurse decreases to 100%"
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 7
+
+From section 4.3.3: "Further, in addition to the administrative work when the staff nurse assisted for NCD checks (for 10% cases) the utilisation of NCD nurse dropped to 71%."
 :::
 
 ## Outside scope
 
 ::: {.callout-note appearance="minimal" collapse=true}
 
-## Table X
+## Figure 1
 
-[Explanation of why it is outside scope]
+![Figure 1. "Patient flow in the archetypal PHC". @shoaib_simulation_2021](../original_study/fig1.png){width=80%}
 
-[Display table, including full legend from paper]
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Table 1
+
+![Table 1. "Data summary of staffing level, patient load, and other facilities at PHCs". @shoaib_simulation_2021](../original_study/tab1.png){width=80%}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Table 2
+
+![Table 2. "Service time data summary for key PHC resources". @shoaib_simulation_2021](../original_study/tab2.png){width=80%}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Table 3
+
+![Table 3. "PHC configurations". @shoaib_simulation_2021](../original_study/tab3.png){width=80%}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Table 4
+
+![Table 4. "Facility independent input parameters". @shoaib_simulation_2021](../original_study/tab4.png){width=80%}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Table 5
+
+![Table 5. "Internal validation outcomes for doctor's utilisation". @shoaib_simulation_2021](../original_study/tab5.png){width=80%}
 
 :::
