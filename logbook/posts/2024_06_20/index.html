@@ -199,6 +199,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#set-up-repository" id="toc-set-up-repository" class="nav-link active" data-scroll-target="#set-up-repository">10.16-10.35: Set up repository</a></li>
   <li><a href="#upload-code-to-repository-and-check-license" id="toc-upload-code-to-repository-and-check-license" class="nav-link" data-scroll-target="#upload-code-to-repository-and-check-license">10.41-10.43: Upload code to repository and check license</a></li>
+  <li><a href="#upload-journal-article-to-repository-and-compare-between-pre-print-and-published-version" id="toc-upload-journal-article-to-repository-and-compare-between-pre-print-and-published-version" class="nav-link" data-scroll-target="#upload-journal-article-to-repository-and-compare-between-pre-print-and-published-version">10.44-11.15: Upload journal article to repository and compare between pre-print and published version</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_20/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -228,6 +229,34 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="upload-code-to-repository-and-check-license">10.41-10.43: Upload code to repository and check license</h2>
 <p>Model code from: https://github.com/shoaibiocl/PHC-. Downloaded repository and copied folder <code>PHC--main</code> into <code>original_study/</code>.</p>
 <p>They shared under MIT license, so no amendments to our license required.</p>
+</section>
+<section id="upload-journal-article-to-repository-and-compare-between-pre-print-and-published-version" class="level2">
+<h2 class="anchored" data-anchor-id="upload-journal-article-to-repository-and-compare-between-pre-print-and-published-version">10.44-11.15: Upload journal article to repository and compare between pre-print and published version</h2>
+<p>Article is published with SIMULATION and is not open access: <a href="https://journals.sagepub.com/doi/10.1177/00375497211030931" class="uri">https://journals.sagepub.com/doi/10.1177/00375497211030931</a> (<a href="https://doi.org/10.1177/00375497211030931" class="uri">https://doi.org/10.1177/00375497211030931</a>). Button to request reuse takes you to reuse which has charges for reuse.</p>
+<p>Searched for green open access version of article and identified pre-print on arxiv: <a href="https://arxiv.org/abs/2104.12492" class="uri">https://arxiv.org/abs/2104.12492</a> (<a href="https://doi.org/10.48550/arXiv.2104.12492" class="uri">https://doi.org/10.48550/arXiv.2104.12492</a>). That is shared via <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>. This means we can:</p>
+<ul>
+<li>Share the article (inc. the images from the article)</li>
+<li>Must give attribution - appropriate credit, provide link to license, and indicate if changes are made</li>
+<li>ND (NoDerivatives) - so cannot make any modifications to the article or images (inc. e.g.&nbsp;colour changes etc) - <em>which is fine as don’t plan to do so</em></li>
+</ul>
+<p>As such, saved the article as <code>preprint.pdf</code> within <code>original_study/</code>.</p>
+<p>SIMULATION first published online 18 July 2021. The pre-print was first submit 15 Feb 2021 with second version 21 June 2021 (after the SIMULATION date, hence anticipating should be similar). Glanced between the pre-print and publication in SIMULATION to look for differences:</p>
+<ul>
+<li>Text - broadly looks very similar, spotted one difference (“Next, for assigning ages to outpatients” v.s. “Later, for assigning ages to outpatients”), and so there may be more.</li>
+<li>Tables and figures - contents looked similar, spotted differences:
+<ul>
+<li>Table 2 + 3 + 4 + 5 + 6 + C.1 footnotes - more abbreviations provided in SIMULATION paper</li>
+<li>Formatting differences for tables</li>
+<li>Figures provided seperately in pre-print (e.g.&nbsp;2a vs 2b vs 2c vs 2d rather than all as a single figure - although that does make them easier to read when they are seperate)</li>
+</ul></li>
+</ul>
+<p>Embed in <code>study_publication.qmd</code> with links.</p>
+<p>Some reflections:</p>
+<ul>
+<li>Do I need to do more thorough comparison of content (e.g.&nbsp;software to compare text itself?)</li>
+<li>Images not provided as seperate files, will need to screenshot to upload</li>
+<li>Took a while to do this stage</li>
+</ul>
 
 
 </section>

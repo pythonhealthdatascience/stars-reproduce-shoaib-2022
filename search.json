@@ -18,35 +18,21 @@
     "href": "quarto_site/study_publication.html",
     "title": "Publication",
     "section": "",
-    "text": "Please note: This is a template page and has not yet been completed"
+    "text": "View at: https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/tree/main/original_study/PHC--main"
   },
   {
     "objectID": "quarto_site/study_publication.html#code-and-data",
     "href": "quarto_site/study_publication.html#code-and-data",
     "title": "Publication",
-    "section": "Code and data",
-    "text": "Code and data\n\nView at: &lt;[Link]&gt;"
+    "section": "",
+    "text": "View at: https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/tree/main/original_study/PHC--main"
   },
   {
     "objectID": "quarto_site/study_publication.html#journal-article",
     "href": "quarto_site/study_publication.html#journal-article",
     "title": "Publication",
     "section": "Journal article",
-    "text": "Journal article"
-  },
-  {
-    "objectID": "quarto_site/study_publication.html#supplementary-materials",
-    "href": "quarto_site/study_publication.html#supplementary-materials",
-    "title": "Publication",
-    "section": "Supplementary materials",
-    "text": "Supplementary materials"
-  },
-  {
-    "objectID": "quarto_site/study_publication.html#sources",
-    "href": "quarto_site/study_publication.html#sources",
-    "title": "Publication",
-    "section": "Sources",
-    "text": "Sources"
+    "text": "Journal article\nArticle uploaded from arxiv (shared under CC BY-NC-ND) from: https://doi.org/10.48550/arXiv.2104.12492\nLink to article published with SIMULATION: https://doi.org/10.1177/00375497211030931"
   },
   {
     "objectID": "index.html",
@@ -264,6 +250,13 @@
     "title": "Day 1",
     "section": "10.41-10.43: Upload code to repository and check license",
     "text": "10.41-10.43: Upload code to repository and check license\nModel code from: https://github.com/shoaibiocl/PHC-. Downloaded repository and copied folder PHC--main into original_study/.\nThey shared under MIT license, so no amendments to our license required."
+  },
+  {
+    "objectID": "logbook/posts/2024_06_20/index.html#upload-journal-article-to-repository-and-compare-between-pre-print-and-published-version",
+    "href": "logbook/posts/2024_06_20/index.html#upload-journal-article-to-repository-and-compare-between-pre-print-and-published-version",
+    "title": "Day 1",
+    "section": "10.44-11.15: Upload journal article to repository and compare between pre-print and published version",
+    "text": "10.44-11.15: Upload journal article to repository and compare between pre-print and published version\nArticle is published with SIMULATION and is not open access: https://journals.sagepub.com/doi/10.1177/00375497211030931 (https://doi.org/10.1177/00375497211030931). Button to request reuse takes you to reuse which has charges for reuse.\nSearched for green open access version of article and identified pre-print on arxiv: https://arxiv.org/abs/2104.12492 (https://doi.org/10.48550/arXiv.2104.12492). That is shared via CC BY-NC-ND 4.0. This means we can:\n\nShare the article (inc. the images from the article)\nMust give attribution - appropriate credit, provide link to license, and indicate if changes are made\nND (NoDerivatives) - so cannot make any modifications to the article or images (inc. e.g. colour changes etc) - which is fine as don’t plan to do so\n\nAs such, saved the article as preprint.pdf within original_study/.\nSIMULATION first published online 18 July 2021. The pre-print was first submit 15 Feb 2021 with second version 21 June 2021 (after the SIMULATION date, hence anticipating should be similar). Glanced between the pre-print and publication in SIMULATION to look for differences:\n\nText - broadly looks very similar, spotted one difference (“Next, for assigning ages to outpatients” v.s. “Later, for assigning ages to outpatients”), and so there may be more.\nTables and figures - contents looked similar, spotted differences:\n\nTable 2 + 3 + 4 + 5 + 6 + C.1 footnotes - more abbreviations provided in SIMULATION paper\nFormatting differences for tables\nFigures provided seperately in pre-print (e.g. 2a vs 2b vs 2c vs 2d rather than all as a single figure - although that does make them easier to read when they are seperate)\n\n\nEmbed in study_publication.qmd with links.\nSome reflections:\n\nDo I need to do more thorough comparison of content (e.g. software to compare text itself?)\nImages not provided as seperate files, will need to screenshot to upload\nTook a while to do this stage"
   },
   {
     "objectID": "CONTRIBUTING.html",
