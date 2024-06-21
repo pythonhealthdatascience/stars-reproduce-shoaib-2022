@@ -18,6 +18,11 @@ authors:
     email: t.m.w.monks@exeter.ac.uk
     affiliation: University of Exeter Medical School, Exeter, UK
     orcid: 'https://orcid.org/0000-0003-2631-4481'
+  - given-names: Alison
+    family-names: Harper
+    email: a.l.harper@exeter.ac.uk
+    affiliation: University of Exeter Business School, Exeter, UK
+    orcid: 'https://orcid.org/0000-0001-5274-5037'
 repository-code: >-
   https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022
 abstract: >-
@@ -28,5 +33,5 @@ abstract: >-
   98(3):183-208. (2022). https://doi.org/10.1177/00375497211030931.
 license: MIT
 # TODO: Manually update with each GitHub release
-version: '1.0.0'
-date-released: '2024-06-20'
+version: '0.1.0'
+date-released: '2024-06-21'
