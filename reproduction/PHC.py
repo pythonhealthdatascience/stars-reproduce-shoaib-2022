@@ -1,6 +1,7 @@
 import salabim as sim
 import random
 import numpy as np
+import os
 import xlsxwriter
 import matplotlib.pyplot as plt
 import statistics
@@ -9,6 +10,11 @@ import xlwt
 """ PHC operational model at minutes time scale. From the class Main OPD arrivals and admin work arrival are generated.
 OPD runs for 6 hours in a day followed by 2 hours of admin work for doctors.
 """
+
+# Set save paths
+results_path = 'outputs'
+outputs_path = os.path.join(results_path, 'outputs.xls')
+full_results_path = os.path.join(results_path, 'full_results.xlsx')
 
 
 class Main(sim.Component):
@@ -1006,7 +1012,7 @@ def main():
     ad = 0
     temp = 0
 
-    REPLICATION = xlsxwriter.Workbook("Config_3(2).xlsx")
+    REPLICATION = xlsxwriter.Workbook(full_results_path)
     worksheet = REPLICATION.add_worksheet("Sheet 3")
 
     # input parameters
@@ -1293,7 +1299,7 @@ def main():
     for index, item in enumerate(bed_util):        # length of delivery patients tured away
         ws.write(21, index+1, item)
 
-    wb.save('Outputs.xls')
+    wb.save(outputs_path)
 
 
 if __name__ == '__main__':

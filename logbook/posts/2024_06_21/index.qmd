@@ -438,9 +438,21 @@ Processed this in `reproduce.ipynb` so can match up results to Table 6 (as use d
 
 Confirmed that values all matched up with only apx. 1% difference at most, which is great!
 
-## 15.X
+## 15.23-: Second results spreadsheet
 
 There is `REPLICATION = xlsxwriter.Workbook("Config_3(2).xlsx")` with results that I didn't get. Tried uncommenting `REPLICATION.close()` and reran `PHC.py`.
+
+Also, changed save location of the output files, so they go into `reproduction/outputs/` rather than main folder, by modifying `PHC.py`.
+
+In `reproduction.ipynb`, compared results from that to the processed `Outputs.xls`. To import `.xlsx` file using `pd.read_excel`, had to add `openpyxl` to environment.
+
+This had similar results but observations:
+
+* Different labels again
+* Also does not have fraction of childbirth cases referred
+* Can't spot labour bed utilisation in the larger results table
+
+The results are not an exact match but all are likely due to rounding differences. As the outputs one was processed additionally using spreadsheet with replication results, feel its better to use the full results spreadsheet they create, as that works with the raw results (and not potentially rounded results in the spreadsheet).
 
 ## Timings
 
