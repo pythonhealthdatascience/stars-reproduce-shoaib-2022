@@ -1,8 +1,8 @@
 # STARS: Computational reproducibility of Shoaib and Ramamohan 2022 <a href="https://github.com/pythonhealthdatascience"><img src="quarto_site/stars_logo_blue.png" align="right" height="120" alt="STARS" /></a>
 
-<!-- Status badge from GitHub action checking validity of CITATION.cff -->
-<!-- TODO: Add DOI badge once repository has been archived on Zenodo -->
+<!-- DOI + status badge from GitHub action checking validity of CITATION.cff -->
 [![Valid CITATION.cff](https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/actions/workflows/cff_validation.yaml/badge.svg)](https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/actions/workflows/cff_validation.yaml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12204250.svg)](https://doi.org/10.5281/zenodo.12204250)
 
 This repository forms part of work package 1 on the project STARS: Sharing Tools and Artefacts for Reproducible Simulations. It assesses the computational reproducibility of:
 
@@ -81,11 +81,9 @@ If you wish to cite this repository, please refer to the citation file `CITATION
 
 ## License
 
-<!-- TODO: Add license name and link -->
-This repository is licensed under the [license and link to file].
+This repository is licensed under the [MIT License](https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/main/LICENSE).
 
-<!-- TODO: Add license name and link (e.g. "who also licensed their work under the [MIT License](link)") -->
-This is aligned with the original study, who [license and link to file].
+This is aligned with the original study, who also licensed their code under the [MIT License](https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/main/original_study/PHC--main/LICENSE).
 
 ## Funding
 
