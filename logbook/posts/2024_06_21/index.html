@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -103,6 +103,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -139,6 +142,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../../quarto_site/reproduction_readme.html">
  <span class="dropdown-text">README</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../reproduction/reproduction.ipynb">
+ <span class="dropdown-text">Notebook</span></a>
   </li>  
     </ul>
   </li>
@@ -234,7 +241,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#archive-scope-on-zenodo" id="toc-archive-scope-on-zenodo" class="nav-link active" data-scroll-target="#archive-scope-on-zenodo">10.02-10.16: Archive scope on Zenodo</a></li>
   <li><a href="#look-over-code" id="toc-look-over-code" class="nav-link" data-scroll-target="#look-over-code">10.23-10.30 : Look over code</a></li>
   <li><a href="#timings-below-set-up-environment" id="toc-timings-below-set-up-environment" class="nav-link" data-scroll-target="#timings-below-set-up-environment">(Timings below): Set up environment</a></li>
-  <li><a href="#running-script-and-returning-to-environment" id="toc-running-script-and-returning-to-environment" class="nav-link" data-scroll-target="#running-script-and-returning-to-environment">11.51-11.57, 12.03-: Running script and returning to environment</a></li>
+  <li><a href="#running-script-and-returning-to-environment" id="toc-running-script-and-returning-to-environment" class="nav-link" data-scroll-target="#running-script-and-returning-to-environment">11.51-11.57, 12.03-12.37: Running script and returning to environment</a></li>
+  <li><a href="#continued-and-got-config1-table6-results-confirmed-match" id="toc-continued-and-got-config1-table6-results-confirmed-match" class="nav-link" data-scroll-target="#continued-and-got-config1-table6-results-confirmed-match">13.17-15.07: Continued and got config1 table6 results (confirmed match)</a></li>
+  <li><a href="#second-results-spreadsheet" id="toc-second-results-spreadsheet" class="nav-link" data-scroll-target="#second-results-spreadsheet">15.23-: Second results spreadsheet</a></li>
   <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_21/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -474,7 +483,7 @@ dependencies:
 <p>This built quickly and with no issue.</p>
 </section>
 <section id="running-script-and-returning-to-environment" class="level2">
-<h2 class="anchored" data-anchor-id="running-script-and-returning-to-environment">11.51-11.57, 12.03-: Running script and returning to environment</h2>
+<h2 class="anchored" data-anchor-id="running-script-and-returning-to-environment">11.51-11.57, 12.03-12.37: Running script and returning to environment</h2>
 <p>Copied <code>PHC.py</code> into <code>reproduction/</code> and ran file with environment active.</p>
 <p><code>ImportError: No module named pathlib.</code> Installed latest version of pathlib (which is from 2014) into environment.</p>
 <p>Then error:</p>
@@ -525,8 +534,10 @@ dependencies:
   - pip:
     - salabim</code></pre>
 <p>Run:</p>
-<pre><code>conda remove -n shoaib2022 --all
-mamba env create -f environment.yml</code></pre>
+<pre><code>conda deactivate
+conda remove -n shoaib2022 --all
+mamba env create -f environment.yml
+conda activate shoaib2022</code></pre>
 <p>This quickly installed, and updated environment file with the versions it used:</p>
 <pre><code>name: shoaib2022
 channels:
@@ -558,31 +569,421 @@ Maybe this a non yieldless model. In that case:
 - remove all yields or
 - run salabim_unyield.py</code></pre>
 </section>
+<section id="continued-and-got-config1-table6-results-confirmed-match" class="level2">
+<h2 class="anchored" data-anchor-id="continued-and-got-config1-table6-results-confirmed-match">13.17-15.07: Continued and got config1 table6 results (confirmed match)</h2>
+<p>Suspicious my error could be because I’m used versions that are more recent than I know possible. Hence, delete environment and this time rebuild as specified at start but without statistics, but with the new ones I know I need, with versions based on their release history. Exception was ipykernel, as that was something I’ve added to run notebooks, and not something the original study required.</p>
+<pre><code>name: shoaib2022
+channels:
+  - defaults
+dependencies:
+  - ipykernel
+  - matplotlib=3.3.4
+  - numpy=1.20.1
+  - pathlib=1.0.1
+  - pip=21.0.1
+  - python=3.9.19
+  - xlsxwriter=1.3.7
+  - xlwt=1.3.0
+  - pip:
+    - greenlet==1.0.0
+    - salabim==21.0.2</code></pre>
+<p>This built fine! So probably would’ve worked to begin with without statistics. Then ran <code>PHC.py</code>, and it started running fine, outputting <code>No of replications done 0</code>, <code>No of replications done 1</code>…</p>
+<p>Ensure is set up with correct parameters. Configuration 1 is (from Table 3 and 6):</p>
+<ul>
+<li>2 doctors: <code>doc_cap = 2</code></li>
+<li>4 nurses: <code>staff_nurse_cap = 3</code>, <code>NCD_nurse_cap = 1</code></li>
+<li>130 OPD cases, so OPD inter-arrival time 4: <code>OPD_iat = 4</code></li>
+<li>0.5 IPD cases, so IPD inter-arrival time 2880: <code>IPD_iat = 2880</code></li>
+<li>1 childbirth, so childbirth inter-arrival time 1440: <code>delivery_iat = 1440</code></li>
+<li>1 ANC (patients), so ANC inter-arrival time 1440: <code>ANC_iat = 1440</code></li>
+<li>6 inpatient beds: <code>bed = sim.Resource("Bed", capacity=6)</code></li>
+<li>1 labour room: <code>delivery_bed = sim.Resource("Del bed", capacity = 1)</code></li>
+<li>100 replications: <code>replication = 10</code></li>
+<li>365 days: <code>days = 365</code></li>
+<li>Warm-up 180 days: <code>warm_up = 180*24*60</code></li>
+</ul>
+<p><strong>Except for number of replications</strong>, all match up to configuration 1.</p>
+<p>Produced <code>Outputs.xlsx</code> in main folder, which moved manually to <code>reproduction/</code>, and copied to logbook folder to display below. This ran ten replications, with results in each column.</p>
+<div id="f58ed41e" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xlrd</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>model_path <span class="op">=</span> <span class="st">'Outputs.xls'</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>book <span class="op">=</span> xlrd.open_workbook(model_path)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pd.read_excel(book, header<span class="op">=</span><span class="va">None</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">4</th>
+<th data-quarto-table-cell-role="th">5</th>
+<th data-quarto-table-cell-role="th">6</th>
+<th data-quarto-table-cell-role="th">7</th>
+<th data-quarto-table-cell-role="th">8</th>
+<th data-quarto-table-cell-role="th">9</th>
+<th data-quarto-table-cell-role="th">10</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">OPD patients</td>
+<td>32836.000000</td>
+<td>33066.000000</td>
+<td>33023.000000</td>
+<td>32870.000000</td>
+<td>33240.000000</td>
+<td>33232.000000</td>
+<td>33216.000000</td>
+<td>33368.000000</td>
+<td>33314.000000</td>
+<td>33171.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">IPD patients</td>
+<td>174.000000</td>
+<td>166.000000</td>
+<td>171.000000</td>
+<td>177.000000</td>
+<td>198.000000</td>
+<td>194.000000</td>
+<td>206.000000</td>
+<td>178.000000</td>
+<td>198.000000</td>
+<td>178.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ANC patients</td>
+<td>368.000000</td>
+<td>362.000000</td>
+<td>386.000000</td>
+<td>380.000000</td>
+<td>388.000000</td>
+<td>381.000000</td>
+<td>372.000000</td>
+<td>370.000000</td>
+<td>350.000000</td>
+<td>355.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Del patients</td>
+<td>384.000000</td>
+<td>367.000000</td>
+<td>369.000000</td>
+<td>361.000000</td>
+<td>309.000000</td>
+<td>360.000000</td>
+<td>359.000000</td>
+<td>397.000000</td>
+<td>385.000000</td>
+<td>339.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">OPD Q wt</td>
+<td>0.006038</td>
+<td>0.008066</td>
+<td>0.006059</td>
+<td>0.006793</td>
+<td>0.005244</td>
+<td>0.010225</td>
+<td>0.007012</td>
+<td>0.016915</td>
+<td>0.008484</td>
+<td>0.018205</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Pharmacy Q wt</td>
+<td>1.047611</td>
+<td>1.019909</td>
+<td>1.011980</td>
+<td>1.016690</td>
+<td>1.006467</td>
+<td>1.032219</td>
+<td>1.020334</td>
+<td>1.017687</td>
+<td>1.017410</td>
+<td>1.003815</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Lab Q wt</td>
+<td>2.063080</td>
+<td>2.096727</td>
+<td>2.121108</td>
+<td>1.958464</td>
+<td>2.096112</td>
+<td>2.160190</td>
+<td>2.039157</td>
+<td>2.069498</td>
+<td>2.135470</td>
+<td>2.139755</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">doc occ</td>
+<td>0.269761</td>
+<td>0.271455</td>
+<td>0.265695</td>
+<td>0.271491</td>
+<td>0.266211</td>
+<td>0.269985</td>
+<td>0.269385</td>
+<td>0.274394</td>
+<td>0.270916</td>
+<td>0.264823</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Lab patient list</td>
+<td>34553.000000</td>
+<td>68973.000000</td>
+<td>103851.000000</td>
+<td>137618.000000</td>
+<td>172163.000000</td>
+<td>206714.000000</td>
+<td>241073.000000</td>
+<td>275273.000000</td>
+<td>309924.000000</td>
+<td>344492.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">OPD q len</td>
+<td>0.005855</td>
+<td>0.009359</td>
+<td>0.004993</td>
+<td>0.007724</td>
+<td>0.005061</td>
+<td>0.011423</td>
+<td>0.005998</td>
+<td>0.010305</td>
+<td>0.010064</td>
+<td>0.017429</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ipd occ</td>
+<td>0.100000</td>
+<td>0.100000</td>
+<td>0.100000</td>
+<td>0.100000</td>
+<td>0.090000</td>
+<td>0.100000</td>
+<td>0.090000</td>
+<td>0.100000</td>
+<td>0.100000</td>
+<td>0.100000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">opd q len</td>
+<td>0.000531</td>
+<td>0.000713</td>
+<td>0.000535</td>
+<td>0.000598</td>
+<td>0.000462</td>
+<td>0.000909</td>
+<td>0.000619</td>
+<td>0.001494</td>
+<td>0.000751</td>
+<td>0.001609</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">pharmacy q len</td>
+<td>0.091809</td>
+<td>0.089833</td>
+<td>0.089091</td>
+<td>0.089266</td>
+<td>0.088519</td>
+<td>0.091496</td>
+<td>0.089756</td>
+<td>0.089564</td>
+<td>0.089736</td>
+<td>0.088452</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">lab q len</td>
+<td>0.093966</td>
+<td>0.095058</td>
+<td>0.097672</td>
+<td>0.087332</td>
+<td>0.095604</td>
+<td>0.098494</td>
+<td>0.092430</td>
+<td>0.093381</td>
+<td>0.097421</td>
+<td>0.097366</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">NCD occ</td>
+<td>0.856243</td>
+<td>0.876655</td>
+<td>0.868920</td>
+<td>0.862815</td>
+<td>0.875444</td>
+<td>0.864627</td>
+<td>0.873573</td>
+<td>0.882904</td>
+<td>0.885179</td>
+<td>0.851488</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">lab occ</td>
+<td>0.559366</td>
+<td>0.552778</td>
+<td>0.566939</td>
+<td>0.550767</td>
+<td>0.558711</td>
+<td>0.559475</td>
+<td>0.554049</td>
+<td>0.557318</td>
+<td>0.562513</td>
+<td>0.553164</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">pharm occ</td>
+<td>0.637989</td>
+<td>0.643297</td>
+<td>0.639525</td>
+<td>0.638504</td>
+<td>0.644518</td>
+<td>0.642726</td>
+<td>0.645787</td>
+<td>0.647810</td>
+<td>0.647879</td>
+<td>0.641500</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">staff nurse occ</td>
+<td>0.328762</td>
+<td>0.322683</td>
+<td>0.321956</td>
+<td>0.321020</td>
+<td>0.305951</td>
+<td>0.322970</td>
+<td>0.323056</td>
+<td>0.335735</td>
+<td>0.331135</td>
+<td>0.312820</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">del occ</td>
+<td>0.280000</td>
+<td>0.290000</td>
+<td>0.300000</td>
+<td>0.290000</td>
+<td>0.260000</td>
+<td>0.290000</td>
+<td>0.280000</td>
+<td>0.300000</td>
+<td>0.300000</td>
+<td>0.280000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">del referred</td>
+<td>58.000000</td>
+<td>53.000000</td>
+<td>56.000000</td>
+<td>54.000000</td>
+<td>44.000000</td>
+<td>55.000000</td>
+<td>55.000000</td>
+<td>62.000000</td>
+<td>72.000000</td>
+<td>47.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">NCD occ</td>
+<td>0.856243</td>
+<td>0.876655</td>
+<td>0.868920</td>
+<td>0.862815</td>
+<td>0.875444</td>
+<td>0.864627</td>
+<td>0.873573</td>
+<td>0.882904</td>
+<td>0.885179</td>
+<td>0.851488</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ipd bed occ</td>
+<td>0.101028</td>
+<td>0.091502</td>
+<td>0.097690</td>
+<td>0.092269</td>
+<td>0.082897</td>
+<td>0.094390</td>
+<td>0.091500</td>
+<td>0.098772</td>
+<td>0.092360</td>
+<td>0.090019</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Add <code>xlrd</code> and <code>pandas</code> to environment (quarto and reproduction) so can import the .xls files produced and process them.</p>
+<p>Processed this in <code>reproduce.ipynb</code> so can match up results to Table 6 (as use different label names), and calculate proportion of childbirth referred.</p>
+<p>Confirmed that values all matched up with only apx. 1% difference at most, which is great!</p>
+</section>
+<section id="second-results-spreadsheet" class="level2">
+<h2 class="anchored" data-anchor-id="second-results-spreadsheet">15.23-: Second results spreadsheet</h2>
+<p>There is <code>REPLICATION = xlsxwriter.Workbook("Config_3(2).xlsx")</code> with results that I didn’t get. Tried uncommenting <code>REPLICATION.close()</code> and reran <code>PHC.py</code>.</p>
+<p>Also, changed save location of the output files, so they go into <code>reproduction/outputs/</code> rather than main folder, by modifying <code>PHC.py</code>.</p>
+<p>In <code>reproduction.ipynb</code>, compared results from that to the processed <code>Outputs.xls</code>. To import <code>.xlsx</code> file using <code>pd.read_excel</code>, had to add <code>openpyxl</code> to environment.</p>
+<p>This had similar results but observations:</p>
+<ul>
+<li>Different labels again</li>
+<li>Also does not have fraction of childbirth cases referred</li>
+<li>Can’t spot labour bed utilisation in the larger results table</li>
+</ul>
+<p>The results are not an exact match but all are likely due to rounding differences. As the outputs one was processed additionally using spreadsheet with replication results, feel its better to use the full results spreadsheet they create, as that works with the raw results (and not potentially rounded results in the spreadsheet).</p>
+</section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="4254f6f0" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">239</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.02'</span>, <span class="st">'10.16'</span>),</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.23'</span>, <span class="st">'10.30'</span>),</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.31'</span>, <span class="st">'10.47'</span>),</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.00'</span>, <span class="st">'11.01'</span>),</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.03'</span>, <span class="st">'11.04'</span>),</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.12'</span>, <span class="st">'11.35'</span>),]</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9b225398" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">239</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.02'</span>, <span class="st">'10.16'</span>),</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.23'</span>, <span class="st">'10.30'</span>),</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.31'</span>, <span class="st">'10.47'</span>),</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.00'</span>, <span class="st">'11.01'</span>),</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.03'</span>, <span class="st">'11.04'</span>),</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.12'</span>, <span class="st">'11.35'</span>),</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.51'</span>, <span class="st">'11.57'</span>),</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.03'</span>, <span class="st">'12.37'</span>),</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.17'</span>, <span class="st">'13.31'</span>)]</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time spent today: 62m, or 1h 2m
-Total used to date: 301m, or 5h 1m
-Time remaining: 2099m, or 34h 59m
-Used 12.5% of 40 hours max</code></pre>
+<pre><code>Time spent today: 116m, or 1h 56m
+Total used to date: 355m, or 5h 55m
+Time remaining: 2045m, or 34h 5m
+Used 14.8% of 40 hours max</code></pre>
 </div>
 </div>
 
