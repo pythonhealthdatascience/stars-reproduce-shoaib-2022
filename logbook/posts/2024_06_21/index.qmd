@@ -2,7 +2,7 @@
 title: "Day 2"
 author: "Amy Heather"
 date: "2024-06-21"
-categories: [scope]
+categories: [scope, read, reproduce]
 bibliography: ../../../quarto_site/references.bib
 ---
 
@@ -438,7 +438,7 @@ Processed this in `reproduce.ipynb` so can match up results to Table 6 (as use d
 
 Confirmed that values all matched up with only apx. 1% difference at most, which is great!
 
-## 15.23-: Second results spreadsheet
+## 15.23-16.17: Second results spreadsheet
 
 There is `REPLICATION = xlsxwriter.Workbook("Config_3(2).xlsx")` with results that I didn't get. Tried uncommenting `REPLICATION.close()` and reran `PHC.py`.
 
@@ -453,6 +453,16 @@ This had similar results but observations:
 * Can't spot labour bed utilisation in the larger results table
 
 The results are not an exact match but all are likely due to rounding differences. As the outputs one was processed additionally using spreadsheet with replication results, feel its better to use the full results spreadsheet they create, as that works with the raw results (and not potentially rounded results in the spreadsheet).
+
+However, that doesn't have the standard deviation for all the results included - and its missing labour bed utilisation and fraction of childbirth cases. Also, the full result is potentially more rounded than the reported, and as it was commented out in the `.py` file originally, that lends me to suspect that results could likely be based on the replication spreadsheet results.
+
+**Decision:** Use replication spreadsheet results.
+
+## 16.22-16.48: Setting parameter values from notebook
+
+In order to run the different scenarios without needing to change the `PHC.py` itself each time, worked to modify the function `main()` so that the parameters provided to that function are inputs.
+
+Then ran the model from `reproduce.ipynb`.
 
 ## Timings
 
@@ -474,7 +484,9 @@ times = [
     ('11.12', '11.35'),
     ('11.51', '11.57'),
     ('12.03', '12.37'),
-    ('13.17', '13.31')]
+    ('13.17', '15.07'),
+    ('15.23', '16.17'),
+    ('16.22', '16.48')]
 
 calculate_times(used_to_date, times)
 ```

@@ -789,8 +789,40 @@ class Delivery_no_doc(sim.Component):                                       # du
                 self.release(bed)
 
 
-def main():
-
+# Add variables as input to function so can change without needing to modify
+# script. However, as these are global variables, to avoid errors re: when
+# and where these are assigned in script, found simplest solution was to set
+# them all with 's_' and then still set value of actual variable within
+# the function itself.
+def main(
+        s_OPD_iat=4,
+        s_delivery_iat=1440,             # inter-arrival delivery patient time
+        s_IPD_iat=2880,                  # inter-arrival IPD patient time
+        s_ANC_iat=1440,                  # inter-arrival ANC patient time
+        s_mean=0.87,                     # consultation time mean
+        s_sd=.21,                        # consultation time sd
+        s_pharm_mean=2.083,
+        s_pharm_sd=0.72,
+        s_j=0,
+        s_f=0,                            # for calculating sum of OPD q waiting time
+        s_f1=0,                           # for calculating sum of OPD q length
+        s_f2=0,                           # for calculating sum of pharmacy q waiting time
+        s_f3=0,                           # for calculating sum of pharmacy q length
+        s_f4=0,                           # for calculating sum of lab q waiting time
+        s_f5=0,                           # for calculating sum of lab q length
+        s_doc_tot_time=0,
+        s_lab_patients=0,
+        s_days=365,
+        s_shifts=3,
+        s_hours=8,
+        s_doc_cap=2,                     # number of doctors
+        s_staff_nurse_cap=3,             # number of nurses
+        s_NCD_nurse_cap=1,               # number of NCD nurses
+        s_pharmacist_cap=1,              # number of pharmacists
+        s_lab_cap=1,                     # number of lab technicians
+        s_replication=10
+):
+    # Define global variables
     # defining simulation input parameters
     global OPD_iat
     global delivery_iat
@@ -868,7 +900,6 @@ def main():
 
     global bed_time
 
-
     ncd_util =[]
     bed_util = []
 
@@ -895,34 +926,33 @@ def main():
     delivery_bed_occ_list =[]
     fail_count_list = []
 
-    OPD_iat = 4
-    delivery_iat = 1440              # inter-arrival delivery patient time
-    IPD_iat = 2880                   # inter-arrival IPD patient time
-    ANC_iat = 1440                   # inter-arrival ANC patient time
-    mean = 0.87                    # consultation time mean
-    sd = .21                        # consultation time sd
-    pharm_mean = 2.083
-    pharm_sd = 0.72
-    j = 0
-    f = 0                            # for calculating sum of OPD q waiting time
-    f1 = 0                           # for calculating sum of OPD q length
-    f2 = 0                           # for calculating sum of pharmacy q waiting time
-    f3 = 0                           # for calculating sum of pharmacy q length
-    f4 = 0                           # for calculating sum of lab q waiting time
-    f5 = 0                           # for calculating sum of lab q length
-
-    doc_tot_time = 0
-    lab_patients = 0
-
-    days = 365
-    shifts = 3
-    hours = 8
-    doc_cap = 2                      # number of doctors
-    staff_nurse_cap = 3              # number of nurses
-    NCD_nurse_cap = 1                # number of NCD nurses
-    pharmacist_cap = 1               # number of pharmacists
-    lab_cap = 1                      # number of lab technicians
-    replication = 10
+    # Set variables based on inputs to the function
+    OPD_iat = s_OPD_iat
+    delivery_iat = s_delivery_iat  # inter-arrival delivery patient time
+    IPD_iat = s_IPD_iat            # inter-arrival IPD patient time
+    ANC_iat = s_ANC_iat            # inter-arrival ANC patient time
+    mean = s_mean                  # consultation time mean
+    sd = s_sd                      # consultation time sd
+    pharm_mean = s_pharm_mean
+    pharm_sd = s_pharm_sd
+    j = s_j
+    f = s_f                             # for calculating sum of OPD q waiting time
+    f1 = s_f1                           # for calculating sum of OPD q length
+    f2 = s_f2                           # for calculating sum of pharmacy q waiting time
+    f3 = s_f3                           # for calculating sum of pharmacy q length
+    f4 = s_f4                           # for calculating sum of lab q waiting time
+    f5 = s_f5                           # for calculating sum of lab q length
+    doc_tot_time = s_doc_tot_time
+    lab_patients = s_lab_patients
+    days = s_days
+    shifts = s_shifts
+    hours = s_hours
+    doc_cap = s_doc_cap                  # number of doctors
+    staff_nurse_cap = s_staff_nurse_cap  # number of nurses
+    NCD_nurse_cap = s_NCD_nurse_cap      # number of NCD nurses
+    pharmacist_cap = s_pharmacist_cap    # number of pharmacists
+    lab_cap = s_lab_cap                  # number of lab technicians
+    replication = s_replication
 
     for x in range(0, replication):
         n = np.random.randint(0, 101)
@@ -1304,5 +1334,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
