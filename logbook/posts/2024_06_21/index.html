@@ -234,6 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#archive-scope-on-zenodo" id="toc-archive-scope-on-zenodo" class="nav-link active" data-scroll-target="#archive-scope-on-zenodo">10.02-10.16: Archive scope on Zenodo</a></li>
   <li><a href="#look-over-code" id="toc-look-over-code" class="nav-link" data-scroll-target="#look-over-code">10.23-10.30 : Look over code</a></li>
   <li><a href="#timings-below-set-up-environment" id="toc-timings-below-set-up-environment" class="nav-link" data-scroll-target="#timings-below-set-up-environment">(Timings below): Set up environment</a></li>
+  <li><a href="#running-script-and-returning-to-environment" id="toc-running-script-and-returning-to-environment" class="nav-link" data-scroll-target="#running-script-and-returning-to-environment">11.51-11.57, 12.03-: Running script and returning to environment</a></li>
   <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_21/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -472,26 +473,116 @@ dependencies:
 <p>At a glance, all are lower than those I’d previously specified, except xlsxwriter, which is 3.0.1 (10 Aug 2021). As it would not be possible for them to have used this version, I set that to 1.3.7 and rebuilt environment.</p>
 <p>This built quickly and with no issue.</p>
 </section>
+<section id="running-script-and-returning-to-environment" class="level2">
+<h2 class="anchored" data-anchor-id="running-script-and-returning-to-environment">11.51-11.57, 12.03-: Running script and returning to environment</h2>
+<p>Copied <code>PHC.py</code> into <code>reproduction/</code> and ran file with environment active.</p>
+<p><code>ImportError: No module named pathlib.</code> Installed latest version of pathlib (which is from 2014) into environment.</p>
+<p>Then error:</p>
+<pre><code>Traceback (most recent call last):
+  File "/home/amy/Documents/stars/stars-reproduce-shoaib-2022/reproduction/PHC.py", line 1, in &lt;module&gt;
+    import salabim as sim
+  File "/home/amy/mambaforge/envs/shoaib2022/lib/python2.7/site-packages/salabim/__init__.py", line 1, in &lt;module&gt;
+    from .salabim import *
+  File "/home/amy/mambaforge/envs/shoaib2022/lib/python2.7/site-packages/salabim/salabim.py", line 9451, in &lt;module&gt;
+    class AnimateCombined(collections.UserList):
+AttributeError: 'module' object has no attribute 'UserList'</code></pre>
+<p>Wanted to just explore basic salabim example first, to check environment is working, so made notebook that just imports salabim. Running required installation of <code>ipykernel</code> in environment. Excluded installation time for this from timings above. Then ran <code>import salabim as sim</code>, but this returned the same error as before just upon import.</p>
+<p>Current salabim documentation lists a few different imports that might be required. Went to old documentation on their GitHub, to the 20.0.4 branch then PDF with documentation (which is 20.0.3, but likewise if you go to 20.0.5 branch): <a href="https://github.com/salabim/salabim/blob/20%2C0%2C4/salabim.pdf" class="uri">https://github.com/salabim/salabim/blob/20%2C0%2C4/salabim.pdf</a>. Then ran:</p>
+<pre><code>pip install Pillow</code></pre>
+<p>Which didn’t have much impact. Error message seems to relate to collections not having UserList. Collections is a built-in module in base python. Tried to just import collections (which was fine), then run <code>collections.UserList</code> which returns same error.</p>
+<p>Looking at <a href="https://docs.python.org/2.7/library/collections.html">documentation for Python 2.7.18</a>, collections does not yet have UserList, but it does <a href="https://docs.python.org/3.0/library/collections.html">from 3.0</a>.</p>
+<p>Have realised mistake - that statistics on conda/PyPi is an import to allow it to work with 2.7, but actually, statistics is a built-in python module that was introduced in Python 3.4.</p>
+<p>As such, deleted environment and removed statistics from the requirements, and just set requirement of Python 3.9 (as tried before) and built using mamba.</p>
+<p>Environment prior:</p>
+<pre><code>name: shoaib2022
+channels:
+  - defaults
+dependencies:
+  - ipykernel=4.10.0
+  - matplotlib=2.2.3
+  - numpy=1.16.6
+  - pathlib=1.0.1
+  - pip=19.3.1
+  - python=2.7
+  - statistics=1.0.3.5
+  - xlsxwriter=1.3.7
+  - xlwt=1.3.0
+  - pip:
+    - salabim==20.0.4</code></pre>
+<p>Environment tried now:</p>
+<pre><code>name: shoaib2022
+channels:
+  - defaults
+dependencies:
+  - ipykernel
+  - matplotlib
+  - numpy
+  - pathlib
+  - pip
+  - python=3.9
+  - xlsxwriter
+  - xlwt
+  - pip:
+    - salabim</code></pre>
+<p>Run:</p>
+<pre><code>conda remove -n shoaib2022 --all
+mamba env create -f environment.yml</code></pre>
+<p>This quickly installed, and updated environment file with the versions it used:</p>
+<pre><code>name: shoaib2022
+channels:
+  - defaults
+dependencies:
+  - ipykernel=6.28.0
+  - matplotlib=3.8.4
+  - numpy=1.26.4
+  - pathlib=1.0.1
+  - pip=24.0
+  - python=3.9.19
+  - xlsxwriter=3.1.1
+  - xlwt=1.3.0
+  - pip:
+    - salabim==24.0.6</code></pre>
+<p>Can see that several of these are more recent that would have been possible for the paper. But trying import of salabim now works. Decided to try running the script with this environment, just to see if it can work.</p>
+<p><code>ModuleNotFoundError: No module named 'greenlet'</code></p>
+<p>Can see this was suggested in the salabim documentation. Add greenlet to environment and remade environment with <code>mamba env update -f environment.yml</code>. This add greenlet==3.0.3. Then re-run <code>PHC.py</code>. Got:</p>
+<pre><code>Traceback (most recent call last):
+  File "/home/amy/Documents/stars/stars-reproduce-shoaib-2022/reproduction/PHC.py", line 1300, in &lt;module&gt;
+    main()
+  File "/home/amy/Documents/stars/stars-reproduce-shoaib-2022/reproduction/PHC.py", line 932, in main
+    Main(name='')
+  File "/home/amy/mambaforge/envs/shoaib2022/lib/python3.9/site-packages/salabim/salabim.py", line 7131, in __init__
+    raise ValueError(
+ValueError: process may not be a generator (contain yield statements.)
+Maybe this a non yieldless model. In that case:
+- add sim.yieldless(False) or
+- remove all yields or
+- run salabim_unyield.py</code></pre>
+</section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="aef65679" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">239</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.02'</span>, <span class="st">'10.16'</span>)]</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4254f6f0" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">239</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.02'</span>, <span class="st">'10.16'</span>),</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.23'</span>, <span class="st">'10.30'</span>),</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.31'</span>, <span class="st">'10.47'</span>),</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.00'</span>, <span class="st">'11.01'</span>),</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.03'</span>, <span class="st">'11.04'</span>),</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.12'</span>, <span class="st">'11.35'</span>),]</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time spent today: 14m, or 0h 14m
-Total used to date: 253m, or 4h 13m
-Time remaining: 2147m, or 35h 47m
-Used 10.5% of 40 hours max</code></pre>
+<pre><code>Time spent today: 62m, or 1h 2m
+Total used to date: 301m, or 5h 1m
+Time remaining: 2099m, or 34h 59m
+Used 12.5% of 40 hours max</code></pre>
 </div>
 </div>
 
