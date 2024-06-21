@@ -332,22 +332,29 @@
     "objectID": "logbook/posts/2024_06_21/index.html#second-results-spreadsheet",
     "href": "logbook/posts/2024_06_21/index.html#second-results-spreadsheet",
     "title": "Day 2",
-    "section": "15.23-: Second results spreadsheet",
-    "text": "15.23-: Second results spreadsheet\nThere is REPLICATION = xlsxwriter.Workbook(\"Config_3(2).xlsx\") with results that I didn’t get. Tried uncommenting REPLICATION.close() and reran PHC.py.\nAlso, changed save location of the output files, so they go into reproduction/outputs/ rather than main folder, by modifying PHC.py.\nIn reproduction.ipynb, compared results from that to the processed Outputs.xls. To import .xlsx file using pd.read_excel, had to add openpyxl to environment.\nThis had similar results but observations:\n\nDifferent labels again\nAlso does not have fraction of childbirth cases referred\nCan’t spot labour bed utilisation in the larger results table\n\nThe results are not an exact match but all are likely due to rounding differences. As the outputs one was processed additionally using spreadsheet with replication results, feel its better to use the full results spreadsheet they create, as that works with the raw results (and not potentially rounded results in the spreadsheet)."
+    "section": "15.23-16.17: Second results spreadsheet",
+    "text": "15.23-16.17: Second results spreadsheet\nThere is REPLICATION = xlsxwriter.Workbook(\"Config_3(2).xlsx\") with results that I didn’t get. Tried uncommenting REPLICATION.close() and reran PHC.py.\nAlso, changed save location of the output files, so they go into reproduction/outputs/ rather than main folder, by modifying PHC.py.\nIn reproduction.ipynb, compared results from that to the processed Outputs.xls. To import .xlsx file using pd.read_excel, had to add openpyxl to environment.\nThis had similar results but observations:\n\nDifferent labels again\nAlso does not have fraction of childbirth cases referred\nCan’t spot labour bed utilisation in the larger results table\n\nThe results are not an exact match but all are likely due to rounding differences. As the outputs one was processed additionally using spreadsheet with replication results, feel its better to use the full results spreadsheet they create, as that works with the raw results (and not potentially rounded results in the spreadsheet).\nHowever, that doesn’t have the standard deviation for all the results included - and its missing labour bed utilisation and fraction of childbirth cases. Also, the full result is potentially more rounded than the reported, and as it was commented out in the .py file originally, that lends me to suspect that results could likely be based on the replication spreadsheet results.\nDecision: Use replication spreadsheet results."
+  },
+  {
+    "objectID": "logbook/posts/2024_06_21/index.html#setting-parameter-values-from-notebook",
+    "href": "logbook/posts/2024_06_21/index.html#setting-parameter-values-from-notebook",
+    "title": "Day 2",
+    "section": "16.22-16.48: Setting parameter values from notebook",
+    "text": "16.22-16.48: Setting parameter values from notebook\nIn order to run the different scenarios without needing to change the PHC.py itself each time, worked to modify the function main() so that the parameters provided to that function are inputs.\nThen ran the model from reproduce.ipynb."
   },
   {
     "objectID": "logbook/posts/2024_06_21/index.html#timings",
     "href": "logbook/posts/2024_06_21/index.html#timings",
     "title": "Day 2",
     "section": "Timings",
-    "text": "Timings\n\nimport sys\nsys.path.append('../')\nfrom timings import calculate_times\n\n# Minutes used prior to today\nused_to_date = 239\n\n# Times from today\ntimes = [\n    ('10.02', '10.16'),\n    ('10.23', '10.30'),\n    ('10.31', '10.47'),\n    ('11.00', '11.01'),\n    ('11.03', '11.04'),\n    ('11.12', '11.35'),\n    ('11.51', '11.57'),\n    ('12.03', '12.37'),\n    ('13.17', '13.31')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 116m, or 1h 56m\nTotal used to date: 355m, or 5h 55m\nTime remaining: 2045m, or 34h 5m\nUsed 14.8% of 40 hours max"
+    "text": "Timings\n\nimport sys\nsys.path.append('../')\nfrom timings import calculate_times\n\n# Minutes used prior to today\nused_to_date = 239\n\n# Times from today\ntimes = [\n    ('10.02', '10.16'),\n    ('10.23', '10.30'),\n    ('10.31', '10.47'),\n    ('11.00', '11.01'),\n    ('11.03', '11.04'),\n    ('11.12', '11.35'),\n    ('11.51', '11.57'),\n    ('12.03', '12.37'),\n    ('13.17', '15.07'),\n    ('15.23', '16.17'),\n    ('16.22', '16.48')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 292m, or 4h 52m\nTotal used to date: 531m, or 8h 51m\nTime remaining: 1869m, or 31h 9m\nUsed 22.1% of 40 hours max"
   },
   {
     "objectID": "logbook/logbook.html",
     "href": "logbook/logbook.html",
     "title": "Logbook",
     "section": "",
-    "text": "These diary entries record daily progress in reproduction of the study, providing a transparent and detailed record of work.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2\n\n\n\n\n\n\nscope\n\n\n\n\n\n\n\n\n\nJun 21, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1\n\n\n\n\n\n\nsetup\n\n\nscope\n\n\n\n\n\n\n\n\n\nJun 20, 2024\n\n\nAmy Heather\n\n\n\n\n\n\nNo matching items"
+    "text": "These diary entries record daily progress in reproduction of the study, providing a transparent and detailed record of work.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2\n\n\n\n\n\n\nscope\n\n\nread\n\n\nreproduce\n\n\n\n\n\n\n\n\n\nJun 21, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1\n\n\n\n\n\n\nsetup\n\n\nread\n\n\nscope\n\n\n\n\n\n\n\n\n\nJun 20, 2024\n\n\nAmy Heather\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -424,7 +431,14 @@
     "href": "reproduction/reproduce.html#set-up",
     "title": "Reproduction",
     "section": "Set up",
-    "text": "Set up\n\nimport xlrd\nimport pandas as pd\n\n\nresults_path = 'outputs/outputs.xls'\nfull_results_path = 'outputs/full_results.xlsx'\ntable6_path = '../original_study/tab6.csv'"
+    "text": "Set up\n\n# To run model\nimport PHC\n\n# To import results\nimport pandas as pd\nimport xlrd\n\n\nresults_path = 'outputs/outputs.xls'\nfull_results_path = 'outputs/full_results.xlsx'\ntable6_path = '../original_study/tab6.csv'"
+  },
+  {
+    "objectID": "reproduction/reproduce.html#run-model",
+    "href": "reproduction/reproduce.html#run-model",
+    "title": "Reproduction",
+    "section": "Run model",
+    "text": "Run model\n\nPHC.main()\n\n No of replications done 0\n No of replications done 1\n No of replications done 2\n No of replications done 3\n No of replications done 4\n No of replications done 5\n No of replications done 6\n No of replications done 7\n No of replications done 8\n No of replications done 9"
   },
   {
     "objectID": "reproduction/reproduce.html#import-results",

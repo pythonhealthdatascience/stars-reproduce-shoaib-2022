@@ -205,6 +205,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <h1 class="title">Day 2</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">scope</div>
+                <div class="quarto-category">read</div>
+                <div class="quarto-category">reproduce</div>
               </div>
                   </div>
   </div>
@@ -243,7 +245,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#timings-below-set-up-environment" id="toc-timings-below-set-up-environment" class="nav-link" data-scroll-target="#timings-below-set-up-environment">(Timings below): Set up environment</a></li>
   <li><a href="#running-script-and-returning-to-environment" id="toc-running-script-and-returning-to-environment" class="nav-link" data-scroll-target="#running-script-and-returning-to-environment">11.51-11.57, 12.03-12.37: Running script and returning to environment</a></li>
   <li><a href="#continued-and-got-config1-table6-results-confirmed-match" id="toc-continued-and-got-config1-table6-results-confirmed-match" class="nav-link" data-scroll-target="#continued-and-got-config1-table6-results-confirmed-match">13.17-15.07: Continued and got config1 table6 results (confirmed match)</a></li>
-  <li><a href="#second-results-spreadsheet" id="toc-second-results-spreadsheet" class="nav-link" data-scroll-target="#second-results-spreadsheet">15.23-: Second results spreadsheet</a></li>
+  <li><a href="#second-results-spreadsheet" id="toc-second-results-spreadsheet" class="nav-link" data-scroll-target="#second-results-spreadsheet">15.23-16.17: Second results spreadsheet</a></li>
+  <li><a href="#setting-parameter-values-from-notebook" id="toc-setting-parameter-values-from-notebook" class="nav-link" data-scroll-target="#setting-parameter-values-from-notebook">16.22-16.48: Setting parameter values from notebook</a></li>
   <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_21/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -604,7 +607,7 @@ dependencies:
 </ul>
 <p><strong>Except for number of replications</strong>, all match up to configuration 1.</p>
 <p>Produced <code>Outputs.xlsx</code> in main folder, which moved manually to <code>reproduction/</code>, and copied to logbook folder to display below. This ran ten replications, with results in each column.</p>
-<div id="f58ed41e" class="cell" data-execution_count="1">
+<div id="0a6af9bf" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xlrd</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -944,7 +947,7 @@ dependencies:
 <p>Confirmed that values all matched up with only apx. 1% difference at most, which is great!</p>
 </section>
 <section id="second-results-spreadsheet" class="level2">
-<h2 class="anchored" data-anchor-id="second-results-spreadsheet">15.23-: Second results spreadsheet</h2>
+<h2 class="anchored" data-anchor-id="second-results-spreadsheet">15.23-16.17: Second results spreadsheet</h2>
 <p>There is <code>REPLICATION = xlsxwriter.Workbook("Config_3(2).xlsx")</code> with results that I didn’t get. Tried uncommenting <code>REPLICATION.close()</code> and reran <code>PHC.py</code>.</p>
 <p>Also, changed save location of the output files, so they go into <code>reproduction/outputs/</code> rather than main folder, by modifying <code>PHC.py</code>.</p>
 <p>In <code>reproduction.ipynb</code>, compared results from that to the processed <code>Outputs.xls</code>. To import <code>.xlsx</code> file using <code>pd.read_excel</code>, had to add <code>openpyxl</code> to environment.</p>
@@ -955,10 +958,17 @@ dependencies:
 <li>Can’t spot labour bed utilisation in the larger results table</li>
 </ul>
 <p>The results are not an exact match but all are likely due to rounding differences. As the outputs one was processed additionally using spreadsheet with replication results, feel its better to use the full results spreadsheet they create, as that works with the raw results (and not potentially rounded results in the spreadsheet).</p>
+<p>However, that doesn’t have the standard deviation for all the results included - and its missing labour bed utilisation and fraction of childbirth cases. Also, the full result is potentially more rounded than the reported, and as it was commented out in the <code>.py</code> file originally, that lends me to suspect that results could likely be based on the replication spreadsheet results.</p>
+<p><strong>Decision:</strong> Use replication spreadsheet results.</p>
+</section>
+<section id="setting-parameter-values-from-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="setting-parameter-values-from-notebook">16.22-16.48: Setting parameter values from notebook</h2>
+<p>In order to run the different scenarios without needing to change the <code>PHC.py</code> itself each time, worked to modify the function <code>main()</code> so that the parameters provided to that function are inputs.</p>
+<p>Then ran the model from <code>reproduce.ipynb</code>.</p>
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="9b225398" class="cell" data-execution_count="2">
+<div id="57b449e7" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -976,14 +986,16 @@ dependencies:
 <span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.12'</span>, <span class="st">'11.35'</span>),</span>
 <span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.51'</span>, <span class="st">'11.57'</span>),</span>
 <span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.03'</span>, <span class="st">'12.37'</span>),</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.17'</span>, <span class="st">'13.31'</span>)]</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.17'</span>, <span class="st">'15.07'</span>),</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.23'</span>, <span class="st">'16.17'</span>),</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'16.22'</span>, <span class="st">'16.48'</span>)]</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time spent today: 116m, or 1h 56m
-Total used to date: 355m, or 5h 55m
-Time remaining: 2045m, or 34h 5m
-Used 14.8% of 40 hours max</code></pre>
+<pre><code>Time spent today: 292m, or 4h 52m
+Total used to date: 531m, or 8h 51m
+Time remaining: 1869m, or 31h 9m
+Used 22.1% of 40 hours max</code></pre>
 </div>
 </div>
 
