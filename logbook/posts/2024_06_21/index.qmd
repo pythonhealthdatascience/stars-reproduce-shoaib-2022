@@ -1,0 +1,16 @@
+---
+title: "Day 2"
+author: "Amy Heather"
+date: "2024-06-21"
+categories: [scope]
+---
+
+::: {.callout-note}
+
+TBC. Total time used: TBCh TBCm (TBC%)
+
+:::
+
+## 10.02-X: Archive scope on Zenodo
+
+Following consensus decision on scope with Tom yesterday, archiving repository on Zenodo. Alison to also potentially planning to have a look over - if spots anything further, will amend scope and archive a second version - but for purpose of being able to move forward with starting to work with code, will archive current scope now.
