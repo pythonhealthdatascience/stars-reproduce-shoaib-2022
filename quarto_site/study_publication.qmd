@@ -7,6 +7,8 @@ bibliography: references.bib
 
 View at: <https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/tree/main/original_study/PHC--main>
 
+Code from: <https://github.com/shoaibiocl/PHC->
+
 ## Journal article
 
 Article published with SIMULATION:
