@@ -2,7 +2,7 @@
 title: "Day 1"
 author: "Amy Heather"
 date: "2024-06-20"
-categories: [setup, scope]
+categories: [setup, read, scope]
 bibliography: ../../../quarto_site/references.bib
 ---
 
