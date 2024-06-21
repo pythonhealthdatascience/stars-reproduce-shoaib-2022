@@ -3,6 +3,7 @@ title: "Day 2"
 author: "Amy Heather"
 date: "2024-06-21"
 categories: [scope]
+bibliography: ../../../quarto_site/references.bib
 ---
 
 ::: {.callout-note}
@@ -255,7 +256,7 @@ At a glance, all are lower than those I'd previously specified, except xlsxwrite
 
 This built quickly and with no issue.
 
-## 11.51-11.57, 12.03-: Running script and returning to environment
+## 11.51-11.57, 12.03-12.37: Running script and returning to environment
 
 Copied `PHC.py` into `reproduction/` and ran file with environment active.
 
@@ -332,8 +333,10 @@ dependencies:
 Run:
 
 ```
+conda deactivate
 conda remove -n shoaib2022 --all
 mamba env create -f environment.yml
+conda activate shoaib2022
 ```
 
 This quickly installed, and updated environment file with the versions it used:
@@ -376,6 +379,69 @@ Maybe this a non yieldless model. In that case:
 - run salabim_unyield.py
 ```
 
+## 13.17-15.07: Continued and got config1 table6 results (confirmed match)
+
+Suspicious my error could be because I'm used versions that are more recent than I know possible. Hence, delete environment and this time rebuild as specified at start but without statistics, but with the new ones I know I need, with versions based on their release history. Exception was ipykernel, as that was something I've added to run notebooks, and not something the original study required.
+
+```
+name: shoaib2022
+channels:
+  - defaults
+dependencies:
+  - ipykernel
+  - matplotlib=3.3.4
+  - numpy=1.20.1
+  - pathlib=1.0.1
+  - pip=21.0.1
+  - python=3.9.19
+  - xlsxwriter=1.3.7
+  - xlwt=1.3.0
+  - pip:
+    - greenlet==1.0.0
+    - salabim==21.0.2
+```
+
+This built fine! So probably would've worked to begin with without statistics. Then ran `PHC.py`, and it started running fine, outputting `No of replications done 0`, `No of replications done 1`...
+
+Ensure is set up with correct parameters. Configuration 1 is (from Table 3 and 6):
+
+* 2 doctors: `doc_cap = 2 `
+* 4 nurses: `staff_nurse_cap = 3`, `NCD_nurse_cap = 1`
+* 130 OPD cases, so OPD inter-arrival time 4: `OPD_iat = 4`
+* 0.5 IPD cases, so IPD inter-arrival time 2880: `IPD_iat = 2880`
+* 1 childbirth, so childbirth inter-arrival time 1440: `delivery_iat = 1440`
+* 1 ANC (patients), so ANC inter-arrival time 1440: `ANC_iat = 1440`
+* 6 inpatient beds: `bed = sim.Resource("Bed", capacity=6)`
+* 1 labour room: `delivery_bed = sim.Resource("Del bed", capacity = 1)`
+* 100 replications: `replication = 10`
+* 365 days: `days = 365`
+* Warm-up 180 days: `warm_up = 180*24*60`
+
+**Except for number of replications**, all match up to configuration 1.
+
+Produced `Outputs.xlsx` in main folder, which moved manually to `reproduction/`, and copied to logbook folder to display below. This ran ten replications, with results in each column.
+
+```{python}
+import xlrd
+import pandas as pd
+
+model_path = 'Outputs.xls'
+
+book = xlrd.open_workbook(model_path)
+result = pd.read_excel(book, header=None, index_col=0)
+result
+```
+
+Add `xlrd` and `pandas` to environment (quarto and reproduction) so can import the .xls files produced and process them.
+
+Processed this in `reproduce.ipynb` so can match up results to Table 6 (as use different label names), and calculate proportion of childbirth referred.
+
+Confirmed that values all matched up with only apx. 1% difference at most, which is great!
+
+## 15.X
+
+There is `REPLICATION = xlsxwriter.Workbook("Config_3(2).xlsx")` with results that I didn't get. Tried uncommenting `REPLICATION.close()` and reran `PHC.py`.
+
 ## Timings
 
 ```{python}
@@ -393,7 +459,10 @@ times = [
     ('10.31', '10.47'),
     ('11.00', '11.01'),
     ('11.03', '11.04'),
-    ('11.12', '11.35'),]
+    ('11.12', '11.35'),
+    ('11.51', '11.57'),
+    ('12.03', '12.37'),
+    ('13.17', '13.31')]
 
 calculate_times(used_to_date, times)
 ```
