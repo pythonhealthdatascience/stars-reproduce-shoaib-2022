@@ -8,7 +8,7 @@ bibliography: ../../../quarto_site/references.bib
 
 ::: {.callout-note}
 
-TBC. Total time used: TBCh TBCm (TBC%)
+Built environment and got Table 6 config 1 results. Total time used: 8h 51m (22%)
 
 :::
 
