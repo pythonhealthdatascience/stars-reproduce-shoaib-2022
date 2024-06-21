@@ -11,9 +11,263 @@ TBC. Total time used: TBCh TBCm (TBC%)
 
 :::
 
-## 10.02-X: Archive scope on Zenodo
+## 10.02-10.16: Archive scope on Zenodo
 
 Archiving repository on Zenodo, now that have made consensus decision on scope following:
 
 * Discussion with Tom yesterday.
 * Emails with Alison this morning, who also had a look over paper and our planned scope, and confirmed that she felt it looked complete.
+
+Before doing so, created entry in CHANGELOG.md and updated CITATION.cff to include myself, Tom and Alison, and to amend the version and title.
+
+## 10.23-10.30 : Look over code
+
+* All code in `PHC.py`.
+* Salabim.
+* Model created using classes.
+* Function `main()` defines parameters (e.g. number of doctors) and runs model.
+* No random seed.
+* Saves results to `.xlsx` with lots of stats (can spot lots from Table 6). Also outputs the input parameters used.
+* Can't spot code for defined scenarios or figures, so anticipating will need to create for self.
+
+## (Timings below): Set up environment
+
+Timings for this section (provided as list rather than in header as often paused for time spent solving environment):
+
+* 10.31-10.47
+* 11.00-11.01
+* 11.03-11.04
+* 11.12-11.35
+
+No environment file provided. Can't spot Python or Salabim version in the paper, nor in README from [prior commit](https://github.com/shoaibiocl/PHC-/commit/7739eab050f67a99b050694501b13aca32ab2c6e). Therefore:
+
+* Dependencies from `PHC.py`
+    * Didn't include random as should be in base
+* Model code commit to GitHub on 14th March 2021. Paper first published online with simulation 18th July 2021, and latest arXiv version from 21st June 2021.
+* Hence, looked for package versions with dates on or prior to the earlier 14th March 2021.
+    * <https://pypi.org/project/matplotlib/#history>
+    * <https://pypi.org/project/numpy/#history>
+    * <https://devguide.python.org/versions/>
+    * <https://pypi.org/project/salabim/#history>
+    * <https://pypi.org/project/statistics/#history>
+    * <https://pypi.org/project/XlsxWriter/#history>
+
+```
+name: shoaib2022
+channels:
+  - defaults
+dependencies:
+  - matplotlib=3.3.4
+  - numpy=1.20.1
+  - pip=21.0.1
+  - python=3.9
+  - statistics=1.0.3.5
+  - xlsxwriter=1.3.7
+  - xlwt=1.3.0
+  - pip:
+    - salabim==21.0.2
+```
+
+Spent along time solving environment and looking for incompatable packages (which excluded from timing above). Had lots of conflicts:
+
+```
+UnsatisfiableError: The following specifications were found to be incompatible with each other:
+
+Output in format: Requested package -> Available versions
+
+Package libuuid conflicts for:
+xlwt=1.3.0 -> python[version='>=3.11,<3.12.0a0'] -> libuuid[version='>=1.0.3,<2.0a0|>=1.41.5,<2.0a0']
+statistics=1.0.3.5 -> python[version='>=3.10,<3.11.0a0'] -> libuuid[version='>=1.0.3,<2.0a0|>=1.41.5,<2.0a0']
+xlsxwriter=1.3.7 -> python -> libuuid[version='>=1.0.3,<2.0a0|>=1.41.5,<2.0a0']
+
+Package certifi conflicts for:
+pip=21.0.1 -> setuptools -> certifi[version='>=2016.09|>=2016.9.26']
+matplotlib=3.3.4 -> matplotlib-base[version='>=3.3.4,<3.3.5.0a0'] -> certifi[version='>=2020.06.20']
+
+Package _libgcc_mutex conflicts for:
+numpy=1.20.1 -> libgcc-ng[version='>=7.3.0'] -> _libgcc_mutex[version='*|0.1',build=main]
+python=3.9 -> libgcc-ng[version='>=11.2.0'] -> _libgcc_mutex[version='*|0.1',build=main]
+
+Package pip conflicts for:
+numpy=1.20.1 -> python[version='>=3.9,<3.10.0a0'] -> pip
+xlwt=1.3.0 -> python[version='>=3.11,<3.12.0a0'] -> pip
+matplotlib=3.3.4 -> python[version='>=3.7,<3.8.0a0'] -> pip
+xlsxwriter=1.3.7 -> python -> pip
+pip=21.0.1
+python=3.9 -> pip
+
+Package wheel conflicts for:
+python=3.9 -> pip -> wheel
+pip=21.0.1 -> wheel
+
+Package ca-certificates conflicts for:
+xlwt=1.3.0 -> python[version='>=2.7,<2.8.0a0'] -> ca-certificates
+python=3.9 -> openssl[version='>=3.0.13,<4.0a0'] -> ca-certificates
+statistics=1.0.3.5 -> python[version='<3'] -> ca-certificates
+xlsxwriter=1.3.7 -> python -> ca-certificates
+
+Package setuptools conflicts for:
+python=3.9 -> pip -> setuptools
+matplotlib=3.3.4 -> matplotlib-base[version='>=3.3.4,<3.3.5.0a0'] -> setuptools
+pip=21.0.1 -> setuptools
+
+Package numpy conflicts for:
+matplotlib=3.3.4 -> matplotlib-base[version='>=3.3.4,<3.3.5.0a0'] -> numpy[version='>=1.16.6,<2.0a0']
+numpy=1.20.1The following specifications were found to be incompatible with your system:
+
+  - feature:/linux-64::__glibc==2.35=0
+  - feature:|@/linux-64::__glibc==2.35=0
+  - numpy=1.20.1 -> libgcc-ng[version='>=7.3.0'] -> __glibc[version='>=2.17']
+  - python=3.9 -> libgcc-ng[version='>=11.2.0'] -> __glibc[version='>=2.17']
+
+Your installed version is: 2.35
+```
+
+Instead of going package by package, tried out a simpler approach of changing to only specify the Python version and none of the individual packages. Still found lots of conflicts:
+
+```
+Package expat conflicts for:
+numpy -> python[version='>=3.12,<3.13.0a0'] -> expat[version='>=2.5.0,<3.0a0|>=2.6.2,<3.0a0']
+xlsxwriter -> python[version='>=3.12,<3.13.0a0'] -> expat[version='>=2.5.0,<3.0a0|>=2.6.2,<3.0a0']
+matplotlib -> python[version='>=3.12,<3.13.0a0'] -> expat[version='>=2.5.0,<3.0a0|>=2.6.2,<3.0a0']
+pip -> python[version='>=3.12,<3.13.0a0'] -> expat[version='>=2.5.0,<3.0a0|>=2.6.2,<3.0a0']
+
+Package numpy conflicts for:
+numpy
+matplotlib -> matplotlib-base[version='>=3.8.4,<3.8.5.0a0'] -> numpy[version='>=1.15.4,<2.0a0|>=1.16.6,<2.0a0|>=1.20|>=1.21.5,<2.0a0|>=1.21.6,<2.0a0|>=1.23.5,<2.0a0|>=1.26.4,<2.0a0|>=1.26.0,<2.0a0|>=1.22.3,<2.0a0|>=1.19.2,<2.0a0|>=1.21.2,<2.0a0']
+matplotlib -> numpy[version='>=1.14.6,<2.0a0']
+
+Package _libgcc_mutex conflicts for:
+matplotlib -> libgcc-ng[version='>=7.3.0'] -> _libgcc_mutex[version='*|0.1',build=main]
+numpy -> libgcc-ng[version='>=11.2.0'] -> _libgcc_mutex[version='*|0.1',build=main]
+python=3.9 -> libgcc-ng[version='>=11.2.0'] -> _libgcc_mutex[version='*|0.1',build=main]
+
+Package certifi conflicts for:
+matplotlib -> tornado -> certifi[version='>=2016.09|>=2016.9.26|>=2020.06.20']
+pip -> setuptools -> certifi[version='>=2016.09|>=2016.9.26']
+
+Package python conflicts for:
+pip -> python[version='>=2.7,<2.8.0a0|>=3.10,<3.11.0a0|>=3.11,<3.12.0a0|>=3.9,<3.10.0a0|>=3.12,<3.13.0a0|>=3.8,<3.9.0a0|>=3.7,<3.8.0a0|>=3.6,<3.7.0a0|>=3.5,<3.6.0a0']
+python=3.9
+pip -> wheel -> python
+matplotlib -> cycler[version='>=0.10'] -> python[version='>=3|>=3.6']
+xlsxwriter -> python[version='>=2.7,<2.8.0a0|>=3.10,<3.11.0a0|>=3.12,<3.13.0a0|>=3.9,<3.10.0a0|>=3.8,<3.9.0a0|>=3.11,<3.12.0a0|>=3.4|>=3.6,<3.7.0a0|>=3.7,<3.8.0a0|>=3.5,<3.6.0a0']
+xlwt -> python[version='>=2.7,<2.8.0a0|>=3.10,<3.11.0a0|>=3.11,<3.12.0a0|>=3.9,<3.10.0a0|>=3.8,<3.9.0a0|>=3.7,<3.8.0a0|>=3.6,<3.7.0a0|>=3.5,<3.6.0a0']
+statistics -> docutils[version='>=0.3'] -> python[version='>=3.11,<3.12.0a0|>=3.12,<3.13.0a0|>=3.7,<3.8.0a0|>=3.9,<3.10.0a0|>=3.8,<3.9.0a0|>=3.6,<3.7.0a0|>=3.5,<3.6.0a0']
+matplotlib -> python[version='>=2.7,<2.8.0a0|>=3.10,<3.11.0a0|>=3.11,<3.12.0a0|>=3.9,<3.10.0a0|>=3.12,<3.13.0a0|>=3.8,<3.9.0a0|>=3.7,<3.8.0a0|>=3.6,<3.7.0a0|>=3.5,<3.6.0a0']
+numpy -> python[version='>=2.7,<2.8.0a0|>=3.10,<3.11.0a0|>=3.11,<3.12.0a0|>=3.12,<3.13.0a0|>=3.9,<3.10.0a0|>=3.8,<3.9.0a0|>=3.7,<3.8.0a0|>=3.6,<3.7.0a0|>=3.5,<3.6.0a0']
+statistics -> python[version='<3|>=3.10,<3.11.0a0|>=2.7,<2.8.0a0']
+
+Package bzip2 conflicts for:
+xlsxwriter -> python[version='>=3.12,<3.13.0a0'] -> bzip2[version='>=1.0.8,<2.0a0']
+matplotlib -> python[version='>=3.11,<3.12.0a0'] -> bzip2[version='>=1.0.8,<2.0a0']
+numpy -> python[version='>=3.10,<3.11.0a0'] -> bzip2[version='>=1.0.8,<2.0a0']
+xlwt -> python[version='>=3.11,<3.12.0a0'] -> bzip2[version='>=1.0.8,<2.0a0']
+statistics -> python[version='>=3.10,<3.11.0a0'] -> bzip2[version='>=1.0.8,<2.0a0']
+pip -> python[version='>=3.11,<3.12.0a0'] -> bzip2[version='>=1.0.8,<2.0a0']
+
+Package setuptools conflicts for:
+python=3.9 -> pip -> setuptools
+pip -> setuptools
+matplotlib -> setuptools
+
+Package wheel conflicts for:
+pip -> wheel
+python=3.9 -> pip -> wheelThe following specifications were found to be incompatible with your system:
+
+  - feature:/linux-64::__glibc==2.35=0
+  - matplotlib -> libgcc-ng[version='>=7.3.0'] -> __glibc[version='>=2.17']
+  - numpy -> libgcc-ng[version='>=11.2.0'] -> __glibc[version='>=2.17']
+  - python=3.9 -> libgcc-ng[version='>=11.2.0'] -> __glibc[version='>=2.17']
+
+Your installed version is: 2.35
+```
+
+Based on [this stack overflow post](https://stackoverflow.com/questions/62288835/how-to-interpret-conda-package-conflicts), decided to instead try using mamba.
+
+```
+conda install -n base conda-forge::mamba
+```
+
+But then read that was not recommended so tried - 
+
+```
+curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+```
+
+But that wasn't working so deleted and tried [these instructions](https://www.usna.edu/Users/cs/fknoll/SD211/mamba.html) -
+
+```
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+
+bash Mambaforge-Linux-x86_64.sh
+
+yes
+
+yes
+
+# Closed terminal then reopened terminal
+```
+
+Then, tried creating environment:
+
+```
+mamba env create -f environment.yml
+```
+
+This returned a more understandable message:
+
+```
+LibMambaUnsatisfiableError: Encountered problems while solving:
+  - package statistics-1.0.3.5-py27_1 requires python >=2.7,<2.8.0a0, but none of the providers can be installed
+
+Could not solve for environment specs
+The following packages are incompatible
+├─ python 3.9**  is requested and can be installed;
+└─ statistics is not installable because there are no viable options
+   ├─ statistics 1.0.3.5 would require
+   │  └─ python [2.7* |>=2.7,<2.8.0a0 ], which conflicts with any installable versions previously reported;
+   ├─ statistics 1.0.3.5 would require
+   │  └─ python >=3.10,<3.11.0a0 , which conflicts with any installable versions previously reported;
+   └─ statistics 1.0.3.5 would require
+      └─ python <3 , which conflicts with any installable versions previously reported.
+```
+
+Appears from this message (and supported versions listed on pypi) that would need to switch to python 2.7. Environment then successfully installed, and update .yml to show versions it used.
+
+```
+name: shoaib2022
+channels:
+  - defaults
+dependencies:
+  - matplotlib=2.2.3
+  - numpy=1.16.6
+  - pip=19.3.1
+  - python=2.7
+  - statistics=1.0.3.5
+  - xlsxwriter=3.0.1
+  - xlwt=1.3.0
+  - pip:
+    - salabim==20.0.4
+```
+
+At a glance, all are lower than those I'd previously specified, except xlsxwriter, which is 3.0.1 (10 Aug 2021). As it would not be possible for them to have used this version, I set that to 1.3.7 and rebuilt environment.
+
+This built quickly and with no issue.
+
+## Timings
+
+```{python}
+import sys
+sys.path.append('../')
+from timings import calculate_times
+
+# Minutes used prior to today
+used_to_date = 239
+
+# Times from today
+times = [
+    ('10.02', '10.16')]
+
+calculate_times(used_to_date, times)
+```
