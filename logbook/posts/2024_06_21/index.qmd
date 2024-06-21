@@ -13,4 +13,7 @@ TBC. Total time used: TBCh TBCm (TBC%)
 
 ## 10.02-X: Archive scope on Zenodo
 
-Following consensus decision on scope with Tom yesterday, archiving repository on Zenodo. Alison to also potentially planning to have a look over - if spots anything further, will amend scope and archive a second version - but for purpose of being able to move forward with starting to work with code, will archive current scope now.
+Archiving repository on Zenodo, now that have made consensus decision on scope following:
+
+* Discussion with Tom yesterday.
+* Emails with Alison this morning, who also had a look over paper and our planned scope, and confirmed that she felt it looked complete.
