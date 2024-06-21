@@ -255,6 +255,127 @@ At a glance, all are lower than those I'd previously specified, except xlsxwrite
 
 This built quickly and with no issue.
 
+## 11.51-11.57, 12.03-: Running script and returning to environment
+
+Copied `PHC.py` into `reproduction/` and ran file with environment active.
+
+`ImportError: No module named pathlib.` Installed latest version of pathlib (which is from 2014) into environment.
+
+Then error:
+
+```
+Traceback (most recent call last):
+  File "/home/amy/Documents/stars/stars-reproduce-shoaib-2022/reproduction/PHC.py", line 1, in <module>
+    import salabim as sim
+  File "/home/amy/mambaforge/envs/shoaib2022/lib/python2.7/site-packages/salabim/__init__.py", line 1, in <module>
+    from .salabim import *
+  File "/home/amy/mambaforge/envs/shoaib2022/lib/python2.7/site-packages/salabim/salabim.py", line 9451, in <module>
+    class AnimateCombined(collections.UserList):
+AttributeError: 'module' object has no attribute 'UserList'
+```
+
+Wanted to just explore basic salabim example first, to check environment is working, so made notebook that just imports salabim. Running required installation of `ipykernel` in environment. Excluded installation time for this from timings above. Then ran `import salabim as sim`, but this returned the same error as before just upon import.
+
+Current salabim documentation lists a few different imports that might be required. Went to old documentation on their GitHub, to the 20.0.4 branch then PDF with documentation (which is 20.0.3, but likewise if you go to 20.0.5 branch): <https://github.com/salabim/salabim/blob/20%2C0%2C4/salabim.pdf>. Then ran:
+
+```
+pip install Pillow
+```
+
+Which didn't have much impact. Error message seems to relate to collections not having UserList. Collections is a built-in module in base python. Tried to just import collections (which was fine), then run `collections.UserList` which returns same error.
+
+Looking at [documentation for Python 2.7.18](https://docs.python.org/2.7/library/collections.html), collections does not yet have UserList, but it does [from 3.0](https://docs.python.org/3.0/library/collections.html).
+
+Have realised mistake - that statistics on conda/PyPi is an import to allow it to work with 2.7, but actually, statistics is a built-in python module that was introduced in Python 3.4.
+
+As such, deleted environment and removed statistics from the requirements, and just set requirement of Python 3.9 (as tried before) and built using mamba.
+
+Environment prior:
+
+```
+name: shoaib2022
+channels:
+  - defaults
+dependencies:
+  - ipykernel=4.10.0
+  - matplotlib=2.2.3
+  - numpy=1.16.6
+  - pathlib=1.0.1
+  - pip=19.3.1
+  - python=2.7
+  - statistics=1.0.3.5
+  - xlsxwriter=1.3.7
+  - xlwt=1.3.0
+  - pip:
+    - salabim==20.0.4
+```
+
+Environment tried now:
+
+```
+name: shoaib2022
+channels:
+  - defaults
+dependencies:
+  - ipykernel
+  - matplotlib
+  - numpy
+  - pathlib
+  - pip
+  - python=3.9
+  - xlsxwriter
+  - xlwt
+  - pip:
+    - salabim
+```
+
+Run:
+
+```
+conda remove -n shoaib2022 --all
+mamba env create -f environment.yml
+```
+
+This quickly installed, and updated environment file with the versions it used:
+
+```
+name: shoaib2022
+channels:
+  - defaults
+dependencies:
+  - ipykernel=6.28.0
+  - matplotlib=3.8.4
+  - numpy=1.26.4
+  - pathlib=1.0.1
+  - pip=24.0
+  - python=3.9.19
+  - xlsxwriter=3.1.1
+  - xlwt=1.3.0
+  - pip:
+    - salabim==24.0.6
+```
+
+Can see that several of these are more recent that would have been possible for the paper. But trying import of salabim now works. Decided to try running the script with this environment, just to see if it can work.
+
+`ModuleNotFoundError: No module named 'greenlet'`
+
+Can see this was suggested in the salabim documentation. Add greenlet to environment and remade environment with `mamba env update -f environment.yml`. This add greenlet==3.0.3. Then re-run `PHC.py`. Got:
+
+```
+Traceback (most recent call last):
+  File "/home/amy/Documents/stars/stars-reproduce-shoaib-2022/reproduction/PHC.py", line 1300, in <module>
+    main()
+  File "/home/amy/Documents/stars/stars-reproduce-shoaib-2022/reproduction/PHC.py", line 932, in main
+    Main(name='')
+  File "/home/amy/mambaforge/envs/shoaib2022/lib/python3.9/site-packages/salabim/salabim.py", line 7131, in __init__
+    raise ValueError(
+ValueError: process may not be a generator (contain yield statements.)
+Maybe this a non yieldless model. In that case:
+- add sim.yieldless(False) or
+- remove all yields or
+- run salabim_unyield.py
+```
+
 ## Timings
 
 ```{python}
@@ -267,7 +388,12 @@ used_to_date = 239
 
 # Times from today
 times = [
-    ('10.02', '10.16')]
+    ('10.02', '10.16'),
+    ('10.23', '10.30'),
+    ('10.31', '10.47'),
+    ('11.00', '11.01'),
+    ('11.03', '11.04'),
+    ('11.12', '11.35'),]
 
 calculate_times(used_to_date, times)
 ```
