@@ -829,6 +829,7 @@ def main(
         s_results_path='outputs',         # Folder with results
         s_rep_file='outputs.xls',         # File for replication results
         s_full_file='full_results.xlsx',  # File for full results
+        s_output_full_results=False,      # Boolean for whether to create full results file
         s_any_ANC=True,       # Boolean for if there are any ANC patients
         s_any_delivery=True   # Boolean for if there are any labour patients
 ):
@@ -1060,230 +1061,229 @@ def main(
     outputs_path = os.path.join(s_results_path, s_rep_file)
     full_results_path = os.path.join(s_results_path, s_full_file)
 
-    # Commented out as not currently using this results spreadsheet
-    """
-    j = 0
-    row = 1
-    col = 1
-    ad = 0
-    temp = 0
+    # Optional: Create full result spreadsheet
+    if s_output_full_results:
+        j = 0
+        row = 1
+        col = 1
+        ad = 0
+        temp = 0
 
-    REPLICATION = xlsxwriter.Workbook(full_results_path)
-    worksheet = REPLICATION.add_worksheet("Sheet 3")
+        REPLICATION = xlsxwriter.Workbook(full_results_path)
+        worksheet = REPLICATION.add_worksheet("Sheet 3")
 
-    # input parameters
-    worksheet.write(0, 0, "OPD patient inter-arrival time")
-    worksheet.write(row, 0, "IPD patient inter-arrival time")
-    worksheet.write(row+1, 0, "Delivery patient inter-arrival time")
-    worksheet.write(row+2, 0, "ANC patient inter-arrival time")
-    worksheet.write(row+3, 0, "Doctor consultation time mean")
-    worksheet.write(row+4, 0, "Doctor consultation time SD")
+        # input parameters
+        worksheet.write(0, 0, "OPD patient inter-arrival time")
+        worksheet.write(row, 0, "IPD patient inter-arrival time")
+        worksheet.write(row+1, 0, "Delivery patient inter-arrival time")
+        worksheet.write(row+2, 0, "ANC patient inter-arrival time")
+        worksheet.write(row+3, 0, "Doctor consultation time mean")
+        worksheet.write(row+4, 0, "Doctor consultation time SD")
 
-    # Resources
-    worksheet.write(row+5, 0, "Number of doctor")
-    worksheet.write(row+6, 0, "Number of staff nurses")
-    worksheet.write(row+7, 0, "Number of lab technician")
-    worksheet.write(row+8, 0, "Number of pharmacist")
+        # Resources
+        worksheet.write(row+5, 0, "Number of doctor")
+        worksheet.write(row+6, 0, "Number of staff nurses")
+        worksheet.write(row+7, 0, "Number of lab technician")
+        worksheet.write(row+8, 0, "Number of pharmacist")
 
-    # Time outputs
-    worksheet.write(row+9, 0, "Total OPD minutes")
-    worksheet.write(row+10, 0, "OPD patients per day")
-    worksheet.write(row+11, 0, "OPD patients per month")
-    worksheet.write(row+12, 0, "Doctor OPD time")
-    worksheet.write(row+13, 0, "Doctor IPD time")
-    worksheet.write(row+14, 0, "Doctor Delivery time")
-    worksheet.write(row+15, 0, "Doctor admin time")
-    worksheet.write(row+16, 0, "Doctor total time")
-    worksheet.write(row+17, 0, "NCD Nurse OPD time")
-    worksheet.write(row+18, 0, "NCD Nurse Admin time")
-    worksheet.write(row+19, 0, "Staff Nurse IPD time")
-    worksheet.write(row+20, 0, "Staff Nurse Delivery time")
-    worksheet.write(row+21, 0, "Staff Nurse ANC time")
-    worksheet.write(row+22, 0, "Staff Nurse Admin time")
-    worksheet.write(row+23, 0, "Staff Nurse total ime")
-    worksheet.write(row+24, 0, "Pharmacist Time")
-    worksheet.write(row+25, 0, "Lab Time")
-    worksheet.write(row+26, 0, "Average time spent with doctors")
-    worksheet.write(row+27, 0, "Average time of bed occupancy")
+        # Time outputs
+        worksheet.write(row+9, 0, "Total OPD minutes")
+        worksheet.write(row+10, 0, "OPD patients per day")
+        worksheet.write(row+11, 0, "OPD patients per month")
+        worksheet.write(row+12, 0, "Doctor OPD time")
+        worksheet.write(row+13, 0, "Doctor IPD time")
+        worksheet.write(row+14, 0, "Doctor Delivery time")
+        worksheet.write(row+15, 0, "Doctor admin time")
+        worksheet.write(row+16, 0, "Doctor total time")
+        worksheet.write(row+17, 0, "NCD Nurse OPD time")
+        worksheet.write(row+18, 0, "NCD Nurse Admin time")
+        worksheet.write(row+19, 0, "Staff Nurse IPD time")
+        worksheet.write(row+20, 0, "Staff Nurse Delivery time")
+        worksheet.write(row+21, 0, "Staff Nurse ANC time")
+        worksheet.write(row+22, 0, "Staff Nurse Admin time")
+        worksheet.write(row+23, 0, "Staff Nurse total ime")
+        worksheet.write(row+24, 0, "Pharmacist Time")
+        worksheet.write(row+25, 0, "Lab Time")
+        worksheet.write(row+26, 0, "Average time spent with doctors")
+        worksheet.write(row+27, 0, "Average time of bed occupancy")
 
-    # Occupancy
-    worksheet.write(row+28, 0, "Doctor Occupancy")
-    worksheet.write(row+29, 0, "NCD Nurse Occupancy")
-    worksheet.write(row+30, 0, "Staff nurse Occupancy")
-    worksheet.write(row+31, 0, "Pharmacist Occupancy")
-    worksheet.write(row+32, 0, "Lab Occupancy")
-    worksheet.write(row+33, 0, "Bed occupancy")
+        # Occupancy
+        worksheet.write(row+28, 0, "Doctor Occupancy")
+        worksheet.write(row+29, 0, "NCD Nurse Occupancy")
+        worksheet.write(row+30, 0, "Staff nurse Occupancy")
+        worksheet.write(row+31, 0, "Pharmacist Occupancy")
+        worksheet.write(row+32, 0, "Lab Occupancy")
+        worksheet.write(row+33, 0, "Bed occupancy")
 
-    # Queue
-    worksheet.write(row+34, 0, "Mean length of OPD queue")
-    worksheet.write(row+35, 0, "OPD queue waiting time")
-    worksheet.write(row+36, 0, "Mean length of pharmacy queue")
-    worksheet.write(row+37, 0, "Pharmacy queue waiting time")
-    worksheet.write(row+38, 0, "Mean length of Lab queue")
-    worksheet.write(row+39, 0, "Lab queue waiting time")
+        # Queue
+        worksheet.write(row+34, 0, "Mean length of OPD queue")
+        worksheet.write(row+35, 0, "OPD queue waiting time")
+        worksheet.write(row+36, 0, "Mean length of pharmacy queue")
+        worksheet.write(row+37, 0, "Pharmacy queue waiting time")
+        worksheet.write(row+38, 0, "Mean length of Lab queue")
+        worksheet.write(row+39, 0, "Lab queue waiting time")
 
-    # Numbers
-    worksheet.write(row+40, 0, "OPDs")
-    worksheet.write(row+41, 0, "IPDs")
-    worksheet.write(row+42, 0, "Deliveries")
-    worksheet.write(row+43, 0, "ANCs")
-    worksheet.write(row+44, 0, "Total ANC visits")
-    worksheet.write(row+45, 0, "Delivery in OPD time")
-    worksheet.write(row+46, 0, "Delivery after OPD time")
-    worksheet.write(row+47, 0, "Replications")
+        # Numbers
+        worksheet.write(row+40, 0, "OPDs")
+        worksheet.write(row+41, 0, "IPDs")
+        worksheet.write(row+42, 0, "Deliveries")
+        worksheet.write(row+43, 0, "ANCs")
+        worksheet.write(row+44, 0, "Total ANC visits")
+        worksheet.write(row+45, 0, "Delivery in OPD time")
+        worksheet.write(row+46, 0, "Delivery after OPD time")
+        worksheet.write(row+47, 0, "Replications")
 
-    # Stats
-    # standard deviations and max
-    worksheet.write(row+48, 0, "OPD queue wait time SD")
-    worksheet.write(row+49, 0, "OPD queue max wait time")
-    worksheet.write(row+50, 0, "Pharmacy queue wait time SD")
-    worksheet.write(row+51, 0, "Pharmacy queue max wait time")
-    worksheet.write(row+52, 0, "lab queue wait time SD")
-    worksheet.write(row+53, 0, "Lab queue max wait time")
-    worksheet.write(row+54, 0, "Lab Patients")
-    worksheet.write(row+55, 0, "Lab patients std")
+        # Stats
+        # standard deviations and max
+        worksheet.write(row+48, 0, "OPD queue wait time SD")
+        worksheet.write(row+49, 0, "OPD queue max wait time")
+        worksheet.write(row+50, 0, "Pharmacy queue wait time SD")
+        worksheet.write(row+51, 0, "Pharmacy queue max wait time")
+        worksheet.write(row+52, 0, "lab queue wait time SD")
+        worksheet.write(row+53, 0, "Lab queue max wait time")
+        worksheet.write(row+54, 0, "Lab Patients")
+        worksheet.write(row+55, 0, "Lab patients std")
 
-    # Outputs
-    # Input parameters
-    worksheet.write(row - 1, col, OPD_iat)
-    worksheet.write(row, col, IPD_iat)
-    worksheet.write(row+1, col, delivery_iat)
-    worksheet.write(row+2, col, ANC_iat)
-    worksheet.write(row+3, col, mean)
-    worksheet.write(row+4, col, sd)
+        # Outputs
+        # Input parameters
+        worksheet.write(row - 1, col, OPD_iat)
+        worksheet.write(row, col, IPD_iat)
+        worksheet.write(row+1, col, delivery_iat)
+        worksheet.write(row+2, col, ANC_iat)
+        worksheet.write(row+3, col, mean)
+        worksheet.write(row+4, col, sd)
 
-    # Resources
-    worksheet.write(row+5, col, doc_cap)
-    worksheet.write(row+6, col, staff_nurse_cap)
-    worksheet.write(row+7, col, lab_cap)
-    worksheet.write(row+8, col, pharmacist_cap)
+        # Resources
+        worksheet.write(row+5, col, doc_cap)
+        worksheet.write(row+6, col, staff_nurse_cap)
+        worksheet.write(row+7, col, lab_cap)
+        worksheet.write(row+8, col, pharmacist_cap)
 
-    # output time
-    # Doctor time calculation
+        # output time
+        # Doctor time calculation
 
-    # OPD minutes
-    worksheet.write(row+9, col, (Main.No_of_days*480)/replication)
+        # OPD minutes
+        worksheet.write(row+9, col, (Main.No_of_days*480)/replication)
 
-    # OPD patients per day
-    worksheet.write(row+10, col, round(Patient.OPD_visits/days)/replication)
+        # OPD patients per day
+        worksheet.write(row+10, col, round(Patient.OPD_visits/days)/replication)
 
-    # OPD patients per month
-    worksheet.write(row+11, col, round((Patient.OPD_visits)/Main.No_of_days)*26)
+        # OPD patients per month
+        worksheet.write(row+11, col, round((Patient.OPD_visits)/Main.No_of_days)*26)
 
-    # Doctor OPD time
-    worksheet.write(row+12, col, round(Patient.doctor_OPD_time/replication, 2))
+        # Doctor OPD time
+        worksheet.write(row+12, col, round(Patient.doctor_OPD_time/replication, 2))
 
-    # Doctor IPD time
-    worksheet.write(row+13, col, round(IPD_with_doc.doc_IPD_time/replication, 2))
+        # Doctor IPD time
+        worksheet.write(row+13, col, round(IPD_with_doc.doc_IPD_time/replication, 2))
 
-    # Doctor Delivery time
-    worksheet.write(row+14, col, round(Delivery_with_doctor.doc_delivery_time/replication, 2))
+        # Doctor Delivery time
+        worksheet.write(row+14, col, round(Delivery_with_doctor.doc_delivery_time/replication, 2))
 
-    # Doctor admin time
-    worksheet.write(row+15, col, sumi/replication)
+        # Doctor admin time
+        worksheet.write(row+15, col, sumi/replication)
 
-    # Total doctor time
-    worksheet.write_formula(row+16, col, '=sum(B17+B14+B16+B15)')
+        # Total doctor time
+        worksheet.write_formula(row+16, col, '=sum(B17+B14+B16+B15)')
 
-    # NCD time calculation
-    for i in Patient.NCD_Nurse_time_list:
-        j += i
-    # NCD OPD time
-    worksheet.write(row+17, col, round(j, 2)/replication)
-    worksheet.write(row+18, col, sumi/replication)
+        # NCD time calculation
+        for i in Patient.NCD_Nurse_time_list:
+            j += i
+        # NCD OPD time
+        worksheet.write(row+17, col, round(j, 2)/replication)
+        worksheet.write(row+18, col, sumi/replication)
 
-    # Staff Nurse time calculation
-    worksheet.write(row+19, col,  round(Main.staff_nurse_IPD, 2)/replication)
-    worksheet.write(row+20, col,  round(Main.staff_nurse_del, 2)/replication)
-    worksheet.write(row+21, col,  round(Main.staff_nurse_ANC,2)/replication)
+        # Staff Nurse time calculation
+        worksheet.write(row+19, col,  round(Main.staff_nurse_IPD, 2)/replication)
+        worksheet.write(row+20, col,  round(Main.staff_nurse_del, 2)/replication)
+        worksheet.write(row+21, col,  round(Main.staff_nurse_ANC,2)/replication)
 
-    ad = round(random.normalvariate(60, 10), 2)                    # admin time
-    worksheet.write(row+22, col, ad*3)
-    worksheet.write(row+23, col,  '=sum(B20+B21+B22+B23)')
+        ad = round(random.normalvariate(60, 10), 2)                    # admin time
+        worksheet.write(row+22, col, ad*3)
+        worksheet.write(row+23, col,  '=sum(B20+B21+B22+B23)')
 
-    # Pharmacy time calculation
-    tim = 0
-    for time in Patient.pharmacist_time:
-        tim += time
-    worksheet.write(row+24, col, round(tim,2)/replication)
+        # Pharmacy time calculation
+        tim = 0
+        for time in Patient.pharmacist_time:
+            tim += time
+        worksheet.write(row+24, col, round(tim,2)/replication)
 
-    # Lab time calculation
-    worksheet.write(row+25, col, round(Patient.lab_time,)/replication)
+        # Lab time calculation
+        worksheet.write(row+25, col, round(Patient.lab_time,)/replication)
 
-    # average consultation time
-    worksheet.write(row+26, col, round(doctor.claimers().length_of_stay.mean()))
-    worksheet.write(row+27, col, round(bed.claimers().length_of_stay.mean()))
+        # average consultation time
+        worksheet.write(row+26, col, round(doctor.claimers().length_of_stay.mean()))
+        worksheet.write(row+27, col, round(bed.claimers().length_of_stay.mean()))
 
-    # Occupancy
-    # Doctor
-    worksheet.write(row+28, col, (sum(doc_occupancy))/replication)
-    # NCD
-    mean1 = sum(NCD_occ_list)
-    worksheet.write(row+29, col, round(mean1/replication, 2))
+        # Occupancy
+        # Doctor
+        worksheet.write(row+28, col, (sum(doc_occupancy))/replication)
+        # NCD
+        mean1 = sum(NCD_occ_list)
+        worksheet.write(row+29, col, round(mean1/replication, 2))
 
-    # Staff Nurse
-    mean = sum(nurse_occ_list)
-    worksheet.write(row+30, col, round(mean/replication, 2))
+        # Staff Nurse
+        mean = sum(nurse_occ_list)
+        worksheet.write(row+30, col, round(mean/replication, 2))
 
-    # Pharmacy
-    worksheet.write(row+31, col, sum(pharm_occ_list)/replication)
+        # Pharmacy
+        worksheet.write(row+31, col, sum(pharm_occ_list)/replication)
 
-    # Lab
-    worksheet.write(row+32, col, round(Patient.lab_time/(420*days*replication), 2))
+        # Lab
+        worksheet.write(row+32, col, round(Patient.lab_time/(420*days*replication), 2))
 
-    # Bed
-    worksheet.write(row+33, col, round(bed.occupancy.mean(), 2))
+        # Bed
+        worksheet.write(row+33, col, round(bed.occupancy.mean(), 2))
 
-    # Queue outputs
-    for _ in OPD_q_waiting_time_list:
-        f = f+_
-    for _ in OPD_q_length_list:
-        f1 += _
-    for _ in pharmacy_q_waiting_time_list:
-        f2 += _
-    for _ in pharmacy_q_length_list:
-        f3 += _
-    for _ in lab_q_waiting_time_list:
-        f4 += _
-    for _ in lab_q_length_list:
-        f5 += _
+        # Queue outputs
+        for _ in OPD_q_waiting_time_list:
+            f = f+_
+        for _ in OPD_q_length_list:
+            f1 += _
+        for _ in pharmacy_q_waiting_time_list:
+            f2 += _
+        for _ in pharmacy_q_length_list:
+            f3 += _
+        for _ in lab_q_waiting_time_list:
+            f4 += _
+        for _ in lab_q_length_list:
+            f5 += _
 
-    # OPD queue average length
-    worksheet.write(row+34, col, round(f1/replication, 4))
-    # OPD queue waiting time
-    worksheet.write(row+35, col, round(f/replication, 4))
+        # OPD queue average length
+        worksheet.write(row+34, col, round(f1/replication, 4))
+        # OPD queue waiting time
+        worksheet.write(row+35, col, round(f/replication, 4))
 
-    # Pharmacy
-    # Pharmacy queue length
-    worksheet.write(row+36, col, round(f3/replication, 2))
-    # Pharmacy queue waiting time
-    worksheet.write(row+37, col, round(f2/replication, 2))
+        # Pharmacy
+        # Pharmacy queue length
+        worksheet.write(row+36, col, round(f3/replication, 2))
+        # Pharmacy queue waiting time
+        worksheet.write(row+37, col, round(f2/replication, 2))
 
-    # Lab
-    # lab queue length
-    worksheet.write(row+38, col, round(f5/replication, 2))
-    # lab queue waiting time
-    worksheet.write(row+39, col, round(f4/replication, 2))
+        # Lab
+        # lab queue length
+        worksheet.write(row+38, col, round(f5/replication, 2))
+        # lab queue waiting time
+        worksheet.write(row+39, col, round(f4/replication, 2))
 
-    # Output Numbers
-    worksheet.write(row+40, col, Patient.OPD_visits/replication)
-    worksheet.write(row+41, col, (len(IPD_PatientGenerator.IPD_List))/replication)
-    worksheet.write(row+42, col, Delivery.Delivery_count/replication)
-    worksheet.write(row+43, col, (len(ANC.ANC_List))/replication)
-    worksheet.write(row+44, col, (ANC_Checkup.anc_checkup_count + ANC_followup.followup_count)/replication)
-    worksheet.write(row+45, col, Delivery_with_doctor.del_OPD/replication)
-    worksheet.write(row+46, col, Delivery_no_doc.del_after_OPD/replication)
-    worksheet.write(row+47, col, replication)
-    worksheet.write(row+48, col, statistics.stdev(OPD_q_waiting_time_list))
-    worksheet.write(row+49, col, max(OPD_q_waiting_time_list))
-    worksheet.write(row+50, col, statistics.stdev(pharmacy_q_waiting_time_list))
-    worksheet.write(row+51, col, max(pharmacy_q_waiting_time_list))
-    worksheet.write(row+52, col, statistics.stdev(lab_q_waiting_time_list))
-    worksheet.write(row+53, col, max(lab_q_waiting_time_list))
-    worksheet.write(row+54, col, sum(lab_patient_list)/replication)
-    worksheet.write(row+55, col, np.std(lab_patient_list))
-    REPLICATION.close()
-    """
+        # Output Numbers
+        worksheet.write(row+40, col, Patient.OPD_visits/replication)
+        worksheet.write(row+41, col, (len(IPD_PatientGenerator.IPD_List))/replication)
+        worksheet.write(row+42, col, Delivery.Delivery_count/replication)
+        worksheet.write(row+43, col, (len(ANC.ANC_List))/replication)
+        worksheet.write(row+44, col, (ANC_Checkup.anc_checkup_count + ANC_followup.followup_count)/replication)
+        worksheet.write(row+45, col, Delivery_with_doctor.del_OPD/replication)
+        worksheet.write(row+46, col, Delivery_no_doc.del_after_OPD/replication)
+        worksheet.write(row+47, col, replication)
+        worksheet.write(row+48, col, statistics.stdev(OPD_q_waiting_time_list))
+        worksheet.write(row+49, col, max(OPD_q_waiting_time_list))
+        worksheet.write(row+50, col, statistics.stdev(pharmacy_q_waiting_time_list))
+        worksheet.write(row+51, col, max(pharmacy_q_waiting_time_list))
+        worksheet.write(row+52, col, statistics.stdev(lab_q_waiting_time_list))
+        worksheet.write(row+53, col, max(lab_q_waiting_time_list))
+        worksheet.write(row+54, col, sum(lab_patient_list)/replication)
+        worksheet.write(row+55, col, np.std(lab_patient_list))
+        REPLICATION.close()
 
     wb = xlwt.Workbook()
     ws = wb.add_sheet("Sheet 1")
