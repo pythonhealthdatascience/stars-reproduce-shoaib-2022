@@ -114,25 +114,7 @@ Spent a while looking for why this might be, but not yet figured out.
 
 ## 13.55-14.30: Problem solving benchmark model
 
-To ensure it is not an error I've introduced, I copied the original `PHC.py` and modified it directly (the only change from config 1 that I have identified from the paper is that the OPD IAT is 3 instead of 4), and to produce both results spreadsheets. Saved all within `logbook/` and renamed, so can refer to from this post.
-
-This came out looking the same as my other run (e.g. doctor utilisation around 0.31 instead of 1.14).
-
-```{python}
-import pandas as pd
-import xlrd
-
-book = xlrd.open_workbook('direct_c4_rep.xls')
-direct_c4 = pd.read_excel(book, header=None, index_col=0)
-direct_c4
-```
-
-```{python}
-direct_c4_full = pd.read_excel('direct_c4_full.xlsx', header=None).rename(columns={
-    0: 'full_outcome',
-    1: 'full_result'})
-direct_c4_full
-```
+To ensure it is not an error I've introduced, I copied the original `PHC.py` and modified it directly (the only change from config 1 that I have identified from the paper is that the OPD IAT is 3 instead of 4), and to produce both results spreadsheets. See [GitHub commit 892cca4](https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/892cca42cb4edf94854cc037ec273a991e6b3544/logbook/posts/2024_06_24/index.qmd). This came out looking the same as my other run (e.g. doctor utilisation around 0.31 instead of 1.14).
 
 Hence, wondered if the issue was in parameterising of model, so looked back over the paper. It is described as differing from the archetypal/generic model in two ways (not just one). 
 I have only changed outpatient load (OPD IAT 4 to 3)
