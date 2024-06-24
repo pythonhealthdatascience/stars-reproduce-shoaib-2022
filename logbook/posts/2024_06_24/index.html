@@ -236,7 +236,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#different-configurations" id="toc-different-configurations" class="nav-link active" data-scroll-target="#different-configurations">9.20-10.03, 10.11-10.22, 10.31-11.43: Different configurations</a></li>
-  <li><a href="#x--different-configurations-continued" id="toc-x--different-configurations-continued" class="nav-link" data-scroll-target="#x--different-configurations-continued">11.X- : Different configurations (continued)</a></li>
+  <li><a href="#different-configurations-continued" id="toc-different-configurations-continued" class="nav-link" data-scroll-target="#different-configurations-continued">12.00-12.05, 12.17-12.57: Different configurations (continued)</a></li>
+  <li><a href="#problem-solving-benchmark-model" id="toc-problem-solving-benchmark-model" class="nav-link" data-scroll-target="#problem-solving-benchmark-model">13.55-14.30: Problem solving benchmark model</a></li>
+  <li><a href="#reflections-from-troubleshooting-today" id="toc-reflections-from-troubleshooting-today" class="nav-link" data-scroll-target="#reflections-from-troubleshooting-today">Reflections from troubleshooting today</a></li>
   <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_24/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -314,7 +316,10 @@ c1_state.__dict__
 
 c2_state = ModelState()
 c2_state.OPD_iat = 9
-c2_state.__dict__</code></pre>
+c2_state.__dict__
+
+c3_state = ModelState(OPD_iat=5)
+c3_state.__dict__</code></pre>
 <p>But then reflected that this was changing the code alot, and I wasn’t 100% confident on whether it would definitely deal with all the global variables correctly (as they are repeatedly defined throughout the script).</p>
 <p>Chat with Tom and he suggested:</p>
 <ul>
@@ -334,15 +339,51 @@ c2_state.__dict__</code></pre>
         Dictionary of global variables and their values
     """
     return globals()</code></pre>
-<p>And then checked if the output was consistent between different calls of the model, and this returned True, so will assume that running the model in this way is not leading to results interefering with each other between runs. See GitHub commit [] for notebook with these results</p>
+<p>And then checked if the output was consistent between different calls of the model, and this returned True, so will assume that running the model in this way is not leading to results interefering with each other between runs. See <a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/16f50f70a9dac0b3f15cada2bbc3965742c18326/reproduction/reproduce.ipynb">GitHub commit 16f50f7</a> for notebook with these results.</p>
 </section>
-<section id="x--different-configurations-continued" class="level2">
-<h2 class="anchored" data-anchor-id="x--different-configurations-continued">11.X- : Different configurations (continued)</h2>
-<p>X</p>
+<section id="different-configurations-continued" class="level2">
+<h2 class="anchored" data-anchor-id="different-configurations-continued">12.00-12.05, 12.17-12.57: Different configurations (continued)</h2>
+<p>Ran the four different configurations (excluded run time from timings).</p>
+<p>Kept setting IAT for ANC higher as was getting an average of 1 arrival (but want to be getting no arrivals), but even with IAT of <code>999999999999999999999999999999999*365*60*24</code>, was still getting 1 ANC arrival with every run. Tried setting ANC() and Delivery() to comments in <code>PHC.py</code>, and this worked to prevent arrivals, so add True/False inputs to <code>main()</code> for whether these functions are called, instead of setting high IAT.</p>
+<p>Found differences were:</p>
+<ul>
+<li>Mean OPD queue length was very different for all configuration compared with Table 6.</li>
+<li>Lots of the benchmark case results looked very different to Table 6.</li>
+</ul>
+<p>Spent a while looking for why this might be, but not yet figured out.</p>
+</section>
+<section id="problem-solving-benchmark-model" class="level2">
+<h2 class="anchored" data-anchor-id="problem-solving-benchmark-model">13.55-14.30: Problem solving benchmark model</h2>
+<p>To ensure it is not an error I’ve introduced, I copied the original <code>PHC.py</code> and modified it directly (the only change from config 1 that I have identified from the paper is that the OPD IAT is 3 instead of 4), and to produce both results spreadsheets. See <a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/892cca42cb4edf94854cc037ec273a991e6b3544/logbook/posts/2024_06_24/index.qmd">GitHub commit 892cca4</a>. This came out looking the same as my other run (e.g.&nbsp;doctor utilisation around 0.31 instead of 1.14).</p>
+<p>Hence, wondered if the issue was in parameterising of model, so looked back over the paper. It is described as differing from the archetypal/generic model in two ways (not just one). I have only changed outpatient load (OPD IAT 4 to 3)</p>
+<blockquote class="blockquote">
+<p>‘Note that this benchmark configuration differs from the archetypal configuration only in the outpatient load and the doctor’s consultation time for outpatients.’ , and had not spotted change in consultation time in the tables.</p>
+<p>The consultation time for the benchmark model: “we have assumed the consultation time to be normally distributed with a mean of 5 minutes and standard deviation of 1 minute with a lower bound fixed at 2 minutes”</p>
+<p>As in Table 4, the normal OPD consultation time is normally distribution with mean 0.87 and standard deviation of 0.21</p>
+</blockquote>
+<p>Amended mean and sd, and set consultation boundary as a modifiable parameter (with consult_boundary_1 and 2, as the default boundary provided in the script varied depending on whether it was warm-up or not, between 0.5 and 0.3).</p>
+</section>
+<section id="reflections-from-troubleshooting-today" class="level2">
+<h2 class="anchored" data-anchor-id="reflections-from-troubleshooting-today">Reflections from troubleshooting today</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenges today
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Adapting model to run model programmatically (rather than having to directly change the parameters in the script itself)</p>
+<p>Difficulty identifying parameters of scenarios (when not all captured in a single table, but in combination with article text) (and when not provided in the script).</p>
+<p>Time spent processing results into desired tables and/or figures (when not already created by the script).</p>
+</div>
+</div>
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="e1b0b7a9" class="cell" data-execution_count="1">
+<div id="447c205d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -354,14 +395,15 @@ c2_state.__dict__</code></pre>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.20'</span>, <span class="st">'10.03'</span>),</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.11'</span>, <span class="st">'10.22'</span>),</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.31'</span>, <span class="st">'11.43'</span>)]</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.31'</span>, <span class="st">'11.43'</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.00'</span>, <span class="st">'12.05'</span>)]</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time spent today: 126m, or 2h 6m
-Total used to date: 657m, or 10h 57m
-Time remaining: 1743m, or 29h 3m
-Used 27.4% of 40 hours max</code></pre>
+<pre><code>Time spent today: 131m, or 2h 11m
+Total used to date: 662m, or 11h 2m
+Time remaining: 1738m, or 28h 58m
+Used 27.6% of 40 hours max</code></pre>
 </div>
 </div>
 
