@@ -820,7 +820,9 @@ def main(
         s_NCD_nurse_cap=1,               # number of NCD nurses
         s_pharmacist_cap=1,              # number of pharmacists
         s_lab_cap=1,                     # number of lab technicians
-        s_replication=10
+        s_replication=10,
+        s_inpatient_bed_n=6,  # Number of inpatient beds
+        s_delivery_bed_n=1    # Number of labour room beds
 ):
     # Define global variables
     # defining simulation input parameters
@@ -953,6 +955,9 @@ def main(
     pharmacist_cap = s_pharmacist_cap    # number of pharmacists
     lab_cap = s_lab_cap                  # number of lab technicians
     replication = s_replication
+    inpatient_bed_n = s_inpatient_bed_n  # Number of inpatient beds
+    delivery_bed_n = s_delivery_bed_n    # Number of labour room beds
+
 
     for x in range(0, replication):
         n = np.random.randint(0, 101)
@@ -963,8 +968,8 @@ def main(
         doctor = sim.Resource('doctor', capacity = doc_cap)
         lab = sim.Resource('Lab', capacity=lab_cap)
         pharmacist = sim.Resource("Pharmacy", capacity=pharmacist_cap)
-        bed = sim.Resource("Bed", capacity=6)
-        delivery_bed = sim.Resource("Del bed", capacity = 1)
+        bed = sim.Resource("Bed", capacity=inpatient_bed_n)
+        delivery_bed = sim.Resource("Del bed", capacity=delivery_bed_n)
         Main(name='')
         IPD_PatientGenerator(name="IPD_Patient")
         Delivery(name="Delivery Patient")
