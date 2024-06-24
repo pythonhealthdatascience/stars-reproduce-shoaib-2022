@@ -1,0 +1,120 @@
+---
+title: "Day 3"
+author: "Amy Heather"
+date: "2024-06-24"
+categories: [reproduce]
+---
+
+::: {.callout-note}
+
+TBC. Total time used: TBCh TBCm (TBC%)
+
+:::
+
+## 9.20-10.03, 10.11-10.22, 10.31-11.43: Different configurations
+
+Got parameters for each configuration from Table 3. Some discrepancies:
+
+* Configuration 4 (benchmark) is stated as 4 nurses in the table, but in the text, is described as having 5 nurses (1 NCD and 4 staff) - although the staff nurses are described as working alone in consecutive 8 hour shifts, which would work out to 3 nurses, so it is assumed that the standard configuration of 3 staff nurse and 1 NCD nurse (and so 4 nurses overall, as in the table) is used.
+* Table 3 caption describes all configurations as having 6 inpatient and 1 labour bed - whilst Table 6 describes configuration 3 as having 0 labour room beds. However, as there is no labour arrivals, this has no impact on results, so just left as default 1 bed as per Table 3.
+
+Configuration 3 has no arrivals for childbirth or ANC, and so Table 3 states their inter-arrival time as NaN. However, it was unclear how to set this up in the model code.
+
+Trying to figure how best to re-run the `PHC.py` script given it is set up with global variables. Based on [this StackOverflow post](https://stackoverflow.com/questions/64283418/setting-back-global-variables-back-to-their-default-value), tried out creating all global parameters using a single class, so that - if you want to re-run and reset all global parameters - you just make a new instance of this class. Like this -
+
+```
+DEFAULT_OPD_IAT = 4
+DEFAULT_DELIVERY_IAT = 1440
+DEFAULT_IPD_IAT = 2880
+DEFAULT_ANC_IAT = 1440
+
+
+class ModelState:
+    """
+    Class containing all global parameters (so that, if you wish to reset
+    values, you can do so easily by creating a new instance of the ModelState)
+    """
+    def __init__(self,
+                 OPD_iat=DEFAULT_OPD_IAT,
+                 delivery_iat=DEFAULT_DELIVERY_IAT,
+                 IPD_iat=DEFAULT_IPD_IAT,
+                 ANC_iat=DEFAULT_ANC_IAT):
+        """
+        Parameters for the simulation model.
+
+        Parameters:
+        -----------
+        OPD_iat : int
+            Inter-arrival time for OPD patients
+
+        delivery_iat : int
+        `   Inter-arrival time for labour patients
+
+        IPD_iat : int
+            Inter-arrival time for IPD patients
+
+        ANC_iat : int
+            Inter-arrival time for ANC patients
+        """
+        self.OPD_iat = OPD_iat
+        self.delivery_iat = delivery_iat
+        self.IPD_iat = IPD_iat
+        self.ANC_iat = ANC_iat
+
+
+c1_state = ModelState()
+c1_state.__dict__
+
+c2_state = ModelState()
+c2_state.OPD_iat = 9
+c2_state.__dict__
+```
+
+But then reflected that this was changing the code alot, and I wasn't 100% confident on whether it would definitely deal with all the global variables correctly (as they are repeatedly defined throughout the script).
+
+Chat with Tom and he suggested:
+
+* `dir()` should show global variables - but these just appear to be for notebook, so hopefully no overlap, but to check -
+* Return the value of the global variables after running the model. Then run the model again, and check the values are the same
+* He also suggested, for when there are no arrivals for two patient types, the simplest way to set this up is to set the inter-arrival time to something really really large (e.g. 10,000,000 * run time)
+
+I created a function to return global values:
+
+```
+def return_globals():
+    """
+    Return global variables and their values from workspace. Used for
+    verifying the environment is as expected.
+
+    Returns:
+    -------
+    globals() : dict
+        Dictionary of global variables and their values
+    """
+    return globals()
+```
+
+And then checked if the output was consistent between different calls of the model, and this returned True, so will assume that running the model in this way is not leading to results interefering with each other between runs. See GitHub commit [] for notebook with these results
+
+## 11.X- : Different configurations (continued)
+
+X
+
+## Timings
+
+```{python}
+import sys
+sys.path.append('../')
+from timings import calculate_times
+
+# Minutes used prior to today
+used_to_date = 531
+
+# Times from today
+times = [
+    ('9.20', '10.03'),
+    ('10.11', '10.22'),
+    ('10.31', '11.43')]
+
+calculate_times(used_to_date, times)
+```
