@@ -393,6 +393,8 @@ class Patient(sim.Component):
     global pharm_sd
     global lab_patients
     global ncd_time
+    global consult_boundary_1
+    global consult_boundary_2
 
     thirty_plus_patients = 0
     OPD_visits = 0
@@ -421,7 +423,9 @@ class Patient(sim.Component):
             self.enter(waitingline_OPD)
             yield self.request((doctor,1))
             self.leave(waitingline_OPD)
-            consultation_time = sim.Normal(mean, sd, 'minutes').bounded_sample(0.5)
+            consultation_time = (sim
+                                 .Normal(mean, sd, 'minutes')
+                                 .bounded_sample(consult_boundary_1))
             yield self.hold(consultation_time)
             self.release()
             # for lab visits
@@ -462,7 +466,9 @@ class Patient(sim.Component):
             yield self.request((doctor,1))
             self.leave(waitingline_OPD)
             an_list.append((env.now()-temp1))
-            consultation_time = sim.Normal(mean, sd, 'minutes').bounded_sample(0.3)
+            consultation_time = (sim
+                                 .Normal(mean, sd, 'minutes')
+                                 .bounded_sample(consult_boundary_2))
             yield self.hold(consultation_time)
             time_out = env.now()
             total = round(consultation_time,2)
@@ -796,6 +802,8 @@ def main(
         s_ANC_iat=1440,                  # inter-arrival ANC patient time
         s_mean=0.87,                     # consultation time mean
         s_sd=.21,                        # consultation time sd
+        s_consult_boundary_1=0.5,      # consultation time lower boundary (value from if env.now() <= Main.warm_up:)
+        s_consult_boundary_2=0.3,      # consultation time lower boundary (values from else:)
         s_pharm_mean=2.083,
         s_pharm_sd=0.72,
         s_j=0,
@@ -818,9 +826,11 @@ def main(
         s_replication=10,
         s_inpatient_bed_n=6,   # Number of inpatient beds
         s_delivery_bed_n=1,    # Number of labour room beds
-        s_results_path='outputs',            # Folder with results
-        s_rep_file='outputs.xls',        # File for replication results
-        s_full_file='full_results.xlsx'  # File for full results
+        s_results_path='outputs',         # Folder with results
+        s_rep_file='outputs.xls',         # File for replication results
+        s_full_file='full_results.xlsx',  # File for full results
+        s_any_ANC=True,       # Boolean for if there are any ANC patients
+        s_any_delivery=True   # Boolean for if there are any labour patients
 ):
     # Define global variables
     # defining simulation input parameters
@@ -830,6 +840,8 @@ def main(
     global ANC_iat
     global mean
     global sd
+    global consult_boundary_1
+    global consult_boundary_2
     global pharm_mean
     global pharm_sd
     global j
@@ -933,6 +945,8 @@ def main(
     ANC_iat = s_ANC_iat            # inter-arrival ANC patient time
     mean = s_mean                  # consultation time mean
     sd = s_sd                      # consultation time sd
+    consult_boundary_1 = s_consult_boundary_1  # consultation time lower boundary
+    consult_boundary_2 = s_consult_boundary_2  # consultation time lower boundary
     pharm_mean = s_pharm_mean
     pharm_sd = s_pharm_sd
     j = s_j
@@ -970,8 +984,10 @@ def main(
         delivery_bed = sim.Resource("Del bed", capacity=delivery_bed_n)
         Main(name='')
         IPD_PatientGenerator(name="IPD_Patient")
-        Delivery(name="Delivery Patient")
-        ANC(name="ANC Patients")
+        if s_any_delivery:
+            Delivery(name="Delivery Patient")
+        if s_any_ANC:
+            ANC(name="ANC Patients")
         waitingline_staff_nurse = sim.Queue("waitingline_staff_nurse 1")
         waitingline_OPD = sim.Queue('waitingline_OPD')
         waitingline_lab = sim.Queue("waitingline_lab")
