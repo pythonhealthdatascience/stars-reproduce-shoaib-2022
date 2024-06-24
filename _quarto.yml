@@ -22,8 +22,7 @@ website:
         menu:
           - text: README
             href: quarto_site/reproduction_readme.qmd
-          - text: Notebook
-            href: reproduction/reproduce.ipynb
+          - reproduction/reproduce_tab6.ipynb
       - text: Evaluation
         menu:
           - evaluation/scope.qmd
