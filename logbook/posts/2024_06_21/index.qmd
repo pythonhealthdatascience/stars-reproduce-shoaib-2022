@@ -446,6 +446,11 @@ Also, changed save location of the output files, so they go into `reproduction/o
 
 In `reproduction.ipynb`, compared results from that to the processed `Outputs.xls`. To import `.xlsx` file using `pd.read_excel`, had to add `openpyxl` to environment.
 
+```{python}
+compare = pd.read_csv('t6_mean_compare.csv')
+compare
+```
+
 This had similar results but observations:
 
 * Different labels again
@@ -453,6 +458,23 @@ This had similar results but observations:
 * Can't spot labour bed utilisation in the larger results table
 
 The results are not an exact match but all are likely due to rounding differences. As the outputs one was processed additionally using spreadsheet with replication results, feel its better to use the full results spreadsheet they create, as that works with the raw results (and not potentially rounded results in the spreadsheet).
+
+Match:
+
+* doctor utilisation
+* pharmacist utilisation
+
+Don't match:
+
+* ncd nurse utilisation (rounding?)
+* staff nurse utilisation (rounding?)
+* lab utilisation (rounding?)
+* bed occupancy (rounding?)
+* mean OPD queue length (rounding as simple results using replication spreadsheet which might have rounding)
+* OPD queue waiting times (rounding?)
+* mean pharmacy queue length (rounding?)
+* pharacy queue waiting tim (rounding?)
+* lab queue waiting time (rounding?)
 
 However, that doesn't have the standard deviation for all the results included - and its missing labour bed utilisation and fraction of childbirth cases. Also, the full result is potentially more rounded than the reported, and as it was commented out in the `.py` file originally, that lends me to suspect that results could likely be based on the replication spreadsheet results.
 
