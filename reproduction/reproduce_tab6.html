@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Reproducing Shoaib and Ramamohan 2022 - Reproduction</title>
+<title>Reproducing Shoaib and Ramamohan 2022 - Reproducing table 6</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -142,8 +142,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">README</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce.html">
- <span class="dropdown-text">Notebook</span></a>
+    <a class="dropdown-item" href="../reproduction/reproduce_tab6.html">
+ <span class="dropdown-text">Reproducing table 6</span></a>
   </li>  
     </ul>
   </li>
@@ -209,15 +209,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#run-model" id="toc-run-model" class="nav-link" data-scroll-target="#run-model">Run model</a></li>
   <li><a href="#import-and-process-replication-results" id="toc-import-and-process-replication-results" class="nav-link" data-scroll-target="#import-and-process-replication-results">Import and process replication results</a></li>
   <li><a href="#import-table-6-results-and-compare-against-run-results" id="toc-import-table-6-results-and-compare-against-run-results" class="nav-link" data-scroll-target="#import-table-6-results-and-compare-against-run-results">Import table 6 results and compare against run results</a></li>
+  <li><a href="#format-model-results-like-table-6-and-save" id="toc-format-model-results-like-table-6-and-save" class="nav-link" data-scroll-target="#format-model-results-like-table-6-and-save">Format model results like table 6, and save</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/main/reproduction/reproduce.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/main/reproduction/reproduce_tab6.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Reproduction</h1>
+<h1 class="title">Reproducing table 6</h1>
 </div>
 
 
@@ -303,95 +304,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">'rep_file'</span>: <span class="st">'t6_c4.xls'</span></span>
 <span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Run model for each configuration</p>
+<p>Run model for each configuration (not running every time as takes apx. 8 minutes).</p>
 <div id="cell-8" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>PHC.main(<span class="op">**</span>{<span class="ss">f's_</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">'</span>: v <span class="cf">for</span> k, v <span class="kw">in</span> t6_c4_param.items()})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> No of replications done 0
- No of replications done 1
- No of replications done 2
- No of replications done 3
- No of replications done 4
- No of replications done 5
- No of replications done 6
- No of replications done 7
- No of replications done 8
- No of replications done 9</code></pre>
-</div>
-</div>
-<div id="cell-9" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Input configuration parameters to main() (have to append with 's_', and</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># add ** as inputting dict as parameters)</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># for config in [t6_c1_param, t6_c2_param, t6_c3_param, t6_c4_param]:</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#     print(f'''Running: {config['rep_file']}''')</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     PHC.main(**{f's_{k}': v for k, v in config.items()})</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Input configuration parameters to main() (have to append with 's_', and</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># add ** as inputting dict as parameters)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># for config in [t6_c1_param, t6_c2_param, t6_c3_param, t6_c4_param]:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#     print(f'''Running: {config['rep_file']}''')</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     PHC.main(**{f's_{k}': v for k, v in config.items()})</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="import-and-process-replication-results" class="level2">
 <h2 class="anchored" data-anchor-id="import-and-process-replication-results">Import and process replication results</h2>
-<div id="cell-11" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make dictionary with labels from table 6, and corresponding names from model output</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>t6_labels <span class="op">=</span> {</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'doc occ'</span>: <span class="st">'Doctor utilisation'</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'NCD occ'</span>: <span class="st">'NCD Nurse utilisation'</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">'staff nurse occ'</span>: <span class="st">'Staff nurse utilisation'</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">'pharm occ'</span>: <span class="st">'Pharmacist utilisation'</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'lab occ'</span>: <span class="st">'Lab utilisation'</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">'ipd bed occ'</span>: <span class="st">'Inpatient bed utilisation'</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">'del occ'</span>: <span class="st">'Labour bed utilisation'</span>,  <span class="co"># "Del" stands for delivery</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">'OPD q len'</span>: <span class="st">'Mean length of OPD queue (number of patients)'</span>,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">'OPD Q wt'</span>: <span class="st">'OPD queue waiting time (minutes)'</span>,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">'pharmacy q len'</span>: <span class="st">'Mean length of pharmacy queue (number of patients)'</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Pharmacy Q wt'</span>: <span class="st">'Pharmacy queue waiting time (minutes)'</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">'lab q len'</span>: <span class="st">'Mean length of Lab queue (number of patients)'</span>,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Lab Q wt'</span>: <span class="st">'Lab queue waiting time (minutes)'</span>,</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">'prop_del_referred'</span>: <span class="st">'Fraction of childbirth cases referred'</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-10" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make dictionary with labels from table 6, and corresponding names from model output</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>t6_labels <span class="op">=</span> {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'doc occ'</span>: <span class="st">'Doctor utilisation'</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'NCD occ'</span>: <span class="st">'NCD Nurse utilisation'</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">'staff nurse occ'</span>: <span class="st">'Staff nurse utilisation'</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">'pharm occ'</span>: <span class="st">'Pharmacist utilisation'</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'lab occ'</span>: <span class="st">'Lab utilisation'</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">'ipd bed occ'</span>: <span class="st">'Inpatient bed utilisation'</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">'del occ'</span>: <span class="st">'Labour bed utilisation'</span>,  <span class="co"># "Del" stands for delivery</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">'opd q len'</span>: <span class="st">'Mean length of OPD queue (number of patients)'</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">'OPD Q wt'</span>: <span class="st">'OPD queue waiting time (minutes)'</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">'pharmacy q len'</span>: <span class="st">'Mean length of pharmacy queue (number of patients)'</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Pharmacy Q wt'</span>: <span class="st">'Pharmacy queue waiting time (minutes)'</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">'lab q len'</span>: <span class="st">'Mean length of Lab queue (number of patients)'</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Lab Q wt'</span>: <span class="st">'Lab queue waiting time (minutes)'</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">'prop_del_referred'</span>: <span class="st">'Fraction of childbirth cases referred'</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of files to loop through</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> [<span class="st">'t6_c1'</span>, <span class="st">'t6_c2'</span>, <span class="st">'t6_c3'</span>, <span class="st">'t6_c4'</span>]</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Empty list to store results</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>result_list <span class="op">=</span> []</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> files:</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Import .xls and convert to pandas dataframe</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    book <span class="op">=</span> xlrd.open_workbook(os.path.join(<span class="st">'outputs'</span>, <span class="ss">f'</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">.xls'</span>))</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> pd.read_excel(book, header<span class="op">=</span><span class="va">None</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find mean from the replications</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    av_result <span class="op">=</span> result.mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the proportion of childbirth cases referred and add to series</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    prop_del_referred <span class="op">=</span> pd.Series(</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        av_result[<span class="st">'del referred'</span>] <span class="op">/</span> av_result[<span class="st">'Del patients'</span>],</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        index<span class="op">=</span>[<span class="st">'prop_del_referred'</span>])</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    new_av_result <span class="op">=</span> pd.concat([av_result, prop_del_referred])</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert to df, save as model config1, drop duplicates, and display</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> (new_av_result</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>           .to_frame(name<span class="op">=</span><span class="ss">f'model_</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>           <span class="co">#.reset_index()</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>           <span class="co">#.rename(columns= {'index': 'simple_outcome'})</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>           .drop_duplicates())</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    result_list.append(res)</span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine into single dataframe</span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> (pd.concat(result_list, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>           .reset_index()</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>           .rename(columns<span class="op">=</span> {<span class="st">'index'</span>: <span class="st">'model_outcome'</span>}))</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels to model results</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>summary[<span class="st">'t6_outcome'</span>] <span class="op">=</span> summary[<span class="st">'model_outcome'</span>].<span class="bu">map</span>(t6_labels)</span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_26989/1311786309.py:17: RuntimeWarning: invalid value encountered in double_scalars
-  av_result['del referred'] / av_result['Del patients'],</code></pre>
+<div id="cell-11" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of files to loop through</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> [<span class="st">'t6_c1'</span>, <span class="st">'t6_c2'</span>, <span class="st">'t6_c3'</span>, <span class="st">'t6_c4'</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Empty list to store results</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>result_list <span class="op">=</span> []</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> files:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Import .xls and convert to pandas dataframe</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    book <span class="op">=</span> xlrd.open_workbook(os.path.join(<span class="st">'outputs'</span>, <span class="ss">f'</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">.xls'</span>))</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> pd.read_excel(book, header<span class="op">=</span><span class="va">None</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add proportion of childbirth cases referred</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    result.loc[<span class="st">'prop_del_referred'</span>] <span class="op">=</span> (</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        result.loc[<span class="st">'del referred'</span>] <span class="op">/</span> result.loc[<span class="st">'Del patients'</span>])</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find mean and standard deviation from the replication</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save as dataframe, dropping the duplicate rows (NCD occ twice)</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'model_</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">_mean'</span>: result.mean(axis<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'model_</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">_sd'</span>: result.std(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    }).drop_duplicates()</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save to list</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    result_list.append(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div id="cell-12" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine into single dataframe</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> (pd.concat(result_list, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>           .reset_index()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>           .rename(columns<span class="op">=</span> {<span class="dv">0</span>: <span class="st">'model_outcome'</span>}))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels to model results</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>summary[<span class="st">'t6_outcome'</span>] <span class="op">=</span> summary[<span class="st">'model_outcome'</span>].<span class="bu">map</span>(t6_labels)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
 
@@ -400,10 +379,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">model_outcome</th>
-<th data-quarto-table-cell-role="th">model_t6_c1</th>
-<th data-quarto-table-cell-role="th">model_t6_c2</th>
-<th data-quarto-table-cell-role="th">model_t6_c3</th>
-<th data-quarto-table-cell-role="th">model_t6_c4</th>
+<th data-quarto-table-cell-role="th">model_t6_c1_mean</th>
+<th data-quarto-table-cell-role="th">model_t6_c1_sd</th>
+<th data-quarto-table-cell-role="th">model_t6_c2_mean</th>
+<th data-quarto-table-cell-role="th">model_t6_c2_sd</th>
+<th data-quarto-table-cell-role="th">model_t6_c3_mean</th>
+<th data-quarto-table-cell-role="th">model_t6_c3_sd</th>
+<th data-quarto-table-cell-role="th">model_t6_c4_mean</th>
+<th data-quarto-table-cell-role="th">model_t6_c4_sd</th>
 <th data-quarto-table-cell-role="th">t6_outcome</th>
 </tr>
 </thead>
@@ -412,198 +395,286 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">0</td>
 <td>OPD patients</td>
 <td>33133.600000</td>
+<td>179.979135</td>
 <td>14872.400000</td>
+<td>1.386588e+02</td>
 <td>14933.900000</td>
+<td>53.875267</td>
 <td>44161.600000</td>
+<td>207.882018</td>
 <td>NaN</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>IPD patients</td>
 <td>184.000000</td>
+<td>13.703203</td>
 <td>190.300000</td>
+<td>1.391282e+01</td>
 <td>181.600000</td>
+<td>13.309980</td>
 <td>180.200000</td>
+<td>11.773794</td>
 <td>NaN</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>ANC patients</td>
 <td>371.200000</td>
+<td>12.839176</td>
 <td>211.500000</td>
+<td>1.314238e+01</td>
+<td>0.000000</td>
 <td>0.000000</td>
 <td>373.900000</td>
+<td>14.371654</td>
 <td>NaN</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>Del patients</td>
 <td>363.000000</td>
+<td>25.064362</td>
 <td>176.900000</td>
+<td>8.252272e+00</td>
+<td>NaN</td>
 <td>NaN</td>
 <td>363.100000</td>
+<td>16.881614</td>
 <td>NaN</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>OPD Q wt</td>
 <td>0.009304</td>
+<td>0.004588</td>
 <td>0.180556</td>
+<td>2.189756e-02</td>
 <td>0.034672</td>
+<td>0.000787</td>
 <td>7.087377</td>
+<td>0.171371</td>
 <td>OPD queue waiting time (minutes)</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
 <td>Pharmacy Q wt</td>
 <td>1.019412</td>
+<td>0.012652</td>
 <td>0.240693</td>
+<td>4.652718e-03</td>
 <td>0.231200</td>
+<td>0.003927</td>
 <td>1.277731</td>
+<td>0.025166</td>
 <td>Pharmacy queue waiting time (minutes)</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
 <td>Lab Q wt</td>
 <td>2.087956</td>
+<td>0.059170</td>
 <td>0.605414</td>
+<td>2.874245e-02</td>
 <td>0.570976</td>
+<td>0.014748</td>
 <td>3.170211</td>
+<td>0.061232</td>
 <td>Lab queue waiting time (minutes)</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
 <td>doc occ</td>
 <td>0.269412</td>
+<td>0.003003</td>
 <td>0.372110</td>
+<td>2.163915e-03</td>
 <td>0.355399</td>
+<td>0.002388</td>
 <td>1.145836</td>
+<td>0.004580</td>
 <td>Doctor utilisation</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
 <td>Lab patient list</td>
 <td>189463.400000</td>
+<td>104190.501449</td>
 <td>84293.200000</td>
+<td>4.652751e+04</td>
 <td>86041.800000</td>
+<td>47115.631487</td>
 <td>254249.200000</td>
+<td>139835.319294</td>
 <td>NaN</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
 <td>OPD q len</td>
 <td>0.008821</td>
+<td>0.003825</td>
 <td>0.167379</td>
+<td>3.207569e-02</td>
 <td>0.034586</td>
+<td>0.000754</td>
 <td>6.932062</td>
-<td>Mean length of OPD queue (number of patients)</td>
+<td>0.304803</td>
+<td>NaN</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
 <td>ipd occ</td>
 <td>0.098000</td>
+<td>0.004216</td>
 <td>0.060000</td>
+<td>1.462847e-17</td>
 <td>0.014000</td>
+<td>0.005164</td>
 <td>0.095000</td>
+<td>0.005270</td>
 <td>NaN</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">11</td>
 <td>opd q len</td>
 <td>0.000822</td>
+<td>0.000406</td>
 <td>0.007131</td>
+<td>8.457763e-04</td>
 <td>0.001374</td>
+<td>0.000035</td>
 <td>0.832990</td>
-<td>NaN</td>
+<td>0.022424</td>
+<td>Mean length of OPD queue (number of patients)</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">12</td>
 <td>pharmacy q len</td>
 <td>0.089752</td>
+<td>0.001116</td>
 <td>0.009479</td>
+<td>2.278525e-04</td>
 <td>0.009159</td>
+<td>0.000191</td>
 <td>0.149840</td>
+<td>0.003193</td>
 <td>Mean length of pharmacy queue (number of patie...</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">13</td>
 <td>lab q len</td>
 <td>0.094872</td>
+<td>0.003335</td>
 <td>0.012381</td>
+<td>6.255212e-04</td>
 <td>0.011342</td>
+<td>0.000386</td>
 <td>0.191373</td>
+<td>0.004532</td>
 <td>Mean length of Lab queue (number of patients)</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">14</td>
 <td>NCD occ</td>
 <td>0.869785</td>
+<td>0.011039</td>
 <td>0.469595</td>
+<td>5.111055e-03</td>
 <td>0.470006</td>
+<td>0.006064</td>
 <td>1.231760</td>
+<td>0.022432</td>
 <td>NCD Nurse utilisation</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">15</td>
 <td>lab occ</td>
 <td>0.557508</td>
+<td>0.004960</td>
 <td>0.253362</td>
+<td>6.092231e-03</td>
 <td>0.240857</td>
+<td>0.003743</td>
 <td>0.738856</td>
+<td>0.012791</td>
 <td>Lab utilisation</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">16</td>
 <td>pharm occ</td>
 <td>0.642954</td>
+<td>0.003603</td>
 <td>0.288769</td>
+<td>3.379442e-03</td>
 <td>0.289968</td>
+<td>0.001035</td>
 <td>0.856621</td>
+<td>0.005442</td>
 <td>Pharmacist utilisation</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">17</td>
 <td>staff nurse occ</td>
 <td>0.322609</td>
+<td>0.008560</td>
 <td>0.242049</td>
+<td>4.190295e-03</td>
 <td>0.160632</td>
+<td>0.001316</td>
 <td>0.321931</td>
+<td>0.006419</td>
 <td>Staff nurse utilisation</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">18</td>
 <td>del occ</td>
 <td>0.287000</td>
+<td>0.012517</td>
 <td>0.150000</td>
+<td>8.164966e-03</td>
+<td>NaN</td>
 <td>NaN</td>
 <td>0.278000</td>
+<td>0.011353</td>
 <td>Labour bed utilisation</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">19</td>
 <td>del referred</td>
 <td>55.600000</td>
+<td>7.705698</td>
 <td>16.600000</td>
+<td>3.373096e+00</td>
+<td>NaN</td>
 <td>NaN</td>
 <td>57.300000</td>
+<td>6.074537</td>
 <td>NaN</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">20</td>
 <td>ipd bed occ</td>
 <td>0.093243</td>
+<td>0.005137</td>
 <td>0.055268</td>
+<td>2.650480e-03</td>
 <td>0.011464</td>
+<td>0.000896</td>
 <td>0.093002</td>
+<td>0.004686</td>
 <td>Inpatient bed utilisation</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">21</td>
 <td>prop_del_referred</td>
-<td>0.153168</td>
-<td>0.093838</td>
+<td>0.152701</td>
+<td>0.013231</td>
+<td>0.093568</td>
+<td>1.741344e-02</td>
 <td>NaN</td>
-<td>0.157808</td>
+<td>NaN</td>
+<td>0.157772</td>
+<td>0.015115</td>
 <td>Fraction of childbirth cases referred</td>
 </tr>
 </tbody>
@@ -615,11 +686,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="import-table-6-results-and-compare-against-run-results" class="level2">
 <h2 class="anchored" data-anchor-id="import-table-6-results-and-compare-against-run-results">Import table 6 results and compare against run results</h2>
-<div id="cell-14" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import table 6</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>t6 <span class="op">=</span> pd.read_csv(table6_path).rename(columns<span class="op">=</span>{<span class="st">'outcome'</span>: <span class="st">'t6_outcome'</span>})</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>t6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="cell-14" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import table 6</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>t6 <span class="op">=</span> pd.read_csv(table6_path).rename(columns<span class="op">=</span>{<span class="st">'outcome'</span>: <span class="st">'t6_outcome'</span>})</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>t6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -813,11 +884,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>compare <span class="op">=</span> t6.merge(summary)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>compare.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div id="cell-15" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>compare <span class="op">=</span> t6.merge(summary)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>compare.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -835,10 +906,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">benchmark_mean</th>
 <th data-quarto-table-cell-role="th">benchmark_sd</th>
 <th data-quarto-table-cell-role="th">model_outcome</th>
-<th data-quarto-table-cell-role="th">model_t6_c1</th>
-<th data-quarto-table-cell-role="th">model_t6_c2</th>
-<th data-quarto-table-cell-role="th">model_t6_c3</th>
-<th data-quarto-table-cell-role="th">model_t6_c4</th>
+<th data-quarto-table-cell-role="th">model_t6_c1_mean</th>
+<th data-quarto-table-cell-role="th">model_t6_c1_sd</th>
+<th data-quarto-table-cell-role="th">model_t6_c2_mean</th>
+<th data-quarto-table-cell-role="th">model_t6_c2_sd</th>
+<th data-quarto-table-cell-role="th">model_t6_c3_mean</th>
+<th data-quarto-table-cell-role="th">model_t6_c3_sd</th>
+<th data-quarto-table-cell-role="th">model_t6_c4_mean</th>
+<th data-quarto-table-cell-role="th">model_t6_c4_sd</th>
 </tr>
 </thead>
 <tbody>
@@ -855,9 +930,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0.006</td>
 <td>doc occ</td>
 <td>0.269412</td>
+<td>0.003003</td>
 <td>0.372110</td>
+<td>0.002164</td>
 <td>0.355399</td>
+<td>0.002388</td>
 <td>1.145836</td>
+<td>0.004580</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
@@ -872,9 +951,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0.019</td>
 <td>NCD occ</td>
 <td>0.869785</td>
+<td>0.011039</td>
 <td>0.469595</td>
+<td>0.005111</td>
 <td>0.470006</td>
+<td>0.006064</td>
 <td>1.231760</td>
+<td>0.022432</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
@@ -889,9 +972,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0.008</td>
 <td>staff nurse occ</td>
 <td>0.322609</td>
+<td>0.008560</td>
 <td>0.242049</td>
+<td>0.004190</td>
 <td>0.160632</td>
+<td>0.001316</td>
 <td>0.321931</td>
+<td>0.006419</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
@@ -906,9 +993,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0.005</td>
 <td>pharm occ</td>
 <td>0.642954</td>
+<td>0.003603</td>
 <td>0.288769</td>
+<td>0.003379</td>
 <td>0.289968</td>
+<td>0.001035</td>
 <td>0.856621</td>
+<td>0.005442</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
@@ -923,9 +1014,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0.011</td>
 <td>lab occ</td>
 <td>0.557508</td>
+<td>0.004960</td>
 <td>0.253362</td>
+<td>0.006092</td>
 <td>0.240857</td>
+<td>0.003743</td>
 <td>0.738856</td>
+<td>0.012791</td>
 </tr>
 </tbody>
 </table>
@@ -933,27 +1028,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>compare_col <span class="op">=</span> [</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config1_mean'</span>, <span class="st">'model_t6_c1'</span>),</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config2_mean'</span>, <span class="st">'model_t6_c2'</span>),</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config3_mean'</span>, <span class="st">'model_t6_c3'</span>),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'benchmark_mean'</span>, <span class="st">'model_t6_c4'</span>)]</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> compare_col:</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the two columns</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    subset <span class="op">=</span> compare[<span class="bu">list</span>(col)]</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find percent change</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    pct_change <span class="op">=</span> subset.pct_change(axis<span class="op">=</span><span class="dv">1</span>).iloc[:, <span class="dv">1</span>]<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add back to compare dataframe</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    compare[<span class="ss">f'pct_change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>] <span class="op">=</span> pct_change</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Display each of the results</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> compare_col:</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set outcome as index, and get the two results plus percent change</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    subset <span class="op">=</span> compare.set_index(<span class="st">'t6_outcome'</span>)[</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">list</span>(col) <span class="op">+</span> [<span class="ss">f'pct_change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>]]</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    display(subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-16" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>compare_col <span class="op">=</span> [</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config1_mean'</span>, <span class="st">'model_t6_c1_mean'</span>),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config1_sd'</span>, <span class="st">'model_t6_c1_sd'</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config2_mean'</span>, <span class="st">'model_t6_c2_mean'</span>),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config2_sd'</span>, <span class="st">'model_t6_c2_sd'</span>),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config3_mean'</span>, <span class="st">'model_t6_c3_mean'</span>),</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config3_sd'</span>, <span class="st">'model_t6_c3_sd'</span>),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'benchmark_mean'</span>, <span class="st">'model_t6_c4_mean'</span>),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'benchmark_sd'</span>, <span class="st">'model_t6_c4_sd'</span>),]</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> compare_col:</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find difference between two columns</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    compare[<span class="ss">f'change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>] <span class="op">=</span> <span class="bu">abs</span>(compare[col[<span class="dv">1</span>]] <span class="op">-</span> compare[col[<span class="dv">0</span>]])</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find percent change between two columns</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    subset <span class="op">=</span> compare[<span class="bu">list</span>(col)]</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    pct_change <span class="op">=</span> subset.pct_change(axis<span class="op">=</span><span class="dv">1</span>).iloc[:, <span class="dv">1</span>]<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    compare[<span class="ss">f'pct_change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>] <span class="op">=</span> pct_change</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Display each of the results</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> compare_col:</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set outcome as index, and get the two results plus percent change</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    subset <span class="op">=</span> compare.set_index(<span class="st">'t6_outcome'</span>)[</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">list</span>(col) <span class="op">+</span> [<span class="ss">f'change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>, <span class="ss">f'pct_change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>]]</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    display(subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 
@@ -963,11 +1062,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">config1_mean</th>
-<th data-quarto-table-cell-role="th">model_t6_c1</th>
-<th data-quarto-table-cell-role="th">pct_change_model_t6_c1</th>
+<th data-quarto-table-cell-role="th">model_t6_c1_mean</th>
+<th data-quarto-table-cell-role="th">change_model_t6_c1_mean</th>
+<th data-quarto-table-cell-role="th">pct_change_model_t6_c1_mean</th>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">t6_outcome</th>
+<th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
@@ -978,85 +1079,224 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">Doctor utilisation</td>
 <td>0.268</td>
 <td>0.269412</td>
+<td>0.001412</td>
 <td>0.526750</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
 <td>0.865</td>
 <td>0.869785</td>
+<td>0.004785</td>
 <td>0.553143</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
 <td>0.323</td>
 <td>0.322609</td>
+<td>0.000391</td>
 <td>-0.121114</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
 <td>0.643</td>
 <td>0.642954</td>
+<td>0.000046</td>
 <td>-0.007225</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab utilisation</td>
 <td>0.559</td>
 <td>0.557508</td>
+<td>0.001492</td>
 <td>-0.266928</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
 <td>0.093</td>
 <td>0.093243</td>
+<td>0.000243</td>
 <td>0.261063</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Labour bed utilisation</td>
 <td>0.283</td>
 <td>0.287000</td>
+<td>0.004000</td>
 <td>1.413428</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
 <td>0.000</td>
-<td>0.008821</td>
+<td>0.000822</td>
+<td>0.000822</td>
 <td>inf</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
 <td>0.009</td>
 <td>0.009304</td>
+<td>0.000304</td>
 <td>3.380654</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
 <td>0.090</td>
 <td>0.089752</td>
+<td>0.000248</td>
 <td>-0.275305</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
 <td>1.025</td>
 <td>1.019412</td>
+<td>0.005588</td>
 <td>-0.545161</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
 <td>0.094</td>
 <td>0.094872</td>
+<td>0.000872</td>
 <td>0.928115</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
 <td>2.084</td>
 <td>2.087956</td>
+<td>0.003956</td>
 <td>0.189838</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
 <td>0.156</td>
-<td>0.153168</td>
-<td>-1.815356</td>
+<td>0.152701</td>
+<td>0.003299</td>
+<td>-2.115056</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">config1_sd</th>
+<th data-quarto-table-cell-role="th">model_t6_c1_sd</th>
+<th data-quarto-table-cell-role="th">change_model_t6_c1_sd</th>
+<th data-quarto-table-cell-role="th">pct_change_model_t6_c1_sd</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">t6_outcome</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Doctor utilisation</td>
+<td>0.003</td>
+<td>0.003003</td>
+<td>0.000003</td>
+<td>0.088112</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
+<td>0.011</td>
+<td>0.011039</td>
+<td>0.000039</td>
+<td>0.355096</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
+<td>0.008</td>
+<td>0.008560</td>
+<td>0.000560</td>
+<td>6.997176</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
+<td>0.004</td>
+<td>0.003603</td>
+<td>0.000397</td>
+<td>-9.937006</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Lab utilisation</td>
+<td>0.008</td>
+<td>0.004960</td>
+<td>0.003040</td>
+<td>-37.996691</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
+<td>0.004</td>
+<td>0.005137</td>
+<td>0.001137</td>
+<td>28.424692</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Labour bed utilisation</td>
+<td>0.010</td>
+<td>0.012517</td>
+<td>0.002517</td>
+<td>25.166556</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
+<td>0.000</td>
+<td>0.000406</td>
+<td>0.000406</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
+<td>0.004</td>
+<td>0.004588</td>
+<td>0.000588</td>
+<td>14.702129</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
+<td>0.002</td>
+<td>0.001116</td>
+<td>0.000884</td>
+<td>-44.221146</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
+<td>0.021</td>
+<td>0.012652</td>
+<td>0.008348</td>
+<td>-39.750366</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
+<td>0.003</td>
+<td>0.003335</td>
+<td>0.000335</td>
+<td>11.167545</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
+<td>0.054</td>
+<td>0.059170</td>
+<td>0.005170</td>
+<td>9.574712</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
+<td>0.019</td>
+<td>0.013231</td>
+<td>0.005769</td>
+<td>-30.364433</td>
 </tr>
 </tbody>
 </table>
@@ -1072,11 +1312,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">config2_mean</th>
-<th data-quarto-table-cell-role="th">model_t6_c2</th>
-<th data-quarto-table-cell-role="th">pct_change_model_t6_c2</th>
+<th data-quarto-table-cell-role="th">model_t6_c2_mean</th>
+<th data-quarto-table-cell-role="th">change_model_t6_c2_mean</th>
+<th data-quarto-table-cell-role="th">pct_change_model_t6_c2_mean</th>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">t6_outcome</th>
+<th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
@@ -1087,85 +1329,224 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">Doctor utilisation</td>
 <td>0.372</td>
 <td>0.372110</td>
+<td>0.000110</td>
 <td>0.029651</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
 <td>0.469</td>
 <td>0.469595</td>
+<td>0.000595</td>
 <td>0.126811</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
 <td>0.243</td>
 <td>0.242049</td>
+<td>0.000951</td>
 <td>-0.391160</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
 <td>0.288</td>
 <td>0.288769</td>
+<td>0.000769</td>
 <td>0.266990</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab utilisation</td>
 <td>0.254</td>
 <td>0.253362</td>
+<td>0.000638</td>
 <td>-0.251295</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
 <td>0.055</td>
 <td>0.055268</td>
+<td>0.000268</td>
 <td>0.487291</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Labour bed utilisation</td>
 <td>0.153</td>
 <td>0.150000</td>
+<td>0.003000</td>
 <td>-1.960784</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
 <td>0.007</td>
-<td>0.167379</td>
-<td>2291.127426</td>
+<td>0.007131</td>
+<td>0.000131</td>
+<td>1.867144</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
 <td>0.171</td>
 <td>0.180556</td>
+<td>0.009556</td>
 <td>5.588177</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
 <td>0.010</td>
 <td>0.009479</td>
+<td>0.000521</td>
 <td>-5.205089</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
 <td>0.244</td>
 <td>0.240693</td>
+<td>0.003307</td>
 <td>-1.355303</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
 <td>0.012</td>
 <td>0.012381</td>
+<td>0.000381</td>
 <td>3.178337</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
 <td>0.606</td>
 <td>0.605414</td>
+<td>0.000586</td>
 <td>-0.096696</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
 <td>0.088</td>
-<td>0.093838</td>
-<td>6.634462</td>
+<td>0.093568</td>
+<td>0.005568</td>
+<td>6.327717</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">config2_sd</th>
+<th data-quarto-table-cell-role="th">model_t6_c2_sd</th>
+<th data-quarto-table-cell-role="th">change_model_t6_c2_sd</th>
+<th data-quarto-table-cell-role="th">pct_change_model_t6_c2_sd</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">t6_outcome</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Doctor utilisation</td>
+<td>0.004</td>
+<td>0.002164</td>
+<td>0.001836</td>
+<td>-45.902124</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
+<td>0.005</td>
+<td>0.005111</td>
+<td>0.000111</td>
+<td>2.221094</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
+<td>0.006</td>
+<td>0.004190</td>
+<td>0.001810</td>
+<td>-30.161748</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
+<td>0.003</td>
+<td>0.003379</td>
+<td>0.000379</td>
+<td>12.648057</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Lab utilisation</td>
+<td>0.004</td>
+<td>0.006092</td>
+<td>0.002092</td>
+<td>52.305764</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
+<td>0.003</td>
+<td>0.002650</td>
+<td>0.000350</td>
+<td>-11.650653</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Labour bed utilisation</td>
+<td>0.009</td>
+<td>0.008165</td>
+<td>0.000835</td>
+<td>-9.278158</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
+<td>0.001</td>
+<td>0.000846</td>
+<td>0.000154</td>
+<td>-15.422369</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
+<td>0.032</td>
+<td>0.021898</td>
+<td>0.010102</td>
+<td>-31.570127</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
+<td>0.001</td>
+<td>0.000228</td>
+<td>0.000772</td>
+<td>-77.214747</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
+<td>0.008</td>
+<td>0.004653</td>
+<td>0.003347</td>
+<td>-41.841025</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
+<td>0.001</td>
+<td>0.000626</td>
+<td>0.000374</td>
+<td>-37.447884</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
+<td>0.023</td>
+<td>0.028742</td>
+<td>0.005742</td>
+<td>24.967182</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
+<td>0.022</td>
+<td>0.017413</td>
+<td>0.004587</td>
+<td>-20.848000</td>
 </tr>
 </tbody>
 </table>
@@ -1181,11 +1562,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">config3_mean</th>
-<th data-quarto-table-cell-role="th">model_t6_c3</th>
-<th data-quarto-table-cell-role="th">pct_change_model_t6_c3</th>
+<th data-quarto-table-cell-role="th">model_t6_c3_mean</th>
+<th data-quarto-table-cell-role="th">change_model_t6_c3_mean</th>
+<th data-quarto-table-cell-role="th">pct_change_model_t6_c3_mean</th>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">t6_outcome</th>
+<th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
@@ -1196,36 +1579,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">Doctor utilisation</td>
 <td>0.354</td>
 <td>0.355399</td>
+<td>0.001399</td>
 <td>0.395336</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
 <td>0.468</td>
 <td>0.470006</td>
+<td>0.002006</td>
 <td>0.428706</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
 <td>0.160</td>
 <td>0.160632</td>
+<td>0.000632</td>
 <td>0.395143</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
 <td>0.289</td>
 <td>0.289968</td>
+<td>0.000968</td>
 <td>0.334861</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab utilisation</td>
 <td>0.239</td>
 <td>0.240857</td>
+<td>0.001857</td>
 <td>0.776935</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
 <td>0.011</td>
 <td>0.011464</td>
+<td>0.000464</td>
 <td>4.218362</td>
 </tr>
 <tr class="odd">
@@ -1233,45 +1622,178 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
+<td>NaN</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
 <td>0.001</td>
-<td>0.034586</td>
-<td>3358.558494</td>
+<td>0.001374</td>
+<td>0.000374</td>
+<td>37.354263</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
 <td>0.034</td>
 <td>0.034672</td>
+<td>0.000672</td>
 <td>1.975607</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
 <td>0.009</td>
 <td>0.009159</td>
+<td>0.000159</td>
 <td>1.767115</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
 <td>0.232</td>
 <td>0.231200</td>
+<td>0.000800</td>
 <td>-0.344950</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
 <td>0.011</td>
 <td>0.011342</td>
+<td>0.000342</td>
 <td>3.111027</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
 <td>0.571</td>
 <td>0.570976</td>
+<td>0.000024</td>
 <td>-0.004206</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">config3_sd</th>
+<th data-quarto-table-cell-role="th">model_t6_c3_sd</th>
+<th data-quarto-table-cell-role="th">change_model_t6_c3_sd</th>
+<th data-quarto-table-cell-role="th">pct_change_model_t6_c3_sd</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">t6_outcome</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Doctor utilisation</td>
+<td>0.002</td>
+<td>0.002388</td>
+<td>0.000388</td>
+<td>19.408639</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
+<td>0.005</td>
+<td>0.006064</td>
+<td>0.001064</td>
+<td>21.273241</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
+<td>0.001</td>
+<td>0.001316</td>
+<td>0.000316</td>
+<td>31.621657</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
+<td>0.003</td>
+<td>0.001035</td>
+<td>0.001965</td>
+<td>-65.493446</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Lab utilisation</td>
+<td>0.004</td>
+<td>0.003743</td>
+<td>0.000257</td>
+<td>-6.413813</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
+<td>0.001</td>
+<td>0.000896</td>
+<td>0.000104</td>
+<td>-10.377371</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Labour bed utilisation</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
+<td>0.000</td>
+<td>0.000035</td>
+<td>0.000035</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
+<td>0.001</td>
+<td>0.000787</td>
+<td>0.000213</td>
+<td>-21.307875</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
+<td>0.000</td>
+<td>0.000191</td>
+<td>0.000191</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
+<td>0.006</td>
+<td>0.003927</td>
+<td>0.002073</td>
+<td>-34.551873</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
+<td>0.000</td>
+<td>0.000386</td>
+<td>0.000386</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
+<td>0.020</td>
+<td>0.014748</td>
+<td>0.005252</td>
+<td>-26.258343</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
+<td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -1290,11 +1812,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">benchmark_mean</th>
-<th data-quarto-table-cell-role="th">model_t6_c4</th>
-<th data-quarto-table-cell-role="th">pct_change_model_t6_c4</th>
+<th data-quarto-table-cell-role="th">model_t6_c4_mean</th>
+<th data-quarto-table-cell-role="th">change_model_t6_c4_mean</th>
+<th data-quarto-table-cell-role="th">pct_change_model_t6_c4_mean</th>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">t6_outcome</th>
+<th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
@@ -1305,85 +1829,372 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">Doctor utilisation</td>
 <td>1.142</td>
 <td>1.145836</td>
+<td>0.003836</td>
 <td>0.335941</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
 <td>1.232</td>
 <td>1.231760</td>
+<td>0.000240</td>
 <td>-0.019499</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
 <td>0.322</td>
 <td>0.321931</td>
+<td>0.000069</td>
 <td>-0.021522</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
 <td>0.855</td>
 <td>0.856621</td>
+<td>0.001621</td>
 <td>0.189635</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab utilisation</td>
 <td>0.736</td>
 <td>0.738856</td>
+<td>0.002856</td>
 <td>0.388032</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
 <td>0.093</td>
 <td>0.093002</td>
+<td>0.000002</td>
 <td>0.002285</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Labour bed utilisation</td>
 <td>0.281</td>
 <td>0.278000</td>
+<td>0.003000</td>
 <td>-1.067616</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
 <td>0.817</td>
-<td>6.932062</td>
-<td>748.477614</td>
+<td>0.832990</td>
+<td>0.015990</td>
+<td>1.957175</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
 <td>6.789</td>
 <td>7.087377</td>
+<td>0.298377</td>
 <td>4.395003</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
 <td>0.150</td>
 <td>0.149840</td>
+<td>0.000160</td>
 <td>-0.106648</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
 <td>1.282</td>
 <td>1.277731</td>
+<td>0.004269</td>
 <td>-0.333032</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
 <td>0.188</td>
 <td>0.191373</td>
+<td>0.003373</td>
 <td>1.794250</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
 <td>3.135</td>
 <td>3.170211</td>
+<td>0.035211</td>
 <td>1.123169</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
 <td>0.157</td>
-<td>0.157808</td>
-<td>0.514501</td>
+<td>0.157772</td>
+<td>0.000772</td>
+<td>0.491841</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">benchmark_sd</th>
+<th data-quarto-table-cell-role="th">model_t6_c4_sd</th>
+<th data-quarto-table-cell-role="th">change_model_t6_c4_sd</th>
+<th data-quarto-table-cell-role="th">pct_change_model_t6_c4_sd</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">t6_outcome</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Doctor utilisation</td>
+<td>0.006</td>
+<td>0.004580</td>
+<td>0.001420</td>
+<td>-23.658852</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
+<td>0.019</td>
+<td>0.022432</td>
+<td>0.003432</td>
+<td>18.063774</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
+<td>0.008</td>
+<td>0.006419</td>
+<td>0.001581</td>
+<td>-19.759524</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
+<td>0.005</td>
+<td>0.005442</td>
+<td>0.000442</td>
+<td>8.838985</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Lab utilisation</td>
+<td>0.011</td>
+<td>0.012791</td>
+<td>0.001791</td>
+<td>16.278967</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
+<td>0.004</td>
+<td>0.004686</td>
+<td>0.000686</td>
+<td>17.152748</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Labour bed utilisation</td>
+<td>0.012</td>
+<td>0.011353</td>
+<td>0.000647</td>
+<td>-5.392298</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
+<td>0.027</td>
+<td>0.022424</td>
+<td>0.004576</td>
+<td>-16.949071</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
+<td>0.268</td>
+<td>0.171371</td>
+<td>0.096629</td>
+<td>-36.055513</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
+<td>0.002</td>
+<td>0.003193</td>
+<td>0.001193</td>
+<td>59.648276</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
+<td>0.018</td>
+<td>0.025166</td>
+<td>0.007166</td>
+<td>39.809703</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
+<td>0.001</td>
+<td>0.004532</td>
+<td>0.003532</td>
+<td>353.179324</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
+<td>0.005</td>
+<td>0.061232</td>
+<td>0.056232</td>
+<td>1124.642663</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
+<td>0.180</td>
+<td>0.015115</td>
+<td>0.164885</td>
+<td>-91.602645</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="format-model-results-like-table-6-and-save" class="level2">
+<h2 class="anchored" data-anchor-id="format-model-results-like-table-6-and-save">Format model results like table 6, and save</h2>
+<div id="cell-18" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>compare_col <span class="op">=</span> [</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Configuration 1'</span>, <span class="st">'model_t6_c1_mean'</span>, <span class="st">'model_t6_c1_sd'</span>],</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Configuration 2'</span>, <span class="st">'model_t6_c2_mean'</span>, <span class="st">'model_t6_c2_sd'</span>],</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Configuration 3'</span>, <span class="st">'model_t6_c3_mean'</span>, <span class="st">'model_t6_c3_sd'</span>],</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Benchmark Case'</span>, <span class="st">'model_t6_c4_mean'</span>, <span class="st">'model_t6_c4_sd'</span>]]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine each pair of columns into string as in Table 6</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> compare_col:</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    compare[col[<span class="dv">0</span>]] <span class="op">=</span> (</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">round</span>(compare[col[<span class="dv">1</span>]], <span class="dv">3</span>).astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">' ('</span> <span class="op">+</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">round</span>(compare[col[<span class="dv">2</span>]], <span class="dv">3</span>).astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">')'</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Set outcome name as index, and select those columns</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>formatted_model_res <span class="op">=</span> (compare</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                       .set_index(<span class="st">'t6_outcome'</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>                       .rename_axis(<span class="st">'Simulation Outcome'</span>)[</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>                           [item[<span class="dv">0</span>] <span class="cf">for</span> item <span class="kw">in</span> compare_col]])</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>formatted_model_res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Configuration 1</th>
+<th data-quarto-table-cell-role="th">Configuration 2</th>
+<th data-quarto-table-cell-role="th">Configuration 3</th>
+<th data-quarto-table-cell-role="th">Benchmark Case</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Simulation Outcome</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Doctor utilisation</td>
+<td>0.269 (0.003)</td>
+<td>0.372 (0.002)</td>
+<td>0.355 (0.002)</td>
+<td>1.146 (0.005)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
+<td>0.87 (0.011)</td>
+<td>0.47 (0.005)</td>
+<td>0.47 (0.006)</td>
+<td>1.232 (0.022)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
+<td>0.323 (0.009)</td>
+<td>0.242 (0.004)</td>
+<td>0.161 (0.001)</td>
+<td>0.322 (0.006)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
+<td>0.643 (0.004)</td>
+<td>0.289 (0.003)</td>
+<td>0.29 (0.001)</td>
+<td>0.857 (0.005)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Lab utilisation</td>
+<td>0.558 (0.005)</td>
+<td>0.253 (0.006)</td>
+<td>0.241 (0.004)</td>
+<td>0.739 (0.013)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
+<td>0.093 (0.005)</td>
+<td>0.055 (0.003)</td>
+<td>0.011 (0.001)</td>
+<td>0.093 (0.005)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Labour bed utilisation</td>
+<td>0.287 (0.013)</td>
+<td>0.15 (0.008)</td>
+<td>nan (nan)</td>
+<td>0.278 (0.011)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
+<td>0.001 (0.0)</td>
+<td>0.007 (0.001)</td>
+<td>0.001 (0.0)</td>
+<td>0.833 (0.022)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
+<td>0.009 (0.005)</td>
+<td>0.181 (0.022)</td>
+<td>0.035 (0.001)</td>
+<td>7.087 (0.171)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
+<td>0.09 (0.001)</td>
+<td>0.009 (0.0)</td>
+<td>0.009 (0.0)</td>
+<td>0.15 (0.003)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
+<td>1.019 (0.013)</td>
+<td>0.241 (0.005)</td>
+<td>0.231 (0.004)</td>
+<td>1.278 (0.025)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
+<td>0.095 (0.003)</td>
+<td>0.012 (0.001)</td>
+<td>0.011 (0.0)</td>
+<td>0.191 (0.005)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
+<td>2.088 (0.059)</td>
+<td>0.605 (0.029)</td>
+<td>0.571 (0.015)</td>
+<td>3.17 (0.061)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
+<td>0.153 (0.013)</td>
+<td>0.094 (0.017)</td>
+<td>nan (nan)</td>
+<td>0.158 (0.015)</td>
 </tr>
 </tbody>
 </table>
@@ -1829,7 +2640,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/main/reproduction/reproduce.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/main/reproduction/reproduce_tab6.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

@@ -141,8 +141,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">README</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../reproduction/reproduce.html">
- <span class="dropdown-text">Notebook</span></a>
+    <a class="dropdown-item" href="../../../reproduction/reproduce_tab6.html">
+ <span class="dropdown-text">Reproducing table 6</span></a>
   </li>  
     </ul>
   </li>
@@ -237,7 +237,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#different-configurations" id="toc-different-configurations" class="nav-link active" data-scroll-target="#different-configurations">9.20-10.03, 10.11-10.22, 10.31-11.43: Different configurations</a></li>
   <li><a href="#different-configurations-continued" id="toc-different-configurations-continued" class="nav-link" data-scroll-target="#different-configurations-continued">12.00-12.05, 12.17-12.57: Different configurations (continued)</a></li>
-  <li><a href="#problem-solving-benchmark-model" id="toc-problem-solving-benchmark-model" class="nav-link" data-scroll-target="#problem-solving-benchmark-model">13.55-14.30: Problem solving benchmark model</a></li>
+  <li><a href="#problem-solving-benchmark-model" id="toc-problem-solving-benchmark-model" class="nav-link" data-scroll-target="#problem-solving-benchmark-model">13.55-14.30: Problem-solving benchmark model</a></li>
+  <li><a href="#problem-solving-mean-opd-queue-length" id="toc-problem-solving-mean-opd-queue-length" class="nav-link" data-scroll-target="#problem-solving-mean-opd-queue-length">14.36-14.53: Problem-solving mean OPD queue length</a></li>
+  <li><a href="#add-sd-to-table-6" id="toc-add-sd-to-table-6" class="nav-link" data-scroll-target="#add-sd-to-table-6">15.34-16.02 : Add SD to Table 6</a></li>
   <li><a href="#reflections-from-troubleshooting-today" id="toc-reflections-from-troubleshooting-today" class="nav-link" data-scroll-target="#reflections-from-troubleshooting-today">Reflections from troubleshooting today</a></li>
   <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
@@ -260,7 +262,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TBC. Total time used: TBCh TBCm (TBC%)</p>
+<p>Succesful reproduction of Table 6. Total time used: TBCh TBCm (TBC%)</p>
 </div>
 </div>
 <section id="different-configurations" class="level2">
@@ -353,7 +355,7 @@ c3_state.__dict__</code></pre>
 <p>Spent a while looking for why this might be, but not yet figured out.</p>
 </section>
 <section id="problem-solving-benchmark-model" class="level2">
-<h2 class="anchored" data-anchor-id="problem-solving-benchmark-model">13.55-14.30: Problem solving benchmark model</h2>
+<h2 class="anchored" data-anchor-id="problem-solving-benchmark-model">13.55-14.30: Problem-solving benchmark model</h2>
 <p>To ensure it is not an error I’ve introduced, I copied the original <code>PHC.py</code> and modified it directly (the only change from config 1 that I have identified from the paper is that the OPD IAT is 3 instead of 4), and to produce both results spreadsheets. See <a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/892cca42cb4edf94854cc037ec273a991e6b3544/logbook/posts/2024_06_24/index.qmd">GitHub commit 892cca4</a>. This came out looking the same as my other run (e.g.&nbsp;doctor utilisation around 0.31 instead of 1.14).</p>
 <p>Hence, wondered if the issue was in parameterising of model, so looked back over the paper. It is described as differing from the archetypal/generic model in two ways (not just one). I have only changed outpatient load (OPD IAT 4 to 3)</p>
 <blockquote class="blockquote">
@@ -362,6 +364,37 @@ c3_state.__dict__</code></pre>
 <p>As in Table 4, the normal OPD consultation time is normally distribution with mean 0.87 and standard deviation of 0.21</p>
 </blockquote>
 <p>Amended mean and sd, and set consultation boundary as a modifiable parameter (with consult_boundary_1 and 2, as the default boundary provided in the script varied depending on whether it was warm-up or not, between 0.5 and 0.3).</p>
+<p>This pretty much fixed the issue - the only large difference for the benchmark model is now as for the other configurations: mean OPD queue length.</p>
+</section>
+<section id="problem-solving-mean-opd-queue-length" class="level2">
+<h2 class="anchored" data-anchor-id="problem-solving-mean-opd-queue-length">14.36-14.53: Problem-solving mean OPD queue length</h2>
+<p>Checked example of a result in full <code>.xlsx</code> output for config 1 from a <a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/aa79865a880bc29b2b89dd6729a062d797b6deb5/reproduction/outputs/full_results.xlsx">previous commit</a>, but this matched the model output, which itself, was very similar to the paper output.</p>
+<p>Hence, instead ran config 4 but enabled full result spreadsheet to be produced. That output <code>0.833</code> for <code>Mean length of OPD queue</code>, similar to Table 6’s <code>0.817</code> and unlike my previously calculated <code>6.932062</code>.</p>
+<p>Looking at the replication spreadsheet, I realised there were two OPD q len rows:</p>
+<ul>
+<li><code>OPD q len</code> (with values around 7)
+<ul>
+<li>Calculated from <code>OPD_q__list</code></li>
+<li>That is created by <code>OPD_q__list.append(np.mean(an_list))</code>, and <code>an_list</code> is delivery patients</li>
+</ul></li>
+<li><code>opd q len</code> (with values around 0.8)
+<ul>
+<li>Calculated from <code>OPD_q_length_list</code>.</li>
+<li>That is created by <code>OPD_q_length_list.append(waitingline_OPD.length.mean())</code></li>
+</ul></li>
+</ul>
+<p>Hence, given the values match, and how it was created, the latter is evidently the appropriate row to use. Amended <code>reproduce.ipynb</code> to use that row, and now results match up, with no concerning deviation.</p>
+</section>
+<section id="add-sd-to-table-6" class="level2">
+<h2 class="anchored" data-anchor-id="add-sd-to-table-6">15.34-16.02 : Add SD to Table 6</h2>
+<p>Add standard deviation. Some percent change seem large as it’s comparing very small number - but actual change between the model and table 6 all are small enough that I feel happy to say this has been successfully reproduced.</p>
+<p>Will run 100 replications later (if run now, will prevent from working on other things). However, as would otherwise run now, if that comes out as matching up too, then would say timestamp at which this was complete is 16.02 + a few minutes, as that’s when I would’ve otherwise finished up with it if possible.</p>
+<p><strong>Therefore, timestamp at which feel has been reproduced:</strong> 16.02 + 5 min (for checking table later)</p>
+<p><strong>Timing at that point:</strong> 32.8%, 787m</p>
+<pre><code>Time spent today: 256m, or 4h 16m
+Total used to date: 787m, or 13h 7m
+Time remaining: 1613m, or 26h 53m
+Used 32.8% of 40 hours max</code></pre>
 </section>
 <section id="reflections-from-troubleshooting-today" class="level2">
 <h2 class="anchored" data-anchor-id="reflections-from-troubleshooting-today">Reflections from troubleshooting today</h2>
@@ -383,27 +416,31 @@ Challenges today
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="447c205d" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">531</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.20'</span>, <span class="st">'10.03'</span>),</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.11'</span>, <span class="st">'10.22'</span>),</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.31'</span>, <span class="st">'11.43'</span>),</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.00'</span>, <span class="st">'12.05'</span>)]</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="98967231" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">531</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.20'</span>, <span class="st">'10.03'</span>),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.11'</span>, <span class="st">'10.22'</span>),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.31'</span>, <span class="st">'11.43'</span>),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.00'</span>, <span class="st">'12.05'</span>),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.17'</span>, <span class="st">'12.57'</span>),</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.55'</span>, <span class="st">'14.30'</span>),</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.36'</span>, <span class="st">'14.53'</span>),</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.34'</span>, <span class="st">'16.02'</span>)]</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time spent today: 131m, or 2h 11m
-Total used to date: 662m, or 11h 2m
-Time remaining: 1738m, or 28h 58m
-Used 27.6% of 40 hours max</code></pre>
+<pre><code>Time spent today: 251m, or 4h 11m
+Total used to date: 782m, or 13h 2m
+Time remaining: 1618m, or 26h 58m
+Used 32.6% of 40 hours max</code></pre>
 </div>
 </div>
 
