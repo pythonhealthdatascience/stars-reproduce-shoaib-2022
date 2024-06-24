@@ -11,11 +11,6 @@ import xlwt
 OPD runs for 6 hours in a day followed by 2 hours of admin work for doctors.
 """
 
-# Set save paths
-results_path = 'outputs'
-outputs_path = os.path.join(results_path, 'outputs.xls')
-full_results_path = os.path.join(results_path, 'full_results.xlsx')
-
 
 class Main(sim.Component):
     global OPD_iat
@@ -821,8 +816,11 @@ def main(
         s_pharmacist_cap=1,              # number of pharmacists
         s_lab_cap=1,                     # number of lab technicians
         s_replication=10,
-        s_inpatient_bed_n=6,  # Number of inpatient beds
-        s_delivery_bed_n=1    # Number of labour room beds
+        s_inpatient_bed_n=6,   # Number of inpatient beds
+        s_delivery_bed_n=1,    # Number of labour room beds
+        s_results_path='outputs',            # Folder with results
+        s_rep_file='outputs.xls',        # File for replication results
+        s_full_file='full_results.xlsx'  # File for full results
 ):
     # Define global variables
     # defining simulation input parameters
@@ -1041,6 +1039,13 @@ def main(
         Patient.pharmacist_time = []
         Patient.Lab_time = []
         Patient.NCD_Nurse_time_list = []
+
+    # Set path for results files
+    outputs_path = os.path.join(s_results_path, s_rep_file)
+    full_results_path = os.path.join(s_results_path, s_full_file)
+
+    # Commented out as not currently using this results spreadsheet
+    """
     j = 0
     row = 1
     col = 1
@@ -1123,7 +1128,7 @@ def main(
     worksheet.write(row+55, 0, "Lab patients std")
 
     # Outputs
-    """Input parameters"""
+    # Input parameters
     worksheet.write(row - 1, col, OPD_iat)
     worksheet.write(row, col, IPD_iat)
     worksheet.write(row+1, col, delivery_iat)
@@ -1131,14 +1136,14 @@ def main(
     worksheet.write(row+3, col, mean)
     worksheet.write(row+4, col, sd)
 
-    """Resources"""
+    # Resources
     worksheet.write(row+5, col, doc_cap)
     worksheet.write(row+6, col, staff_nurse_cap)
     worksheet.write(row+7, col, lab_cap)
     worksheet.write(row+8, col, pharmacist_cap)
 
     # output time
-    """Doctor time calculation"""
+    # Doctor time calculation
 
     # OPD minutes
     worksheet.write(row+9, col, (Main.No_of_days*480)/replication)
@@ -1164,14 +1169,14 @@ def main(
     # Total doctor time
     worksheet.write_formula(row+16, col, '=sum(B17+B14+B16+B15)')
 
-    """NCD time calculation"""
+    # NCD time calculation
     for i in Patient.NCD_Nurse_time_list:
         j += i
     # NCD OPD time
     worksheet.write(row+17, col, round(j, 2)/replication)
     worksheet.write(row+18, col, sumi/replication)
 
-    """Staff Nurse time calculation"""
+    # Staff Nurse time calculation
     worksheet.write(row+19, col,  round(Main.staff_nurse_IPD, 2)/replication)
     worksheet.write(row+20, col,  round(Main.staff_nurse_del, 2)/replication)
     worksheet.write(row+21, col,  round(Main.staff_nurse_ANC,2)/replication)
@@ -1180,20 +1185,20 @@ def main(
     worksheet.write(row+22, col, ad*3)
     worksheet.write(row+23, col,  '=sum(B20+B21+B22+B23)')
 
-    """Pharmacy time calculation"""
+    # Pharmacy time calculation
     tim = 0
     for time in Patient.pharmacist_time:
         tim += time
     worksheet.write(row+24, col, round(tim,2)/replication)
 
-    """Lab time calculation"""
+    # Lab time calculation
     worksheet.write(row+25, col, round(Patient.lab_time,)/replication)
 
     # average consultation time
     worksheet.write(row+26, col, round(doctor.claimers().length_of_stay.mean()))
     worksheet.write(row+27, col, round(bed.claimers().length_of_stay.mean()))
 
-    """Occupancy"""
+    # Occupancy
     # Doctor
     worksheet.write(row+28, col, (sum(doc_occupancy))/replication)
     # NCD
@@ -1213,7 +1218,7 @@ def main(
     # Bed
     worksheet.write(row+33, col, round(bed.occupancy.mean(), 2))
 
-    """Queue outputs"""
+    # Queue outputs
     for _ in OPD_q_waiting_time_list:
         f = f+_
     for _ in OPD_q_length_list:
@@ -1244,7 +1249,7 @@ def main(
     # lab queue waiting time
     worksheet.write(row+39, col, round(f4/replication, 2))
 
-    """Output Numbers"""
+    # Output Numbers
     worksheet.write(row+40, col, Patient.OPD_visits/replication)
     worksheet.write(row+41, col, (len(IPD_PatientGenerator.IPD_List))/replication)
     worksheet.write(row+42, col, Delivery.Delivery_count/replication)
@@ -1262,6 +1267,7 @@ def main(
     worksheet.write(row+54, col, sum(lab_patient_list)/replication)
     worksheet.write(row+55, col, np.std(lab_patient_list))
     REPLICATION.close()
+    """
 
     wb = xlwt.Workbook()
     ws = wb.add_sheet("Sheet 1")
@@ -1335,6 +1341,19 @@ def main(
         ws.write(21, index+1, item)
 
     wb.save(outputs_path)
+
+
+def return_globals():
+    """
+    Return global variables and their values from workspace. Used for
+    verifying the environment is as expected.
+
+    Returns:
+    -------
+    globals() : dict
+        Dictionary of global variables and their values
+    """
+    return globals()
 
 
 if __name__ == '__main__':
