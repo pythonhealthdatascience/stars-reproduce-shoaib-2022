@@ -3,13 +3,16 @@ title: "Day 3"
 author: "Amy Heather"
 date: "2024-06-24"
 categories: [reproduce]
+bibliography: ../../../quarto_site/references.bib
 ---
 
 ::: {.callout-note}
 
-Succesful reproduction of Table 6. Total time used: TBCh TBCm (TBC%)
+Succesful reproduction of Table 6, and start on figure 2. Total time used: 13h 49m (34.5%)
 
 :::
+
+Any references to the original study are to @shoaib_simulation_2021 which is licensed under [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/).
 
 ## 9.20-10.03, 10.11-10.22, 10.31-11.43: Different configurations
 
@@ -164,6 +167,78 @@ Time remaining: 1613m, or 26h 53m
 Used 32.8% of 40 hours max
 ```
 
+## 16.13-17.00: Starting on Figure 2A-D
+
+Figure 2 presents results from sensitivity analysis of configuration 1.
+
+It varies:
+
+* Number of outpatients per day:
+    * 170 (same as config 4) = OPD IAT 3
+    * 85
+    * 65
+* Average service time for outpatients - mean (SD):
+    * 0.87 (0.21) (same as config 1)
+    * 2.5 (0.5)
+    * 5 (1)
+
+It states that "estimation of the outpatient arrival rate for this configuration is described in detail in Section 3.3.1". Hence, looked back at provided times and patient counts in the Tables...
+
+* Config 1: 130 arrivals in a day and IAT of 4
+* Config 2/3: 60 arrivals in a day and IAT of 9
+* Config 4: 170 arrivals in a day and IAT of 3
+
+In order to get those times:
+
+```{python}
+print((60/4)*8.6666666666666666666666666666666)
+print((60/9)*9)
+print((60/3)*8.5)
+```
+
+Can see that, in order to get each of the times, the hours per day vary from 8.5 to 9. As such, it is unclear how I should calculate IAT for 85 and 65 per day, due to this variation. It is assumed that this is likely related to rounding?
+
+Then looked to section 3.3.1 about this in the paper, @shoaib_simulation_2021:
+
+> "The average interarrival times (and consequently the average number of patients) at each configuration were estimated in the following manner. The number of outpatients visiting configuration 1 PHCs (PHCs 1, 5, and 9) range from 80 to 150 patients per day. These include patients visiting for the first time for a given case of illness as well as patients visiting for follow-up consultations on a previous case. Thus we assumed that approximately 125 patients visit on a given day for these PHC configurations, which include 90 first-visit patients, 20% patients on their first follow-up, and 10% visiting for their second follow-up, yield approximately 126 patients. Therefore, the interarrival time of 4 minutes at configuration 1 PHCs corresponds to first-time visits, with follow-up visits scheduled at the same time on any day between the next 3 and 8 days."
+
+These values differ from the table - so looking again with these:
+
+* Config 1: 125 or 126 arrivals and IAT 4
+* Config 2/3: 55 arrivals and IAT 9
+
+```{python}
+print((60/4)*8.33333333333333333)
+print((60/4)*8.4)
+print((60/9)*8.25)
+```
+
+Regarding the number of hours described in the article, this is described as "6 hours per day" for the outpatients - which differs to the 8.25 hours to 9 that align with the provided patient numbers and inter-arrival times.
+
+Assuming this variation is simply related to rounding the IAT - as if we calculate these values based on there being 8.5 hours per day then round the IAT, we get the same results...
+
+```{python}
+# IAT 3. Arrivals 170
+print(60/(170/8.5))
+
+# IAT 4. Arrivals 125-130
+print(60/(125/8.5))
+print(60/(130/8.5))
+
+# IAT 9. Arrivals 55-60
+print(60/(55/8.5))
+print(60/(60/8.5))
+```
+
+As such, the inter-arrival times used were calculated as 3, 6 and 8...
+
+```{python}
+# 170, 85 and 65 arrivals
+print(60/(170/8.5))
+print(60/(85/8.5))
+print(60/(65/8.5))
+```
+
 ## Reflections from troubleshooting today
 
 ::: {.callout-tip}
@@ -174,6 +249,8 @@ Adapting model to run model programmatically (rather than having to directly cha
 Difficulty identifying parameters of scenarios (when not all captured in a single table, but in combination with article text) (and when not provided in the script).
 
 Time spent processing results into desired tables and/or figures (when not already created by the script).
+
+Uncertainty on model parameters if not provided and calculation unclear (inter-arrival time).
 :::
 
 ## Timings
@@ -195,7 +272,8 @@ times = [
     ('12.17', '12.57'),
     ('13.55', '14.30'),
     ('14.36', '14.53'),
-    ('15.34', '16.02')]
+    ('15.34', '16.02'),
+    ('16.13', '17.00')]
 
 calculate_times(used_to_date, times)
 ```
