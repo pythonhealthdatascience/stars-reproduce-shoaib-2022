@@ -68,6 +68,9 @@ c1_state.__dict__
 c2_state = ModelState()
 c2_state.OPD_iat = 9
 c2_state.__dict__
+
+c3_state = ModelState(OPD_iat=5)
+c3_state.__dict__
 ```
 
 But then reflected that this was changing the code alot, and I wasn't 100% confident on whether it would definitely deal with all the global variables correctly (as they are repeatedly defined throughout the script).
@@ -94,11 +97,66 @@ def return_globals():
     return globals()
 ```
 
-And then checked if the output was consistent between different calls of the model, and this returned True, so will assume that running the model in this way is not leading to results interefering with each other between runs. See GitHub commit [] for notebook with these results
+And then checked if the output was consistent between different calls of the model, and this returned True, so will assume that running the model in this way is not leading to results interefering with each other between runs. See [GitHub commit 16f50f7](https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/16f50f70a9dac0b3f15cada2bbc3965742c18326/reproduction/reproduce.ipynb) for notebook with these results.
 
-## 11.X- : Different configurations (continued)
+## 12.00-12.05, 12.17-12.57: Different configurations (continued)
 
-X
+Ran the four different configurations (excluded run time from timings).
+
+Kept setting IAT for ANC higher as was getting an average of 1 arrival (but want to be getting no arrivals), but even with IAT of `999999999999999999999999999999999*365*60*24`, was still getting 1 ANC arrival with every run. Tried setting ANC() and Delivery() to comments in `PHC.py`, and this worked to prevent arrivals, so add True/False inputs to `main()` for whether these functions are called, instead of setting high IAT.
+
+Found differences were:
+
+* Mean OPD queue length was very different for all configuration compared with Table 6.
+* Lots of the benchmark case results looked very different to Table 6.
+
+Spent a while looking for why this might be, but not yet figured out.
+
+## 13.55-14.30: Problem solving benchmark model
+
+To ensure it is not an error I've introduced, I copied the original `PHC.py` and modified it directly (the only change from config 1 that I have identified from the paper is that the OPD IAT is 3 instead of 4), and to produce both results spreadsheets. Saved all within `logbook/` and renamed, so can refer to from this post.
+
+This came out looking the same as my other run (e.g. doctor utilisation around 0.31 instead of 1.14).
+
+```{python}
+import pandas as pd
+import xlrd
+
+book = xlrd.open_workbook('direct_c4_rep.xls')
+direct_c4 = pd.read_excel(book, header=None, index_col=0)
+direct_c4
+```
+
+```{python}
+direct_c4_full = pd.read_excel('direct_c4_full.xlsx', header=None).rename(columns={
+    0: 'full_outcome',
+    1: 'full_result'})
+direct_c4_full
+```
+
+Hence, wondered if the issue was in parameterising of model, so looked back over the paper. It is described as differing from the archetypal/generic model in two ways (not just one). 
+I have only changed outpatient load (OPD IAT 4 to 3)
+
+> 'Note that this benchmark configuration differs from the archetypal configuration only in the outpatient load and the doctor’s consultation time for outpatients.'
+, and had not spotted change in consultation time in the tables.
+> 
+> The consultation time for the benchmark model: "we have assumed the consultation time to be normally distributed with a mean of 5 minutes and standard deviation of 1 minute with a lower bound fixed at 2 minutes"
+>
+> As in Table 4, the normal OPD consultation time is normally distribution with mean 0.87 and standard deviation of 0.21
+
+Amended mean and sd, and set consultation boundary as a modifiable parameter (with consult_boundary_1 and 2, as the default boundary provided in the script varied depending on whether it was warm-up or not, between 0.5 and 0.3).
+
+## Reflections from troubleshooting today
+
+::: {.callout-tip}
+## Challenges today
+
+Adapting model to run model programmatically (rather than having to directly change the parameters in the script itself)
+
+Difficulty identifying parameters of scenarios (when not all captured in a single table, but in combination with article text) (and when not provided in the script).
+
+Time spent processing results into desired tables and/or figures (when not already created by the script).
+:::
 
 ## Timings
 
@@ -114,7 +172,8 @@ used_to_date = 531
 times = [
     ('9.20', '10.03'),
     ('10.11', '10.22'),
-    ('10.31', '11.43')]
+    ('10.31', '11.43'),
+    ('12.00', '12.05')]
 
 calculate_times(used_to_date, times)
 ```
