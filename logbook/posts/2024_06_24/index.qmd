@@ -112,7 +112,7 @@ Found differences were:
 
 Spent a while looking for why this might be, but not yet figured out.
 
-## 13.55-14.30: Problem solving benchmark model
+## 13.55-14.30: Problem-solving benchmark model
 
 To ensure it is not an error I've introduced, I copied the original `PHC.py` and modified it directly (the only change from config 1 that I have identified from the paper is that the OPD IAT is 3 instead of 4), and to produce both results spreadsheets. See [GitHub commit 892cca4](https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/892cca42cb4edf94854cc037ec273a991e6b3544/logbook/posts/2024_06_24/index.qmd). This came out looking the same as my other run (e.g. doctor utilisation around 0.31 instead of 1.14).
 
@@ -127,6 +127,27 @@ I have only changed outpatient load (OPD IAT 4 to 3)
 > As in Table 4, the normal OPD consultation time is normally distribution with mean 0.87 and standard deviation of 0.21
 
 Amended mean and sd, and set consultation boundary as a modifiable parameter (with consult_boundary_1 and 2, as the default boundary provided in the script varied depending on whether it was warm-up or not, between 0.5 and 0.3).
+
+This pretty much fixed the issue - the only large difference for the benchmark model is now as for the other configurations: mean OPD queue length.
+
+## 14.36-14.53: Problem-solving mean OPD queue length
+
+Checked example of a result in full `.xlsx` output for config 1 from a [previous commit](https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/aa79865a880bc29b2b89dd6729a062d797b6deb5/reproduction/outputs/full_results.xlsx), but this matched the model output, which itself, was very similar to the paper output.
+
+Hence, instead ran config 4 but enabled full result spreadsheet to be produced. That output `0.833` for `Mean length of OPD queue`, similar to Table 6's `0.817` and unlike my previously calculated `6.932062`.
+
+Looking at the replication spreadsheet, I realised there were two OPD q len rows:
+
+* `OPD q len` (with values around 7)
+    * Calculated from `OPD_q__list`
+    * That is created by `OPD_q__list.append(np.mean(an_list))`, and `an_list` is delivery patients
+* `opd q len` (with values around 0.8)
+    * Calculated from `OPD_q_length_list`.
+    * That is created by `OPD_q_length_list.append(waitingline_OPD.length.mean())`
+
+Hence, given the values match, and how it was created, the latter is evidently the appropriate row to use. Amended `reproduce.ipynb` to use that row, and now results match up, with no concerning deviation.
+
+## X- : Add SD to Table 6
 
 ## Reflections from troubleshooting today
 
