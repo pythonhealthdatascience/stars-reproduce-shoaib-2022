@@ -232,7 +232,7 @@ These are tables and figures from the main body of the text which were considere
 
 ## Table 3
 
-![Table 3. "PHC configurations". @shoaib_simulation_2021](../original_study/tab3.png){width=80%}
+![Table 3. "PHC configurations. 1: Note: the nurses work in shifts – that is, each nurse works alone in an eight-hour shift. NA = not applicable. All configurations have 6 inpatient beds and 1 childbirth room (with a single bed)." @shoaib_simulation_2021](../original_study/tab3.png){width=80%}
 
 :::
 
