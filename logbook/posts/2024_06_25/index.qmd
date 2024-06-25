@@ -6,6 +6,13 @@ categories: [reproduce]
 bibliography: ../../../quarto_site/references.bib
 ---
 
+::: {.callout-note}
+
+Table 6 100 rep, and created Figure 2A-D. Total time used: TBCh TBCm (TBC%)
+
+:::
+
+
 ## 6.55-6.57: Run 100 replications for Table 6
 
 Start running with 100 replications. Taking too long (ran through 259 replications in 110 minutes), so only got through 2 full configurations before needing to shut it down to go to work.
@@ -72,6 +79,8 @@ When run with the `serv5` appointment times, the results match up with the paper
 
 ![Successful reproduction of Fig2c](fig2c_fixed.png)
 
+**Observation:** Reproduced figure, but not from how I understood it had been set up from the text (unless that was my misunderstanding - which is quite possible!).
+
 ```{python}
 # Minutes used prior to today
 used_to_date = 829
@@ -89,6 +98,77 @@ times = [
 calculate_times(used_to_date, times)
 ```
 
+Emailed to Tom and Alison - and Tom confirmed that Fig2B and 2C are succesful.
+
+::: {.callout-tip}
+## Reflections from Tom from these reproductions
+
+Including code to (re)generate figures
+
+Including tick marks on axes so that people can easily read across or judge whether a bar goes above a Y value or not
+:::
+
+## 13.20-13.26: Add grid lines to figures
+
+Add horizontal grid lines to Figures 2B and 2C, to improve readability.
+
+## 13.29-13.44, 13.47-14.04, 14.13-14.19, 14.24-14.41: Working on Figure 2A
+
+The text and figures do not provide the boundary used when sampling the consultation time. From previous implementations we know:
+
+* Mean 0.87 uses boundaries 0.3/0.5
+* Mean 5 uses boundary 2
+
+However, we do not know for mean 2.5. We might reasonably estimate that it would be around 1, but this is a **guess** and not substantiated by evidence.
+
+Ran all nine combinations set up with parallel processing but only 10 replications, run time **3m 22s**.
+
+Created Figure 2A, and - despite guessing for the 2.5 (0.5) boundaries - I feel the bar heights are sufficiently similar to mark this as successfully reproduced at 14.41.
+
+```{python}
+# Times from today
+times = [
+    ('6.55', '6.57'),
+    ('9.26', '9.50'),
+    ('10.50', '10.51'),
+    ('11.04', '11.17'),
+    ('11.30', '11.50'),
+    ('11.51', '12.08'),
+    ('12.13', '12.17'),
+    ('13.20', '13.26'),
+    ('13.29', '13.44'),
+    ('13.47', '14.04'),
+    ('14.13', '14.19'),
+    ('14.24', '14.41')]
+
+calculate_times(used_to_date, times)
+```
+
+## 14.44-14.54: Working on Figure 2D
+
+Produced Figure 2D using same data and similar code to Figure 2A.
+
+Again, feel sufficiently similar to mark as successfully reproduced at 14.54.
+
+```{python}
+# Times from today
+times = [
+    ('6.55', '6.57'),
+    ('9.26', '9.50'),
+    ('10.50', '10.51'),
+    ('11.04', '11.17'),
+    ('11.30', '11.50'),
+    ('11.51', '12.08'),
+    ('12.13', '12.17'),
+    ('13.20', '13.26'),
+    ('13.29', '13.44'),
+    ('13.47', '14.04'),
+    ('14.13', '14.19'),
+    ('14.24', '14.54')]
+
+calculate_times(used_to_date, times)
+```
+
 ## Timings
 
 ```{python}
@@ -100,7 +180,12 @@ times = [
     ('11.04', '11.17'),
     ('11.30', '11.50'),
     ('11.51', '12.08'),
-    ('12.13', '12.17')]
+    ('12.13', '12.17'),
+    ('13.20', '13.26'),
+    ('13.29', '13.44'),
+    ('13.47', '14.04'),
+    ('14.13', '14.19'),
+    ('14.24', '14.41')]
 
 calculate_times(used_to_date, times)
 ```
