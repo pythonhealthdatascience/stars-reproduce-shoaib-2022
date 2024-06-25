@@ -13,3 +13,9 @@ Start running with 100 replications. Taking too long (ran through 259 replicatio
 ## 9.26-9.50, 10.50-10.51: Used parallel processing when running the replications
 
 Set up parallel processing in `reproduce_tab6.ipynb` to run the 4 sets of 100 replications. It took 61 minutes to run (excluded from timing). Once complete, I looked over the table and was satisified that the mean and SD values were close enough to the original, and considered it now completely successfully reproduced (at timestamp: 10.51). I disregarded some high percent change that were simply due to comparison of numbers very close to zero, and the difference was actually very small.
+
+Emailed to Tom and Alison to share second opinion.
+
+## 11.04-11.09: Saved output from processed replications
+
+Edited notebook so model is not re-run each time (due to long run time), and then saved the processed results to a csv file.
