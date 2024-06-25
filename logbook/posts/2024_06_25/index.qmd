@@ -55,14 +55,11 @@ Re-ran % change calculations with rounded values. As before, observe that we are
 Imported and processed data from the arrival number replications, and produced Figure 2B. Happy that this is succesfully reproduced at timepoint 11.50. In order to declare this reproduced, I feel I do not require to run the same number of replications (100), as understand this would have no meaningful impact on result being plot (mean), and am happy with consistency to original at 10 replications.
 
 ```{python}
-# Minutes used prior to today
-used_to_date = 829
+# Minutes used prior to this figure
+used_to_date = 856
 
 # Times from today
 times = [
-    ('6.55', '6.57'),
-    ('9.26', '9.50'),
-    ('10.50', '10.51'),
     ('11.04', '11.17'),
     ('11.30', '11.50')]
 
@@ -82,16 +79,11 @@ When run with the `serv5` appointment times, the results match up with the paper
 **Observation:** Reproduced figure, but not from how I understood it had been set up from the text (unless that was my misunderstanding - which is quite possible!).
 
 ```{python}
-# Minutes used prior to today
-used_to_date = 829
+# Minutes used prior to this figure
+used_to_date = 889
 
 # Times from today
 times = [
-    ('6.55', '6.57'),
-    ('9.26', '9.50'),
-    ('10.50', '10.51'),
-    ('11.04', '11.17'),
-    ('11.30', '11.50'),
     ('11.51', '12.08'),
     ('12.13', '12.17')]
 
@@ -126,15 +118,11 @@ Ran all nine combinations set up with parallel processing but only 10 replicatio
 Created Figure 2A, and - despite guessing for the 2.5 (0.5) boundaries - I feel the bar heights are sufficiently similar to mark this as successfully reproduced at 14.41.
 
 ```{python}
+# Minutes used prior to this figure
+used_to_date = 910
+
 # Times from today
 times = [
-    ('6.55', '6.57'),
-    ('9.26', '9.50'),
-    ('10.50', '10.51'),
-    ('11.04', '11.17'),
-    ('11.30', '11.50'),
-    ('11.51', '12.08'),
-    ('12.13', '12.17'),
     ('13.20', '13.26'),
     ('13.29', '13.44'),
     ('13.47', '14.04'),
@@ -144,34 +132,58 @@ times = [
 calculate_times(used_to_date, times)
 ```
 
-## 14.44-14.54: Working on Figure 2D
+## 14.44-14.54: Creating Figure 2D
 
 Produced Figure 2D using same data and similar code to Figure 2A.
 
 Again, feel sufficiently similar to mark as successfully reproduced at 14.54.
 
 ```{python}
+# Minutes used prior to this figure
+used_to_date = 971
+
 # Times from today
 times = [
-    ('6.55', '6.57'),
-    ('9.26', '9.50'),
-    ('10.50', '10.51'),
-    ('11.04', '11.17'),
-    ('11.30', '11.50'),
-    ('11.51', '12.08'),
-    ('12.13', '12.17'),
-    ('13.20', '13.26'),
-    ('13.29', '13.44'),
-    ('13.47', '14.04'),
-    ('14.13', '14.19'),
-    ('14.24', '14.54')]
+    ('14.44', '14.54')]
 
 calculate_times(used_to_date, times)
 ```
 
+## 15.10-15.21, 15.24-15.34: Creating Figure 3A
+
+Based scenarios on the labels for Figure 3. These were varying:
+
+* **Number of inpatient/childbirth/ANC cases per day**:
+    * 1 = IAT 1440 (e.g. like IPD cases for config1)
+    * 2 = IAT 720 (as 2880 is 0.5 per day and 1440 is 1 per day)
+* **Average service time for outpatients**:
+    * 0.87 (0.21) (same as config1)
+    * 2.5 (0.5) (as in figure 2)
+
+Set up and ran 10 replications with parallel processing. Took 3 minutes.
+
+Adapted code created for Figure 2A/D to make Figure 3A. Successfully reproduced at 15.34.
+
+```{python}
+# Minutes used prior to this figure
+used_to_date = 981
+
+# Times from today
+times = [
+    ('15.10', '15.21'),
+    ('15.24', '15.34')]
+
+calculate_times(used_to_date, times)
+```
+
+## 15.45-X: Creating Figure 3B
+
 ## Timings
 
 ```{python}
+# Minutes used prior to today
+used_to_date = 829
+
 # Times from today
 times = [
     ('6.55', '6.57'),
@@ -185,7 +197,10 @@ times = [
     ('13.29', '13.44'),
     ('13.47', '14.04'),
     ('14.13', '14.19'),
-    ('14.24', '14.41')]
+    ('14.24', '14.41'),
+    ('14.44', '14.54'),
+    ('15.10', '15.21'),
+    ('15.24', '15.34')]
 
 calculate_times(used_to_date, times)
 ```
