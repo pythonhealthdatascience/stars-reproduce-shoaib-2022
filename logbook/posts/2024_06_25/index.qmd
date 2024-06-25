@@ -8,6 +8,8 @@ bibliography: ../../../quarto_site/references.bib
 
 ## 6.55-6.57: Run 100 replications for Table 6
 
-Start running with 100 replications.
+Start running with 100 replications. Taking too long (ran through 259 replications in 110 minutes), so only got through 2 full configurations before needing to shut it down to go to work.
 
-Taking too long (ran through 259 replications in 110 minutes).
+## 9.26-9.50, 10.50-10.51: Used parallel processing when running the replications
+
+Set up parallel processing in `reproduce_tab6.ipynb` to run the 4 sets of 100 replications. It took 61 minutes to run (excluded from timing). Once complete, I looked over the table and was satisified that the mean and SD values were close enough to the original, and considered it now completely successfully reproduced (at timestamp: 10.51). I disregarded some high percent change that were simply due to comparison of numbers very close to zero, and the difference was actually very small.

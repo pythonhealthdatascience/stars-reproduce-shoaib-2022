@@ -152,20 +152,11 @@ Hence, given the values match, and how it was created, the latter is evidently t
 
 ## 15.34-16.02 : Add SD to Table 6
 
-Add standard deviation. Some percent change seem large as it's comparing very small number - but actual change between the model and table 6 all are small enough that I feel happy to say this has been successfully reproduced.
+Add standard deviation. Some percent change seem large as it's comparing very small number - but actual change between the model and table 6 all are small enough that I feel happy to say this has been successfully reproduced for the mean values.
 
-Will run 100 replications later (if run now, will prevent from working on other things). However, as would otherwise run now, if that comes out as matching up too, then would say timestamp at which this was complete is 16.02 + a few minutes, as that's when I would've otherwise finished up with it if possible.
+Will run 100 replications later, and confirm whether standard deviations are similar - but anticipate to take a while, so will work on something else for remainder of day, as not got time to run them all now.
 
-**Therefore, timestamp at which feel has been reproduced:** 16.02 + 5 min (for checking table later)
-
-**Timing at that point:** 32.8%, 787m
-
-```
-Time spent today: 256m, or 4h 16m
-Total used to date: 787m, or 13h 7m
-Time remaining: 1613m, or 26h 53m
-Used 32.8% of 40 hours max
-```
+As the long run-time prevents me from checking this now, I will not yet timestamp this as complete.
 
 ## 16.13-17.00: Starting on Figure 2A-D
 
