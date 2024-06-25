@@ -553,18 +553,32 @@
     "text": "15.10-15.21, 15.24-15.34: Creating Figure 3A\nBased scenarios on the labels for Figure 3. These were varying:\n\nNumber of inpatient/childbirth/ANC cases per day:\n\n1 = IAT 1440 (e.g. like IPD cases for config1)\n2 = IAT 720 (as 2880 is 0.5 per day and 1440 is 1 per day)\n\nAverage service time for outpatients:\n\n0.87 (0.21) (same as config1)\n2.5 (0.5) (as in figure 2)\n\n\nSet up and ran 10 replications with parallel processing. Took 3 minutes.\nAdapted code created for Figure 2A/D to make Figure 3A. Successfully reproduced at 15.34.\n\n# Minutes used prior to this figure\nused_to_date = 981\n\n# Times from today\ntimes = [\n    ('15.10', '15.21'),\n    ('15.24', '15.34')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 21m, or 0h 21m\nTotal used to date: 1002m, or 16h 42m\nTime remaining: 1398m, or 23h 18m\nUsed 41.8% of 40 hours max"
   },
   {
-    "objectID": "logbook/posts/2024_06_25/index.html#x-creating-figure-3b",
-    "href": "logbook/posts/2024_06_25/index.html#x-creating-figure-3b",
+    "objectID": "logbook/posts/2024_06_25/index.html#creating-figure-3b",
+    "href": "logbook/posts/2024_06_25/index.html#creating-figure-3b",
     "title": "Day 4",
-    "section": "15.45-X: Creating Figure 3B",
-    "text": "15.45-X: Creating Figure 3B"
+    "section": "15.45-15.51: Creating Figure 3B",
+    "text": "15.45-15.51: Creating Figure 3B\nSuccessfully reproduced at 15.51.\n\n# Minutes used prior to this figure\nused_to_date = 1002\n\n# Times from today\ntimes = [\n    ('15.45', '15.51')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 6m, or 0h 6m\nTotal used to date: 1008m, or 16h 48m\nTime remaining: 1392m, or 23h 12m\nUsed 42.0% of 40 hours max"
+  },
+  {
+    "objectID": "logbook/posts/2024_06_25/index.html#creating-figure-3c",
+    "href": "logbook/posts/2024_06_25/index.html#creating-figure-3c",
+    "title": "Day 4",
+    "section": "15.53-15.54: Creating Figure 3C",
+    "text": "15.53-15.54: Creating Figure 3C\nSuccessfully reproduced at 15.54.\n\n# Minutes used prior to this figure\nused_to_date = 1008\n\n# Times from today\ntimes = [\n    ('15.53', '15.54')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 1m, or 0h 1m\nTotal used to date: 1009m, or 16h 49m\nTime remaining: 1391m, or 23h 11m\nUsed 42.0% of 40 hours max"
+  },
+  {
+    "objectID": "logbook/posts/2024_06_25/index.html#creating-figure-3d",
+    "href": "logbook/posts/2024_06_25/index.html#creating-figure-3d",
+    "title": "Day 4",
+    "section": "15.55-15.58: Creating Figure 3D",
+    "text": "15.55-15.58: Creating Figure 3D\nSuccessfully reproduced at 15.58.\n\n# Minutes used prior to this figure\nused_to_date = 1009\n\n# Times from today\ntimes = [\n    ('15.55', '15.58')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 3m, or 0h 3m\nTotal used to date: 1012m, or 16h 52m\nTime remaining: 1388m, or 23h 8m\nUsed 42.2% of 40 hours max"
   },
   {
     "objectID": "logbook/posts/2024_06_25/index.html#timings",
     "href": "logbook/posts/2024_06_25/index.html#timings",
     "title": "Day 4",
     "section": "Timings",
-    "text": "Timings\n\n# Minutes used prior to today\nused_to_date = 829\n\n# Times from today\ntimes = [\n    ('6.55', '6.57'),\n    ('9.26', '9.50'),\n    ('10.50', '10.51'),\n    ('11.04', '11.17'),\n    ('11.30', '11.50'),\n    ('11.51', '12.08'),\n    ('12.13', '12.17'),\n    ('13.20', '13.26'),\n    ('13.29', '13.44'),\n    ('13.47', '14.04'),\n    ('14.13', '14.19'),\n    ('14.24', '14.41'),\n    ('14.44', '14.54'),\n    ('15.10', '15.21'),\n    ('15.24', '15.34')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 173m, or 2h 53m\nTotal used to date: 1002m, or 16h 42m\nTime remaining: 1398m, or 23h 18m\nUsed 41.8% of 40 hours max"
+    "text": "Timings\n\n# Minutes used prior to today\nused_to_date = 829\n\n# Times from today\ntimes = [\n    ('6.55', '6.57'),\n    ('9.26', '9.50'),\n    ('10.50', '10.51'),\n    ('11.04', '11.17'),\n    ('11.30', '11.50'),\n    ('11.51', '12.08'),\n    ('12.13', '12.17'),\n    ('13.20', '13.26'),\n    ('13.29', '13.44'),\n    ('13.47', '14.04'),\n    ('14.13', '14.19'),\n    ('14.24', '14.41'),\n    ('14.44', '14.54'),\n    ('15.10', '15.21'),\n    ('15.24', '15.34'),\n    ('15.45', '15.51'),\n    ('15.53', '15.54'),\n    ('15.55', '15.58')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 183m, or 3h 3m\nTotal used to date: 1012m, or 16h 52m\nTime remaining: 1388m, or 23h 8m\nUsed 42.2% of 40 hours max"
   },
   {
     "objectID": "logbook/logbook.html",
@@ -711,7 +725,7 @@
     "href": "reproduction/reproduce_fig3.html#process-results",
     "title": "Reproducing Figure 3A-D",
     "section": "Process results",
-    "text": "Process results\n\ndef process_results(files):\n    '''\n    Imports files in provided list and produces a single dataframe with mean\n    results from across the replications\n\n    Parameters:\n    ----------\n    files : list\n        List of file names (exc. file type) containing replication results\n\n    Returns:\n    --------\n    summary : dataframe\n        Dataframe with mean results for each model variant in file list\n    '''\n    # Empty list to store results\n    result_list = []\n\n    for f in files:\n        # Import .xls and convert to pandas dataframe\n        book = xlrd.open_workbook(os.path.join(output_folder, f'{f}.xls'))\n        result = pd.read_excel(book, header=None, index_col=0)\n\n        # Find mean from the replication\n        # Save as dataframe, dropping the duplicate rows (NCD occ twice)\n        res = pd.DataFrame({f: result.mean(axis=1)}).drop_duplicates()\n\n        # Remove index name\n        res.index.name = None\n\n        # Save to list\n        result_list.append(res)\n\n    # Combine into single dataframe\n    summary = pd.concat(result_list, axis=1)\n\n    return summary"
+    "text": "Process results\n\ndef process_results(files):\n    '''\n    Imports files in provided list and produces a single dataframe with mean\n    results from across the replications\n\n    Parameters:\n    ----------\n    files : list\n        List of file names (exc. file type) containing replication results\n\n    Returns:\n    --------\n    summary : dataframe\n        Dataframe with mean results for each model variant in file list\n    '''\n    # Empty list to store results\n    result_list = []\n\n    for f in files:\n        # Import .xls and convert to pandas dataframe\n        book = xlrd.open_workbook(os.path.join(output_folder, f'{f}.xls'))\n        result = pd.read_excel(book, header=None, index_col=0)\n\n        # Add proportion of childbirth cases referred\n        result.loc['prop_del_referred'] = (\n            result.loc['del referred'] / result.loc['Del patients'])\n\n        # Find mean from the replication\n        # Save as dataframe, dropping the duplicate rows (NCD occ twice)\n        res = pd.DataFrame({f: result.mean(axis=1)}).drop_duplicates()\n\n        # Remove index name\n        res.index.name = None\n\n        # Save to list\n        result_list.append(res)\n\n    # Combine into single dataframe\n    summary = pd.concat(result_list, axis=1)\n\n    return summary"
   },
   {
     "objectID": "reproduction/reproduce_fig3.html#create-figure-3a",
@@ -719,6 +733,27 @@
     "title": "Reproducing Figure 3A-D",
     "section": "Create Figure 3A",
     "text": "Create Figure 3A\n\n# Import and process results\ndata_full = process_results([\n    'f3_arr111_serv087', 'f3_arr211_serv087', 'f3_arr222_serv087',\n    'f3_arr111_serv25', 'f3_arr211_serv25', 'f3_arr222_serv25'])\n\n# Filter to doctor utilisation\na3 = data_full.loc['doc occ']\na3\n\nf3_arr111_serv087    0.269199\nf3_arr211_serv087    0.271072\nf3_arr222_serv087    0.289770\nf3_arr111_serv25     0.513668\nf3_arr211_serv25     0.517088\nf3_arr222_serv25     0.537383\nName: doc occ, dtype: float64\n\n\n\n# Reshape data so in appropriate format for plotting grouped bar chart\nnames = ['0.87 (0.21)', '2.5 (0.5)']\ns111 = [a3['f3_arr111_serv087'], a3['f3_arr111_serv25']]\ns211 = [a3['f3_arr211_serv087'], a3['f3_arr211_serv25']]\ns222 = [a3['f3_arr222_serv087'], a3['f3_arr222_serv25']]\n\ndata_3a = pd.DataFrame(\n    {'(1/1/1)': s111, '(2/1/1)': s211, '(2/2/2)': s222}, index=names)\ndata_3a\n\n\n\n\n\n\n\n\n(1/1/1)\n(2/1/1)\n(2/2/2)\n\n\n\n\n0.87 (0.21)\n0.269199\n0.271072\n0.289770\n\n\n2.5 (0.5)\n0.513668\n0.517088\n0.537383\n\n\n\n\n\n\n\n\n# Plot data\nax = data_3a.plot.bar(edgecolor='black', color='white', width=0.7)\n\n# Add patterns\nbars = ax.patches\npattern = np.repeat(['++', '\\\\\\\\\\\\\\\\', '//////'], 2)\nfor bar, hatch in zip(bars, pattern):\n    bar.set_hatch(hatch)\nax.legend(title='Inpatient/Childbirth/ANC cases per day')\n\n# Adjust figure\nplt.xlabel('Consultation time (minutes): mean (SD)')\nplt.ylabel('''Doctor's utilisation''')\nplt.xticks(rotation=0)\nax.grid(axis='y')\nplt.ylim(0, 1)\nax.set_axisbelow(True)\nplt.savefig(fig3a_path, bbox_inches='tight')\nplt.show()"
+  },
+  {
+    "objectID": "reproduction/reproduce_fig3.html#creating-figure-3b",
+    "href": "reproduction/reproduce_fig3.html#creating-figure-3b",
+    "title": "Reproducing Figure 3A-D",
+    "section": "Creating Figure 3B",
+    "text": "Creating Figure 3B\n\n# Filter to staff nurse utilisation and config1 (0.87)\ndata_3b = data_full.loc[\n    'staff nurse occ', data_full.columns.str.endswith('087')]\n# Rename index\ndata_3b = data_3b.rename(index={'f3_arr111_serv087': '(1/1/1)',\n                                'f3_arr211_serv087': '(2/1/1)',\n                                'f3_arr222_serv087': '(2/2/2)'})\ndata_3b\n\n(1/1/1)    0.340263\n(2/1/1)    0.381168\n(2/2/2)    0.531075\nName: staff nurse occ, dtype: float64\n\n\n\nax = data_3b.plot.bar(edgecolor='black', color='white', hatch='..')\nplt.xlabel('Inpatient/childbirth/ANC cases per day')\nplt.ylabel('''Staff nurse's utilisation''')\nplt.ylim(0, 1)\nplt.xticks(rotation=0)\nax.grid(axis='y')\nax.set_axisbelow(True)\nplt.savefig(fig3b_path, bbox_inches='tight')\nplt.show()"
+  },
+  {
+    "objectID": "reproduction/reproduce_fig3.html#creating-figure-3c",
+    "href": "reproduction/reproduce_fig3.html#creating-figure-3c",
+    "title": "Reproducing Figure 3A-D",
+    "section": "Creating Figure 3C",
+    "text": "Creating Figure 3C\n\n# Filter to inpatient bed utilisation and config1 (0.87)\ndata_3c = data_full.loc[\n    'ipd bed occ', data_full.columns.str.endswith('087')]\n# Rename index\ndata_3c = data_3c.rename(index={'f3_arr111_serv087': '(1/1/1)',\n                                'f3_arr211_serv087': '(2/1/1)',\n                                'f3_arr222_serv087': '(2/2/2)'})\ndata_3c\n\n(1/1/1)    0.104917\n(2/1/1)    0.129776\n(2/2/2)    0.188154\nName: ipd bed occ, dtype: float64\n\n\n\nax = data_3c.plot.bar(edgecolor='black', color='white', hatch='..')\nplt.xlabel('Inpatient/childbirth/ANC cases per day')\nplt.ylabel('Inpatient bed utilisation')\nplt.ylim(0, 1)\nplt.xticks(rotation=0)\nax.grid(axis='y')\nax.set_axisbelow(True)\nplt.savefig(fig3c_path, bbox_inches='tight')\nplt.show()"
+  },
+  {
+    "objectID": "reproduction/reproduce_fig3.html#creating-figure-3d",
+    "href": "reproduction/reproduce_fig3.html#creating-figure-3d",
+    "title": "Reproducing Figure 3A-D",
+    "section": "Creating Figure 3D",
+    "text": "Creating Figure 3D\n\n# Filter to proportion of childbirth cases referred and config1 (0.87)\ndata_3d = data_full.loc[\n    'prop_del_referred', data_full.columns.str.endswith('087')]\n# Rename index\ndata_3d = data_3d.rename(index={'f3_arr111_serv087': '(1/1/1)',\n                                'f3_arr211_serv087': '(2/1/1)',\n                                'f3_arr222_serv087': '(2/2/2)'})\ndata_3d\n\n(1/1/1)    0.148167\n(2/1/1)    0.166277\n(2/2/2)    0.270541\nName: prop_del_referred, dtype: float64\n\n\n\nax = data_3d.plot.bar(edgecolor='black', color='white', hatch='..')\nplt.xlabel('Inpatient/childbirth/ANC cases per day')\nplt.ylabel('Proportion of childbirth cases referred')\nplt.yticks(np.arange(0, 0.5, 0.1))\nplt.xticks(rotation=0)\nax.grid(axis='y')\nax.set_axisbelow(True)\nplt.savefig(fig3d_path, bbox_inches='tight')\nplt.show()"
   },
   {
     "objectID": "reproduction/reproduce_fig3.html#run-time",

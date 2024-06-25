@@ -252,7 +252,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#working-on-figure-2a" id="toc-working-on-figure-2a" class="nav-link" data-scroll-target="#working-on-figure-2a">13.29-13.44, 13.47-14.04, 14.13-14.19, 14.24-14.41: Working on Figure 2A</a></li>
   <li><a href="#creating-figure-2d" id="toc-creating-figure-2d" class="nav-link" data-scroll-target="#creating-figure-2d">14.44-14.54: Creating Figure 2D</a></li>
   <li><a href="#creating-figure-3a" id="toc-creating-figure-3a" class="nav-link" data-scroll-target="#creating-figure-3a">15.10-15.21, 15.24-15.34: Creating Figure 3A</a></li>
-  <li><a href="#x-creating-figure-3b" id="toc-x-creating-figure-3b" class="nav-link" data-scroll-target="#x-creating-figure-3b">15.45-X: Creating Figure 3B</a></li>
+  <li><a href="#creating-figure-3b" id="toc-creating-figure-3b" class="nav-link" data-scroll-target="#creating-figure-3b">15.45-15.51: Creating Figure 3B</a></li>
+  <li><a href="#creating-figure-3c" id="toc-creating-figure-3c" class="nav-link" data-scroll-target="#creating-figure-3c">15.53-15.54: Creating Figure 3C</a></li>
+  <li><a href="#creating-figure-3d" id="toc-creating-figure-3d" class="nav-link" data-scroll-target="#creating-figure-3d">15.55-15.58: Creating Figure 3D</a></li>
   <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_25/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -286,7 +288,7 @@ Note
 <p>Set up parallel processing in <code>reproduce_tab6.ipynb</code> to run the 4 sets of 100 replications. It took 61 minutes to run (excluded from timing). Once complete, I looked over the table and was satisified that the mean and SD values were close enough to the original, and considered it now completely successfully reproduced (at timestamp: 10.51). I disregarded some high percent change that were simply due to comparison of numbers very close to zero, and the difference was actually very small.</p>
 <p>Emailed to Tom and Alison to share second opinion.</p>
 <p>Timing for when Table 6 is completed (i.e.&nbsp;as of 10.51):</p>
-<div id="5c93de1e" class="cell" data-execution_count="1">
+<div id="d0f4cdcb" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -318,7 +320,7 @@ Used 35.7% of 40 hours max</code></pre>
 <section id="create-figure-2b" class="level2">
 <h2 class="anchored" data-anchor-id="create-figure-2b">11.30-11.50: Create Figure 2B</h2>
 <p>Imported and processed data from the arrival number replications, and produced Figure 2B. Happy that this is succesfully reproduced at timepoint 11.50. In order to declare this reproduced, I feel I do not require to run the same number of replications (100), as understand this would have no meaningful impact on result being plot (mean), and am happy with consistency to original at 10 replications.</p>
-<div id="90e73034" class="cell" data-execution_count="2">
+<div id="6fd9f4c4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this figure</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">856</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -353,7 +355,7 @@ Used 37.0% of 40 hours max</code></pre>
 </figure>
 </div>
 <p><strong>Observation:</strong> Reproduced figure, but not from how I understood it had been set up from the text (unless that was my misunderstanding - which is quite possible!).</p>
-<div id="6b688f6c" class="cell" data-execution_count="3">
+<div id="dea83bec" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this figure</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">889</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -400,7 +402,7 @@ Reflections from Tom from these reproductions
 <p>However, we do not know for mean 2.5. We might reasonably estimate that it would be around 1, but this is a <strong>guess</strong> and not substantiated by evidence.</p>
 <p>Ran all nine combinations set up with parallel processing but only 10 replications, run time <strong>3m 22s</strong>.</p>
 <p>Created Figure 2A, and - despite guessing for the 2.5 (0.5) boundaries - I feel the bar heights are sufficiently similar to mark this as successfully reproduced at 14.41.</p>
-<div id="d9cf5693" class="cell" data-execution_count="4">
+<div id="f377d8e0" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this figure</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">910</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -425,7 +427,7 @@ Used 40.5% of 40 hours max</code></pre>
 <h2 class="anchored" data-anchor-id="creating-figure-2d">14.44-14.54: Creating Figure 2D</h2>
 <p>Produced Figure 2D using same data and similar code to Figure 2A.</p>
 <p>Again, feel sufficiently similar to mark as successfully reproduced at 14.54.</p>
-<div id="46430843" class="cell" data-execution_count="5">
+<div id="0941b296" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this figure</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">971</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -459,7 +461,7 @@ Used 40.9% of 40 hours max</code></pre>
 </ul>
 <p>Set up and ran 10 replications with parallel processing. Took 3 minutes.</p>
 <p>Adapted code created for Figure 2A/D to make Figure 3A. Successfully reproduced at 15.34.</p>
-<div id="8e7cb594" class="cell" data-execution_count="6">
+<div id="06a6e37f" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this figure</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">981</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -477,39 +479,99 @@ Used 41.8% of 40 hours max</code></pre>
 </div>
 </div>
 </section>
-<section id="x-creating-figure-3b" class="level2">
-<h2 class="anchored" data-anchor-id="x-creating-figure-3b">15.45-X: Creating Figure 3B</h2>
-</section>
-<section id="timings" class="level2">
-<h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="3ce0560c" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">829</span></span>
+<section id="creating-figure-3b" class="level2">
+<h2 class="anchored" data-anchor-id="creating-figure-3b">15.45-15.51: Creating Figure 3B</h2>
+<p>Successfully reproduced at 15.51.</p>
+<div id="f6d7f6b7" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this figure</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1002</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'6.55'</span>, <span class="st">'6.57'</span>),</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.26'</span>, <span class="st">'9.50'</span>),</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.50'</span>, <span class="st">'10.51'</span>),</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.04'</span>, <span class="st">'11.17'</span>),</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.30'</span>, <span class="st">'11.50'</span>),</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.51'</span>, <span class="st">'12.08'</span>),</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.13'</span>, <span class="st">'12.17'</span>),</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.20'</span>, <span class="st">'13.26'</span>),</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.29'</span>, <span class="st">'13.44'</span>),</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.47'</span>, <span class="st">'14.04'</span>),</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.13'</span>, <span class="st">'14.19'</span>),</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.24'</span>, <span class="st">'14.41'</span>),</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.44'</span>, <span class="st">'14.54'</span>),</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.10'</span>, <span class="st">'15.21'</span>),</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.24'</span>, <span class="st">'15.34'</span>)]</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.45'</span>, <span class="st">'15.51'</span>)]</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time spent today: 173m, or 2h 53m
-Total used to date: 1002m, or 16h 42m
-Time remaining: 1398m, or 23h 18m
-Used 41.8% of 40 hours max</code></pre>
+<pre><code>Time spent today: 6m, or 0h 6m
+Total used to date: 1008m, or 16h 48m
+Time remaining: 1392m, or 23h 12m
+Used 42.0% of 40 hours max</code></pre>
+</div>
+</div>
+</section>
+<section id="creating-figure-3c" class="level2">
+<h2 class="anchored" data-anchor-id="creating-figure-3c">15.53-15.54: Creating Figure 3C</h2>
+<p>Successfully reproduced at 15.54.</p>
+<div id="891f76ef" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this figure</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1008</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.53'</span>, <span class="st">'15.54'</span>)]</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time spent today: 1m, or 0h 1m
+Total used to date: 1009m, or 16h 49m
+Time remaining: 1391m, or 23h 11m
+Used 42.0% of 40 hours max</code></pre>
+</div>
+</div>
+</section>
+<section id="creating-figure-3d" class="level2">
+<h2 class="anchored" data-anchor-id="creating-figure-3d">15.55-15.58: Creating Figure 3D</h2>
+<p>Successfully reproduced at 15.58.</p>
+<div id="1cd0005b" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this figure</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1009</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.55'</span>, <span class="st">'15.58'</span>)]</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time spent today: 3m, or 0h 3m
+Total used to date: 1012m, or 16h 52m
+Time remaining: 1388m, or 23h 8m
+Used 42.2% of 40 hours max</code></pre>
+</div>
+</div>
+</section>
+<section id="timings" class="level2">
+<h2 class="anchored" data-anchor-id="timings">Timings</h2>
+<div id="e9b5c0e9" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">829</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'6.55'</span>, <span class="st">'6.57'</span>),</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.26'</span>, <span class="st">'9.50'</span>),</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.50'</span>, <span class="st">'10.51'</span>),</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.04'</span>, <span class="st">'11.17'</span>),</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.30'</span>, <span class="st">'11.50'</span>),</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.51'</span>, <span class="st">'12.08'</span>),</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.13'</span>, <span class="st">'12.17'</span>),</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.20'</span>, <span class="st">'13.26'</span>),</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.29'</span>, <span class="st">'13.44'</span>),</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.47'</span>, <span class="st">'14.04'</span>),</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.13'</span>, <span class="st">'14.19'</span>),</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.24'</span>, <span class="st">'14.41'</span>),</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.44'</span>, <span class="st">'14.54'</span>),</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.10'</span>, <span class="st">'15.21'</span>),</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.24'</span>, <span class="st">'15.34'</span>),</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.45'</span>, <span class="st">'15.51'</span>),</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.53'</span>, <span class="st">'15.54'</span>),</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.55'</span>, <span class="st">'15.58'</span>)]</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time spent today: 183m, or 3h 3m
+Total used to date: 1012m, or 16h 52m
+Time remaining: 1388m, or 23h 8m
+Used 42.2% of 40 hours max</code></pre>
 </div>
 </div>
 
