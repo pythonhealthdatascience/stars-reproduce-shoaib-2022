@@ -1,21 +1,286 @@
 ---
 title: "Reproduction success"
+bibliography: ../quarto_site/references.bib
+echo: False
 ---
-
-<!-- TODO: Remove this warning once completed assessment -->
-**Please note: This is a template page and has not yet been completed**
 
 <!-- TODO: Use skeleton to create page describing reproduction success. If it is subjective (e.g. comparing figures), be sure to explain how you decided that the figure was now successfully reproduced or not -->
 
 Of the X items in the scope, X% (X out of X) were considered to be **successfully reproduced**.
 
-## Figure X
+As cited throughout, images on this page are sourced from @shoaib_simulation_2021, which is shared under [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/).
 
-Original figure:
+::: {.callout-note appearance="minimal" collapse=true}
 
-<!-- Image, e.g.
-![](../original_study/article_fig2.png){width=70% fig-align="center"} -->
+## Table 6
+
+Original (@shoaib_simulation_2021):
+
+![](../original_study/tab6.png){width=80% fig-align="center"}
 
 Reproduction:
 
-<!-- Image -->
+```{python}
+import pandas as pd
+
+pd.read_csv('../reproduction/outputs/tab6.csv')
+```
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 2A
+
+Original (@shoaib_simulation_2021):
+
+![](../original_study/fig2a.png){width=70% fig-align="center"}
+
+Reproduction:
+
+![](../reproduction/outputs/fig2a.png){width=70% fig-align="center"}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 2B
+
+Original (@shoaib_simulation_2021):
+
+![](../original_study/fig2b.png){width=70% fig-align="center"}
+
+Reproduction:
+
+![](../reproduction/outputs/fig2b.png){width=70% fig-align="center"}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 2C
+
+Original (@shoaib_simulation_2021):
+
+![](../original_study/fig2c.png){width=70% fig-align="center"}
+
+Reproduction:
+
+![](../reproduction/outputs/fig2c.png){width=70% fig-align="center"}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 2D
+
+Original (@shoaib_simulation_2021):
+
+![](../original_study/fig2d.png){width=70% fig-align="center"}
+
+Reproduction:
+
+![](../reproduction/outputs/fig2d.png){width=70% fig-align="center"}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 3A
+
+Original (@shoaib_simulation_2021):
+
+![](../original_study/fig3a.png){width=70% fig-align="center"}
+
+Reproduction:
+
+![](../reproduction/outputs/fig3a.png){width=70% fig-align="center"}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 3B
+
+Original (@shoaib_simulation_2021):
+
+![](../original_study/fig3b.png){width=70% fig-align="center"}
+
+Reproduction:
+
+![](../reproduction/outputs/fig3b.png){width=70% fig-align="center"}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 3C
+
+Original (@shoaib_simulation_2021):
+
+![](../original_study/fig3c.png){width=70% fig-align="center"}
+
+Reproduction:
+
+![](../reproduction/outputs/fig3c.png){width=70% fig-align="center"}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 3D
+
+Original (@shoaib_simulation_2021):
+
+![](../original_study/fig3d.png){width=70% fig-align="center"}
+
+Reproduction:
+
+![](../reproduction/outputs/fig3d.png){width=70% fig-align="center"}
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## Figure 4
+
+Original (@shoaib_simulation_2021):
+
+![](../original_study/fig4.png){width=80%}
+
+Reproduction:
+
+**TBC**
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 1
+
+From section 4.3: "We also note that waiting times for outpatient-related resources (laboratory, OPD consultation, etc. - not depicted in Figures 3a – 3d) increase marginally because the associated resources are also required by inpatient/childbirth/ANC cases, which increase in number in the above scenarios"
+
+Interpretation:
+
+* Run sensitivity analysis as in Figures 3a-d, but look at outcomes relating to laboratory and outpatient consulation
+* Result: marginal increase
+
+Reproduction:
+
+**TBC**
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 2
+
+From section 4.3.1: "To address this, we experimented with letting the staff nurse (whose utilisation is approximately 32%) take over the administrative work. This led to a 12% drop in the utilisation level, which implied that the doctor’s utilisation still exceeded 100%. Implementing this measure resulted in increasing the staff nurse utilisation to nearly 40%."
+
+Interpretation:
+
+* Average patient load of 170 per day
+* Average consultation time of 5 min per patient
+* Change doctor to have no administrative work, and assign all to staff nurse
+* Results: doctor utilisation 103%
+
+*103% is because the next result is 1% below, and as there is a 12% drop from fig 2a, still over 100%, and nurse utilisation at 40%*
+
+Reproduction:
+
+**TBC**
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 3
+
+From section 4.3.1: "then considered a situation wherein the staff nurses require minimal intervention in childbirth cases. We assumed that in 50% of childbirth cases, staff nurses require no intervention by the doctor; require only one- third of the typical amount of intervention in 30% of cases, and require full intervention in the remaining 20% of cases. This led to a decrease of the doctor’s utilisation to 101% (a further decrease of approximately 1%), and an increase in the nurse’s utilisation to 40%."
+
+Interpretation:
+
+* Average patient load of 170 per day
+* Average consultation time of 5 min per patient
+* Change doctors from always attending childbirth cases when free to 50% not attending, 30% attending but for one-third of normal time, 20% attending for normal time
+* Result: Doctor utilisation 101% and nurse utilisation 40%
+
+Reproduction:
+
+**TBC**
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 4
+
+From section 4.3.1: "investigated the effect of stationing an additional doctor in the PHC. This yielded an average utilisation of well below 100% for each doctor."
+
+Interpretation:
+
+* Average patient load of 170 per day
+* Average consultation time of 5 min per patient
+* Add a doctor
+* Result: each doctor has utilisation "well below 100%"
+
+Reproduction:
+
+**TBC**
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 5
+
+From section 4.3.2: "We also observe that if the number of beds is reduced to four from six, the utilisation level is observed to be approximately thirty-three percent even under higher demand conditions (two inpatient and childbirth cases/day)."
+
+Interpretation:
+
+* Reduce from six to four inpatient beds
+* Conditions un-specified (assume standard, and also high demand (2 inpatient and childbirth cases per day))
+* Result: Approximately 33% utilisation
+
+Reproduction:
+
+**TBC**
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 6
+
+From section 4.3.3: "When the administrative work alone is assigned to the staff nurse the average utilisation of the NCD nurse decreases to 100%"
+
+Interpretation:
+
+* Outpatient interarrival time 3 minutes
+* No administrative work for NCD nurse, only assigned to staff nurse
+* Result: NCD nurse utilisation 100%
+
+Reproduction:
+
+**TBC**
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
+## In-text result 7
+
+From section 4.3.3: "Further, in addition to the administrative work when the staff nurse assisted for NCD checks (for 10% cases) the utilisation of NCD nurse dropped to 71%."
+
+Interpretation:
+
+* Outpatient interarrival time 3 minutes
+* Potentially combined with change in administrative work
+* Assigned staff nurse for 10% of NCD cases
+* Result: NCD nurse utilisation 71%
+
+Reproduction:
+
+**TBC**
+
+:::
