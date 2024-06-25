@@ -235,8 +235,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This notebook currently imports results from a run of PHC.py and attempts to map them to Table 6.</p>
+<p>This notebook currently imports results from a run of PHC.py and maps them to Table 6.</p>
 <p>Table 6 results are from Shoaib M, Ramamohan V. <strong>Simulation modeling and analysis of primary health center operations</strong>. <em>SIMULATION</em> 98(3):183-208. (2022). <a href="https://doi.org/10.1177/00375497211030931" class="uri">https://doi.org/10.1177/00375497211030931</a>.</p>
+<p>Run time: <strong>61 minutes</strong>. Will need to uncomment the timer sections and section to run model if you wish to fully rerun. These are currently commented so the notebook can otherwise be used for processing the results.</p>
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set up</h2>
 <div id="cell-3" class="cell" data-execution_count="1">
@@ -253,11 +254,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> multiprocessing <span class="im">import</span> Pool</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Additional package to record runtime of this notebook</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> time.time()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># import time</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># start = time.time()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-4" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>table6_path <span class="op">=</span> <span class="st">'../original_study/tab6.csv'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>table6_path <span class="op">=</span> <span class="st">'../original_study/tab6.csv'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>final_results <span class="op">=</span> <span class="st">'outputs/tab6.csv'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="run-model" class="level2">
@@ -322,477 +324,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    config[i] <span class="op">=</span> {<span class="ss">f's_</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">'</span>: v <span class="cf">for</span> k, v <span class="kw">in</span> d.items()}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Run model for each configuration using parallel processing.</p>
+<p><strong>Note:</strong> Commented out due to long run time.</p>
 <div id="cell-9" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrapper function to allow input of dictionary with pool</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> wrapper(d):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> PHC.main(<span class="op">**</span>d)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a process pool that uses all CPUs</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> Pool(<span class="dv">4</span>) <span class="im">as</span> pool:</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Run PHC.main() using each of inputs from config</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    pool.<span class="bu">map</span>(wrapper, config)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> No of replications done 0
- No of replications done 0
- No of replications done 1
- No of replications done 1
- No of replications done 0
- No of replications done 2
- No of replications done 0
- No of replications done 2
- No of replications done 3
- No of replications done 3
- No of replications done 1
- No of replications done 4
- No of replications done 4
- No of replications done 5
- No of replications done 1
- No of replications done 5
- No of replications done 6
- No of replications done 2
- No of replications done 6
- No of replications done 7
- No of replications done 8
- No of replications done 7
- No of replications done 2
- No of replications done 3
- No of replications done 9
- No of replications done 8
- No of replications done 10
- No of replications done 9
- No of replications done 11
- No of replications done 4
- No of replications done 10
- No of replications done 12
- No of replications done 3
- No of replications done 11
- No of replications done 13
- No of replications done 14
- No of replications done 12
- No of replications done 5
- No of replications done 15
- No of replications done 13
- No of replications done 4
- No of replications done 16
- No of replications done 14
- No of replications done 6
- No of replications done 17
- No of replications done 18
- No of replications done 15
- No of replications done 19
- No of replications done 5
- No of replications done 16
- No of replications done 7
- No of replications done 20
- No of replications done 17
- No of replications done 21
- No of replications done 22
- No of replications done 18
- No of replications done 8
- No of replications done 6
- No of replications done 23
- No of replications done 19
- No of replications done 24
- No of replications done 25
- No of replications done 20
- No of replications done 9
- No of replications done 26
- No of replications done 7
- No of replications done 21
- No of replications done 27
- No of replications done 28
- No of replications done 22
- No of replications done 10
- No of replications done 29
- No of replications done 30
- No of replications done 23
- No of replications done 8
- No of replications done 31
- No of replications done 24
- No of replications done 11
- No of replications done 32
- No of replications done 33
- No of replications done 25
- No of replications done 34
- No of replications done 9
- No of replications done 26
- No of replications done 35
- No of replications done 12
- No of replications done 36
- No of replications done 27
- No of replications done 37
- No of replications done 38
- No of replications done 10
- No of replications done 28
- No of replications done 13
- No of replications done 39
- No of replications done 29
- No of replications done 40
- No of replications done 41
- No of replications done 30
- No of replications done 14
- No of replications done 42
- No of replications done 11
- No of replications done 43
- No of replications done 31
- No of replications done 44
- No of replications done 45
- No of replications done 15
- No of replications done 32
- No of replications done 46
- No of replications done 12
- No of replications done 47
- No of replications done 33
- No of replications done 48
- No of replications done 16
- No of replications done 49
- No of replications done 34
- No of replications done 50
- No of replications done 13
- No of replications done 51
- No of replications done 35
- No of replications done 52
- No of replications done 17
- No of replications done 36
- No of replications done 53
- No of replications done 54
- No of replications done 37
- No of replications done 55
- No of replications done 14
- No of replications done 18
- No of replications done 56
- No of replications done 38
- No of replications done 57
- No of replications done 58
- No of replications done 39
- No of replications done 59
- No of replications done 15
- No of replications done 19
- No of replications done 60
- No of replications done 40
- No of replications done 61
- No of replications done 62
- No of replications done 41
- No of replications done 63
- No of replications done 20
- No of replications done 16
- No of replications done 64
- No of replications done 42
- No of replications done 65
- No of replications done 66
- No of replications done 43
- No of replications done 67
- No of replications done 21
- No of replications done 68
- No of replications done 17
- No of replications done 44
- No of replications done 69
- No of replications done 70
- No of replications done 45
- No of replications done 71
- No of replications done 22
- No of replications done 72
- No of replications done 18
- No of replications done 46
- No of replications done 73
- No of replications done 74
- No of replications done 75
- No of replications done 47
- No of replications done 23
- No of replications done 76
- No of replications done 77
- No of replications done 48
- No of replications done 19
- No of replications done 78
- No of replications done 79
- No of replications done 24
- No of replications done 49
- No of replications done 80
- No of replications done 81
- No of replications done 82
- No of replications done 50
- No of replications done 20
- No of replications done 83
- No of replications done 25
- No of replications done 84
- No of replications done 51
- No of replications done 85
- No of replications done 86
- No of replications done 52
- No of replications done 87
- No of replications done 21
- No of replications done 88
- No of replications done 26
- No of replications done 53
- No of replications done 89
- No of replications done 90
- No of replications done 54
- No of replications done 91
- No of replications done 22
- No of replications done 92
- No of replications done 27
- No of replications done 93
- No of replications done 55
- No of replications done 94
- No of replications done 95
- No of replications done 96
- No of replications done 56
- No of replications done 23
- No of replications done 28
- No of replications done 97
- No of replications done 57
- No of replications done 98
- No of replications done 99
- No of replications done 58
- No of replications done 29
- No of replications done 24
- No of replications done 59
- No of replications done 60
- No of replications done 30
- No of replications done 25
- No of replications done 61
- No of replications done 62
- No of replications done 31
- No of replications done 26
- No of replications done 63
- No of replications done 32
- No of replications done 64
- No of replications done 27
- No of replications done 65
- No of replications done 33
- No of replications done 66
- No of replications done 28
- No of replications done 67
- No of replications done 34
- No of replications done 68
- No of replications done 29
- No of replications done 69
- No of replications done 35
- No of replications done 70
- No of replications done 30
- No of replications done 71
- No of replications done 36
- No of replications done 72
- No of replications done 31
- No of replications done 73
- No of replications done 37
- No of replications done 74
- No of replications done 32
- No of replications done 38
- No of replications done 75
- No of replications done 76
- No of replications done 39
- No of replications done 33
- No of replications done 77
- No of replications done 78
- No of replications done 40
- No of replications done 34
- No of replications done 79
- No of replications done 80
- No of replications done 41
- No of replications done 35
- No of replications done 81
- No of replications done 82
- No of replications done 42
- No of replications done 36
- No of replications done 83
- No of replications done 84
- No of replications done 43
- No of replications done 37
- No of replications done 85
- No of replications done 44
- No of replications done 86
- No of replications done 38
- No of replications done 87
- No of replications done 45
- No of replications done 88
- No of replications done 39
- No of replications done 89
- No of replications done 46
- No of replications done 90
- No of replications done 40
- No of replications done 91
- No of replications done 47
- No of replications done 92
- No of replications done 41
- No of replications done 93
- No of replications done 48
- No of replications done 94
- No of replications done 42
- No of replications done 95
- No of replications done 49
- No of replications done 96
- No of replications done 43
- No of replications done 50
- No of replications done 97
- No of replications done 98
- No of replications done 44
- No of replications done 51
- No of replications done 99
- No of replications done 45
- No of replications done 52
- No of replications done 53
- No of replications done 46
- No of replications done 47
- No of replications done 54
- No of replications done 55
- No of replications done 48
- No of replications done 56
- No of replications done 49
- No of replications done 57
- No of replications done 50
- No of replications done 58
- No of replications done 51
- No of replications done 59
- No of replications done 52
- No of replications done 60
- No of replications done 53
- No of replications done 61
- No of replications done 54
- No of replications done 62
- No of replications done 55
- No of replications done 63
- No of replications done 56
- No of replications done 64
- No of replications done 57
- No of replications done 65
- No of replications done 58
- No of replications done 66
- No of replications done 59
- No of replications done 67
- No of replications done 60
- No of replications done 68
- No of replications done 61
- No of replications done 69
- No of replications done 62
- No of replications done 70
- No of replications done 63
- No of replications done 71
- No of replications done 72
- No of replications done 64
- No of replications done 73
- No of replications done 65
- No of replications done 74
- No of replications done 66
- No of replications done 75
- No of replications done 67
- No of replications done 76
- No of replications done 68
- No of replications done 77
- No of replications done 69
- No of replications done 78
- No of replications done 70
- No of replications done 79
- No of replications done 71
- No of replications done 80
- No of replications done 72
- No of replications done 81
- No of replications done 73
- No of replications done 82
- No of replications done 74
- No of replications done 83
- No of replications done 75
- No of replications done 84
- No of replications done 76
- No of replications done 85
- No of replications done 77
- No of replications done 86
- No of replications done 78
- No of replications done 87
- No of replications done 79
- No of replications done 88
- No of replications done 80
- No of replications done 89
- No of replications done 81
- No of replications done 90
- No of replications done 82
- No of replications done 91
- No of replications done 83
- No of replications done 92
- No of replications done 84
- No of replications done 93
- No of replications done 85
- No of replications done 94
- No of replications done 86
- No of replications done 95
- No of replications done 96
- No of replications done 87
- No of replications done 97
- No of replications done 88
- No of replications done 98
- No of replications done 89
- No of replications done 99
- No of replications done 90
- No of replications done 91
- No of replications done 92
- No of replications done 93
- No of replications done 94
- No of replications done 95
- No of replications done 96
- No of replications done 97
- No of replications done 98
- No of replications done 99</code></pre>
-</div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># with Pool(4) as pool:</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     # Run PHC.main() using each of inputs from config</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#     pool.map(wrapper, config)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="import-and-process-replication-results" class="level2">
 <h2 class="anchored" data-anchor-id="import-and-process-replication-results">Import and process replication results</h2>
-<div id="cell-11" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make dictionary with labels from table 6, and corresponding names from model output</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>t6_labels <span class="op">=</span> {</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'doc occ'</span>: <span class="st">'Doctor utilisation'</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'NCD occ'</span>: <span class="st">'NCD Nurse utilisation'</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">'staff nurse occ'</span>: <span class="st">'Staff nurse utilisation'</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">'pharm occ'</span>: <span class="st">'Pharmacist utilisation'</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'lab occ'</span>: <span class="st">'Lab utilisation'</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">'ipd bed occ'</span>: <span class="st">'Inpatient bed utilisation'</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">'del occ'</span>: <span class="st">'Labour bed utilisation'</span>,  <span class="co"># "Del" stands for delivery</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">'opd q len'</span>: <span class="st">'Mean length of OPD queue (number of patients)'</span>,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">'OPD Q wt'</span>: <span class="st">'OPD queue waiting time (minutes)'</span>,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">'pharmacy q len'</span>: <span class="st">'Mean length of pharmacy queue (number of patients)'</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Pharmacy Q wt'</span>: <span class="st">'Pharmacy queue waiting time (minutes)'</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">'lab q len'</span>: <span class="st">'Mean length of Lab queue (number of patients)'</span>,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Lab Q wt'</span>: <span class="st">'Lab queue waiting time (minutes)'</span>,</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">'prop_del_referred'</span>: <span class="st">'Fraction of childbirth cases referred'</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-11" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make dictionary with labels from table 6, and corresponding names from model output</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>t6_labels <span class="op">=</span> {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'doc occ'</span>: <span class="st">'Doctor utilisation'</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'NCD occ'</span>: <span class="st">'NCD Nurse utilisation'</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">'staff nurse occ'</span>: <span class="st">'Staff nurse utilisation'</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">'pharm occ'</span>: <span class="st">'Pharmacist utilisation'</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'lab occ'</span>: <span class="st">'Lab utilisation'</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">'ipd bed occ'</span>: <span class="st">'Inpatient bed utilisation'</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">'del occ'</span>: <span class="st">'Labour bed utilisation'</span>,  <span class="co"># "Del" stands for delivery</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">'opd q len'</span>: <span class="st">'Mean length of OPD queue (number of patients)'</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">'OPD Q wt'</span>: <span class="st">'OPD queue waiting time (minutes)'</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">'pharmacy q len'</span>: <span class="st">'Mean length of pharmacy queue (number of patients)'</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Pharmacy Q wt'</span>: <span class="st">'Pharmacy queue waiting time (minutes)'</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">'lab q len'</span>: <span class="st">'Mean length of Lab queue (number of patients)'</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Lab Q wt'</span>: <span class="st">'Lab queue waiting time (minutes)'</span>,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">'prop_del_referred'</span>: <span class="st">'Fraction of childbirth cases referred'</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of files to loop through</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> [<span class="st">'t6_c1'</span>, <span class="st">'t6_c2'</span>, <span class="st">'t6_c3'</span>, <span class="st">'t6_c4'</span>]</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Empty list to store results</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>result_list <span class="op">=</span> []</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> files:</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Import .xls and convert to pandas dataframe</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    book <span class="op">=</span> xlrd.open_workbook(os.path.join(<span class="st">'outputs'</span>, <span class="ss">f'</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">.xls'</span>))</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> pd.read_excel(book, header<span class="op">=</span><span class="va">None</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add proportion of childbirth cases referred</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    result.loc[<span class="st">'prop_del_referred'</span>] <span class="op">=</span> (</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        result.loc[<span class="st">'del referred'</span>] <span class="op">/</span> result.loc[<span class="st">'Del patients'</span>])</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find mean and standard deviation from the replication</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save as dataframe, dropping the duplicate rows (NCD occ twice)</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'model_</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">_mean'</span>: result.mean(axis<span class="op">=</span><span class="dv">1</span>),</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'model_</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">_sd'</span>: result.std(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    }).drop_duplicates()</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save to list</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    result_list.append(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-12" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of files to loop through</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> [<span class="st">'t6_c1'</span>, <span class="st">'t6_c2'</span>, <span class="st">'t6_c3'</span>, <span class="st">'t6_c4'</span>]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Empty list to store results</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>result_list <span class="op">=</span> []</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> files:</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Import .xls and convert to pandas dataframe</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    book <span class="op">=</span> xlrd.open_workbook(os.path.join(<span class="st">'outputs'</span>, <span class="ss">f'</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">.xls'</span>))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> pd.read_excel(book, header<span class="op">=</span><span class="va">None</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add proportion of childbirth cases referred</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    result.loc[<span class="st">'prop_del_referred'</span>] <span class="op">=</span> (</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        result.loc[<span class="st">'del referred'</span>] <span class="op">/</span> result.loc[<span class="st">'Del patients'</span>])</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find mean and standard deviation from the replication</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save as dataframe, dropping the duplicate rows (NCD occ twice)</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'model_</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">_mean'</span>: result.mean(axis<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'model_</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">_sd'</span>: result.std(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    }).drop_duplicates()</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save to list</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    result_list.append(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine into single dataframe</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> (pd.concat(result_list, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>           .reset_index()</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>           .rename(columns<span class="op">=</span> {<span class="dv">0</span>: <span class="st">'model_outcome'</span>}))</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels to model results</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>summary[<span class="st">'t6_outcome'</span>] <span class="op">=</span> summary[<span class="st">'model_outcome'</span>].<span class="bu">map</span>(t6_labels)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div id="cell-13" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine into single dataframe</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> (pd.concat(result_list, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>           .reset_index()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>           .rename(columns<span class="op">=</span> {<span class="dv">0</span>: <span class="st">'model_outcome'</span>}))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels to model results</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>summary[<span class="st">'t6_outcome'</span>] <span class="op">=</span> summary[<span class="st">'model_outcome'</span>].<span class="bu">map</span>(t6_labels)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -1108,11 +709,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="import-table-6-results-and-compare-against-run-results" class="level2">
 <h2 class="anchored" data-anchor-id="import-table-6-results-and-compare-against-run-results">Import table 6 results and compare against run results</h2>
-<div id="cell-15" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import table 6</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>t6 <span class="op">=</span> pd.read_csv(table6_path).rename(columns<span class="op">=</span>{<span class="st">'outcome'</span>: <span class="st">'t6_outcome'</span>})</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>t6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div id="cell-15" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import table 6</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>t6 <span class="op">=</span> pd.read_csv(table6_path).rename(columns<span class="op">=</span>{<span class="st">'outcome'</span>: <span class="st">'t6_outcome'</span>})</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>t6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -1306,11 +907,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>compare <span class="op">=</span> t6.merge(summary)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>compare.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div id="cell-16" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>compare <span class="op">=</span> t6.merge(summary)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>compare.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
 
@@ -1450,31 +1051,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>compare_col <span class="op">=</span> [</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config1_mean'</span>, <span class="st">'model_t6_c1_mean'</span>),</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config1_sd'</span>, <span class="st">'model_t6_c1_sd'</span>),</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config2_mean'</span>, <span class="st">'model_t6_c2_mean'</span>),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config2_sd'</span>, <span class="st">'model_t6_c2_sd'</span>),</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config3_mean'</span>, <span class="st">'model_t6_c3_mean'</span>),</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config3_sd'</span>, <span class="st">'model_t6_c3_sd'</span>),</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'benchmark_mean'</span>, <span class="st">'model_t6_c4_mean'</span>),</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'benchmark_sd'</span>, <span class="st">'model_t6_c4_sd'</span>),]</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> compare_col:</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find difference between two columns</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    compare[<span class="ss">f'change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>] <span class="op">=</span> <span class="bu">abs</span>(compare[col[<span class="dv">1</span>]] <span class="op">-</span> compare[col[<span class="dv">0</span>]])</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find percent change between two columns</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    subset <span class="op">=</span> compare[<span class="bu">list</span>(col)]</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    pct_change <span class="op">=</span> subset.pct_change(axis<span class="op">=</span><span class="dv">1</span>).iloc[:, <span class="dv">1</span>]<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    compare[<span class="ss">f'pct_change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>] <span class="op">=</span> pct_change</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Display each of the results</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> compare_col:</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set outcome as index, and get the two results plus percent change</span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    subset <span class="op">=</span> compare.set_index(<span class="st">'t6_outcome'</span>)[</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">list</span>(col) <span class="op">+</span> [<span class="ss">f'change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>, <span class="ss">f'pct_change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>]]</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    display(subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-17" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>compare_col <span class="op">=</span> [</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config1_mean'</span>, <span class="st">'model_t6_c1_mean'</span>),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config1_sd'</span>, <span class="st">'model_t6_c1_sd'</span>),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config2_mean'</span>, <span class="st">'model_t6_c2_mean'</span>),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config2_sd'</span>, <span class="st">'model_t6_c2_sd'</span>),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config3_mean'</span>, <span class="st">'model_t6_c3_mean'</span>),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'config3_sd'</span>, <span class="st">'model_t6_c3_sd'</span>),</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'benchmark_mean'</span>, <span class="st">'model_t6_c4_mean'</span>),</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'benchmark_sd'</span>, <span class="st">'model_t6_c4_sd'</span>),]</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> compare_col:</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find difference between two columns</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    compare[<span class="ss">f'change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>] <span class="op">=</span> <span class="bu">abs</span>(compare[col[<span class="dv">1</span>]] <span class="op">-</span> compare[col[<span class="dv">0</span>]])</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find percent change between two columns</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    subset <span class="op">=</span> compare[<span class="bu">list</span>(col)]</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    pct_change <span class="op">=</span> subset.pct_change(axis<span class="op">=</span><span class="dv">1</span>).iloc[:, <span class="dv">1</span>]<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    compare[<span class="ss">f'pct_change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>] <span class="op">=</span> pct_change</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Display each of the results</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> compare_col:</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set outcome as index, and get the two results plus percent change</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    subset <span class="op">=</span> compare.set_index(<span class="st">'t6_outcome'</span>)[</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">list</span>(col) <span class="op">+</span> [<span class="ss">f'change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>, <span class="ss">f'pct_change_</span><span class="sc">{</span>col[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>]]</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    display(subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 
@@ -2479,26 +2080,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="format-model-results-like-table-6-and-save" class="level2">
 <h2 class="anchored" data-anchor-id="format-model-results-like-table-6-and-save">Format model results like table 6, and save</h2>
-<div id="cell-19" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>compare_col <span class="op">=</span> [</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Configuration 1'</span>, <span class="st">'model_t6_c1_mean'</span>, <span class="st">'model_t6_c1_sd'</span>],</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Configuration 2'</span>, <span class="st">'model_t6_c2_mean'</span>, <span class="st">'model_t6_c2_sd'</span>],</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Configuration 3'</span>, <span class="st">'model_t6_c3_mean'</span>, <span class="st">'model_t6_c3_sd'</span>],</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Benchmark Case'</span>, <span class="st">'model_t6_c4_mean'</span>, <span class="st">'model_t6_c4_sd'</span>]]</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine each pair of columns into string as in Table 6</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> compare_col:</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    compare[col[<span class="dv">0</span>]] <span class="op">=</span> (</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">round</span>(compare[col[<span class="dv">1</span>]], <span class="dv">3</span>).astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">' ('</span> <span class="op">+</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">round</span>(compare[col[<span class="dv">2</span>]], <span class="dv">3</span>).astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">')'</span>)</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Set outcome name as index, and select those columns</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>formatted_model_res <span class="op">=</span> (compare</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>                       .set_index(<span class="st">'t6_outcome'</span>)</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>                       .rename_axis(<span class="st">'Simulation Outcome'</span>)[</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>                           [item[<span class="dv">0</span>] <span class="cf">for</span> item <span class="kw">in</span> compare_col]])</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>formatted_model_res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div id="cell-19" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>compare_col <span class="op">=</span> [</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Configuration 1'</span>, <span class="st">'model_t6_c1_mean'</span>, <span class="st">'model_t6_c1_sd'</span>],</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Configuration 2'</span>, <span class="st">'model_t6_c2_mean'</span>, <span class="st">'model_t6_c2_sd'</span>],</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Configuration 3'</span>, <span class="st">'model_t6_c3_mean'</span>, <span class="st">'model_t6_c3_sd'</span>],</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Benchmark Case'</span>, <span class="st">'model_t6_c4_mean'</span>, <span class="st">'model_t6_c4_sd'</span>]]</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine each pair of columns into string as in Table 6</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> compare_col:</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    compare[col[<span class="dv">0</span>]] <span class="op">=</span> (</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">round</span>(compare[col[<span class="dv">1</span>]], <span class="dv">3</span>).astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">' ('</span> <span class="op">+</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">round</span>(compare[col[<span class="dv">2</span>]], <span class="dv">3</span>).astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">')'</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Set outcome name as index, and select those columns</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>formatted_model_res <span class="op">=</span> (compare</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                       .set_index(<span class="st">'t6_outcome'</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>                       .rename_axis(<span class="st">'Simulation Outcome'</span>)[</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                           [item[<span class="dv">0</span>] <span class="cf">for</span> item <span class="kw">in</span> compare_col]])</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>formatted_model_res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 
 
@@ -2624,16 +2225,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="14">
+<div id="cell-20" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>formatted_model_res.to_csv(final_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-21" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find run time in seconds</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> time.time()</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>runtime <span class="op">=</span> <span class="bu">round</span>(end<span class="op">-</span>start)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># end = time.time()</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># runtime = round(end-start)</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display converted to minutes and seconds</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Notebook run time: </span><span class="sc">{</span>runtime<span class="op">//</span><span class="dv">60</span><span class="sc">}</span><span class="ss">m </span><span class="sc">{</span>runtime<span class="op">%</span><span class="dv">60</span><span class="sc">}</span><span class="ss">s'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Notebook run time: 61m 47s</code></pre>
-</div>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f'Notebook run time: {runtime//60}m {runtime%60}s')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

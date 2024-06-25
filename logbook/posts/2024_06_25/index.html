@@ -203,6 +203,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#run-100-replications-for-table-6" id="toc-run-100-replications-for-table-6" class="nav-link active" data-scroll-target="#run-100-replications-for-table-6">6.55-6.57: Run 100 replications for Table 6</a></li>
   <li><a href="#used-parallel-processing-when-running-the-replications" id="toc-used-parallel-processing-when-running-the-replications" class="nav-link" data-scroll-target="#used-parallel-processing-when-running-the-replications">9.26-9.50, 10.50-10.51: Used parallel processing when running the replications</a></li>
+  <li><a href="#saved-output-from-processed-replications" id="toc-saved-output-from-processed-replications" class="nav-link" data-scroll-target="#saved-output-from-processed-replications">11.04-11.09: Saved output from processed replications</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_25/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -220,6 +221,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="used-parallel-processing-when-running-the-replications" class="level2">
 <h2 class="anchored" data-anchor-id="used-parallel-processing-when-running-the-replications">9.26-9.50, 10.50-10.51: Used parallel processing when running the replications</h2>
 <p>Set up parallel processing in <code>reproduce_tab6.ipynb</code> to run the 4 sets of 100 replications. It took 61 minutes to run (excluded from timing). Once complete, I looked over the table and was satisified that the mean and SD values were close enough to the original, and considered it now completely successfully reproduced (at timestamp: 10.51). I disregarded some high percent change that were simply due to comparison of numbers very close to zero, and the difference was actually very small.</p>
+<p>Emailed to Tom and Alison to share second opinion.</p>
+</section>
+<section id="saved-output-from-processed-replications" class="level2">
+<h2 class="anchored" data-anchor-id="saved-output-from-processed-replications">11.04-11.09: Saved output from processed replications</h2>
+<p>Edited notebook so model is not re-run each time (due to long run time), and then saved the processed results to a csv file.</p>
 
 
 </section>
