@@ -16,6 +16,10 @@ Set up parallel processing in `reproduce_tab6.ipynb` to run the 4 sets of 100 re
 
 Emailed to Tom and Alison to share second opinion.
 
-## 11.04-11.09: Saved output from processed replications
+## 11.04-11.09: Saved output from processed replications, and confirmation from Tom and Alison
 
 Edited notebook so model is not re-run each time (due to long run time), and then saved the processed results to a csv file.
+
+Both Tom and Alison responded to confirm they were happy this was reproduced.
+
+Re-ran % change calculations with rounded values.
