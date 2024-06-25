@@ -45,9 +45,49 @@ Re-ran % change calculations with rounded values. As before, observe that we are
 
 ## 11.30-11.50: Create Figure 2B
 
-Imported and processed data from the arrival number replications, and produced Figure 2B. Happy that this is succesfully reproduced at timepoint 11.50.
+Imported and processed data from the arrival number replications, and produced Figure 2B. Happy that this is succesfully reproduced at timepoint 11.50. In order to declare this reproduced, I feel I do not require to run the same number of replications (100), as understand this would have no meaningful impact on result being plot (mean), and am happy with consistency to original at 10 replications.
 
-## 11.51-X : Create Figure 2C
+```{python}
+# Minutes used prior to today
+used_to_date = 829
+
+# Times from today
+times = [
+    ('6.55', '6.57'),
+    ('9.26', '9.50'),
+    ('10.50', '10.51'),
+    ('11.04', '11.17'),
+    ('11.30', '11.50')]
+
+calculate_times(used_to_date, times)
+```
+
+## 11.51-12.08, 12.13-12.17: Create Figure 2C
+
+Using `OPD Q wt` (which matched up to OPD queue waiting time for Table 6), results look rather different. They only go up to 0.01, whilst in Figure 2C, results go from under 1 up to just under 7. That is closer to the waiting time in the benchmark model, implying these results are obtained with those doctor numbers.
+
+![Incorrect reproduction of Fig2c](fig2c_incorrect.png)
+
+When run with the `serv5` appointment times, the results match up with the paper. Feel this has been succesfully reproduced at time 12.17.
+
+![Successful reproduction of Fig2c](fig2c_fixed.png)
+
+```{python}
+# Minutes used prior to today
+used_to_date = 829
+
+# Times from today
+times = [
+    ('6.55', '6.57'),
+    ('9.26', '9.50'),
+    ('10.50', '10.51'),
+    ('11.04', '11.17'),
+    ('11.30', '11.50'),
+    ('11.51', '12.08'),
+    ('12.13', '12.17')]
+
+calculate_times(used_to_date, times)
+```
 
 ## Timings
 
@@ -57,7 +97,10 @@ times = [
     ('6.55', '6.57'),
     ('9.26', '9.50'),
     ('10.50', '10.51'),
-    ('11.04', '11.17')]
+    ('11.04', '11.17'),
+    ('11.30', '11.50'),
+    ('11.51', '12.08'),
+    ('12.13', '12.17')]
 
 calculate_times(used_to_date, times)
 ```
