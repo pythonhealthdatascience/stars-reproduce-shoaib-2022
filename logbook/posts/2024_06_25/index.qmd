@@ -176,7 +176,20 @@ times = [
 calculate_times(used_to_date, times)
 ```
 
-## 15.45-X: Creating Figure 3B
+## 15.45-15.51: Creating Figure 3B
+
+Successfully reproduced at 15.51.
+
+```{python}
+# Minutes used prior to this figure
+used_to_date = 1002
+
+# Times from today
+times = [
+    ('15.45', '15.51')]
+
+calculate_times(used_to_date, times)
+```
 
 ## Timings
 
