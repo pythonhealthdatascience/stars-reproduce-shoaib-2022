@@ -191,6 +191,36 @@ times = [
 calculate_times(used_to_date, times)
 ```
 
+## 15.53-15.54: Creating Figure 3C
+
+Successfully reproduced at 15.54.
+
+```{python}
+# Minutes used prior to this figure
+used_to_date = 1008
+
+# Times from today
+times = [
+    ('15.53', '15.54')]
+
+calculate_times(used_to_date, times)
+```
+
+## 15.55-15.58: Creating Figure 3D
+
+Successfully reproduced at 15.58.
+
+```{python}
+# Minutes used prior to this figure
+used_to_date = 1009
+
+# Times from today
+times = [
+    ('15.55', '15.58')]
+
+calculate_times(used_to_date, times)
+```
+
 ## Timings
 
 ```{python}
@@ -213,7 +243,10 @@ times = [
     ('14.24', '14.41'),
     ('14.44', '14.54'),
     ('15.10', '15.21'),
-    ('15.24', '15.34')]
+    ('15.24', '15.34'),
+    ('15.45', '15.51'),
+    ('15.53', '15.54'),
+    ('15.55', '15.58')]
 
 calculate_times(used_to_date, times)
 ```
