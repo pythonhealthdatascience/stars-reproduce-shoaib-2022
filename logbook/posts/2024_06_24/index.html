@@ -409,14 +409,9 @@ c3_state.__dict__</code></pre>
 </section>
 <section id="add-sd-to-table-6" class="level2">
 <h2 class="anchored" data-anchor-id="add-sd-to-table-6">15.34-16.02 : Add SD to Table 6</h2>
-<p>Add standard deviation. Some percent change seem large as it’s comparing very small number - but actual change between the model and table 6 all are small enough that I feel happy to say this has been successfully reproduced.</p>
-<p>Will run 100 replications later (if run now, will prevent from working on other things). However, as would otherwise run now, if that comes out as matching up too, then would say timestamp at which this was complete is 16.02 + a few minutes, as that’s when I would’ve otherwise finished up with it if possible.</p>
-<p><strong>Therefore, timestamp at which feel has been reproduced:</strong> 16.02 + 5 min (for checking table later)</p>
-<p><strong>Timing at that point:</strong> 32.8%, 787m</p>
-<pre><code>Time spent today: 256m, or 4h 16m
-Total used to date: 787m, or 13h 7m
-Time remaining: 1613m, or 26h 53m
-Used 32.8% of 40 hours max</code></pre>
+<p>Add standard deviation. Some percent change seem large as it’s comparing very small number - but actual change between the model and table 6 all are small enough that I feel happy to say this has been successfully reproduced for the mean values.</p>
+<p>Will run 100 replications later, and confirm whether standard deviations are similar - but anticipate to take a while, so will work on something else for remainder of day, as not got time to run them all now.</p>
+<p>As the long run-time prevents me from checking this now, I will not yet timestamp this as complete.</p>
 </section>
 <section id="starting-on-figure-2a-d" class="level2">
 <h2 class="anchored" data-anchor-id="starting-on-figure-2a-d">16.13-17.00: Starting on Figure 2A-D</h2>
@@ -443,10 +438,10 @@ Used 32.8% of 40 hours max</code></pre>
 <li>Config 4: 170 arrivals in a day and IAT of 3</li>
 </ul>
 <p>In order to get those times:</p>
-<div id="953f4c87" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span><span class="fl">8.6666666666666666666666666666666</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">9</span>)<span class="op">*</span><span class="dv">9</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">3</span>)<span class="op">*</span><span class="fl">8.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5347826c" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span><span class="fl">8.6666666666666666666666666666666</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">9</span>)<span class="op">*</span><span class="dv">9</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">3</span>)<span class="op">*</span><span class="fl">8.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>130.0
 60.0
@@ -463,10 +458,10 @@ Used 32.8% of 40 hours max</code></pre>
 <li>Config 1: 125 or 126 arrivals and IAT 4</li>
 <li>Config 2/3: 55 arrivals and IAT 9</li>
 </ul>
-<div id="627dbfce" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span><span class="fl">8.33333333333333333</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span><span class="fl">8.4</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">9</span>)<span class="op">*</span><span class="fl">8.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="38c66d6c" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span><span class="fl">8.33333333333333333</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span><span class="fl">8.4</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">9</span>)<span class="op">*</span><span class="fl">8.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>125.00000000000001
 126.0
@@ -475,17 +470,17 @@ Used 32.8% of 40 hours max</code></pre>
 </div>
 <p>Regarding the number of hours described in the article, this is described as “6 hours per day” for the outpatients - which differs to the 8.25 hours to 9 that align with the provided patient numbers and inter-arrival times.</p>
 <p>Assuming this variation is simply related to rounding the IAT - as if we calculate these values based on there being 8.5 hours per day then round the IAT, we get the same results…</p>
-<div id="afab776c" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IAT 3. Arrivals 170</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">170</span><span class="op">/</span><span class="fl">8.5</span>))</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># IAT 4. Arrivals 125-130</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">125</span><span class="op">/</span><span class="fl">8.5</span>))</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">130</span><span class="op">/</span><span class="fl">8.5</span>))</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># IAT 9. Arrivals 55-60</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">55</span><span class="op">/</span><span class="fl">8.5</span>))</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">60</span><span class="op">/</span><span class="fl">8.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="961004c6" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IAT 3. Arrivals 170</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">170</span><span class="op">/</span><span class="fl">8.5</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># IAT 4. Arrivals 125-130</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">125</span><span class="op">/</span><span class="fl">8.5</span>))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">130</span><span class="op">/</span><span class="fl">8.5</span>))</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># IAT 9. Arrivals 55-60</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">55</span><span class="op">/</span><span class="fl">8.5</span>))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">60</span><span class="op">/</span><span class="fl">8.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.0
 4.08
@@ -495,11 +490,11 @@ Used 32.8% of 40 hours max</code></pre>
 </div>
 </div>
 <p>As such, the inter-arrival times used were calculated as 3, 6 and 8…</p>
-<div id="b538217e" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 170, 85 and 65 arrivals</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">170</span><span class="op">/</span><span class="fl">8.5</span>))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">85</span><span class="op">/</span><span class="fl">8.5</span>))</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">65</span><span class="op">/</span><span class="fl">8.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8483bd3c" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 170, 85 and 65 arrivals</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">170</span><span class="op">/</span><span class="fl">8.5</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">85</span><span class="op">/</span><span class="fl">8.5</span>))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">65</span><span class="op">/</span><span class="fl">8.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.0
 6.0
@@ -528,27 +523,27 @@ Challenges today
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="890e6c84" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">531</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.20'</span>, <span class="st">'10.03'</span>),</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.11'</span>, <span class="st">'10.22'</span>),</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.31'</span>, <span class="st">'11.43'</span>),</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.00'</span>, <span class="st">'12.05'</span>),</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.17'</span>, <span class="st">'12.57'</span>),</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.55'</span>, <span class="st">'14.30'</span>),</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.36'</span>, <span class="st">'14.53'</span>),</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.34'</span>, <span class="st">'16.02'</span>),</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'16.13'</span>, <span class="st">'17.00'</span>)]</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="92c23fe5" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">531</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.20'</span>, <span class="st">'10.03'</span>),</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.11'</span>, <span class="st">'10.22'</span>),</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.31'</span>, <span class="st">'11.43'</span>),</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.00'</span>, <span class="st">'12.05'</span>),</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.17'</span>, <span class="st">'12.57'</span>),</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.55'</span>, <span class="st">'14.30'</span>),</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.36'</span>, <span class="st">'14.53'</span>),</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.34'</span>, <span class="st">'16.02'</span>),</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'16.13'</span>, <span class="st">'17.00'</span>)]</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Time spent today: 298m, or 4h 58m
 Total used to date: 829m, or 13h 49m
