@@ -144,14 +144,35 @@
     "href": "logbook/posts/2024_06_25/index.html#used-parallel-processing-when-running-the-replications",
     "title": "Day 4",
     "section": "9.26-9.50, 10.50-10.51: Used parallel processing when running the replications",
-    "text": "9.26-9.50, 10.50-10.51: Used parallel processing when running the replications\nSet up parallel processing in reproduce_tab6.ipynb to run the 4 sets of 100 replications. It took 61 minutes to run (excluded from timing). Once complete, I looked over the table and was satisified that the mean and SD values were close enough to the original, and considered it now completely successfully reproduced (at timestamp: 10.51). I disregarded some high percent change that were simply due to comparison of numbers very close to zero, and the difference was actually very small.\nEmailed to Tom and Alison to share second opinion."
+    "text": "9.26-9.50, 10.50-10.51: Used parallel processing when running the replications\nSet up parallel processing in reproduce_tab6.ipynb to run the 4 sets of 100 replications. It took 61 minutes to run (excluded from timing). Once complete, I looked over the table and was satisified that the mean and SD values were close enough to the original, and considered it now completely successfully reproduced (at timestamp: 10.51). I disregarded some high percent change that were simply due to comparison of numbers very close to zero, and the difference was actually very small.\nEmailed to Tom and Alison to share second opinion.\nTiming for when Table 6 is completed (i.e. as of 10.51):\n\nimport sys\nsys.path.append('../')\nfrom timings import calculate_times\n\n# Minutes used prior to today\nused_to_date = 829\n\n# Times from today\ntimes = [\n    ('6.55', '6.57'),\n    ('9.26', '9.50'),\n    ('10.50', '10.51')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 27m, or 0h 27m\nTotal used to date: 856m, or 14h 16m\nTime remaining: 1544m, or 25h 44m\nUsed 35.7% of 40 hours max"
   },
   {
     "objectID": "logbook/posts/2024_06_25/index.html#saved-output-from-processed-replications-and-confirmation-from-tom-and-alison",
     "href": "logbook/posts/2024_06_25/index.html#saved-output-from-processed-replications-and-confirmation-from-tom-and-alison",
     "title": "Day 4",
-    "section": "11.04-11.09: Saved output from processed replications, and confirmation from Tom and Alison",
-    "text": "11.04-11.09: Saved output from processed replications, and confirmation from Tom and Alison\nEdited notebook so model is not re-run each time (due to long run time), and then saved the processed results to a csv file.\nBoth Tom and Alison responded to confirm they were happy this was reproduced.\nRe-ran % change calculations with rounded values."
+    "section": "11.04-11.17: Saved output from processed replications, and confirmation from Tom and Alison",
+    "text": "11.04-11.17: Saved output from processed replications, and confirmation from Tom and Alison\nEdited notebook so model is not re-run each time (due to long run time), and then saved the processed results to a csv file.\nBoth Tom and Alison responded to confirm they were happy this was reproduced.\nRe-ran % change calculations with rounded values. As before, observe that we are sometimes comparing very small numbers - so e.g. mean of 0.011 v.s. 0.012 comes out as 9% change. It also sometimes finds large differences for small SD values (e.g. 1360% change), when actually, I’m not too concerned by the difference in the grand scheme of things."
+  },
+  {
+    "objectID": "logbook/posts/2024_06_25/index.html#create-figure-2b",
+    "href": "logbook/posts/2024_06_25/index.html#create-figure-2b",
+    "title": "Day 4",
+    "section": "11.30-11.50: Create Figure 2B",
+    "text": "11.30-11.50: Create Figure 2B\nImported and processed data from the arrival number replications, and produced Figure 2B. Happy that this is succesfully reproduced at timepoint 11.50. In order to declare this reproduced, I feel I do not require to run the same number of replications (100), as understand this would have no meaningful impact on result being plot (mean), and am happy with consistency to original at 10 replications.\n\n# Minutes used prior to today\nused_to_date = 829\n\n# Times from today\ntimes = [\n    ('6.55', '6.57'),\n    ('9.26', '9.50'),\n    ('10.50', '10.51'),\n    ('11.04', '11.17'),\n    ('11.30', '11.50')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 60m, or 1h 0m\nTotal used to date: 889m, or 14h 49m\nTime remaining: 1511m, or 25h 11m\nUsed 37.0% of 40 hours max"
+  },
+  {
+    "objectID": "logbook/posts/2024_06_25/index.html#create-figure-2c",
+    "href": "logbook/posts/2024_06_25/index.html#create-figure-2c",
+    "title": "Day 4",
+    "section": "11.51-12.08, 12.13-12.17: Create Figure 2C",
+    "text": "11.51-12.08, 12.13-12.17: Create Figure 2C\nUsing OPD Q wt (which matched up to OPD queue waiting time for Table 6), results look rather different. They only go up to 0.01, whilst in Figure 2C, results go from under 1 up to just under 7. That is closer to the waiting time in the benchmark model, implying these results are obtained with those doctor numbers.\n\n\n\nIncorrect reproduction of Fig2c\n\n\nWhen run with the serv5 appointment times, the results match up with the paper. Feel this has been succesfully reproduced at time 12.17.\n\n\n\nSuccessful reproduction of Fig2c\n\n\n\n# Minutes used prior to today\nused_to_date = 829\n\n# Times from today\ntimes = [\n    ('6.55', '6.57'),\n    ('9.26', '9.50'),\n    ('10.50', '10.51'),\n    ('11.04', '11.17'),\n    ('11.30', '11.50'),\n    ('11.51', '12.08'),\n    ('12.13', '12.17')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 81m, or 1h 21m\nTotal used to date: 910m, or 15h 10m\nTime remaining: 1490m, or 24h 50m\nUsed 37.9% of 40 hours max"
+  },
+  {
+    "objectID": "logbook/posts/2024_06_25/index.html#timings",
+    "href": "logbook/posts/2024_06_25/index.html#timings",
+    "title": "Day 4",
+    "section": "Timings",
+    "text": "Timings\n\n# Times from today\ntimes = [\n    ('6.55', '6.57'),\n    ('9.26', '9.50'),\n    ('10.50', '10.51'),\n    ('11.04', '11.17'),\n    ('11.30', '11.50'),\n    ('11.51', '12.08'),\n    ('12.13', '12.17')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 81m, or 1h 21m\nTotal used to date: 910m, or 15h 10m\nTime remaining: 1490m, or 24h 50m\nUsed 37.9% of 40 hours max"
   },
   {
     "objectID": "logbook/posts/2024_06_21/index.html",
@@ -557,20 +578,41 @@
     "href": "reproduction/reproduce_fig2.html",
     "title": "Reproducing Figure 2A-D",
     "section": "",
-    "text": "Figure 2 presents results from sensitivity analysis of configuration 1.\nIt varies:\nTo calculate inter-arrival times from those numbers per day, based on article description and the provided patient counts and equivalent IAT, understand the method for calculation to be:\nWhere n is the number of arrivals per day. As such:\nprint(60/(170/8.5))\nprint(60/(85/8.5))\nprint(60/(65/8.5))\n\n3.0\n6.0\n7.846153846153846"
+    "text": "Figure 2 presents results from sensitivity analysis of configuration 1."
+  },
+  {
+    "objectID": "reproduction/reproduce_fig2.html#parameters",
+    "href": "reproduction/reproduce_fig2.html#parameters",
+    "title": "Reproducing Figure 2A-D",
+    "section": "Parameters",
+    "text": "Parameters\nIn these figures, we vary:\n\nNumber of outpatients per day:\n\n170 (same as config 4)\n85\n65\n\nAverage service time for outpatients - mean (SD):\n\n0.87 (0.21) (same as config 1)\n2.5 (0.5)\n5 (1)\n\n\nTo calculate inter-arrival times from those numbers per day, based on article description and the provided patient counts and equivalent IAT, understand the method for calculation to be round(60/(n/8.5)), where n is the number of arrivals per day. As such…\n\n# Calculation of inter-arrival times\nprint(f'For 170 outpatients, use IAT (rounded to nearest int): {60/(170/8.5)}')\nprint(f'For 85 outpatients, use IAT (rounded to nearest int): {60/(85/8.5)}')\nprint(f'For 65 outpatients, use IAT (rounded to nearest int): {60/(65/8.5)}')\n\nFor 170 outpatients, use IAT (rounded to nearest int): 3.0\nFor 85 outpatients, use IAT (rounded to nearest int): 6.0\nFor 65 outpatients, use IAT (rounded to nearest int): 7.846153846153846"
   },
   {
     "objectID": "reproduction/reproduce_fig2.html#set-up",
     "href": "reproduction/reproduce_fig2.html#set-up",
     "title": "Reproducing Figure 2A-D",
     "section": "Set up",
-    "text": "Set up\n\n# To run model\nimport PHC"
+    "text": "Set up\n\n# To run model\nimport PHC\n\n# To import results and produce figures\nimport xlrd\nimport pandas as pd\nimport os\nimport matplotlib.pyplot as plt\n\n\n# Paths to save image files to\noutput_folder = 'outputs'\nfig2a_path = os.path.join(output_folder, 'fig2a.png')\nfig2b_path = os.path.join(output_folder, 'fig2b.png')\nfig2c_path = os.path.join(output_folder, 'fig2c.png')\nfig2d_path = os.path.join(output_folder, 'fig2d.png')"
   },
   {
     "objectID": "reproduction/reproduce_fig2.html#run-model",
     "href": "reproduction/reproduce_fig2.html#run-model",
     "title": "Reproducing Figure 2A-D",
     "section": "Run model",
-    "text": "Run model\nAs this is a variation on configuration 1 (which is the default parameters in PHC.py), we just need to input the varying number of outpatients and service time.\n\n# TODO: Run with 100 replications\n\narr170 = {\n    'OPD_iat': 3,\n    'rep_file': 'arr170.xls',\n}\n\narr85 = {\n    'OPD_iat': 6,\n    'rep_file': 'arr85.xls',\n}\n\narr65 = {\n    'OPD_iat': 8,\n    'rep_file': 'arr65.xls',\n}\n\n'''\nserv087 = {\n    'mean': 0.87,\n    'sd': 0.21,\n    'consult_boundary_1': 0.5,  # From PHC.py\n    'consult_boundary_2': 0.3,  # From PHC.py\n}\n\nserv25 = {\n    'mean': 2.5,\n    'sd': 0.5\n#   'consult_boundary_1': ,  # What is it?\n#   'consult_boundary_2': ,  # What is it?\n}\n\nserv5 = {\n    'mean': 5,\n    'sd': 1,\n    'consult_boundary_1': 2,  # From config 4\n    'consult_boundary_2': 2,  # From config 4\n}\n'''\n\n\n# Input configuration parameters to main() (have to append with 's_', and\n# add ** as inputting dict as parameters)\nfor config in [arr170, arr85, arr65]:\n    print(f'''Running: {config['rep_file']}''')\n    PHC.main(**{f's_{k}': v for k, v in config.items()})\n\nRunning: arr170.xls\n No of replications done 0\n No of replications done 1\n No of replications done 2\n No of replications done 3\n No of replications done 4\n No of replications done 5\n No of replications done 6\n No of replications done 7\n No of replications done 8\n No of replications done 9\nRunning: arr85.xls\n No of replications done 0\n No of replications done 1\n No of replications done 2\n No of replications done 3\n No of replications done 4\n No of replications done 5\n No of replications done 6\n No of replications done 7\n No of replications done 8\n No of replications done 9\nRunning: arr65.xls\n No of replications done 0\n No of replications done 1\n No of replications done 2\n No of replications done 3\n No of replications done 4\n No of replications done 5\n No of replications done 6\n No of replications done 7\n No of replications done 8\n No of replications done 9"
+    "text": "Run model\nAs this is a variation on configuration 1 (which is the default parameters in PHC.py), we just need to input the varying number of outpatients and service time.\n\n# TODO: Run with 100 replications\n\n# To produce Figure 2B\n\narr170 = {\n    'OPD_iat': 3,\n    'rep_file': 'arr170.xls',\n}\n\narr85 = {\n    'OPD_iat': 6,\n    'rep_file': 'arr85.xls',\n}\n\narr65 = {\n    'OPD_iat': 8,\n    'rep_file': 'arr65.xls',\n}\n\nserv087 = {\n    'mean': 0.87,\n    'sd': 0.21,\n    'consult_boundary_1': 0.5,  # From PHC.py\n    'consult_boundary_2': 0.3,  # From PHC.py\n}\n\nserv25 = {\n    'mean': 2.5,\n    'sd': 0.5\n#   'consult_boundary_1': ,  # What is it?\n#   'consult_boundary_2': ,  # What is it?\n}\n\nserv5 = {\n    'mean': 5,\n    'sd': 1,\n    'consult_boundary_1': 2,  # From config 4\n    'consult_boundary_2': 2,  # From config 4\n}\n\n# To produce Figure 2C, combine the arr dictionaries with the serv5 dict\narr_dict = [arr170, arr85, arr65]\narr_serv5_dict = []\nfor d in arr_dict:\n    # Combine the dictionaries\n    comb = {**d, **serv5}\n    # Replace the file name\n    comb['rep_file'] = comb['rep_file'].replace('.', '_serv5.')\n    # Save to list\n    arr_serv5_dict.append(comb)\ndisplay(arr_serv5_dict)\n\n[{'OPD_iat': 3,\n  'rep_file': 'arr170_serv5.xls',\n  'mean': 5,\n  'sd': 1,\n  'consult_boundary_1': 2,\n  'consult_boundary_2': 2},\n {'OPD_iat': 6,\n  'rep_file': 'arr85_serv5.xls',\n  'mean': 5,\n  'sd': 1,\n  'consult_boundary_1': 2,\n  'consult_boundary_2': 2},\n {'OPD_iat': 8,\n  'rep_file': 'arr65_serv5.xls',\n  'mean': 5,\n  'sd': 1,\n  'consult_boundary_1': 2,\n  'consult_boundary_2': 2}]\n\n\n\n# Input configuration parameters to main() (have to append with 's_', and\n# add ** as inputting dict as parameters)\n#for config in arr_serv5_dict:\n#    print(f'''Running: {config['rep_file']}''')\n#    PHC.main(**{f's_{k}': v for k, v in config.items()})"
+  },
+  {
+    "objectID": "reproduction/reproduce_fig2.html#create-figure-2b",
+    "href": "reproduction/reproduce_fig2.html#create-figure-2b",
+    "title": "Reproducing Figure 2A-D",
+    "section": "Create Figure 2B",
+    "text": "Create Figure 2B\nImport and process data\n\n# List of files to loop through\nfiles = ['arr170', 'arr85', 'arr65']\n\n# Empty list to store results\nresult_list = []\n\nfor f in files:\n    # Import .xls and convert to pandas dataframe\n    book = xlrd.open_workbook(os.path.join(output_folder, f'{f}.xls'))\n    result = pd.read_excel(book, header=None, index_col=0)\n\n    # Find mean from the replication\n    # Save as dataframe, dropping the duplicate rows (NCD occ twice)\n    res = pd.DataFrame({\n        f.replace('arr', ''): result.mean(axis=1)\n    }).drop_duplicates()\n\n    # Remove index name\n    res.index.name = None\n\n    # Save to list\n    result_list.append(res)\n\n# Combine into single dataframe\nsummary = pd.concat(result_list, axis=1)\n\nProduce figure\n\nsummary.loc['NCD occ'].plot.bar(edgecolor='black', color='white', hatch='.')\nplt.xlabel('Number of patients/day')\nplt.ylabel('''NCD nurse's utilisation''')\nplt.ylim(0, 1.4)\nplt.xticks(rotation=0)\nplt.savefig(fig2b_path, bbox_inches='tight')\nplt.show()"
+  },
+  {
+    "objectID": "reproduction/reproduce_fig2.html#create-figure-2c",
+    "href": "reproduction/reproduce_fig2.html#create-figure-2c",
+    "title": "Reproducing Figure 2A-D",
+    "section": "Create Figure 2C",
+    "text": "Create Figure 2C\nImport and process data\n\n# List of files to loop through\nfiles = ['arr170_serv5', 'arr85_serv5', 'arr65_serv5']\n\n# Empty list to store results\nresult_list = []\n\nfor f in files:\n    # Import .xls and convert to pandas dataframe\n    book = xlrd.open_workbook(os.path.join(output_folder, f'{f}.xls'))\n    result = pd.read_excel(book, header=None, index_col=0)\n\n    # Find mean from the replication\n    # Save as dataframe, dropping the duplicate rows (NCD occ twice)\n    res = pd.DataFrame({\n        f.replace('arr', '').replace('_serv5', ''): result.mean(axis=1)\n    }).drop_duplicates()\n\n    # Remove index name\n    res.index.name = None\n\n    # Save to list\n    result_list.append(res)\n\n# Combine into single dataframe\nsummary = pd.concat(result_list, axis=1)\n\nProduce figure\n\nsummary.loc['OPD Q wt'].plot.bar(edgecolor='black', color='white', hatch='.')\nplt.xlabel('Number of patients/day')\nplt.ylabel('''OPD average waiting time (minutes)''')\nplt.xticks(rotation=0)\nplt.ylim(0, 8)\nplt.savefig(fig2c_path, bbox_inches='tight')\nplt.show()"
   }
 ]

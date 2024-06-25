@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -203,7 +237,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#run-100-replications-for-table-6" id="toc-run-100-replications-for-table-6" class="nav-link active" data-scroll-target="#run-100-replications-for-table-6">6.55-6.57: Run 100 replications for Table 6</a></li>
   <li><a href="#used-parallel-processing-when-running-the-replications" id="toc-used-parallel-processing-when-running-the-replications" class="nav-link" data-scroll-target="#used-parallel-processing-when-running-the-replications">9.26-9.50, 10.50-10.51: Used parallel processing when running the replications</a></li>
-  <li><a href="#saved-output-from-processed-replications-and-confirmation-from-tom-and-alison" id="toc-saved-output-from-processed-replications-and-confirmation-from-tom-and-alison" class="nav-link" data-scroll-target="#saved-output-from-processed-replications-and-confirmation-from-tom-and-alison">11.04-11.09: Saved output from processed replications, and confirmation from Tom and Alison</a></li>
+  <li><a href="#saved-output-from-processed-replications-and-confirmation-from-tom-and-alison" id="toc-saved-output-from-processed-replications-and-confirmation-from-tom-and-alison" class="nav-link" data-scroll-target="#saved-output-from-processed-replications-and-confirmation-from-tom-and-alison">11.04-11.17: Saved output from processed replications, and confirmation from Tom and Alison</a></li>
+  <li><a href="#create-figure-2b" id="toc-create-figure-2b" class="nav-link" data-scroll-target="#create-figure-2b">11.30-11.50: Create Figure 2B</a></li>
+  <li><a href="#create-figure-2c" id="toc-create-figure-2c" class="nav-link" data-scroll-target="#create-figure-2c">11.51-12.08, 12.13-12.17: Create Figure 2C</a></li>
+  <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_25/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -222,12 +259,120 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="used-parallel-processing-when-running-the-replications">9.26-9.50, 10.50-10.51: Used parallel processing when running the replications</h2>
 <p>Set up parallel processing in <code>reproduce_tab6.ipynb</code> to run the 4 sets of 100 replications. It took 61 minutes to run (excluded from timing). Once complete, I looked over the table and was satisified that the mean and SD values were close enough to the original, and considered it now completely successfully reproduced (at timestamp: 10.51). I disregarded some high percent change that were simply due to comparison of numbers very close to zero, and the difference was actually very small.</p>
 <p>Emailed to Tom and Alison to share second opinion.</p>
+<p>Timing for when Table 6 is completed (i.e.&nbsp;as of 10.51):</p>
+<div id="13139ea4" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">829</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'6.55'</span>, <span class="st">'6.57'</span>),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.26'</span>, <span class="st">'9.50'</span>),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.50'</span>, <span class="st">'10.51'</span>)]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time spent today: 27m, or 0h 27m
+Total used to date: 856m, or 14h 16m
+Time remaining: 1544m, or 25h 44m
+Used 35.7% of 40 hours max</code></pre>
+</div>
+</div>
 </section>
 <section id="saved-output-from-processed-replications-and-confirmation-from-tom-and-alison" class="level2">
-<h2 class="anchored" data-anchor-id="saved-output-from-processed-replications-and-confirmation-from-tom-and-alison">11.04-11.09: Saved output from processed replications, and confirmation from Tom and Alison</h2>
+<h2 class="anchored" data-anchor-id="saved-output-from-processed-replications-and-confirmation-from-tom-and-alison">11.04-11.17: Saved output from processed replications, and confirmation from Tom and Alison</h2>
 <p>Edited notebook so model is not re-run each time (due to long run time), and then saved the processed results to a csv file.</p>
 <p>Both Tom and Alison responded to confirm they were happy this was reproduced.</p>
-<p>Re-ran % change calculations with rounded values.</p>
+<p>Re-ran % change calculations with rounded values. As before, observe that we are sometimes comparing very small numbers - so e.g.&nbsp;mean of 0.011 v.s. 0.012 comes out as 9% change. It also sometimes finds large differences for small SD values (e.g.&nbsp;1360% change), when actually, I’m not too concerned by the difference in the grand scheme of things.</p>
+</section>
+<section id="create-figure-2b" class="level2">
+<h2 class="anchored" data-anchor-id="create-figure-2b">11.30-11.50: Create Figure 2B</h2>
+<p>Imported and processed data from the arrival number replications, and produced Figure 2B. Happy that this is succesfully reproduced at timepoint 11.50. In order to declare this reproduced, I feel I do not require to run the same number of replications (100), as understand this would have no meaningful impact on result being plot (mean), and am happy with consistency to original at 10 replications.</p>
+<div id="c0d67851" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">829</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'6.55'</span>, <span class="st">'6.57'</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.26'</span>, <span class="st">'9.50'</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.50'</span>, <span class="st">'10.51'</span>),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.04'</span>, <span class="st">'11.17'</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.30'</span>, <span class="st">'11.50'</span>)]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time spent today: 60m, or 1h 0m
+Total used to date: 889m, or 14h 49m
+Time remaining: 1511m, or 25h 11m
+Used 37.0% of 40 hours max</code></pre>
+</div>
+</div>
+</section>
+<section id="create-figure-2c" class="level2">
+<h2 class="anchored" data-anchor-id="create-figure-2c">11.51-12.08, 12.13-12.17: Create Figure 2C</h2>
+<p>Using <code>OPD Q wt</code> (which matched up to OPD queue waiting time for Table 6), results look rather different. They only go up to 0.01, whilst in Figure 2C, results go from under 1 up to just under 7. That is closer to the waiting time in the benchmark model, implying these results are obtained with those doctor numbers.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig2c_incorrect.png" class="img-fluid figure-img"></p>
+<figcaption>Incorrect reproduction of Fig2c</figcaption>
+</figure>
+</div>
+<p>When run with the <code>serv5</code> appointment times, the results match up with the paper. Feel this has been succesfully reproduced at time 12.17.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig2c_fixed.png" class="img-fluid figure-img"></p>
+<figcaption>Successful reproduction of Fig2c</figcaption>
+</figure>
+</div>
+<div id="fef47eb4" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">829</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'6.55'</span>, <span class="st">'6.57'</span>),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.26'</span>, <span class="st">'9.50'</span>),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.50'</span>, <span class="st">'10.51'</span>),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.04'</span>, <span class="st">'11.17'</span>),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.30'</span>, <span class="st">'11.50'</span>),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.51'</span>, <span class="st">'12.08'</span>),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.13'</span>, <span class="st">'12.17'</span>)]</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time spent today: 81m, or 1h 21m
+Total used to date: 910m, or 15h 10m
+Time remaining: 1490m, or 24h 50m
+Used 37.9% of 40 hours max</code></pre>
+</div>
+</div>
+</section>
+<section id="timings" class="level2">
+<h2 class="anchored" data-anchor-id="timings">Timings</h2>
+<div id="104dd7c7" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'6.55'</span>, <span class="st">'6.57'</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.26'</span>, <span class="st">'9.50'</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.50'</span>, <span class="st">'10.51'</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.04'</span>, <span class="st">'11.17'</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.30'</span>, <span class="st">'11.50'</span>),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.51'</span>, <span class="st">'12.08'</span>),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.13'</span>, <span class="st">'12.17'</span>)]</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time spent today: 81m, or 1h 21m
+Total used to date: 910m, or 15h 10m
+Time remaining: 1490m, or 24h 50m
+Used 37.9% of 40 hours max</code></pre>
+</div>
+</div>
 
 
 </section>
