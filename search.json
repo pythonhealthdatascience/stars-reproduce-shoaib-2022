@@ -130,14 +130,14 @@
     "href": "logbook/posts/2024_06_25/index.html",
     "title": "Day 4",
     "section": "",
-    "text": "Start running with 100 replications. Taking too long (ran through 259 replications in 110 minutes), so only got through 2 full configurations before needing to shut it down to go to work."
+    "text": "Note\n\n\n\nTable 6 100 rep, and created Figure 2A-D. Total time used: TBCh TBCm (TBC%)"
   },
   {
     "objectID": "logbook/posts/2024_06_25/index.html#run-100-replications-for-table-6",
     "href": "logbook/posts/2024_06_25/index.html#run-100-replications-for-table-6",
     "title": "Day 4",
-    "section": "",
-    "text": "Start running with 100 replications. Taking too long (ran through 259 replications in 110 minutes), so only got through 2 full configurations before needing to shut it down to go to work."
+    "section": "6.55-6.57: Run 100 replications for Table 6",
+    "text": "6.55-6.57: Run 100 replications for Table 6\nStart running with 100 replications. Taking too long (ran through 259 replications in 110 minutes), so only got through 2 full configurations before needing to shut it down to go to work."
   },
   {
     "objectID": "logbook/posts/2024_06_25/index.html#used-parallel-processing-when-running-the-replications",
@@ -165,14 +165,35 @@
     "href": "logbook/posts/2024_06_25/index.html#create-figure-2c",
     "title": "Day 4",
     "section": "11.51-12.08, 12.13-12.17: Create Figure 2C",
-    "text": "11.51-12.08, 12.13-12.17: Create Figure 2C\nUsing OPD Q wt (which matched up to OPD queue waiting time for Table 6), results look rather different. They only go up to 0.01, whilst in Figure 2C, results go from under 1 up to just under 7. That is closer to the waiting time in the benchmark model, implying these results are obtained with those doctor numbers.\n\n\n\nIncorrect reproduction of Fig2c\n\n\nWhen run with the serv5 appointment times, the results match up with the paper. Feel this has been succesfully reproduced at time 12.17.\n\n\n\nSuccessful reproduction of Fig2c\n\n\n\n# Minutes used prior to today\nused_to_date = 829\n\n# Times from today\ntimes = [\n    ('6.55', '6.57'),\n    ('9.26', '9.50'),\n    ('10.50', '10.51'),\n    ('11.04', '11.17'),\n    ('11.30', '11.50'),\n    ('11.51', '12.08'),\n    ('12.13', '12.17')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 81m, or 1h 21m\nTotal used to date: 910m, or 15h 10m\nTime remaining: 1490m, or 24h 50m\nUsed 37.9% of 40 hours max"
+    "text": "11.51-12.08, 12.13-12.17: Create Figure 2C\nUsing OPD Q wt (which matched up to OPD queue waiting time for Table 6), results look rather different. They only go up to 0.01, whilst in Figure 2C, results go from under 1 up to just under 7. That is closer to the waiting time in the benchmark model, implying these results are obtained with those doctor numbers.\n\n\n\nIncorrect reproduction of Fig2c\n\n\nWhen run with the serv5 appointment times, the results match up with the paper. Feel this has been succesfully reproduced at time 12.17.\n\n\n\nSuccessful reproduction of Fig2c\n\n\nObservation: Reproduced figure, but not from how I understood it had been set up from the text (unless that was my misunderstanding - which is quite possible!).\n\n# Minutes used prior to today\nused_to_date = 829\n\n# Times from today\ntimes = [\n    ('6.55', '6.57'),\n    ('9.26', '9.50'),\n    ('10.50', '10.51'),\n    ('11.04', '11.17'),\n    ('11.30', '11.50'),\n    ('11.51', '12.08'),\n    ('12.13', '12.17')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 81m, or 1h 21m\nTotal used to date: 910m, or 15h 10m\nTime remaining: 1490m, or 24h 50m\nUsed 37.9% of 40 hours max\n\n\nEmailed to Tom and Alison - and Tom confirmed that Fig2B and 2C are succesful.\n\n\n\n\n\n\nReflections from Tom from these reproductions\n\n\n\nIncluding code to (re)generate figures\nIncluding tick marks on axes so that people can easily read across or judge whether a bar goes above a Y value or not"
+  },
+  {
+    "objectID": "logbook/posts/2024_06_25/index.html#add-grid-lines-to-figures",
+    "href": "logbook/posts/2024_06_25/index.html#add-grid-lines-to-figures",
+    "title": "Day 4",
+    "section": "13.20-13.26: Add grid lines to figures",
+    "text": "13.20-13.26: Add grid lines to figures\nAdd horizontal grid lines to Figures 2B and 2C, to improve readability."
+  },
+  {
+    "objectID": "logbook/posts/2024_06_25/index.html#working-on-figure-2a",
+    "href": "logbook/posts/2024_06_25/index.html#working-on-figure-2a",
+    "title": "Day 4",
+    "section": "13.29-13.44, 13.47-14.04, 14.13-14.19, 14.24-14.41: Working on Figure 2A",
+    "text": "13.29-13.44, 13.47-14.04, 14.13-14.19, 14.24-14.41: Working on Figure 2A\nThe text and figures do not provide the boundary used when sampling the consultation time. From previous implementations we know:\n\nMean 0.87 uses boundaries 0.3/0.5\nMean 5 uses boundary 2\n\nHowever, we do not know for mean 2.5. We might reasonably estimate that it would be around 1, but this is a guess and not substantiated by evidence.\nRan all nine combinations set up with parallel processing but only 10 replications, run time 3m 22s.\nCreated Figure 2A, and - despite guessing for the 2.5 (0.5) boundaries - I feel the bar heights are sufficiently similar to mark this as successfully reproduced at 14.41.\n\n# Times from today\ntimes = [\n    ('6.55', '6.57'),\n    ('9.26', '9.50'),\n    ('10.50', '10.51'),\n    ('11.04', '11.17'),\n    ('11.30', '11.50'),\n    ('11.51', '12.08'),\n    ('12.13', '12.17'),\n    ('13.20', '13.26'),\n    ('13.29', '13.44'),\n    ('13.47', '14.04'),\n    ('14.13', '14.19'),\n    ('14.24', '14.41')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 142m, or 2h 22m\nTotal used to date: 971m, or 16h 11m\nTime remaining: 1429m, or 23h 49m\nUsed 40.5% of 40 hours max"
+  },
+  {
+    "objectID": "logbook/posts/2024_06_25/index.html#working-on-figure-2d",
+    "href": "logbook/posts/2024_06_25/index.html#working-on-figure-2d",
+    "title": "Day 4",
+    "section": "14.44-14.54: Working on Figure 2D",
+    "text": "14.44-14.54: Working on Figure 2D\nProduced Figure 2D using same data and similar code to Figure 2A.\nAgain, feel sufficiently similar to mark as successfully reproduced at 14.54.\n\n# Times from today\ntimes = [\n    ('6.55', '6.57'),\n    ('9.26', '9.50'),\n    ('10.50', '10.51'),\n    ('11.04', '11.17'),\n    ('11.30', '11.50'),\n    ('11.51', '12.08'),\n    ('12.13', '12.17'),\n    ('13.20', '13.26'),\n    ('13.29', '13.44'),\n    ('13.47', '14.04'),\n    ('14.13', '14.19'),\n    ('14.24', '14.54')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 155m, or 2h 35m\nTotal used to date: 984m, or 16h 24m\nTime remaining: 1416m, or 23h 36m\nUsed 41.0% of 40 hours max"
   },
   {
     "objectID": "logbook/posts/2024_06_25/index.html#timings",
     "href": "logbook/posts/2024_06_25/index.html#timings",
     "title": "Day 4",
     "section": "Timings",
-    "text": "Timings\n\n# Times from today\ntimes = [\n    ('6.55', '6.57'),\n    ('9.26', '9.50'),\n    ('10.50', '10.51'),\n    ('11.04', '11.17'),\n    ('11.30', '11.50'),\n    ('11.51', '12.08'),\n    ('12.13', '12.17')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 81m, or 1h 21m\nTotal used to date: 910m, or 15h 10m\nTime remaining: 1490m, or 24h 50m\nUsed 37.9% of 40 hours max"
+    "text": "Timings\n\n# Times from today\ntimes = [\n    ('6.55', '6.57'),\n    ('9.26', '9.50'),\n    ('10.50', '10.51'),\n    ('11.04', '11.17'),\n    ('11.30', '11.50'),\n    ('11.51', '12.08'),\n    ('12.13', '12.17'),\n    ('13.20', '13.26'),\n    ('13.29', '13.44'),\n    ('13.47', '14.04'),\n    ('14.13', '14.19'),\n    ('14.24', '14.41')]\n\ncalculate_times(used_to_date, times)\n\nTime spent today: 142m, or 2h 22m\nTotal used to date: 971m, or 16h 11m\nTime remaining: 1429m, or 23h 49m\nUsed 40.5% of 40 hours max"
   },
   {
     "objectID": "logbook/posts/2024_06_21/index.html",
@@ -578,7 +599,7 @@
     "href": "reproduction/reproduce_fig2.html",
     "title": "Reproducing Figure 2A-D",
     "section": "",
-    "text": "Figure 2 presents results from sensitivity analysis of configuration 1."
+    "text": "Figure 2 presents results from sensitivity analysis of configuration 1.\nNote: These are created from 10 replications currently for simplicity. At 10 replications, we would expect mean values to vary only slightly from further replication numbers. Hence, if felt similar at 10, have marked as succesfully reproduced without also testing at 100 replications."
   },
   {
     "objectID": "reproduction/reproduce_fig2.html#parameters",
@@ -592,27 +613,55 @@
     "href": "reproduction/reproduce_fig2.html#set-up",
     "title": "Reproducing Figure 2A-D",
     "section": "Set up",
-    "text": "Set up\n\n# To run model\nimport PHC\n\n# To import results and produce figures\nimport xlrd\nimport pandas as pd\nimport os\nimport matplotlib.pyplot as plt\n\n\n# Paths to save image files to\noutput_folder = 'outputs'\nfig2a_path = os.path.join(output_folder, 'fig2a.png')\nfig2b_path = os.path.join(output_folder, 'fig2b.png')\nfig2c_path = os.path.join(output_folder, 'fig2c.png')\nfig2d_path = os.path.join(output_folder, 'fig2d.png')"
+    "text": "Set up\n\n# To run model\nimport PHC\n\n# To import results and produce figures\nimport xlrd\nimport pandas as pd\nimport os\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# To speed up run time\nfrom multiprocessing import Pool\n\n'''\n# Additional package to record runtime of this notebook\nimport time\nstart = time.time()\n'''\n\n'\\n# Additional package to record runtime of this notebook\\nimport time\\nstart = time.time()\\n'\n\n\n\n# Paths to save image files to\noutput_folder = 'outputs'\nfig2a_path = os.path.join(output_folder, 'fig2a.png')\nfig2b_path = os.path.join(output_folder, 'fig2b.png')\nfig2c_path = os.path.join(output_folder, 'fig2c.png')\nfig2d_path = os.path.join(output_folder, 'fig2d.png')"
   },
   {
     "objectID": "reproduction/reproduce_fig2.html#run-model",
     "href": "reproduction/reproduce_fig2.html#run-model",
     "title": "Reproducing Figure 2A-D",
     "section": "Run model",
-    "text": "Run model\nAs this is a variation on configuration 1 (which is the default parameters in PHC.py), we just need to input the varying number of outpatients and service time.\n\n# TODO: Run with 100 replications\n\n# To produce Figure 2B\n\narr170 = {\n    'OPD_iat': 3,\n    'rep_file': 'arr170.xls',\n}\n\narr85 = {\n    'OPD_iat': 6,\n    'rep_file': 'arr85.xls',\n}\n\narr65 = {\n    'OPD_iat': 8,\n    'rep_file': 'arr65.xls',\n}\n\nserv087 = {\n    'mean': 0.87,\n    'sd': 0.21,\n    'consult_boundary_1': 0.5,  # From PHC.py\n    'consult_boundary_2': 0.3,  # From PHC.py\n}\n\nserv25 = {\n    'mean': 2.5,\n    'sd': 0.5\n#   'consult_boundary_1': ,  # What is it?\n#   'consult_boundary_2': ,  # What is it?\n}\n\nserv5 = {\n    'mean': 5,\n    'sd': 1,\n    'consult_boundary_1': 2,  # From config 4\n    'consult_boundary_2': 2,  # From config 4\n}\n\n# To produce Figure 2C, combine the arr dictionaries with the serv5 dict\narr_dict = [arr170, arr85, arr65]\narr_serv5_dict = []\nfor d in arr_dict:\n    # Combine the dictionaries\n    comb = {**d, **serv5}\n    # Replace the file name\n    comb['rep_file'] = comb['rep_file'].replace('.', '_serv5.')\n    # Save to list\n    arr_serv5_dict.append(comb)\ndisplay(arr_serv5_dict)\n\n[{'OPD_iat': 3,\n  'rep_file': 'arr170_serv5.xls',\n  'mean': 5,\n  'sd': 1,\n  'consult_boundary_1': 2,\n  'consult_boundary_2': 2},\n {'OPD_iat': 6,\n  'rep_file': 'arr85_serv5.xls',\n  'mean': 5,\n  'sd': 1,\n  'consult_boundary_1': 2,\n  'consult_boundary_2': 2},\n {'OPD_iat': 8,\n  'rep_file': 'arr65_serv5.xls',\n  'mean': 5,\n  'sd': 1,\n  'consult_boundary_1': 2,\n  'consult_boundary_2': 2}]\n\n\n\n# Input configuration parameters to main() (have to append with 's_', and\n# add ** as inputting dict as parameters)\n#for config in arr_serv5_dict:\n#    print(f'''Running: {config['rep_file']}''')\n#    PHC.main(**{f's_{k}': v for k, v in config.items()})"
+    "text": "Run model\nAs this is a variation on configuration 1 (which is the default parameters in PHC.py), we just need to input the varying number of outpatients and service time.\n\n# TODO: Run with 100 replications\n\n# Varying number of outpatients\narr_dict = [\n    {\n        'OPD_iat': 3,\n        'rep_file': 'arr170'\n    },\n    {\n        'OPD_iat': 6,\n        'rep_file': 'arr85',\n    },\n    {\n        'OPD_iat': 8,\n        'rep_file': 'arr65',\n    }\n]\n\n# Varying service time\nserv_dict = [\n    {\n        'mean': 0.87,\n        'sd': 0.21,\n        'consult_boundary_1': 0.5,  # From PHC.py\n        'consult_boundary_2': 0.3,  # From PHC.py\n        'rep_file': 'serv087'\n    },\n    {\n        'mean': 2.5,\n        'sd': 0.5,\n        'consult_boundary_1': 1,  # Guess\n        'consult_boundary_2': 1,  # Guess\n        'rep_file': 'serv25'\n    },\n    {\n        'mean': 5,\n        'sd': 1,\n        'consult_boundary_1': 2,  # From config 4\n        'consult_boundary_2': 2,  # From config 4\n        'rep_file': 'serv5'\n    }\n]\n\nCreate each combination for the reproduction\n\ndict_list = []\nfor arr in arr_dict:\n    for serv in serv_dict:\n        # Combine the dictionaries\n        comb = {**arr, **serv}\n        # Replace the file name\n        comb['rep_file'] = f'''f2_{arr['rep_file']}_{serv['rep_file']}.xls'''\n        # Save to list\n        dict_list.append(comb)\n\nlen(dict_list)\n\n9\n\n\n\n# Append 's_' to all items\nfor i, d in enumerate(dict_list):\n    dict_list[i] = {f's_{k}': v for k, v in d.items()}\n\n# Preview example\ndict_list[0]\n\n{'s_OPD_iat': 3,\n 's_rep_file': 'f2_arr170_serv087.xls',\n 's_mean': 0.87,\n 's_sd': 0.21,\n 's_consult_boundary_1': 0.5,\n 's_consult_boundary_2': 0.3}\n\n\nRun the model (with parallel processing to reduce run time)\n\n'''\n# Wrapper function to allow input of dictionary with pool\ndef wrapper(d):\n    return PHC.main(**d)\n\n# Create a process pool that uses all CPUs\nwith Pool() as pool:\n    # Run PHC.main() using each of inputs from config\n    pool.map(wrapper, dict_list)\n'''\n\n'\\n# Wrapper function to allow input of dictionary with pool\\ndef wrapper(d):\\n    return PHC.main(**d)\\n\\n# Create a process pool that uses all CPUs\\nwith Pool() as pool:\\n    # Run PHC.main() using each of inputs from config\\n    pool.map(wrapper, dict_list)\\n'"
+  },
+  {
+    "objectID": "reproduction/reproduce_fig2.html#function-to-process-results",
+    "href": "reproduction/reproduce_fig2.html#function-to-process-results",
+    "title": "Reproducing Figure 2A-D",
+    "section": "Function to process results",
+    "text": "Function to process results\n\ndef process_results(files):\n    '''\n    Imports files in provided list and produces a single dataframe with mean\n    results from across the replications\n\n    Parameters:\n    ----------\n    files : list\n        List of file names (exc. file type) containing replication results\n\n    Returns:\n    --------\n    summary : dataframe\n        Dataframe with mean results for each model variant in file list\n    '''\n    # Empty list to store results\n    result_list = []\n\n    for f in files:\n        # Import .xls and convert to pandas dataframe\n        book = xlrd.open_workbook(os.path.join(output_folder, f'{f}.xls'))\n        result = pd.read_excel(book, header=None, index_col=0)\n\n        # Find mean from the replication\n        # Save as dataframe, dropping the duplicate rows (NCD occ twice)\n        res = pd.DataFrame({f: result.mean(axis=1)}).drop_duplicates()\n\n        # Remove index name\n        res.index.name = None\n\n        # Save to list\n        result_list.append(res)\n\n    # Combine into single dataframe\n    summary = pd.concat(result_list, axis=1)\n\n    return summary"
+  },
+  {
+    "objectID": "reproduction/reproduce_fig2.html#create-figure-2a",
+    "href": "reproduction/reproduce_fig2.html#create-figure-2a",
+    "title": "Reproducing Figure 2A-D",
+    "section": "Create Figure 2A",
+    "text": "Create Figure 2A\n\n# Import and process results\ndata_full = process_results([\n    'f2_arr170_serv087', 'f2_arr85_serv087', 'f2_arr65_serv087',\n    'f2_arr170_serv25', 'f2_arr85_serv25', 'f2_arr65_serv25',\n    'f2_arr170_serv5', 'f2_arr85_serv5', 'f2_arr65_serv5'])\n\n# Filter to doctor utilisation\ndata_2a = data_full.loc['doc occ']\ndata_2a\n\nf2_arr170_serv087    0.311611\nf2_arr85_serv087     0.224704\nf2_arr65_serv087     0.202088\nf2_arr170_serv25     0.639213\nf2_arr85_serv25      0.390103\nf2_arr65_serv25      0.326204\nf2_arr170_serv5      1.143897\nf2_arr85_serv5       0.639603\nf2_arr65_serv5       0.517074\nName: doc occ, dtype: float64\n\n\n\ndef create_2a_2d(s, ylab, file, ylim=False):\n    '''\n    Creates Figure 2A or 2D (as both are very similar)\n\n    Parameters:\n    -----------\n    s : pd.Series\n        Series with mean result as values, and the model variant as index\n    ylab : string\n        Label for y axis\n    file : string\n        Path to save figure\n    ylim : list, optional, default False\n        If provided, gives the lower and upper limits for the Y axis\n\n    Returns:\n    --------\n    matplotlib figure \n    '''\n    # Reshape data so in appropriate format for plotting grouped bar chart\n    names = [170, 85, 65]\n    s5 = [s['f2_arr170_serv5'], s['f2_arr85_serv5'], s['f2_arr65_serv5']]\n    s25 = [s['f2_arr170_serv25'], s['f2_arr85_serv25'], s['f2_arr65_serv25']]\n    s87 = [s['f2_arr170_serv087'], s['f2_arr85_serv087'], s['f2_arr65_serv087']]\n\n    data = pd.DataFrame(\n        {'5 (1)': s5, '2.5 (0.5)': s25, '0.87 (0.21)': s87}, index=names)\n\n    # Plot data\n    ax = data.plot.bar(edgecolor='black', color='white', width=0.7)\n\n    # Add patterns\n    bars = ax.patches\n    pattern = np.repeat(['..', '+++++', '\\\\\\\\\\\\\\\\'], 3)\n    for bar, hatch in zip(bars, pattern):\n        bar.set_hatch(hatch)\n    ax.legend(title='Consultation time (min): mean (sd)')\n\n    # Adjust figure\n    plt.xlabel('Number of patients/day')\n    plt.ylabel(ylab)\n    if ylim:\n        plt.ylim(ylim)\n    plt.xticks(rotation=0)\n    ax.grid(axis='y')\n    ax.set_axisbelow(True)\n    plt.savefig(file, bbox_inches='tight')\n    plt.show()\n\n\ncreate_2a_2d(data_2a, ylab='''Doctor's utilisation''', file=fig2a_path)"
   },
   {
     "objectID": "reproduction/reproduce_fig2.html#create-figure-2b",
     "href": "reproduction/reproduce_fig2.html#create-figure-2b",
     "title": "Reproducing Figure 2A-D",
     "section": "Create Figure 2B",
-    "text": "Create Figure 2B\nImport and process data\n\n# List of files to loop through\nfiles = ['arr170', 'arr85', 'arr65']\n\n# Empty list to store results\nresult_list = []\n\nfor f in files:\n    # Import .xls and convert to pandas dataframe\n    book = xlrd.open_workbook(os.path.join(output_folder, f'{f}.xls'))\n    result = pd.read_excel(book, header=None, index_col=0)\n\n    # Find mean from the replication\n    # Save as dataframe, dropping the duplicate rows (NCD occ twice)\n    res = pd.DataFrame({\n        f.replace('arr', ''): result.mean(axis=1)\n    }).drop_duplicates()\n\n    # Remove index name\n    res.index.name = None\n\n    # Save to list\n    result_list.append(res)\n\n# Combine into single dataframe\nsummary = pd.concat(result_list, axis=1)\n\nProduce figure\n\nsummary.loc['NCD occ'].plot.bar(edgecolor='black', color='white', hatch='.')\nplt.xlabel('Number of patients/day')\nplt.ylabel('''NCD nurse's utilisation''')\nplt.ylim(0, 1.4)\nplt.xticks(rotation=0)\nplt.savefig(fig2b_path, bbox_inches='tight')\nplt.show()"
+    "text": "Create Figure 2B\nImport and process data - note: used 0.87 since that is PHC1 and this is described as variants on that but, as paper notes and as I’ve observed (not shown here), “the doctor’s consultation time does not impact this outcome”, so it ultimately doesn’t matter which is chosen.\n\n# Import and process results\ndata_2b = process_results([\n    'f2_arr170_serv087', 'f2_arr85_serv087', 'f2_arr65_serv087'])\n\n# Rename columns\ndata_2b.columns = (\n    data_2b.columns.str.removeprefix('f2_arr').str.removesuffix('_serv087'))\n\n# Preview data\ndata_2b.head()\n\n\n\n\n\n\n\n\n170\n85\n65\n\n\n\n\nOPD patients\n44055.900000\n22092.100000\n16668.700000\n\n\nIPD patients\n184.100000\n186.500000\n174.900000\n\n\nANC patients\n373.500000\n364.400000\n362.800000\n\n\nDel patients\n360.600000\n372.600000\n357.400000\n\n\nOPD Q wt\n0.012007\n0.007196\n0.003558\n\n\n\n\n\n\n\nProduce figure\n\nax = data_2b.loc['NCD occ'].plot.bar(\n    edgecolor='black', color='white', hatch='..')\nplt.xlabel('Number of patients/day')\nplt.ylabel('''NCD nurse's utilisation''')\nplt.ylim(0, 1.4)\nplt.xticks(rotation=0)\nax.grid(axis='y')\nax.set_axisbelow(True)\nplt.savefig(fig2b_path, bbox_inches='tight')\nplt.show()"
   },
   {
     "objectID": "reproduction/reproduce_fig2.html#create-figure-2c",
     "href": "reproduction/reproduce_fig2.html#create-figure-2c",
     "title": "Reproducing Figure 2A-D",
     "section": "Create Figure 2C",
-    "text": "Create Figure 2C\nImport and process data\n\n# List of files to loop through\nfiles = ['arr170_serv5', 'arr85_serv5', 'arr65_serv5']\n\n# Empty list to store results\nresult_list = []\n\nfor f in files:\n    # Import .xls and convert to pandas dataframe\n    book = xlrd.open_workbook(os.path.join(output_folder, f'{f}.xls'))\n    result = pd.read_excel(book, header=None, index_col=0)\n\n    # Find mean from the replication\n    # Save as dataframe, dropping the duplicate rows (NCD occ twice)\n    res = pd.DataFrame({\n        f.replace('arr', '').replace('_serv5', ''): result.mean(axis=1)\n    }).drop_duplicates()\n\n    # Remove index name\n    res.index.name = None\n\n    # Save to list\n    result_list.append(res)\n\n# Combine into single dataframe\nsummary = pd.concat(result_list, axis=1)\n\nProduce figure\n\nsummary.loc['OPD Q wt'].plot.bar(edgecolor='black', color='white', hatch='.')\nplt.xlabel('Number of patients/day')\nplt.ylabel('''OPD average waiting time (minutes)''')\nplt.xticks(rotation=0)\nplt.ylim(0, 8)\nplt.savefig(fig2c_path, bbox_inches='tight')\nplt.show()"
+    "text": "Create Figure 2C\nImport and process data\n\n# Import and process results\ndata_2c = process_results([\n    'f2_arr170_serv5', 'f2_arr85_serv5', 'f2_arr65_serv5'])\n\n# Rename columns\ndata_2c.columns = (\n    data_2c.columns.str.removeprefix('f2_arr').str.removesuffix('_serv5'))\n\n# Preview data\ndata_2c.head()\n\n\n\n\n\n\n\n\n170\n85\n65\n\n\n\n\nOPD patients\n44034.900000\n22059.100000\n16683.900000\n\n\nIPD patients\n180.500000\n180.700000\n181.400000\n\n\nANC patients\n369.800000\n370.700000\n366.500000\n\n\nDel patients\n371.100000\n362.000000\n362.700000\n\n\nOPD Q wt\n6.953913\n0.536441\n0.282745\n\n\n\n\n\n\n\nProduce figure\n\n# Create figure\nax = data_2c.loc['OPD Q wt'].plot.bar(\n    edgecolor='black', color='white', hatch='..')\nplt.xlabel('Number of patients/day')\nplt.ylabel('''OPD average waiting time (minutes)''')\nplt.xticks(rotation=0)\nplt.ylim(0, 8)\nax.grid(axis='y')\nax.set_axisbelow(True)\nplt.savefig(fig2c_path, bbox_inches='tight')\nplt.show()"
+  },
+  {
+    "objectID": "reproduction/reproduce_fig2.html#create-figure-2d",
+    "href": "reproduction/reproduce_fig2.html#create-figure-2d",
+    "title": "Reproducing Figure 2A-D",
+    "section": "Create Figure 2D",
+    "text": "Create Figure 2D\n\n# Filter to pharmacy waiting time\ndata_2d = data_full.loc['Pharmacy Q wt']\ndata_2d\n\nf2_arr170_serv087    2.476096\nf2_arr85_serv087     0.459063\nf2_arr65_serv087     0.292411\nf2_arr170_serv25     2.448591\nf2_arr85_serv25      0.453829\nf2_arr65_serv25      0.284289\nf2_arr170_serv5      1.286610\nf2_arr85_serv5       0.338799\nf2_arr65_serv5       0.215271\nName: Pharmacy Q wt, dtype: float64\n\n\n\ncreate_2a_2d(data_2d, ylab='Pharmacy average waiting time (minutes)',\n             ylim=[0, 3], file=fig2d_path)"
+  },
+  {
+    "objectID": "reproduction/reproduce_fig2.html#run-time",
+    "href": "reproduction/reproduce_fig2.html#run-time",
+    "title": "Reproducing Figure 2A-D",
+    "section": "Run time",
+    "text": "Run time\n\n'''\n# Find run time in seconds\nend = time.time()\nruntime = round(end-start)\n\n# Display converted to minutes and seconds\nprint(f'Notebook run time: {runtime//60}m {runtime%60}s')\n'''\n\n\"\\n# Find run time in seconds\\nend = time.time()\\nruntime = round(end-start)\\n\\n# Display converted to minutes and seconds\\nprint(f'Notebook run time: {runtime//60}m {runtime%60}s')\\n\""
   }
 ]
