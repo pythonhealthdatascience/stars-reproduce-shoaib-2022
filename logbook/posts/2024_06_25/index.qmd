@@ -1,0 +1,13 @@
+---
+title: "Day 4"
+author: "Amy Heather"
+date: "2024-06-25"
+categories: [reproduce]
+bibliography: ../../../quarto_site/references.bib
+---
+
+## 6.55-6.57: Run 100 replications for Table 6
+
+Start running with 100 replications.
+
+Taking too long (ran through 259 replications in 110 minutes).
