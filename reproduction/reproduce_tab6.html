@@ -908,8 +908,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-16" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>compare <span class="op">=</span> t6.merge(summary)</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round to 3dp (as in table) and merge</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>compare <span class="op">=</span> t6.merge(<span class="bu">round</span>(summary,<span class="dv">3</span>))</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>compare.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
@@ -952,14 +952,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>1.142</td>
 <td>0.006</td>
 <td>doc occ</td>
-<td>0.268646</td>
-<td>0.002153</td>
-<td>0.372444</td>
-<td>0.003851</td>
-<td>0.353664</td>
-<td>0.002500</td>
-<td>1.143672</td>
-<td>0.005670</td>
+<td>0.269</td>
+<td>0.002</td>
+<td>0.372</td>
+<td>0.004</td>
+<td>0.354</td>
+<td>0.002</td>
+<td>1.144</td>
+<td>0.006</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
@@ -973,14 +973,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>1.232</td>
 <td>0.019</td>
 <td>NCD occ</td>
-<td>0.866110</td>
-<td>0.009541</td>
-<td>0.468966</td>
-<td>0.005556</td>
-<td>0.467952</td>
-<td>0.004912</td>
-<td>1.231325</td>
-<td>0.018736</td>
+<td>0.866</td>
+<td>0.010</td>
+<td>0.469</td>
+<td>0.006</td>
+<td>0.468</td>
+<td>0.005</td>
+<td>1.231</td>
+<td>0.019</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
@@ -994,14 +994,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0.322</td>
 <td>0.008</td>
 <td>staff nurse occ</td>
-<td>0.322897</td>
-<td>0.007589</td>
-<td>0.243063</td>
-<td>0.005772</td>
-<td>0.160844</td>
-<td>0.001431</td>
-<td>0.323955</td>
-<td>0.007993</td>
+<td>0.323</td>
+<td>0.008</td>
+<td>0.243</td>
+<td>0.006</td>
+<td>0.161</td>
+<td>0.001</td>
+<td>0.324</td>
+<td>0.008</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
@@ -1015,14 +1015,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0.855</td>
 <td>0.005</td>
 <td>pharm occ</td>
-<td>0.642966</td>
-<td>0.003611</td>
-<td>0.288813</td>
-<td>0.002505</td>
-<td>0.288200</td>
-<td>0.002420</td>
-<td>0.855421</td>
-<td>0.004399</td>
+<td>0.643</td>
+<td>0.004</td>
+<td>0.289</td>
+<td>0.003</td>
+<td>0.288</td>
+<td>0.002</td>
+<td>0.855</td>
+<td>0.004</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
@@ -1036,14 +1036,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0.736</td>
 <td>0.011</td>
 <td>lab occ</td>
-<td>0.559089</td>
-<td>0.007612</td>
-<td>0.253639</td>
-<td>0.004737</td>
-<td>0.239393</td>
-<td>0.004237</td>
-<td>0.733738</td>
-<td>0.011902</td>
+<td>0.559</td>
+<td>0.008</td>
+<td>0.254</td>
+<td>0.005</td>
+<td>0.239</td>
+<td>0.004</td>
+<td>0.734</td>
+<td>0.012</td>
 </tr>
 </tbody>
 </table>
@@ -1101,100 +1101,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Doctor utilisation</td>
 <td>0.268</td>
-<td>0.268646</td>
-<td>0.000646</td>
-<td>0.241148</td>
+<td>0.269</td>
+<td>0.001</td>
+<td>0.373134</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
 <td>0.865</td>
-<td>0.866110</td>
-<td>0.001110</td>
-<td>0.128378</td>
+<td>0.866</td>
+<td>0.001</td>
+<td>0.115607</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
 <td>0.323</td>
-<td>0.322897</td>
-<td>0.000103</td>
-<td>-0.031752</td>
+<td>0.323</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
 <td>0.643</td>
-<td>0.642966</td>
-<td>0.000034</td>
-<td>-0.005363</td>
+<td>0.643</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab utilisation</td>
 <td>0.559</td>
-<td>0.559089</td>
-<td>0.000089</td>
-<td>0.015856</td>
+<td>0.559</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
 <td>0.093</td>
-<td>0.093701</td>
-<td>0.000701</td>
-<td>0.753367</td>
+<td>0.094</td>
+<td>0.001</td>
+<td>1.075269</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Labour bed utilisation</td>
 <td>0.283</td>
-<td>0.282600</td>
-<td>0.000400</td>
-<td>-0.141343</td>
+<td>0.283</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
 <td>0.000</td>
-<td>0.000778</td>
-<td>0.000778</td>
+<td>0.001</td>
+<td>0.001</td>
 <td>inf</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
 <td>0.009</td>
-<td>0.008811</td>
-<td>0.000189</td>
-<td>-2.097576</td>
+<td>0.009</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
 <td>0.090</td>
-<td>0.090219</td>
-<td>0.000219</td>
-<td>0.243128</td>
+<td>0.090</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
 <td>1.025</td>
-<td>1.025055</td>
-<td>0.000055</td>
-<td>0.005330</td>
+<td>1.025</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
 <td>0.094</td>
-<td>0.094703</td>
-<td>0.000703</td>
-<td>0.747488</td>
+<td>0.095</td>
+<td>0.001</td>
+<td>1.063830</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
 <td>2.084</td>
-<td>2.076878</td>
-<td>0.007122</td>
-<td>-0.341754</td>
+<td>2.077</td>
+<td>0.007</td>
+<td>-0.335893</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
 <td>0.156</td>
-<td>0.154015</td>
-<td>0.001985</td>
-<td>-1.272124</td>
+<td>0.154</td>
+<td>0.002</td>
+<td>-1.282051</td>
 </tr>
 </tbody>
 </table>
@@ -1226,100 +1226,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Doctor utilisation</td>
 <td>0.003</td>
-<td>0.002153</td>
-<td>0.000847</td>
-<td>-28.235658</td>
+<td>0.002</td>
+<td>0.001</td>
+<td>-33.333333</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
 <td>0.011</td>
-<td>0.009541</td>
-<td>0.001459</td>
-<td>-13.264782</td>
+<td>0.010</td>
+<td>0.001</td>
+<td>-9.090909</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
 <td>0.008</td>
-<td>0.007589</td>
-<td>0.000411</td>
-<td>-5.134792</td>
+<td>0.008</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
 <td>0.004</td>
-<td>0.003611</td>
-<td>0.000389</td>
-<td>-9.728468</td>
+<td>0.004</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab utilisation</td>
 <td>0.008</td>
-<td>0.007612</td>
-<td>0.000388</td>
-<td>-4.849327</td>
+<td>0.008</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
 <td>0.004</td>
-<td>0.004367</td>
-<td>0.000367</td>
-<td>9.186436</td>
+<td>0.004</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Labour bed utilisation</td>
 <td>0.010</td>
-<td>0.011774</td>
-<td>0.001774</td>
-<td>17.739655</td>
+<td>0.012</td>
+<td>0.002</td>
+<td>20.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
 <td>0.000</td>
-<td>0.000300</td>
-<td>0.000300</td>
-<td>inf</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>NaN</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
 <td>0.004</td>
-<td>0.003392</td>
-<td>0.000608</td>
-<td>-15.209881</td>
+<td>0.003</td>
+<td>0.001</td>
+<td>-25.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
 <td>0.002</td>
-<td>0.002221</td>
-<td>0.000221</td>
-<td>11.073388</td>
+<td>0.002</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
 <td>0.021</td>
-<td>0.022263</td>
-<td>0.001263</td>
-<td>6.014828</td>
+<td>0.022</td>
+<td>0.001</td>
+<td>4.761905</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
 <td>0.003</td>
-<td>0.002733</td>
-<td>0.000267</td>
-<td>-8.905600</td>
+<td>0.003</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
 <td>0.054</td>
-<td>0.056265</td>
-<td>0.002265</td>
-<td>4.194238</td>
+<td>0.056</td>
+<td>0.002</td>
+<td>3.703704</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
 <td>0.019</td>
-<td>0.016453</td>
-<td>0.002547</td>
-<td>-13.403600</td>
+<td>0.016</td>
+<td>0.003</td>
+<td>-15.789474</td>
 </tr>
 </tbody>
 </table>
@@ -1351,100 +1351,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Doctor utilisation</td>
 <td>0.372</td>
-<td>0.372444</td>
-<td>0.000444</td>
-<td>0.119476</td>
+<td>0.372</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
 <td>0.469</td>
-<td>0.468966</td>
-<td>0.000034</td>
-<td>-0.007179</td>
+<td>0.469</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
 <td>0.243</td>
-<td>0.243063</td>
-<td>0.000063</td>
-<td>0.026056</td>
+<td>0.243</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
 <td>0.288</td>
-<td>0.288813</td>
-<td>0.000813</td>
-<td>0.282359</td>
+<td>0.289</td>
+<td>0.001</td>
+<td>0.347222</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab utilisation</td>
 <td>0.254</td>
-<td>0.253639</td>
-<td>0.000361</td>
-<td>-0.142255</td>
+<td>0.254</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
 <td>0.055</td>
-<td>0.055842</td>
-<td>0.000842</td>
-<td>1.531615</td>
+<td>0.056</td>
+<td>0.001</td>
+<td>1.818182</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Labour bed utilisation</td>
 <td>0.153</td>
-<td>0.152300</td>
-<td>0.000700</td>
-<td>-0.457516</td>
+<td>0.152</td>
+<td>0.001</td>
+<td>-0.653595</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
 <td>0.007</td>
-<td>0.007237</td>
-<td>0.000237</td>
-<td>3.383308</td>
+<td>0.007</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
 <td>0.171</td>
-<td>0.182605</td>
-<td>0.011605</td>
-<td>6.786332</td>
+<td>0.183</td>
+<td>0.012</td>
+<td>7.017544</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
 <td>0.010</td>
-<td>0.009664</td>
-<td>0.000336</td>
-<td>-3.363731</td>
+<td>0.010</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
 <td>0.244</td>
-<td>0.244612</td>
-<td>0.000612</td>
-<td>0.250843</td>
+<td>0.245</td>
+<td>0.001</td>
+<td>0.409836</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
 <td>0.012</td>
-<td>0.012461</td>
-<td>0.000461</td>
-<td>3.840840</td>
+<td>0.012</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
 <td>0.606</td>
-<td>0.604793</td>
-<td>0.001207</td>
-<td>-0.199248</td>
+<td>0.605</td>
+<td>0.001</td>
+<td>-0.165017</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
 <td>0.088</td>
-<td>0.086324</td>
-<td>0.001676</td>
-<td>-1.904022</td>
+<td>0.086</td>
+<td>0.002</td>
+<td>-2.272727</td>
 </tr>
 </tbody>
 </table>
@@ -1476,100 +1476,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Doctor utilisation</td>
 <td>0.004</td>
-<td>0.003851</td>
-<td>0.000149</td>
-<td>-3.714913</td>
+<td>0.004</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
 <td>0.005</td>
-<td>0.005556</td>
-<td>0.000556</td>
-<td>11.123890</td>
+<td>0.006</td>
+<td>0.001</td>
+<td>20.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
 <td>0.006</td>
-<td>0.005772</td>
-<td>0.000228</td>
-<td>-3.797845</td>
+<td>0.006</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
 <td>0.003</td>
-<td>0.002505</td>
-<td>0.000495</td>
-<td>-16.488884</td>
+<td>0.003</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab utilisation</td>
 <td>0.004</td>
-<td>0.004737</td>
-<td>0.000737</td>
-<td>18.434378</td>
+<td>0.005</td>
+<td>0.001</td>
+<td>25.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
 <td>0.003</td>
-<td>0.003817</td>
-<td>0.000817</td>
-<td>27.237694</td>
+<td>0.004</td>
+<td>0.001</td>
+<td>33.333333</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Labour bed utilisation</td>
 <td>0.009</td>
-<td>0.010717</td>
-<td>0.001717</td>
-<td>19.080109</td>
+<td>0.011</td>
+<td>0.002</td>
+<td>22.222222</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
 <td>0.001</td>
-<td>0.001175</td>
-<td>0.000175</td>
-<td>17.541779</td>
+<td>0.001</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
 <td>0.032</td>
-<td>0.029487</td>
-<td>0.002513</td>
-<td>-7.853583</td>
+<td>0.029</td>
+<td>0.003</td>
+<td>-9.375000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
 <td>0.001</td>
-<td>0.000364</td>
-<td>0.000636</td>
-<td>-63.576857</td>
+<td>0.000</td>
+<td>0.001</td>
+<td>-100.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
 <td>0.008</td>
-<td>0.008553</td>
-<td>0.000553</td>
-<td>6.918502</td>
+<td>0.009</td>
+<td>0.001</td>
+<td>12.500000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
 <td>0.001</td>
-<td>0.000534</td>
-<td>0.000466</td>
-<td>-46.577619</td>
+<td>0.001</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
 <td>0.023</td>
-<td>0.022624</td>
-<td>0.000376</td>
-<td>-1.635196</td>
+<td>0.023</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
 <td>0.022</td>
-<td>0.018355</td>
-<td>0.003645</td>
-<td>-16.568821</td>
+<td>0.018</td>
+<td>0.004</td>
+<td>-18.181818</td>
 </tr>
 </tbody>
 </table>
@@ -1601,44 +1601,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Doctor utilisation</td>
 <td>0.354</td>
-<td>0.353664</td>
-<td>0.000336</td>
-<td>-0.094850</td>
+<td>0.354</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
 <td>0.468</td>
-<td>0.467952</td>
-<td>0.000048</td>
-<td>-0.010319</td>
+<td>0.468</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
 <td>0.160</td>
-<td>0.160844</td>
-<td>0.000844</td>
-<td>0.527584</td>
+<td>0.161</td>
+<td>0.001</td>
+<td>0.625000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
 <td>0.289</td>
-<td>0.288200</td>
-<td>0.000800</td>
-<td>-0.276720</td>
+<td>0.288</td>
+<td>0.001</td>
+<td>-0.346021</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab utilisation</td>
 <td>0.239</td>
-<td>0.239393</td>
-<td>0.000393</td>
-<td>0.164587</td>
+<td>0.239</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
 <td>0.011</td>
-<td>0.011606</td>
-<td>0.000606</td>
-<td>5.509558</td>
+<td>0.012</td>
+<td>0.001</td>
+<td>9.090909</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Labour bed utilisation</td>
@@ -1650,44 +1650,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
 <td>0.001</td>
-<td>0.001365</td>
-<td>0.000365</td>
-<td>36.492949</td>
+<td>0.001</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
 <td>0.034</td>
-<td>0.034597</td>
-<td>0.000597</td>
-<td>1.756292</td>
+<td>0.035</td>
+<td>0.001</td>
+<td>2.941176</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
 <td>0.009</td>
-<td>0.009116</td>
-<td>0.000116</td>
-<td>1.285872</td>
+<td>0.009</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
 <td>0.232</td>
-<td>0.231061</td>
-<td>0.000939</td>
-<td>-0.404673</td>
+<td>0.231</td>
+<td>0.001</td>
+<td>-0.431034</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
 <td>0.011</td>
-<td>0.011257</td>
-<td>0.000257</td>
-<td>2.332832</td>
+<td>0.011</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
 <td>0.571</td>
-<td>0.569570</td>
-<td>0.001430</td>
-<td>-0.250479</td>
+<td>0.570</td>
+<td>0.001</td>
+<td>-0.175131</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
@@ -1726,44 +1726,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Doctor utilisation</td>
 <td>0.002</td>
-<td>0.002500</td>
-<td>0.000500</td>
-<td>24.984286</td>
+<td>0.002</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
 <td>0.005</td>
-<td>0.004912</td>
-<td>0.000088</td>
-<td>-1.754243</td>
+<td>0.005</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
 <td>0.001</td>
-<td>0.001431</td>
-<td>0.000431</td>
-<td>43.097811</td>
+<td>0.001</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
 <td>0.003</td>
-<td>0.002420</td>
-<td>0.000580</td>
-<td>-19.317095</td>
+<td>0.002</td>
+<td>0.001</td>
+<td>-33.333333</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab utilisation</td>
 <td>0.004</td>
-<td>0.004237</td>
-<td>0.000237</td>
-<td>5.918305</td>
+<td>0.004</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
 <td>0.001</td>
-<td>0.000960</td>
-<td>0.000040</td>
-<td>-3.990474</td>
+<td>0.001</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Labour bed utilisation</td>
@@ -1775,44 +1775,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
 <td>0.000</td>
-<td>0.000047</td>
-<td>0.000047</td>
-<td>inf</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>NaN</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
 <td>0.001</td>
-<td>0.001101</td>
-<td>0.000101</td>
-<td>10.108310</td>
+<td>0.001</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
 <td>0.000</td>
-<td>0.000268</td>
-<td>0.000268</td>
-<td>inf</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>NaN</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
 <td>0.006</td>
-<td>0.006068</td>
-<td>0.000068</td>
-<td>1.135229</td>
+<td>0.006</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
 <td>0.000</td>
-<td>0.000411</td>
-<td>0.000411</td>
-<td>inf</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>NaN</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
 <td>0.020</td>
-<td>0.018696</td>
-<td>0.001304</td>
-<td>-6.521568</td>
+<td>0.019</td>
+<td>0.001</td>
+<td>-5.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
@@ -1851,100 +1851,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Doctor utilisation</td>
 <td>1.142</td>
-<td>1.143672</td>
-<td>0.001672</td>
-<td>0.146391</td>
+<td>1.144</td>
+<td>0.002</td>
+<td>0.175131</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
 <td>1.232</td>
-<td>1.231325</td>
-<td>0.000675</td>
-<td>-0.054810</td>
+<td>1.231</td>
+<td>0.001</td>
+<td>-0.081169</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
 <td>0.322</td>
-<td>0.323955</td>
-<td>0.001955</td>
-<td>0.607169</td>
+<td>0.324</td>
+<td>0.002</td>
+<td>0.621118</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
 <td>0.855</td>
-<td>0.855421</td>
-<td>0.000421</td>
-<td>0.049258</td>
+<td>0.855</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab utilisation</td>
 <td>0.736</td>
-<td>0.733738</td>
-<td>0.002262</td>
-<td>-0.307275</td>
+<td>0.734</td>
+<td>0.002</td>
+<td>-0.271739</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
 <td>0.093</td>
-<td>0.093867</td>
-<td>0.000867</td>
-<td>0.931754</td>
+<td>0.094</td>
+<td>0.001</td>
+<td>1.075269</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Labour bed utilisation</td>
 <td>0.281</td>
-<td>0.281500</td>
-<td>0.000500</td>
-<td>0.177936</td>
+<td>0.281</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
 <td>0.817</td>
-<td>0.817289</td>
-<td>0.000289</td>
-<td>0.035409</td>
+<td>0.817</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
 <td>6.789</td>
-<td>6.968764</td>
-<td>0.179764</td>
-<td>2.647874</td>
+<td>6.969</td>
+<td>0.180</td>
+<td>2.651348</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
 <td>0.150</td>
-<td>0.150300</td>
-<td>0.000300</td>
-<td>0.199808</td>
+<td>0.150</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
 <td>1.282</td>
-<td>1.284367</td>
-<td>0.002367</td>
-<td>0.184665</td>
+<td>1.284</td>
+<td>0.002</td>
+<td>0.156006</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
 <td>0.188</td>
-<td>0.188921</td>
-<td>0.000921</td>
-<td>0.489989</td>
+<td>0.189</td>
+<td>0.001</td>
+<td>0.531915</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
 <td>3.135</td>
-<td>3.152544</td>
-<td>0.017544</td>
-<td>0.559615</td>
+<td>3.153</td>
+<td>0.018</td>
+<td>0.574163</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
 <td>0.157</td>
-<td>0.160576</td>
-<td>0.003576</td>
-<td>2.277639</td>
+<td>0.161</td>
+<td>0.004</td>
+<td>2.547771</td>
 </tr>
 </tbody>
 </table>
@@ -1976,100 +1976,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Doctor utilisation</td>
 <td>0.006</td>
-<td>0.005670</td>
-<td>0.000330</td>
-<td>-5.499308</td>
+<td>0.006</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">NCD Nurse utilisation</td>
 <td>0.019</td>
-<td>0.018736</td>
-<td>0.000264</td>
-<td>-1.388453</td>
+<td>0.019</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
 <td>0.008</td>
-<td>0.007993</td>
-<td>0.000007</td>
-<td>-0.082284</td>
+<td>0.008</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Pharmacist utilisation</td>
 <td>0.005</td>
-<td>0.004399</td>
-<td>0.000601</td>
-<td>-12.026390</td>
+<td>0.004</td>
+<td>0.001</td>
+<td>-20.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab utilisation</td>
 <td>0.011</td>
-<td>0.011902</td>
-<td>0.000902</td>
-<td>8.200349</td>
+<td>0.012</td>
+<td>0.001</td>
+<td>9.090909</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Inpatient bed utilisation</td>
 <td>0.004</td>
-<td>0.004481</td>
-<td>0.000481</td>
-<td>12.035618</td>
+<td>0.004</td>
+<td>0.000</td>
+<td>0.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Labour bed utilisation</td>
 <td>0.012</td>
-<td>0.012822</td>
-<td>0.000822</td>
-<td>6.846833</td>
+<td>0.013</td>
+<td>0.001</td>
+<td>8.333333</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of OPD queue (number of patients)</td>
 <td>0.027</td>
-<td>0.031792</td>
-<td>0.004792</td>
-<td>17.748389</td>
+<td>0.032</td>
+<td>0.005</td>
+<td>18.518519</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD queue waiting time (minutes)</td>
 <td>0.268</td>
-<td>0.251612</td>
-<td>0.016388</td>
-<td>-6.115105</td>
+<td>0.252</td>
+<td>0.016</td>
+<td>-5.970149</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of pharmacy queue (number of patients)</td>
 <td>0.002</td>
-<td>0.002682</td>
-<td>0.000682</td>
-<td>34.076324</td>
+<td>0.003</td>
+<td>0.001</td>
+<td>50.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Pharmacy queue waiting time (minutes)</td>
 <td>0.018</td>
-<td>0.019715</td>
-<td>0.001715</td>
-<td>9.527212</td>
+<td>0.020</td>
+<td>0.002</td>
+<td>11.111111</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Mean length of Lab queue (number of patients)</td>
 <td>0.001</td>
-<td>0.005531</td>
-<td>0.004531</td>
-<td>453.084817</td>
+<td>0.006</td>
+<td>0.005</td>
+<td>500.000000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab queue waiting time (minutes)</td>
 <td>0.005</td>
-<td>0.072675</td>
-<td>0.067675</td>
-<td>1353.496318</td>
+<td>0.073</td>
+<td>0.068</td>
+<td>1360.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Fraction of childbirth cases referred</td>
 <td>0.180</td>
-<td>0.018994</td>
-<td>0.161006</td>
-<td>-89.447539</td>
+<td>0.019</td>
+<td>0.161</td>
+<td>-89.444444</td>
 </tr>
 </tbody>
 </table>
