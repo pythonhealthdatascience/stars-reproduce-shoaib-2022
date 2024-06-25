@@ -144,6 +144,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../../reproduction/reproduce_tab6.html">
  <span class="dropdown-text">Reproducing table 6</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../../reproduction/reproduce_fig2.html">
+ <span class="dropdown-text">Reproducing Figure 2A-D</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -260,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Set up parallel processing in <code>reproduce_tab6.ipynb</code> to run the 4 sets of 100 replications. It took 61 minutes to run (excluded from timing). Once complete, I looked over the table and was satisified that the mean and SD values were close enough to the original, and considered it now completely successfully reproduced (at timestamp: 10.51). I disregarded some high percent change that were simply due to comparison of numbers very close to zero, and the difference was actually very small.</p>
 <p>Emailed to Tom and Alison to share second opinion.</p>
 <p>Timing for when Table 6 is completed (i.e.&nbsp;as of 10.51):</p>
-<div id="13139ea4" class="cell" data-execution_count="1">
+<div id="b11b0101" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -292,7 +296,7 @@ Used 35.7% of 40 hours max</code></pre>
 <section id="create-figure-2b" class="level2">
 <h2 class="anchored" data-anchor-id="create-figure-2b">11.30-11.50: Create Figure 2B</h2>
 <p>Imported and processed data from the arrival number replications, and produced Figure 2B. Happy that this is succesfully reproduced at timepoint 11.50. In order to declare this reproduced, I feel I do not require to run the same number of replications (100), as understand this would have no meaningful impact on result being plot (mean), and am happy with consistency to original at 10 replications.</p>
-<div id="c0d67851" class="cell" data-execution_count="2">
+<div id="e9b96b65" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">829</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -329,7 +333,7 @@ Used 37.0% of 40 hours max</code></pre>
 <figcaption>Successful reproduction of Fig2c</figcaption>
 </figure>
 </div>
-<div id="fef47eb4" class="cell" data-execution_count="3">
+<div id="9377bfc0" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">829</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -354,7 +358,7 @@ Used 37.9% of 40 hours max</code></pre>
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="104dd7c7" class="cell" data-execution_count="4">
+<div id="d5286038" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'6.55'</span>, <span class="st">'6.57'</span>),</span>
