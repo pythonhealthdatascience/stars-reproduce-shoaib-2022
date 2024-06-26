@@ -147,8 +147,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../../reproduction/reproduce_tab6.html">
  <span class="dropdown-text">Reproducing Table 6</span></a>
   </li>  
-        <li class="dropdown-header">reproduction/reproduce_fig2_txt1.ipynb</li>
-        <li class="dropdown-header">reproduction/reproduce_fig3.ipynb</li>
+        <li>
+    <a class="dropdown-item" href="../../../reproduction/reproduce_fig2.html">
+ <span class="dropdown-text">Reproducing Figure 2A-D</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../reproduction/reproduce_fig3_txt1.html">
+ <span class="dropdown-text">Reproducing Figure 3A-D and in-text result 1</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="../../../reproduction/reproduce_fig4.html">
  <span class="dropdown-text">Reproducing Figure 4</span></a>
@@ -246,6 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#times-below-creating-figure-4" id="toc-times-below-creating-figure-4" class="nav-link active" data-scroll-target="#times-below-creating-figure-4">Times below: Creating Figure 4</a></li>
   <li><a href="#in-text-result-1" id="toc-in-text-result-1" class="nav-link" data-scroll-target="#in-text-result-1">13.42-14.13: In-text result 1</a></li>
+  <li><a href="#x-simplifying-reproduction-code" id="toc-x-simplifying-reproduction-code" class="nav-link" data-scroll-target="#x-simplifying-reproduction-code">15.05-X: Simplifying reproduction code</a></li>
   <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_26/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -295,7 +302,7 @@ Note
 <p>This brought the result closer, although still some small differences.</p>
 <p><img src="fig4_25.png" class="img-fluid"></p>
 <p>As the figure is labelled, I can compare the numbers:</p>
-<div id="09bba76d" class="cell" data-execution_count="1">
+<div id="134c488d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Input results from original and reproduced figures</span></span>
@@ -405,7 +412,7 @@ Reflections
 <p>Have assumed here that potentially the result might be from two IAT (cannot guarnatee that to be the case, but is what enabled me to get more consistent results with original paper). Regardless of what is true in this case (as we cannot necessarily know), a learning here is that if you do directly change parameters in a script for scenarios, it potentially leaves more margin for error than if it is done programmatically.</p>
 </div>
 </div>
-<div id="636c4357" class="cell" data-execution_count="2">
+<div id="f18f6590" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -436,7 +443,7 @@ Used 48.5% of 40 hours max</code></pre>
 <h2 class="anchored" data-anchor-id="in-text-result-1">13.42-14.13: In-text result 1</h2>
 <p>Used output from creating Figure 3, but focussed on waiting times for lab and OPD. Saved results as tables as actual change in minutes is only small, but plotting the figures makes it appear larger than it is.</p>
 <p>Satisifed that these represent “marginal increases” in these outcomes, and consider successfully reproduced at 14.13.</p>
-<div id="95b043dd" class="cell" data-execution_count="3">
+<div id="5feed2ec" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this reslut</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1165</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -454,9 +461,13 @@ Used 49.8% of 40 hours max</code></pre>
 </div>
 </div>
 </section>
+<section id="x-simplifying-reproduction-code" class="level2">
+<h2 class="anchored" data-anchor-id="x-simplifying-reproduction-code">15.05-X: Simplifying reproduction code</h2>
+<p>Encountering increasing repetition between reproduction notebooks, so decided to create <code>reproduction_helpers.py</code> with functions that are used frequently between notebooks.</p>
+</section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="a42a49fe" class="cell" data-execution_count="4">
+<div id="783aa212" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1012</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
