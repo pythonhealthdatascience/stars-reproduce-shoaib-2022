@@ -12,7 +12,7 @@ TBC. Total time used: TBCh TBCm (TBC%)
 
 :::
 
-## 9.31-9.49, 10.04- : Creating Figure 4
+## 9.31-9.49, 10.04-10.50, 11.01- : Creating Figure 4
 
 From text, understand this analysis to be variants of configruation one where the number of beds is increased by 1 or 2, and where the number of childbirth arrivals is 1, 1.5 or 2 per day.
 
@@ -26,13 +26,33 @@ As for others, just run 10 replications. The paper states they run 100, but that
 
 However, this is not correct:
 
-![Incorrect Figure 4](fig4_incorrect.png)
+![](fig4_incorrect.png)
 
-Realised this was my mistake and I had mis-interpreted it as adding 1 or 2 extra beds, but instead, it was simply having 1 or 2 beds in total. Upon amending this, the figure looks much closer.
+Realised this was my mistake and I had mis-interpreted it as adding 1 or 2 extra beds, but instead, it was simply having 1 or 2 beds in total. Upon re-reading the text again, this was definitely my mistake and not the article. Upon amending this, the figure looks much closer.
 
 ![](fig4_close.png)
 
-I was reasonably confident in this being correct, but anticipate the differences here would likely be resolved by doing 100 replications rather than 10. As such, tried running more replications (25 still instead of 100 due to time).
+I was reasonably confident in this being correct, but anticipate the differences here would likely be resolved by doing 100 replications rather than 10. As such, tried running more replications (25 still instead of 100 due to time). Notebook run time 7m 16s.
+
+This brought the result closer, although still some small differences.
+
+![](fig4_25.png)
+
+As the figure is labelled, I can compare the numbers:
+
+```{python}
+import pandas as pd
+
+# Input results from original and reproduced figures
+comp = pd.DataFrame({
+    'original': [0.021, 0.039, 0.0599, 0.150, 0.195, 0.270],
+    'reproduced': [0.019, 0.036, 0.060, 0.157, 0.218, 0.276]})
+
+# Find size of difference and % change
+comp['diff'] = comp['reproduced'] - comp['original']
+comp['pct_change'] = comp.pct_change(axis=1).iloc[:, 1]*100
+comp
+```
 
 ::: {.callout-tip}
 ## Reflections
