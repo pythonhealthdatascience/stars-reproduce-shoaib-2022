@@ -24,15 +24,23 @@ Working out IAT:
 
 As for others, just run 10 replications. The paper states they run 100, but that takes ages, and so I've taken the approach that - if it seems reasonably similar enough with 10 replications - I'm happy with it at this point. For posterity, can run all with 100 now or at the end if desired. As these just present mean results, I would only expect it to have a fairly minimal impact for mean of 10 v.s. 100 replications. For Table 6, I did run 100 replications as it was mean and SD.
 
+However, this is not correct:
+
+![Incorrect Figure 4](fig4_incorrect.png)
+
+Realised this was my mistake and I had mis-interpreted it as adding 1 or 2 extra beds, but instead, it was simply having 1 or 2 beds in total. Upon amending this, the figure looks much closer.
+
+![](fig4_close.png)
+
+I was reasonably confident in this being correct, but anticipate the differences here would likely be resolved by doing 100 replications rather than 10. As such, tried running more replications (25 still instead of 100 due to time).
+
 ::: {.callout-tip}
 ## Reflections
 
 Found it a bit tricky to work out to go from number of arrivals to inter-arrival rate. Still not quite sure on how, beyond making estimates based on provided arrivals and IAT.
+
+Models that take a long time to run are a bit trickier to work with as it limits what you can do while you wait
 :::
-
-However, this is not correct:
-
-![Incorrect Figure 4](fig4_incorrect.png)
 
 ## Timings
 
