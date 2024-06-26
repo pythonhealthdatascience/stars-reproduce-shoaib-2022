@@ -141,6 +141,8 @@ pd.read_csv('../reproduction/outputs/tab6.csv')
 
 ## Figure 2A
 
+**Successfully reproduced**
+
 Original (@shoaib_simulation_2021):
 
 ![](../original_study/fig2a.png){width=70% fig-align="center"}
@@ -187,6 +189,8 @@ Reproduction:
 
 ## Figure 2D
 
+**Successfully reproduced**
+
 Original (@shoaib_simulation_2021):
 
 ![](../original_study/fig2d.png){width=70% fig-align="center"}
@@ -200,6 +204,8 @@ Reproduction:
 ::: {.callout-note appearance="minimal" collapse=true}
 
 ## Figure 3A
+
+**Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
@@ -215,6 +221,8 @@ Reproduction:
 
 ## Figure 3B
 
+**Successfully reproduced**
+
 Original (@shoaib_simulation_2021):
 
 ![](../original_study/fig3b.png){width=70% fig-align="center"}
@@ -229,6 +237,8 @@ Reproduction:
 
 ## Figure 3C
 
+**Successfully reproduced**
+
 Original (@shoaib_simulation_2021):
 
 ![](../original_study/fig3c.png){width=70% fig-align="center"}
@@ -242,6 +252,8 @@ Reproduction:
 ::: {.callout-note appearance="minimal" collapse=true}
 
 ## Figure 3D
+
+**Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
@@ -259,7 +271,7 @@ Reproduction:
 
 Original (@shoaib_simulation_2021):
 
-![](../original_study/fig4.png){width=80%}
+![](../original_study/fig4.png){width=80% fig-align="center}
 
 Reproduction:
 
@@ -271,16 +283,24 @@ Reproduction:
 
 ## In-text result 1
 
+**Original:**
+
 From section 4.3: "We also note that waiting times for outpatient-related resources (laboratory, OPD consultation, etc. - not depicted in Figures 3a – 3d) increase marginally because the associated resources are also required by inpatient/childbirth/ANC cases, which increase in number in the above scenarios"
 
 Interpretation:
 
-* Run sensitivity analysis as in Figures 3a-d, but look at outcomes relating to laboratory and outpatient consulation
+* Run sensitivity analysis as in Figures 3A-D, but look at outcomes relating to laboratory and outpatient waiting times
 * Result: marginal increase
 
-Reproduction:
+**Reproduction:**
 
-**TBC**
+We observed marginal increases (e.g. .1  or 0.01 of a minute).
+
+```{python}
+import pandas as pd
+
+pd.read_csv('../reproduction/outputs/intext1.csv')
+```
 
 :::
 

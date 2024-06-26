@@ -21,7 +21,7 @@ Times here (as lots to put in header):
 * 11.01-11.48
 * 11.56-12.02
 * 12.50-12.56
-* 13.08-
+* 13.08-13.38
 
 From text, understand this analysis to be variants of configruation one where the number of beds is increased by 1 or 2, and where the number of childbirth arrivals is 1, 1.5 or 2 per day.
 
@@ -94,6 +94,8 @@ As that had taken 15 minutes and also alot of compute power, I decided to go wit
 
 I then chose the IAT which produced results closest to the original paper (based on the assumption that the original authors might have reasonably used either value, since it is not provided and since I do not know the method used to estimate these).
 
+At 13.38, decided this was successfully reproduced.
+
 ::: {.callout-tip}
 ## Reflections
 
@@ -103,8 +105,6 @@ Models that take a long time to run are a bit trickier to work with as it limits
 
 Have assumed here that potentially the result might be from two IAT (cannot guarnatee that to be the case, but is what enabled me to get more consistent results with original paper). Regardless of what is true in this case (as we cannot necessarily know), a learning here is that if you do directly change parameters in a script for scenarios, it potentially leaves more margin for error than if it is done programmatically.
 :::
-
-## Timings
 
 ```{python}
 import sys
@@ -120,7 +120,48 @@ times = [
     ('10.04', '10.50'),
     ('11.01', '11.48'),
     ('11.56', '12.02'),
-    ('12.50', '12.56')
+    ('12.50', '12.56'),
+    ('13.08', '13.38')
+]
+
+calculate_times(used_to_date, times)
+```
+
+## 13.42-14.13: In-text result 1
+
+Used output from creating Figure 3, but focussed on waiting times for lab and OPD. Saved results as tables as actual change in minutes is only small, but plotting the figures makes it appear larger than it is.
+
+Satisifed that these represent "marginal increases" in these outcomes, and consider successfully reproduced at 14.13.
+
+```{python}
+
+# Minutes used prior to this reslut
+used_to_date = 1165
+
+# Times from today
+times = [
+    ('13.42', '14.13')
+]
+
+calculate_times(used_to_date, times)
+```
+
+## Timings
+
+```{python}
+
+# Minutes used prior to today
+used_to_date = 1012
+
+# Times from today
+times = [
+    ('9.31', '9.49'),
+    ('10.04', '10.50'),
+    ('11.01', '11.48'),
+    ('11.56', '12.02'),
+    ('12.50', '12.56'),
+    ('13.08', '13.38'),
+    ('13.42', '14.13')
 ]
 
 calculate_times(used_to_date, times)
