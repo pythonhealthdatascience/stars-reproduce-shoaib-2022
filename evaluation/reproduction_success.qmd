@@ -15,13 +15,14 @@ As cited throughout, images on this page are sourced from @shoaib_simulation_202
 ## Time-to-completion figure
 
 ```{python}
+import matplotlib.pyplot as plt
+import matplotlib.ticker as mtick
+import numpy as np
 import pandas as pd
 import plotly.express as px
-import numpy as np
 
 # List of time to complete each item
 time_list = [
-    [0, 'Start'], # Dummy entry to start at (0,0)
     [856, 'Table 6'],
     [971, 'Figure 2A'],
     [889, 'Figure 2B'],
@@ -31,51 +32,10 @@ time_list = [
     [1008, 'Figure 3B'],
     [1009, 'Figure 3C'],
     [1012, 'Figure 3D'],
+    [1165, 'Figure 4'],
+    [1196, 'In-text result 1'],
     # TODO: Update these to actual times once complete
-    [np.nan, 'Figure 4'],
-    [np.nan, 'In-text result 1'],
     [np.nan, 'In-text result 2'],
-    [np.nan, 'In-text result 3'],
-    [np.nan, 'In-text result 4'],
-    [np.nan, 'In-text result 5'],
-    [np.nan, 'In-text result 6'],
-    [np.nan, 'In-text result 7']]
-
-# Convert to dataframe
-times = pd.DataFrame(time_list, columns=['time', 'item'])
-
-# Create ECDF plot
-fig = px.ecdf(times, x='time', markers=True, ecdfnorm='percent',
-              hover_data=['time', 'item'])
-
-# Amend appearance
-fig.update_layout(xaxis_range=[0, 2400])
-
-# Show plot, hiding toolbar and not allowing zoom
-fig.layout.xaxis.fixedrange = True
-fig.layout.yaxis.fixedrange = True
-fig.show(config={'displayModeBar': False})
-```
-
-```{python}
-import pandas as pd
-import plotly.express as px
-import numpy as np
-
-# List of time to complete each item, including a dummy entry to start at 0,0
-time_list = [
-    [856, 'Table 6'],
-    [971, 'Figure 2A'],
-    [889, 'Figure 2B'],
-    [910, 'Figure 2C'],
-    [981, 'Figure 2D'],
-    [1002, 'Figure 3A'],
-    [1008, 'Figure 3B'],
-    [1009, 'Figure 3C'],
-    [1012, 'Figure 3D'],
-    # TODO: Update these to actual times once complete
-    [np.nan, 'Figure 4'],
-    [np.nan, 'In-text result 1'],
     [np.nan, 'In-text result 2'],
     [np.nan, 'In-text result 3'],
     [np.nan, 'In-text result 4'],
@@ -96,15 +56,30 @@ times_clean['ecdf'] = np.arange(1, len(times_clean) + 1) / len(times_clean) * 10
 times_clean.loc[-1] = [0, 'Start', 0]
 times_clean.index = times_clean.index + 1
 times_clean = times_clean.sort_index()
+```
 
-display(times_clean)
+Interactive plot but without start and end points:
 
+```{python}
+# Create ECDF plot
+fig = px.ecdf(times, x='time', markers=True, ecdfnorm='percent',
+              hover_data=['time', 'item'])
+
+# Amend appearance
+fig.update_layout(xaxis_range=[0, 2400])
+
+# Show plot, hiding toolbar and not allowing zoom
+fig.layout.xaxis.fixedrange = True
+fig.layout.yaxis.fixedrange = True
+fig.show(config={'displayModeBar': False})
+```
+
+Interactive plot but connected diagonally:
+
+```{python}
 # Create ECDF plot
 fig = px.line(times_clean, x='time', y='ecdf', markers=True, 
               hover_data=['time', 'item'])
-#fig = px.ecdf(times_clean, x='time', y='percent', markers=True)
-#fig = px.scatter(times_clean, x='time', y='ecdf')
-#fig.data[0].update(mode='lines')
 
 # Update layout to ensure proper axis ranges
 fig.update_layout(xaxis_range=[0, 2400], yaxis_range=[0, 100])
@@ -113,6 +88,43 @@ fig.update_layout(xaxis_range=[0, 2400], yaxis_range=[0, 100])
 fig.layout.xaxis.fixedrange = True
 fig.layout.yaxis.fixedrange = True
 fig.show(config={'displayModeBar': False})
+```
+
+Correctly plot but non-interactive:
+
+```{python}
+
+# Adjust index so it goes 0 2 4 6...
+times_original = times_clean.copy()
+times_original.index = times_clean.index*2
+
+times_extra = times_clean.copy()
+# Get result from row 1 to final, and add another row with np.nan
+next_result = times_clean['time'][1:].reset_index(drop=True)
+next_result[len(next_result)] = np.nan
+# Replace time with those values (i.e. the value from the row below)
+times_extra['time'] = next_result
+times_extra['item'] = np.nan
+# Then adjust index so it goes 1 3 5 7...
+times_extra.index = (times_extra.index*2)+1
+
+# Combine (so have alternating rows from each due to odd and even indexes)
+plt_times = pd.concat([times_original, times_extra]).sort_index()
+
+# Convert time to hours
+plt_times['hours'] = plt_times['time']/60
+
+# Create plot
+fig, ax = plt.subplots()
+ax.plot(plt_times['hours'], plt_times['ecdf'], marker='.', markevery=2)
+plt.xlim(0, 40)
+plt.ylim(0, 100)
+plt.xlabel('Time elapsed (hours)')
+plt.ylabel('Percentage of items reproduced')
+ax.yaxis.set_major_formatter(mtick.PercentFormatter())
+#ax.grid()
+#ax.set_axisbelow(True)
+plt.show()
 ```
 
 :::
@@ -308,6 +320,8 @@ pd.read_csv('../reproduction/outputs/intext1.csv')
 
 ## In-text result 2
 
+**Original:**
+
 From section 4.3.1: "To address this, we experimented with letting the staff nurse (whose utilisation is approximately 32%) take over the administrative work. This led to a 12% drop in the utilisation level, which implied that the doctor’s utilisation still exceeded 100%. Implementing this measure resulted in increasing the staff nurse utilisation to nearly 40%."
 
 Interpretation:
@@ -319,7 +333,7 @@ Interpretation:
 
 *103% is because the next result is 1% below, and as there is a 12% drop from fig 2a, still over 100%, and nurse utilisation at 40%*
 
-Reproduction:
+**Reproduction:**
 
 **TBC**
 
@@ -328,6 +342,8 @@ Reproduction:
 ::: {.callout-note appearance="minimal" collapse=true}
 
 ## In-text result 3
+
+**Original:**
 
 From section 4.3.1: "then considered a situation wherein the staff nurses require minimal intervention in childbirth cases. We assumed that in 50% of childbirth cases, staff nurses require no intervention by the doctor; require only one- third of the typical amount of intervention in 30% of cases, and require full intervention in the remaining 20% of cases. This led to a decrease of the doctor’s utilisation to 101% (a further decrease of approximately 1%), and an increase in the nurse’s utilisation to 40%."
 
@@ -338,7 +354,7 @@ Interpretation:
 * Change doctors from always attending childbirth cases when free to 50% not attending, 30% attending but for one-third of normal time, 20% attending for normal time
 * Result: Doctor utilisation 101% and nurse utilisation 40%
 
-Reproduction:
+**Reproduction:**
 
 **TBC**
 
@@ -347,6 +363,8 @@ Reproduction:
 ::: {.callout-note appearance="minimal" collapse=true}
 
 ## In-text result 4
+
+**Original:**
 
 From section 4.3.1: "investigated the effect of stationing an additional doctor in the PHC. This yielded an average utilisation of well below 100% for each doctor."
 
@@ -357,7 +375,7 @@ Interpretation:
 * Add a doctor
 * Result: each doctor has utilisation "well below 100%"
 
-Reproduction:
+**Reproduction:**
 
 **TBC**
 
@@ -367,6 +385,8 @@ Reproduction:
 
 ## In-text result 5
 
+**Original:**
+
 From section 4.3.2: "We also observe that if the number of beds is reduced to four from six, the utilisation level is observed to be approximately thirty-three percent even under higher demand conditions (two inpatient and childbirth cases/day)."
 
 Interpretation:
@@ -375,7 +395,7 @@ Interpretation:
 * Conditions un-specified (assume standard, and also high demand (2 inpatient and childbirth cases per day))
 * Result: Approximately 33% utilisation
 
-Reproduction:
+**Reproduction:**
 
 **TBC**
 
@@ -385,6 +405,8 @@ Reproduction:
 
 ## In-text result 6
 
+**Original:**
+
 From section 4.3.3: "When the administrative work alone is assigned to the staff nurse the average utilisation of the NCD nurse decreases to 100%"
 
 Interpretation:
@@ -393,7 +415,7 @@ Interpretation:
 * No administrative work for NCD nurse, only assigned to staff nurse
 * Result: NCD nurse utilisation 100%
 
-Reproduction:
+**Reproduction:**
 
 **TBC**
 
@@ -402,6 +424,8 @@ Reproduction:
 ::: {.callout-note appearance="minimal" collapse=true}
 
 ## In-text result 7
+
+**Original:**
 
 From section 4.3.3: "Further, in addition to the administrative work when the staff nurse assisted for NCD checks (for 10% cases) the utilisation of NCD nurse dropped to 71%."
 
@@ -412,7 +436,7 @@ Interpretation:
 * Assigned staff nurse for 10% of NCD cases
 * Result: NCD nurse utilisation 71%
 
-Reproduction:
+**Reproduction:**
 
 **TBC**
 
