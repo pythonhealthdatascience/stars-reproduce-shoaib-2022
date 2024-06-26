@@ -309,8 +309,6 @@ Interpretation:
 We observed marginal increases (e.g. .1  or 0.01 of a minute).
 
 ```{python}
-import pandas as pd
-
 pd.read_csv('../reproduction/outputs/intext1.csv')
 ```
 
@@ -331,11 +329,13 @@ Interpretation:
 * Change doctor to have no administrative work, and assign all to staff nurse
 * Results: doctor utilisation 103%
 
-*103% is because the next result is 1% below, and as there is a 12% drop from fig 2a, still over 100%, and nurse utilisation at 40%*
-
 **Reproduction:**
 
-**TBC**
+We observe utilisation drop 12% (114% to 102%).
+
+```{python}
+pd.read_csv('../reproduction/outputs/intext2.csv')
+```
 
 :::
 

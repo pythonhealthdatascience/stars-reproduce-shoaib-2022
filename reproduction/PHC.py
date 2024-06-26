@@ -13,10 +13,11 @@ OPD runs for 6 hours in a day followed by 2 hours of admin work for doctors.
 
 
 class Main(sim.Component):
+
     global OPD_iat
     global fail_count
     global ncd_time
-
+    global admin_to_staff_nurse
 
     env = sim.Environment()
 
@@ -33,6 +34,7 @@ class Main(sim.Component):
     fail_count = 0
 
     warm_up = 180*24*60
+
     def process(self):
 
         global ncd_time
@@ -57,11 +59,18 @@ class Main(sim.Component):
 
             while 360 <= self.sim_time < 480:            # condition for admin work after opd hours are over
                 k = int(sim.Normal(100,20).bounded_sample(60,140))
-                """For sensitivity analysis. Admin work added to staff nurse rather than doctor"""
                 if env.now() <= Main.warm_up:
                     pass
                 else:
-                    Patient.doc_service_time.append(k) # conatns all doctor service times
+                    # Used in sensitivity analysis for the paper
+                    # Assign time for admin work to staff nurse or doctor
+                    if admin_to_staff_nurse:
+                        # List containing all staff nurse times
+                        Main.NT_list.append(k)
+                    else:
+                        # List containing all doctor service times
+                        Patient.doc_service_time.append(k)
+                    # Then, also assign admin work time to the NCD nurse
                     Main.NCD_admin_work.append(k)
                     ncd_time += k
                 yield self.hold(120)
@@ -830,8 +839,9 @@ def main(
         s_rep_file='outputs.xls',         # File for replication results
         s_full_file='full_results.xlsx',  # File for full results
         s_output_full_results=False,      # Boolean for whether to create full results file
-        s_any_ANC=True,       # Boolean for if there are any ANC patients
-        s_any_delivery=True   # Boolean for if there are any labour patients
+        s_any_ANC=True,        # Boolean for if there are any ANC patients
+        s_any_delivery=True,   # Boolean for if there are any labour patients
+        s_admin_to_staff_nurse=False  # Boolean for whether to give admin work to the staff nurse instead of the doctor
 ):
     # Define global variables
     # defining simulation input parameters
@@ -912,6 +922,7 @@ def main(
     global ncd_util
 
     global bed_time
+    global admin_to_staff_nurse
 
     ncd_util =[]
     bed_util = []
@@ -970,7 +981,7 @@ def main(
     replication = s_replication
     inpatient_bed_n = s_inpatient_bed_n  # Number of inpatient beds
     delivery_bed_n = s_delivery_bed_n    # Number of labour room beds
-
+    admin_to_staff_nurse = s_admin_to_staff_nurse
 
     for x in range(0, replication):
         n = np.random.randint(0, 101)
