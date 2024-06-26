@@ -1,0 +1,53 @@
+---
+title: "Day 5"
+author: "Amy Heather"
+date: "2024-06-26"
+categories: [reproduce]
+bibliography: ../../../quarto_site/references.bib
+---
+
+::: {.callout-note}
+
+TBC. Total time used: TBCh TBCm (TBC%)
+
+:::
+
+## 9.31-9.49, 10.04- : Creating Figure 4
+
+From text, understand this analysis to be variants of configruation one where the number of beds is increased by 1 or 2, and where the number of childbirth arrivals is 1, 1.5 or 2 per day.
+
+Working out IAT:
+
+    * 1 = IAT 1440 (as in e.g. config1)
+    * 1.5 = 960 (as 720+240=960, and 960+480=1440)
+    * 2 = IAT 720 (as we did for Figure 3)
+
+As for others, just run 10 replications. The paper states they run 100, but that takes ages, and so I've taken the approach that - if it seems reasonably similar enough with 10 replications - I'm happy with it at this point. For posterity, can run all with 100 now or at the end if desired. As these just present mean results, I would only expect it to have a fairly minimal impact for mean of 10 v.s. 100 replications. For Table 6, I did run 100 replications as it was mean and SD.
+
+::: {.callout-tip}
+## Reflections
+
+Found it a bit tricky to work out to go from number of arrivals to inter-arrival rate. Still not quite sure on how, beyond making estimates based on provided arrivals and IAT.
+:::
+
+However, this is not correct:
+
+![Incorrect Figure 4](fig4_incorrect.png)
+
+## Timings
+
+```{python}
+import sys
+sys.path.append('../')
+from timings import calculate_times
+
+# Minutes used prior to today
+used_to_date = 1012
+
+# Times from today
+times = [
+    ('9.31', '9.49')
+]
+
+calculate_times(used_to_date, times)
+```
