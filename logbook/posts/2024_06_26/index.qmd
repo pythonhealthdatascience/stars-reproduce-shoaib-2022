@@ -12,7 +12,7 @@ TBC. Total time used: TBCh TBCm (TBC%)
 
 :::
 
-## 9.31-9.49, 10.04-10.50, 11.01- : Creating Figure 4
+## 9.31-9.49, 10.04-10.50, 11.01-11.48, 11.56 : Creating Figure 4
 
 From text, understand this analysis to be variants of configruation one where the number of beds is increased by 1 or 2, and where the number of childbirth arrivals is 1, 1.5 or 2 per day.
 
@@ -63,6 +63,8 @@ Since everything else looks right, I guessed it could potentially be related to 
 ![](fig4_1080.png)
 
 I again decided to try upping this to 25 replications to see if that has an impact.
+
+![](fig4_1080_25.png)
 
 ::: {.callout-tip}
 ## Reflections
