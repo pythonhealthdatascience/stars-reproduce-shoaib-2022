@@ -8,7 +8,7 @@ bibliography: ../../../quarto_site/references.bib
 
 ::: {.callout-note}
 
-Table 6 100 rep, and created Figure 2A-D. Total time used: TBCh TBCm (TBC%)
+Table 6 100 rep, and created Figure 2A-D. Total time used: 16h 52m (42.2%)
 
 :::
 
@@ -90,7 +90,7 @@ times = [
 calculate_times(used_to_date, times)
 ```
 
-Emailed to Tom and Alison - and Tom confirmed that Fig2B and 2C are succesful.
+Emailed to Tom and Alison - and both agreed that Fig2B and 2C are succesfully reproduced.
 
 ::: {.callout-tip}
 ## Reflections from Tom from these reproductions
@@ -220,6 +220,10 @@ times = [
 
 calculate_times(used_to_date, times)
 ```
+
+## Consensus
+
+Emailed to Tom and Alison, and both replied to confirm that 2A+D and 3A-D all look successfully reproduced.
 
 ## Timings
 
