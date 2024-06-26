@@ -8,7 +8,7 @@ bibliography: ../../../quarto_site/references.bib
 
 ::: {.callout-note}
 
-Table 6 100 rep, and created Figure 2A-D. Total time used: 16h 52m (42.2%)
+Table 6 100 rep, and created Figure 2A-D + 3A-D. Total time used: 16h 52m (42.2%)
 
 :::
 
