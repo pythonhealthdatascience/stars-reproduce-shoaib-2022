@@ -54,6 +54,16 @@ comp['pct_change'] = comp.pct_change(axis=1).iloc[:, 1]*100
 comp
 ```
 
+They're very similar, and the only difference I'm uncertain about is 1 bed with 1.5 arrivals, as the actual size of the difference is 0.023 (19.5% referred elsewhere v.s. 21.8% referred elsewhere).
+
+However, I think it is honestly pretty similar, and given that all the other points are very close. I tried running with 10 replications again to see if it looked particularly different, but came out as 0.221.
+
+Since everything else looks right, I guessed it could potentially be related to the IAT used for 1.5 births. Although I'm pretty confident in my estimated value, I decided to try running it with a different IAT - just using a value equidistant between 720 and 1440. When I did this, we got a much closer result for the 1 bed, but a more different result for the 2 bed, for 1.5 births.
+
+![](fig4_1080.png)
+
+I again decided to try upping this to 25 replications to see if that has an impact.
+
 ::: {.callout-tip}
 ## Reflections
 
