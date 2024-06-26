@@ -146,6 +146,10 @@ times = [
 calculate_times(used_to_date, times)
 ```
 
+## 15.05-X: Simplifying reproduction code
+
+Encountering increasing repetition between reproduction notebooks, so decided to create `reproduction_helpers.py` with functions that are used frequently between notebooks.
+
 ## Timings
 
 ```{python}
