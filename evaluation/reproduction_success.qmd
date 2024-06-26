@@ -263,7 +263,7 @@ Original (@shoaib_simulation_2021):
 
 Reproduction:
 
-**TBC**
+![](../reproduction/outputs/fig4.png){width=70% fig-align="center"}
 
 :::
 

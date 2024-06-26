@@ -92,6 +92,8 @@ ValueError: scheduled time (91194.770) before now (91195.054)
 
 As that had taken 15 minutes and also alot of compute power, I decided to go with the simplest approach: to run again but with 10 replications, as I have done for prior figures (for consistency with prior figures, and as I know from experimenting between 10 and 25 replications, that often this only has a fairly small impact on the mean values observed).
 
+I then chose the IAT which produced results closest to the original paper (based on the assumption that the original authors might have reasonably used either value, since it is not provided and since I do not know the method used to estimate these).
+
 ::: {.callout-tip}
 ## Reflections
 
