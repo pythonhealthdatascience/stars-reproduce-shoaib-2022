@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -103,6 +103,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -243,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#creating-figure-4" id="toc-creating-figure-4" class="nav-link active" data-scroll-target="#creating-figure-4">9.31-9.49, 10.04- : Creating Figure 4</a></li>
+  <li><a href="#times-below-creating-figure-4" id="toc-times-below-creating-figure-4" class="nav-link active" data-scroll-target="#times-below-creating-figure-4">Times below: Creating Figure 4</a></li>
   <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_26/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -268,14 +271,125 @@ Note
 <p>TBC. Total time used: TBCh TBCm (TBC%)</p>
 </div>
 </div>
-<section id="creating-figure-4" class="level2">
-<h2 class="anchored" data-anchor-id="creating-figure-4">9.31-9.49, 10.04- : Creating Figure 4</h2>
+<section id="times-below-creating-figure-4" class="level2">
+<h2 class="anchored" data-anchor-id="times-below-creating-figure-4">Times below: Creating Figure 4</h2>
+<p>Times here (as lots to put in header):</p>
+<ul>
+<li>9.31-9.49</li>
+<li>10.04-10.50</li>
+<li>11.01-11.48</li>
+<li>11.56-12.02</li>
+<li>12.50-12.56</li>
+<li>13.08-</li>
+</ul>
 <p>From text, understand this analysis to be variants of configruation one where the number of beds is increased by 1 or 2, and where the number of childbirth arrivals is 1, 1.5 or 2 per day.</p>
 <p>Working out IAT:</p>
 <pre><code>* 1 = IAT 1440 (as in e.g. config1)
 * 1.5 = 960 (as 720+240=960, and 960+480=1440)
 * 2 = IAT 720 (as we did for Figure 3)</code></pre>
 <p>As for others, just run 10 replications. The paper states they run 100, but that takes ages, and so I’ve taken the approach that - if it seems reasonably similar enough with 10 replications - I’m happy with it at this point. For posterity, can run all with 100 now or at the end if desired. As these just present mean results, I would only expect it to have a fairly minimal impact for mean of 10 v.s. 100 replications. For Table 6, I did run 100 replications as it was mean and SD.</p>
+<p>However, this is not correct:</p>
+<p><img src="fig4_incorrect.png" class="img-fluid"></p>
+<p>Realised this was my mistake and I had mis-interpreted it as adding 1 or 2 extra beds, but instead, it was simply having 1 or 2 beds in total. Upon re-reading the text again, this was definitely my mistake and not the article. Upon amending this, the figure looks much closer.</p>
+<p><img src="fig4_close.png" class="img-fluid"></p>
+<p>I was reasonably confident in this being correct, but anticipate the differences here would likely be resolved by doing 100 replications rather than 10. As such, tried running more replications (25 still instead of 100 due to time). Notebook run time 7m 16s.</p>
+<p>This brought the result closer, although still some small differences.</p>
+<p><img src="fig4_25.png" class="img-fluid"></p>
+<p>As the figure is labelled, I can compare the numbers:</p>
+<div id="9c53ab5a" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Input results from original and reproduced figures</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>comp <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'original'</span>: [<span class="fl">0.021</span>, <span class="fl">0.039</span>, <span class="fl">0.0599</span>, <span class="fl">0.150</span>, <span class="fl">0.195</span>, <span class="fl">0.270</span>],</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'reproduced'</span>: [<span class="fl">0.019</span>, <span class="fl">0.036</span>, <span class="fl">0.060</span>, <span class="fl">0.157</span>, <span class="fl">0.218</span>, <span class="fl">0.276</span>]})</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Find size of difference and % change</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>comp[<span class="st">'diff'</span>] <span class="op">=</span> comp[<span class="st">'reproduced'</span>] <span class="op">-</span> comp[<span class="st">'original'</span>]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>comp[<span class="st">'pct_change'</span>] <span class="op">=</span> comp.pct_change(axis<span class="op">=</span><span class="dv">1</span>).iloc[:, <span class="dv">1</span>]<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>comp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">original</th>
+<th data-quarto-table-cell-role="th">reproduced</th>
+<th data-quarto-table-cell-role="th">diff</th>
+<th data-quarto-table-cell-role="th">pct_change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.0210</td>
+<td>0.019</td>
+<td>-0.0020</td>
+<td>-9.523810</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.0390</td>
+<td>0.036</td>
+<td>-0.0030</td>
+<td>-7.692308</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.0599</td>
+<td>0.060</td>
+<td>0.0001</td>
+<td>0.166945</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.1500</td>
+<td>0.157</td>
+<td>0.0070</td>
+<td>4.666667</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.1950</td>
+<td>0.218</td>
+<td>0.0230</td>
+<td>11.794872</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>0.2700</td>
+<td>0.276</td>
+<td>0.0060</td>
+<td>2.222222</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>They’re very similar, and the only difference I’m uncertain about is 1 bed with 1.5 arrivals, as the actual size of the difference is 0.023 (19.5% referred elsewhere v.s. 21.8% referred elsewhere).</p>
+<p>However, I think it is honestly pretty similar, and given that all the other points are very close. I tried running with 10 replications again to see if it looked particularly different, but came out as 0.221.</p>
+<p>Since everything else looks right, I guessed it could potentially be related to the IAT used for 1.5 births. Although I’m pretty confident in my estimated value, I decided to try running it with a different IAT - just using a value equidistant between 720 and 1440. When I did this, we got a much closer result for the 1 bed, but a more different result for the 2 bed, for 1.5 births.</p>
+<p><img src="fig4_1080.png" class="img-fluid"></p>
+<p>I again decided to try upping this to 25 replications to see if that has an impact.</p>
+<p><img src="fig4_1080_25.png" class="img-fluid"></p>
+<p>Due to the differing results observed, I decided to run both IATs for 100 replications and use the results from that that best matched the original paper. However, this was heating up the computer and VS Code crashed at 80 replications (before any results are saved). I then tried 25 replications, but this experienced an error and seemed to get stuck running one of the models after that -</p>
+<pre><code>Traceback (most recent call last):
+  File "/home/amy/mambaforge/envs/shoaib2022/lib/python3.9/site-packages/salabim/salabim.py", line 4784, in step
+    next(c._process)
+  File "/home/amy/Documents/stars/stars-reproduce-shoaib-2022/reproduction/PHC.py", line 290, in process
+    yield self.hold(sim.Normal(5,1).bounded_sample())
+  File "/home/amy/mambaforge/envs/shoaib2022/lib/python3.9/site-packages/salabim/salabim.py", line 12058, in hold
+    self._reschedule(scheduled_time, priority, urgent, "hold")
+  File "/home/amy/mambaforge/envs/shoaib2022/lib/python3.9/site-packages/salabim/salabim.py", line 11827, in _reschedule
+    raise ValueError("scheduled time ({:0.3f}) before now ({:0.3f})".format(scheduled_time, self.env._now))
+ValueError: scheduled time (91194.770) before now (91195.054)</code></pre>
+<p>As that had taken 15 minutes and also alot of compute power, I decided to go with the simplest approach: to run again but with 10 replications, as I have done for prior figures (for consistency with prior figures, and as I know from experimenting between 10 and 25 replications, that often this only has a fairly small impact on the mean values observed).</p>
+<p>I then chose the IAT which produced results closest to the original paper (based on the assumption that the original authors might have reasonably used either value, since it is not provided and since I do not know the method used to estimate these).</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -287,37 +401,36 @@ Reflections
 </div>
 <div class="callout-body-container callout-body">
 <p>Found it a bit tricky to work out to go from number of arrivals to inter-arrival rate. Still not quite sure on how, beyond making estimates based on provided arrivals and IAT.</p>
+<p>Models that take a long time to run are a bit trickier to work with as it limits what you can do while you wait</p>
+<p>Have assumed here that potentially the result might be from two IAT (cannot guarnatee that to be the case, but is what enabled me to get more consistent results with original paper). Regardless of what is true in this case (as we cannot necessarily know), a learning here is that if you do directly change parameters in a script for scenarios, it potentially leaves more margin for error than if it is done programmatically.</p>
 </div>
-</div>
-<p>However, this is not correct:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="fig4_incorrect.png" class="img-fluid figure-img"></p>
-<figcaption>Incorrect Figure 4</figcaption>
-</figure>
 </div>
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="5513f148" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1012</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.31'</span>, <span class="st">'9.49'</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="68c53f54" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1012</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.31'</span>, <span class="st">'9.49'</span>),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.04'</span>, <span class="st">'10.50'</span>),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.01'</span>, <span class="st">'11.48'</span>),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.56'</span>, <span class="st">'12.02'</span>),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.50'</span>, <span class="st">'12.56'</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time spent today: 18m, or 0h 18m
-Total used to date: 1030m, or 17h 10m
-Time remaining: 1370m, or 22h 50m
-Used 42.9% of 40 hours max</code></pre>
+<pre><code>Time spent today: 123m, or 2h 3m
+Total used to date: 1135m, or 18h 55m
+Time remaining: 1265m, or 21h 5m
+Used 47.3% of 40 hours max</code></pre>
 </div>
 </div>
 
