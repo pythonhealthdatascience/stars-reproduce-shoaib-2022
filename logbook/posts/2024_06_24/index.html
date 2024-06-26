@@ -164,13 +164,11 @@ div.csl-indent {
     <a class="dropdown-item" href="../../../reproduction/reproduce_tab6.html">
  <span class="dropdown-text">Reproducing Table 6</span></a>
   </li>  
+        <li class="dropdown-header">reproduction/reproduce_fig2_txt1.ipynb</li>
+        <li class="dropdown-header">reproduction/reproduce_fig3.ipynb</li>
         <li>
-    <a class="dropdown-item" href="../../../reproduction/reproduce_fig2.html">
- <span class="dropdown-text">Reproducing Figure 2A-D</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../../reproduction/reproduce_fig3.html">
- <span class="dropdown-text">Reproducing Figure 3A-D</span></a>
+    <a class="dropdown-item" href="../../../reproduction/reproduce_fig4.html">
+ <span class="dropdown-text">Reproducing Figure 4</span></a>
   </li>  
     </ul>
   </li>
@@ -446,7 +444,7 @@ c3_state.__dict__</code></pre>
 <li>Config 4: 170 arrivals in a day and IAT of 3</li>
 </ul>
 <p>In order to get those times:</p>
-<div id="08adf00c" class="cell" data-execution_count="1">
+<div id="1a703005" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span><span class="fl">8.6666666666666666666666666666666</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">9</span>)<span class="op">*</span><span class="dv">9</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">3</span>)<span class="op">*</span><span class="fl">8.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -466,7 +464,7 @@ c3_state.__dict__</code></pre>
 <li>Config 1: 125 or 126 arrivals and IAT 4</li>
 <li>Config 2/3: 55 arrivals and IAT 9</li>
 </ul>
-<div id="606c8dd9" class="cell" data-execution_count="2">
+<div id="17889a90" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span><span class="fl">8.33333333333333333</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span><span class="fl">8.4</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">9</span>)<span class="op">*</span><span class="fl">8.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -478,7 +476,7 @@ c3_state.__dict__</code></pre>
 </div>
 <p>Regarding the number of hours described in the article, this is described as “6 hours per day” for the outpatients - which differs to the 8.25 hours to 9 that align with the provided patient numbers and inter-arrival times.</p>
 <p>Assuming this variation is simply related to rounding the IAT - as if we calculate these values based on there being 8.5 hours per day then round the IAT, we get the same results…</p>
-<div id="83c10ffd" class="cell" data-execution_count="3">
+<div id="7b93da42" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IAT 3. Arrivals 170</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">170</span><span class="op">/</span><span class="fl">8.5</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -498,7 +496,7 @@ c3_state.__dict__</code></pre>
 </div>
 </div>
 <p>As such, the inter-arrival times used were calculated as 3, 6 and 8…</p>
-<div id="f275bee0" class="cell" data-execution_count="4">
+<div id="95c07694" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 170, 85 and 65 arrivals</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">170</span><span class="op">/</span><span class="fl">8.5</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">85</span><span class="op">/</span><span class="fl">8.5</span>))</span>
@@ -531,7 +529,7 @@ Challenges today
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="de7462a6" class="cell" data-execution_count="5">
+<div id="af8da894" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
