@@ -12,7 +12,16 @@ TBC. Total time used: TBCh TBCm (TBC%)
 
 :::
 
-## 9.31-9.49, 10.04-10.50, 11.01-11.48, 11.56 : Creating Figure 4
+## Times below: Creating Figure 4
+
+Times here (as lots to put in header):
+
+* 9.31-9.49
+* 10.04-10.50
+* 11.01-11.48
+* 11.56-12.02
+* 12.50-12.56
+* 13.08-
 
 From text, understand this analysis to be variants of configruation one where the number of beds is increased by 1 or 2, and where the number of childbirth arrivals is 1, 1.5 or 2 per day.
 
@@ -66,12 +75,31 @@ I again decided to try upping this to 25 replications to see if that has an impa
 
 ![](fig4_1080_25.png)
 
+Due to the differing results observed, I decided to run both IATs for 100 replications and use the results from that that best matched the original paper. However, this was heating up the computer and VS Code crashed at 80 replications (before any results are saved). I then tried 25 replications, but this experienced an error and seemed to get stuck running one of the models after that - 
+
+```
+Traceback (most recent call last):
+  File "/home/amy/mambaforge/envs/shoaib2022/lib/python3.9/site-packages/salabim/salabim.py", line 4784, in step
+    next(c._process)
+  File "/home/amy/Documents/stars/stars-reproduce-shoaib-2022/reproduction/PHC.py", line 290, in process
+    yield self.hold(sim.Normal(5,1).bounded_sample())
+  File "/home/amy/mambaforge/envs/shoaib2022/lib/python3.9/site-packages/salabim/salabim.py", line 12058, in hold
+    self._reschedule(scheduled_time, priority, urgent, "hold")
+  File "/home/amy/mambaforge/envs/shoaib2022/lib/python3.9/site-packages/salabim/salabim.py", line 11827, in _reschedule
+    raise ValueError("scheduled time ({:0.3f}) before now ({:0.3f})".format(scheduled_time, self.env._now))
+ValueError: scheduled time (91194.770) before now (91195.054)
+```
+
+As that had taken 15 minutes and also alot of compute power, I decided to go with the simplest approach: to run again but with 10 replications, as I have done for prior figures (for consistency with prior figures, and as I know from experimenting between 10 and 25 replications, that often this only has a fairly small impact on the mean values observed).
+
 ::: {.callout-tip}
 ## Reflections
 
 Found it a bit tricky to work out to go from number of arrivals to inter-arrival rate. Still not quite sure on how, beyond making estimates based on provided arrivals and IAT.
 
 Models that take a long time to run are a bit trickier to work with as it limits what you can do while you wait
+
+Have assumed here that potentially the result might be from two IAT (cannot guarnatee that to be the case, but is what enabled me to get more consistent results with original paper). Regardless of what is true in this case (as we cannot necessarily know), a learning here is that if you do directly change parameters in a script for scenarios, it potentially leaves more margin for error than if it is done programmatically.
 :::
 
 ## Timings
@@ -86,7 +114,11 @@ used_to_date = 1012
 
 # Times from today
 times = [
-    ('9.31', '9.49')
+    ('9.31', '9.49'),
+    ('10.04', '10.50'),
+    ('11.01', '11.48'),
+    ('11.56', '12.02'),
+    ('12.50', '12.56')
 ]
 
 calculate_times(used_to_date, times)
