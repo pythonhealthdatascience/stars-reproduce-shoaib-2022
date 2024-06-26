@@ -12,7 +12,116 @@ As cited throughout, images on this page are sourced from @shoaib_simulation_202
 
 ::: {.callout-note appearance="minimal" collapse=true}
 
+## Time-to-completion figure
+
+```{python}
+import pandas as pd
+import plotly.express as px
+import numpy as np
+
+# List of time to complete each item
+time_list = [
+    [0, 'Start'], # Dummy entry to start at (0,0)
+    [856, 'Table 6'],
+    [971, 'Figure 2A'],
+    [889, 'Figure 2B'],
+    [910, 'Figure 2C'],
+    [981, 'Figure 2D'],
+    [1002, 'Figure 3A'],
+    [1008, 'Figure 3B'],
+    [1009, 'Figure 3C'],
+    [1012, 'Figure 3D'],
+    # TODO: Update these to actual times once complete
+    [np.nan, 'Figure 4'],
+    [np.nan, 'In-text result 1'],
+    [np.nan, 'In-text result 2'],
+    [np.nan, 'In-text result 3'],
+    [np.nan, 'In-text result 4'],
+    [np.nan, 'In-text result 5'],
+    [np.nan, 'In-text result 6'],
+    [np.nan, 'In-text result 7']]
+
+# Convert to dataframe
+times = pd.DataFrame(time_list, columns=['time', 'item'])
+
+# Create ECDF plot
+fig = px.ecdf(times, x='time', markers=True, ecdfnorm='percent',
+              hover_data=['time', 'item'])
+
+# Amend appearance
+fig.update_layout(xaxis_range=[0, 2400])
+
+# Show plot, hiding toolbar and not allowing zoom
+fig.layout.xaxis.fixedrange = True
+fig.layout.yaxis.fixedrange = True
+fig.show(config={'displayModeBar': False})
+```
+
+```{python}
+import pandas as pd
+import plotly.express as px
+import numpy as np
+
+# List of time to complete each item, including a dummy entry to start at 0,0
+time_list = [
+    [856, 'Table 6'],
+    [971, 'Figure 2A'],
+    [889, 'Figure 2B'],
+    [910, 'Figure 2C'],
+    [981, 'Figure 2D'],
+    [1002, 'Figure 3A'],
+    [1008, 'Figure 3B'],
+    [1009, 'Figure 3C'],
+    [1012, 'Figure 3D'],
+    # TODO: Update these to actual times once complete
+    [np.nan, 'Figure 4'],
+    [np.nan, 'In-text result 1'],
+    [np.nan, 'In-text result 2'],
+    [np.nan, 'In-text result 3'],
+    [np.nan, 'In-text result 4'],
+    [np.nan, 'In-text result 5'],
+    [np.nan, 'In-text result 6'],
+    [np.nan, 'In-text result 7']]
+
+# Convert to dataframe
+times = pd.DataFrame(time_list, columns=['time', 'item'])
+
+# Sort the DataFrame by 'time' to correctly plot the ECDF
+times_clean = times.sort_values(by='time').reset_index(drop=True)
+
+# Compute the ECDF values
+times_clean['ecdf'] = np.arange(1, len(times_clean) + 1) / len(times_clean) * 100
+
+# Insert the starting point (0, 0) in the ECDF
+times_clean.loc[-1] = [0, 'Start', 0]
+times_clean.index = times_clean.index + 1
+times_clean = times_clean.sort_index()
+
+display(times_clean)
+
+# Create ECDF plot
+fig = px.line(times_clean, x='time', y='ecdf', markers=True, 
+              hover_data=['time', 'item'])
+#fig = px.ecdf(times_clean, x='time', y='percent', markers=True)
+#fig = px.scatter(times_clean, x='time', y='ecdf')
+#fig.data[0].update(mode='lines')
+
+# Update layout to ensure proper axis ranges
+fig.update_layout(xaxis_range=[0, 2400], yaxis_range=[0, 100])
+
+# Show plot, hiding toolbar and not allowing zoom
+fig.layout.xaxis.fixedrange = True
+fig.layout.yaxis.fixedrange = True
+fig.show(config={'displayModeBar': False})
+```
+
+:::
+
+::: {.callout-note appearance="minimal" collapse=true}
+
 ## Table 6
+
+**Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
@@ -46,6 +155,8 @@ Reproduction:
 
 ## Figure 2B
 
+**Successfully reproduced**
+
 Original (@shoaib_simulation_2021):
 
 ![](../original_study/fig2b.png){width=70% fig-align="center"}
@@ -59,6 +170,8 @@ Reproduction:
 ::: {.callout-note appearance="minimal" collapse=true}
 
 ## Figure 2C
+
+**Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
