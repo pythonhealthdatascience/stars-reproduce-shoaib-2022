@@ -252,7 +252,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#times-below-creating-figure-4" id="toc-times-below-creating-figure-4" class="nav-link active" data-scroll-target="#times-below-creating-figure-4">Times below: Creating Figure 4</a></li>
   <li><a href="#in-text-result-1" id="toc-in-text-result-1" class="nav-link" data-scroll-target="#in-text-result-1">13.42-14.13: In-text result 1</a></li>
-  <li><a href="#x-simplifying-reproduction-code" id="toc-x-simplifying-reproduction-code" class="nav-link" data-scroll-target="#x-simplifying-reproduction-code">15.05-X: Simplifying reproduction code</a></li>
+  <li><a href="#simplifying-reproduction-code" id="toc-simplifying-reproduction-code" class="nav-link" data-scroll-target="#simplifying-reproduction-code">15.05-15.22: Simplifying reproduction code</a></li>
+  <li><a href="#in-text-result-2" id="toc-in-text-result-2" class="nav-link" data-scroll-target="#in-text-result-2">15.39-16.23, 16.28-16.33: In-text result 2</a></li>
   <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_26/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -274,7 +275,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TBC. Total time used: TBCh TBCm (TBC%)</p>
+<p>Reproduced Figure 4 and in-text results 1 and 2. Total time used: 21h 2m (52.6%)</p>
 </div>
 </div>
 <section id="times-below-creating-figure-4" class="level2">
@@ -302,7 +303,7 @@ Note
 <p>This brought the result closer, although still some small differences.</p>
 <p><img src="fig4_25.png" class="img-fluid"></p>
 <p>As the figure is labelled, I can compare the numbers:</p>
-<div id="134c488d" class="cell" data-execution_count="1">
+<div id="cec260ef" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Input results from original and reproduced figures</span></span>
@@ -412,7 +413,7 @@ Reflections
 <p>Have assumed here that potentially the result might be from two IAT (cannot guarnatee that to be the case, but is what enabled me to get more consistent results with original paper). Regardless of what is true in this case (as we cannot necessarily know), a learning here is that if you do directly change parameters in a script for scenarios, it potentially leaves more margin for error than if it is done programmatically.</p>
 </div>
 </div>
-<div id="f18f6590" class="cell" data-execution_count="2">
+<div id="66f5bd48" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -443,7 +444,7 @@ Used 48.5% of 40 hours max</code></pre>
 <h2 class="anchored" data-anchor-id="in-text-result-1">13.42-14.13: In-text result 1</h2>
 <p>Used output from creating Figure 3, but focussed on waiting times for lab and OPD. Saved results as tables as actual change in minutes is only small, but plotting the figures makes it appear larger than it is.</p>
 <p>Satisifed that these represent “marginal increases” in these outcomes, and consider successfully reproduced at 14.13.</p>
-<div id="5feed2ec" class="cell" data-execution_count="3">
+<div id="17fd6dad" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this reslut</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1165</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -461,33 +462,116 @@ Used 49.8% of 40 hours max</code></pre>
 </div>
 </div>
 </section>
-<section id="x-simplifying-reproduction-code" class="level2">
-<h2 class="anchored" data-anchor-id="x-simplifying-reproduction-code">15.05-X: Simplifying reproduction code</h2>
-<p>Encountering increasing repetition between reproduction notebooks, so decided to create <code>reproduction_helpers.py</code> with functions that are used frequently between notebooks.</p>
+<section id="simplifying-reproduction-code" class="level2">
+<h2 class="anchored" data-anchor-id="simplifying-reproduction-code">15.05-15.22: Simplifying reproduction code</h2>
+<p>Encountering increasing repetition between reproduction notebooks, so decided to create <code>reproduction_helpers.py</code> with <code>process_results()</code> function as it is used frequently between notebooks.</p>
+</section>
+<section id="in-text-result-2" class="level2">
+<h2 class="anchored" data-anchor-id="in-text-result-2">15.39-16.23, 16.28-16.33: In-text result 2</h2>
+<p>This result starts with the doctor utilisation from Figure 2A which is over 100% when patient load is 170 (IAT 3) and appointment times are 5 minutes (mean 5, SD 1, boundary 2). The variant introduced is to give all administrative work to the staff nurse. This is not something that can currently be modified in <code>main()</code>.</p>
+<p>The class Main() mentions this, <code>"For sensitivity analysis. Admin work added to staff nurse rather than doctor"</code>, but it is not clear what to modify in that section to change assignment of admin work.</p>
+<p>I worked through how admin work is generated and used throughout the script…</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How admin work is generated and used
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The script explains that the arrival of admin work is generated within Main(). It is generated by:</p>
+<p><code>k = int(sim.Normal(100,20).bounded_sample(60,140))</code></p>
+<p>If it is not warmup, then k is used as follows:</p>
+<pre><code>Patient.doc_service_time.append(k)
+Main.NCD_admin_work.append(k)
+ncd_time += k</code></pre>
+<p><strong>Doc_service_time</strong></p>
+<p>The <code>doc_service_time</code> is composed of several times in a list (<code>Patient.doc_service_time.append(doc_time)</code>, <code>Patient.doc_service_time.append(total)</code>) that are sum to find <code>doc_tot_time</code> (total time during 365 days) (<code>doc_tot_time = sum(Patient.doc_service_time)</code>).</p>
+<p><strong>NCD_admin_work</strong></p>
+<p><code>NCD_admin_work</code> is add to <code>sumi</code> (<code>for i in Main.NCD_admin_work: sumi += i</code>) then cleared (<code>Main.NCD_admin_work = []</code>). <code>sumi</code> is:</p>
+<ul>
+<li>Add to <code>total_admin_work</code> which is add to NCD nurse time and used to calculate <code>Total_NCD_time</code>.
+<ul>
+<li>That is add to <code>NCD_occ_list</code>, which is used in both results spreadsheets to find NCD nurse utilisation.</li>
+</ul></li>
+<li>Used to calculate doctor admin time in the large results spreadsheet (whilst doctor admin time is not included in the replication results spreadsheet).</li>
+<li>Used to calculate NCD nurse OPD time for the large results spreadsheet</li>
+</ul>
+<p><strong>ncd_time</strong></p>
+<p><code>ncd_time</code> is composed of <code>k</code> (sampled admin work) and <code>x</code> (related to patient OPD visits). It is appended to <code>ncd_util</code> (<code>ncd_util.append(ncd_time/(420*365))</code>). <code>ncd_util</code> is the second <code>NCD occ</code> in the replication results spreadsheet. This row contains duplicate results with another <code>NCD occ</code>, and that row is based on <code>NCD_occ_list</code> (as mentioned above).</p>
+</div>
+</div>
+</div>
+<p>After this, I understood that admin work was currently given to both the doctor and the NCD nurse - and therefore, the change would be to add it to the staff nurse instead of the doctor in that <code>else</code> statement (which is as mentioned in that comment in the script, but wasn’t clear to me upon first looking).</p>
+<p>The doctor admin time is add via <code>Patient.doc_service_time.append(k)</code>.</p>
+<p>Looking at the replication results spreadsheet, <code>staff nurse occ</code> is <code>nurse_occ_list</code>.</p>
+<p>That list is created from <code>nurse_occ_list.append((sum(Main.NT_list)+180*days)/(21*60*days))</code>.</p>
+<p>The <code>NT_list</code> is the nurse time list. It is created from <code>Main.NT_list.append(temp)</code> (which occurs several times in the script). In each case, <code>temp</code> refers to a sampled time (e.g.&nbsp;<code>temp = sim.Uniform(120, 240, 'minutes').sample()</code>, <code>temp = sim.Triangular(8, 20.6, 12.3).sample()</code>).</p>
+<p>As such, I think that we should be able to add the admin work to the nurse time by appending k to <code>NT_list</code>. I amended <code>PHC.py</code> to enable input of a boolean to <code>main()</code> that adjusts who receives that time in <code>Main()</code>.</p>
+<p>I observed a decrease in utilisation of 12% (114% utilisation to 102%), and so mark as successfully reproduced at 16.33.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reflections
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Making it clear and easy to modify the model - as least, for the variants presented in the paper. In this case, challenging to identify how to re-allocate admin tasks.</p>
+</div>
+</div>
+<div id="1512386b" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this reslut</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1196</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.05'</span>, <span class="st">'15.22'</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.39'</span>, <span class="st">'16.23'</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'16.28'</span>, <span class="st">'16.33'</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time spent today: 66m, or 1h 6m
+Total used to date: 1262m, or 21h 2m
+Time remaining: 1138m, or 18h 58m
+Used 52.6% of 40 hours max</code></pre>
+</div>
+</div>
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="783aa212" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1012</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.31'</span>, <span class="st">'9.49'</span>),</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.04'</span>, <span class="st">'10.50'</span>),</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.01'</span>, <span class="st">'11.48'</span>),</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.56'</span>, <span class="st">'12.02'</span>),</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.50'</span>, <span class="st">'12.56'</span>),</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.08'</span>, <span class="st">'13.38'</span>),</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.42'</span>, <span class="st">'14.13'</span>)</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ce84a408" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1012</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.31'</span>, <span class="st">'9.49'</span>),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.04'</span>, <span class="st">'10.50'</span>),</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.01'</span>, <span class="st">'11.48'</span>),</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.56'</span>, <span class="st">'12.02'</span>),</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.50'</span>, <span class="st">'12.56'</span>),</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.08'</span>, <span class="st">'13.38'</span>),</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.42'</span>, <span class="st">'14.13'</span>),</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.05'</span>, <span class="st">'15.22'</span>),</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.39'</span>, <span class="st">'16.23'</span>),</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'16.28'</span>, <span class="st">'16.33'</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time spent today: 184m, or 3h 4m
-Total used to date: 1196m, or 19h 56m
-Time remaining: 1204m, or 20h 4m
-Used 49.8% of 40 hours max</code></pre>
+<pre><code>Time spent today: 250m, or 4h 10m
+Total used to date: 1262m, or 21h 2m
+Time remaining: 1138m, or 18h 58m
+Used 52.6% of 40 hours max</code></pre>
 </div>
 </div>
 
