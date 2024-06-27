@@ -806,43 +806,128 @@ class Delivery_no_doc(sim.Component):                                       # du
 # the function itself.
 def main(
         s_OPD_iat=4,
-        s_delivery_iat=1440,             # inter-arrival delivery patient time
-        s_IPD_iat=2880,                  # inter-arrival IPD patient time
-        s_ANC_iat=1440,                  # inter-arrival ANC patient time
-        s_mean=0.87,                     # consultation time mean
-        s_sd=.21,                        # consultation time sd
-        s_consult_boundary_1=0.5,      # consultation time lower boundary (value from if env.now() <= Main.warm_up:)
-        s_consult_boundary_2=0.3,      # consultation time lower boundary (values from else:)
+        s_delivery_iat=1440,
+        s_IPD_iat=2880,
+        s_ANC_iat=1440,
+        s_mean=0.87,
+        s_sd=.21,
+        s_consult_boundary_1=0.5,
+        s_consult_boundary_2=0.3,
         s_pharm_mean=2.083,
         s_pharm_sd=0.72,
         s_j=0,
-        s_f=0,                            # for calculating sum of OPD q waiting time
-        s_f1=0,                           # for calculating sum of OPD q length
-        s_f2=0,                           # for calculating sum of pharmacy q waiting time
-        s_f3=0,                           # for calculating sum of pharmacy q length
-        s_f4=0,                           # for calculating sum of lab q waiting time
-        s_f5=0,                           # for calculating sum of lab q length
+        s_f=0,
+        s_f1=0,
+        s_f2=0,
+        s_f3=0,
+        s_f4=0,
+        s_f5=0,
         s_doc_tot_time=0,
         s_lab_patients=0,
         s_days=365,
         s_shifts=3,
         s_hours=8,
-        s_doc_cap=2,                     # number of doctors
-        s_staff_nurse_cap=3,             # number of nurses
-        s_NCD_nurse_cap=1,               # number of NCD nurses
-        s_pharmacist_cap=1,              # number of pharmacists
-        s_lab_cap=1,                     # number of lab technicians
+        s_doc_cap=2,
+        s_staff_nurse_cap=3,
+        s_NCD_nurse_cap=1,
+        s_pharmacist_cap=1,
+        s_lab_cap=1,
         s_replication=10,
-        s_inpatient_bed_n=6,   # Number of inpatient beds
-        s_delivery_bed_n=1,    # Number of labour room beds
-        s_results_path='outputs',         # Folder with results
-        s_rep_file='outputs.xls',         # File for replication results
-        s_full_file='full_results.xlsx',  # File for full results
-        s_output_full_results=False,      # Boolean for whether to create full results file
-        s_any_ANC=True,        # Boolean for if there are any ANC patients
-        s_any_delivery=True,   # Boolean for if there are any labour patients
-        s_admin_to_staff_nurse=False  # Boolean for whether to give admin work to the staff nurse instead of the doctor
+        s_inpatient_bed_n=6,
+        s_delivery_bed_n=1,
+        s_results_path='outputs',
+        s_rep_file='outputs.xls',
+        s_full_file='full_results.xlsx',
+        s_output_full_results=False,
+        s_any_ANC=True,
+        s_any_delivery=True,
+        s_admin_to_staff_nurse=False,
+        s_doctor_delivery_scenario=False
 ):
+    '''
+    Run the model.
+
+    Parameters:
+    -----------
+    s_OPD_iat : int
+        Inter-arrival time for outpatient department (OPD)
+    s_delivery_iat : int
+        Inter-arrival time for delivery patients (labour)
+    s_IPD_iat : int
+        Inter-arrival time for inpatient department (IPD)
+    s_ANC_iat : int
+        Inter-arrival time for antenatal services (ANC)
+    s_mean : num
+        Mean for sampling consultation time with doctor
+    s_sd : num
+        Standard deviation for sampling consultation time with doctor
+    s_consult_boundary_1 : num
+        Minimum consultation time with doctor (value from if env.now() <=
+        Main.warm_up:)
+    s_consult_boundary_2 : num
+        Minimum consultation time with doctor (values from else:)
+    s_pharm_mean : num
+        Mean for sampling pharmacy time
+    s_pharm_sd : num
+        Standard deviation for sampling pharmacy time
+    s_j : num
+        Used when calculating NCD nurse time
+    s_f : int
+        For calculating sum of OPD queue waiting time
+    s_f1 : int
+        For calculating sum of OPD queue length
+    s_f2 : int
+        For calculating sum of pharmacy queue waiting time
+    s_f3 : int
+        For calculating sum of pharmacy queue length
+    s_f4 : int
+        For calculating sum of lab queue waiting time
+    s_f5 : int
+        For calculating sum of lab queue length
+    s_doc_tot_time : int
+        For calculating total doctor time
+    s_lab_patients : int
+        Stores count of patients requiring a laboratory test
+    s_days : int
+        Number of days in simulation
+    s_shifts : int
+        Number of shifts per day
+    s_hours : int
+        Length of shifts
+    s_doc_cap : int
+        Number of doctors
+    s_staff_nurse_cap : int
+        Number of nurses
+    s_NCD_nurse_cap : int
+        Number of NCD nurses
+    s_pharmacist_cap : int
+        Number of pharmacists
+    s_lab_cap : int
+        Number of lab technicians
+    s_replication : int
+        Number of model replications to run
+    s_inpatient_bed_n : int
+        Number of inpatient beds
+    s_delivery_bed_n : int
+        Number of labour room beds
+    s_results_path : str
+        Folder with results
+    s_rep_file : str
+        File for replication results
+    s_full_file : str
+        File for full results
+    s_output_full_results : boolean
+        Whether to create full results file
+    s_any_ANC : boolean
+        Whether there are any ANC patients
+    s_any_delivery=True : boolean
+        Whether there are any labour patients
+    s_admin_to_staff_nurse : boolean
+        Whether to do scenario where admin work is given to the staff nurse
+        instead of the doctor
+    s_doctor_delivery_scenario : boolean
+        Whether to do scenario where doctor intervention in delivery is reduced
+    '''
     # Define global variables
     # defining simulation input parameters
     global OPD_iat
