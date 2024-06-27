@@ -29,6 +29,7 @@ website:
           - reproduction/reproduce_txt2.ipynb
           - reproduction/reproduce_txt34.ipynb
           - reproduction/reproduce_txt5.ipynb
+          - reproduction/reproduce_txt67.ipynb
       - text: Evaluation
         menu:
           - evaluation/scope.qmd

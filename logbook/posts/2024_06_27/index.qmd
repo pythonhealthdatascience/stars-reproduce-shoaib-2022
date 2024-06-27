@@ -229,7 +229,30 @@ Confusion from duplicate outputs.
 Hard-coding of parameters (which can then be tricky to spot afterwards to change).
 :::
 
-## 15.24-X: Starting on in-text result 6
+## 15.24-15.55: Reproducing in-text result 6
+
+This result is a variant of Figure 2B IAT 3, where we assign administrative work to the staff nurse to decrease the utilisation of the NCD nurse.
+
+In the normal model, the admin work is assigned to the doctor and the NCD nurse. We previously add a various to move the work from the doctor to the staff nurse. Similar to last time, we add another variant, this time moving work from the NCD nurse to the staff nurse. I amended the name of the boolean controlling it for the in-text results 3/4 (for clarity, distinguishing between that scenario and this one), and re-ran that notebook.
+
+The resultant NCD utilisation was 100%, as in the paper, so consider to be successfully reproduced at 15.55.
+
+```{python}
+# Minutes used prior to this item
+used_to_date = 1396
+
+# Times from today
+times = [
+    ('12.14', '12.18'),
+    ('12.21', '12.37'),
+    ('12.41', '12.56'),
+    ('13.38', '13.53'),
+    ('15.10', '15.23'),
+    ('15.24', '15.55')
+]
+
+calculate_times(used_to_date, times)
+```
 
 ## Timings
 
@@ -249,7 +272,8 @@ times = [
     ('12.21', '12.37'),
     ('12.41', '12.56'),
     ('13.38', '13.53'),
-    ('15.10', '15.23')
+    ('15.10', '15.23'),
+    ('15.24', '15.55')
 ]
 
 calculate_times(used_to_date, times)

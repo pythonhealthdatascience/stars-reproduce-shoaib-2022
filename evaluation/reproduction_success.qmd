@@ -41,7 +41,7 @@ time_list = [
     [1396, 'In-text result 4'],
     # TODO: Update these to actual times once complete
     [np.nan, 'In-text result 5'],
-    [np.nan, 'In-text result 6'],
+    [1490, 'In-text result 6'],
     [np.nan, 'In-text result 7']]
 
 # Convert to dataframe
@@ -434,7 +434,11 @@ Interpretation:
 
 **Reproduction:**
 
-**TBC**
+NCD nurse utilisation drops from 124% to 100%.
+
+```{python}
+pd.read_csv('../reproduction/outputs/intext6.csv')
+```
 
 :::
 
