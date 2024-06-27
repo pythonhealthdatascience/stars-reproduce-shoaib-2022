@@ -133,6 +133,12 @@ Amended mean and sd, and set consultation boundary as a modifiable parameter (wi
 
 This pretty much fixed the issue - the only large difference for the benchmark model is now as for the other configurations: mean OPD queue length.
 
+::: {.callout-tip}
+## Reflections
+
+Not certain if it was intentional for the original model to have two different boundaries before and after warm-up - but does bring a reflection that the duplication of code like that (before and after warm-up) does introduce more possibility of potential mistakes and that, where possible, should try to minimise that duplication.
+:::
+
 ## 14.36-14.53: Problem-solving mean OPD queue length
 
 Checked example of a result in full `.xlsx` output for config 1 from a [previous commit](https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/aa79865a880bc29b2b89dd6729a062d797b6deb5/reproduction/outputs/full_results.xlsx), but this matched the model output, which itself, was very similar to the paper output.

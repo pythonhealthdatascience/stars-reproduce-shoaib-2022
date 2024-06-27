@@ -35,3 +35,76 @@ times = [
 
 calculate_times(used_to_date, times)
 ```
+
+## 9.37-10.32: In-text result 3
+
+This result varies whether and for how long the doctor intervenes in delivery
+
+* 50% delivery cases: no doctor
+* 30% delivery cases: doctor but only one-third of typical intervention
+* 20% delivery cases: doctor and full intervention
+
+In `PHC.py`, there are two classes: `Delivery_with_doctor()` and `Delivery_no_doc()`. Ordinarily, these are used in the class `Delivery()`, arrivals during OPD hours will get delivery with doctor, and arrivals outside of hours will get without:
+
+```
+if 0 < (self.registration_time - N * 1440) < 480:
+    Delivery_with_doctor(urgent=True)      # sets priority
+else:
+    Delivery_no_doc(urgent=True)
+```
+
+Hence, I think to have 50% with no doctor, we add a sample from a uniform distribution of 0 to 1, and then either side of 0.5 they will get a doctor or not, where currently it just allows `Delivery_with_doctor()`. This is based on the assumption that this scenario is just referring to delivery cases during OPD hours, when a doctor could have otherwise intervened. I set this up with a `doctor_delivery_scenario` parameter in `main()` and then changes to `Delivery()`.
+
+```
+# If True for scenario where reduce doctor intervention...
+if doctor_delivery_scenario:
+    # Sample intervention probability (between 0 and 1)
+    int_prob = sim.Uniform(0, 1)
+    # Assign 50% to receive doctor, and 50% to not
+    if int_prob >= 0.5:
+        Delivery_with_doctor(urgent=True)
+    else:
+        Delivery_no_doc(urgent=True)
+# If scenario not in place (i.e. base case, normal function),
+# then just assign all to receive doctor...
+else:
+    Delivery_with_doctor(urgent=True)
+```
+
+Whilst doing this, changed comments by inputs to `main()` into a doc string for clarity as I am often adjusting these.
+
+For the cases where a doctor is provided, look to then have 60% receive partial intervention and 40% receive full intervention. In `Delivery_with_doctor()`, doctor time is sample twice (depending on whether or not the model is in the warm-up period or not). Both as: `doc_time = round(sim.Uniform(30, 60, 'minutes').sample(),2)`. This contributes to doctor utilisation as follows:
+
+* `Patient.doc_service_time.append(doc_time)`
+* `doc_tot_time = sum(Patient.doc_service_time)`
+* `z = doc_tot_time/(420*days*doc_cap)`
+* `doc_occupancy.append(z)` - and then `doc_occupancy` is used to calculate utilisation in the replication results spreadsheet
+
+As such, I introduced a probability of receiving shorter or longer times around this Uniform sampling. I assumed 1/3 normal intervention to mean that the sampled time is simply divided by three.
+
+```
+# If we are in a scenario where we are reducing the time spent
+# by doctors during delivery to one third of normal time, for 60%
+# of delivery patients...
+if doctor_delivery_scenario:
+    # Sample to get probability of short intervention
+    short_int_prop = sim.Uniform(0, 1)
+    if short_int_prop >= 0.4:
+        doc_time = doc_time / 3
+```
+
+However, this came back wrong, with very little change in utilisation:
+
+```{python}
+import pandas as pd
+
+pd.read_csv('intext3_wrong.csv')
+```
+
+
+
+::: {.callout-tip}
+## Reflections
+
+As before, time spent working out how to implement scenarios from the article
+:::
