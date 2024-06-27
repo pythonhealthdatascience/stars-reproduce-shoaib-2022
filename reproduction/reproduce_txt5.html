@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Reproducing Shoaib and Ramamohan 2022 - Reporting guidelines</title>
+<title>Reproducing Shoaib and Ramamohan 2022 - Reproducing in-text result 5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,30 +20,44 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -87,6 +101,9 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -204,7 +221,7 @@ div.csl-indent {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -212,22 +229,23 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#stress-des" id="toc-stress-des" class="nav-link active" data-scroll-target="#stress-des">STRESS-DES</a></li>
-  <li><a href="#des-checklist-derived-from-ispor-sdm" id="toc-des-checklist-derived-from-ispor-sdm" class="nav-link" data-scroll-target="#des-checklist-derived-from-ispor-sdm">DES checklist derived from ISPOR-SDM</a></li>
+  <li><a href="#set-up" id="toc-set-up" class="nav-link active" data-scroll-target="#set-up">Set up</a></li>
+  <li><a href="#run-model" id="toc-run-model" class="nav-link" data-scroll-target="#run-model">Run model</a></li>
+  <li><a href="#process-results" id="toc-process-results" class="nav-link" data-scroll-target="#process-results">Process results</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/evaluation/reporting.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/main/reproduction/reproduce_txt5.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Reporting guidelines</h1>
+<h1 class="title">Reproducing in-text result 5</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
   
@@ -239,403 +257,273 @@ div.csl-indent {
 </header>
 
 
-<!-- TODO: Remove this warning once completed assessment -->
-<p><strong>Please note: This is a template page and has not yet been completed</strong></p>
-<p>This page evaluates the extent to which the journal article meets the criteria from two discrete-event simulation study reporting guidelines:</p>
+<p>This result appears to build on configuration 1 but with:</p>
 <ul>
-<li><span class="citation" data-cites="monks_strengthening_2019">Monks et al. (<a href="#ref-monks_strengthening_2019" role="doc-biblioref">2019</a>)</span> - STRESS-DES: Strengthening The Reporting of Empirical Simulation Studies (Discrete-Event Simulation) (Version 1.0).</li>
-<li><span class="citation" data-cites="zhang_reporting_2020">Zhang, Lhachimi, and Rogowski (<a href="#ref-zhang_reporting_2020" role="doc-biblioref">2020</a>)</span> - The generic reporting checklist for healthcare-related discrete event simulation studies derived from the the International Society for Pharmacoeconomics and Outcomes Research Society for Medical Decision Making (ISPOR-SDM) Modeling Good Research Practices Task Force reports.</li>
+<li>High demand conditions (2 inpatient and childbirth cases per day - as in Figure 3A-D with (2/2/2))</li>
+<li>Varying the number of inpatient beds (6 to 4)</li>
 </ul>
-<section id="stress-des" class="level2">
-<h2 class="anchored" data-anchor-id="stress-des">STRESS-DES</h2>
-<p>Of the <strong>24</strong> items in the checklist:</p>
-<!-- TODO: Add counts from evaluation -->
-<ul>
-<li><strong>X</strong> were met fully (✅)</li>
-<li><strong>X</strong> were partially met (🟡)</li>
-<li><strong>X</strong> were not met (❌)</li>
-<li><strong>X</strong> were not applicable (N/A)</li>
-</ul>
-<!-- TODO: Fill in the table. Options are ✅ Fully, 🟡 Partially, ❌ Not met, or N/A -->
-<table class="caption-top table">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 36%">
-<col style="width: 12%">
-<col style="width: 40%">
-</colgroup>
+<section id="set-up" class="level2">
+<h2 class="anchored" data-anchor-id="set-up">Set up</h2>
+<div id="cell-3" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To run model</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> PHC</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># To import results and produce figures</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> reproduction_helpers <span class="im">import</span> process_results</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># To speed up run time</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> multiprocessing <span class="im">import</span> Pool</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">'''</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Additional package to record runtime of this notebook</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">import time</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">start = time.time()</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">'''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>'\n# Additional package to record runtime of this notebook\nimport time\nstart = time.time()\n'</code></pre>
+</div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paths to save image files to</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>output_folder <span class="op">=</span> <span class="st">'outputs'</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>save_path <span class="op">=</span> os.path.join(output_folder, <span class="st">'intext5.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="run-model" class="level2">
+<h2 class="anchored" data-anchor-id="run-model">Run model</h2>
+<div id="cell-6" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define model variants</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dict_list <span class="op">=</span> [</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'inpatient_bed_n'</span>: <span class="dv">6</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'IPD_iat'</span>: <span class="dv">720</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">'delivery_iat'</span>: <span class="dv">720</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">'ANC_iat'</span>: <span class="dv">720</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">'rep_file'</span>: <span class="st">'in5_6bed.xls'</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">'inpatient_bed_n'</span>: <span class="dv">4</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">'IPD_iat'</span>: <span class="dv">720</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">'delivery_iat'</span>: <span class="dv">720</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">'ANC_iat'</span>: <span class="dv">720</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">'rep_file'</span>: <span class="st">'in5_4bed.xls'</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Append 's_' to all items</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, d <span class="kw">in</span> <span class="bu">enumerate</span>(dict_list):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    dict_list[i] <span class="op">=</span> {<span class="ss">f's_</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">'</span>: v <span class="cf">for</span> k, v <span class="kw">in</span> d.items()}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrapper function to allow input of dictionary with pool</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> wrapper(d):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> PHC.main(<span class="op">**</span>d)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a process pool that uses all CPUs</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> Pool() <span class="im">as</span> pool:</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Run PHC.main() using each of inputs from config</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    pool.<span class="bu">map</span>(wrapper, dict_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> No of replications done 0
+ No of replications done 0
+ No of replications done 1
+ No of replications done 1
+ No of replications done 2
+ No of replications done 2
+ No of replications done 3
+ No of replications done 3
+ No of replications done 4
+ No of replications done 4
+ No of replications done 5
+ No of replications done 5
+ No of replications done 6
+ No of replications done 6
+ No of replications done 7
+ No of replications done 7
+ No of replications done 8
+ No of replications done 8
+ No of replications done 9
+ No of replications done 9</code></pre>
+</div>
+</div>
+</section>
+<section id="process-results" class="level2">
+<h2 class="anchored" data-anchor-id="process-results">Process results</h2>
+<div id="cell-10" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
-<th>Item</th>
-<th>Recommendation</th>
-<th>Met by study?</th>
-<th>Evidence</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">in5_6bed</th>
+<th data-quarto-table-cell-role="th">in5_4bed</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Objectives</strong></td>
-<td></td>
-<td></td>
-<td></td>
+<td data-quarto-table-cell-role="th">OPD patients</td>
+<td>33103.800000</td>
+<td>33065.600000</td>
 </tr>
 <tr class="even">
-<td>1.1 Purpose of the model</td>
-<td>Explain the background and objectives for the model</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">IPD patients</td>
+<td>726.400000</td>
+<td>740.400000</td>
 </tr>
 <tr class="odd">
-<td>1.2 Model outputs</td>
-<td>Define all quantitative performance measures that are reported, using equations where necessary. Specify how and when they are calculated during the model run along with how any measures of error such as confidence intervals are calculated.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">ANC patients</td>
+<td>608.300000</td>
+<td>606.400000</td>
 </tr>
 <tr class="even">
-<td>1.3 Experimentation aims</td>
-<td>If the model has been used for experimentation, state the objectives that it was used to investigate.<br>(A) Scenario based analysis – Provide a name and description for each scenario, providing a rationale for the choice of scenarios and ensure that item 2.3 (below) is completed.<br>(B) Design of experiments – Provide details of the overall design of the experiments with reference to performance measures and their parameters (provide further details in data below).<br>(C) Simulation Optimisation – (if appropriate) Provide full details of what is to be optimised, the parameters that were included and the algorithm(s) that was be used. Where possible provide a citation of the algorithm(s).</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">Del patients</td>
+<td>731.800000</td>
+<td>727.400000</td>
 </tr>
 <tr class="odd">
-<td><strong>Logic</strong></td>
-<td></td>
-<td></td>
-<td></td>
+<td data-quarto-table-cell-role="th">OPD Q wt</td>
+<td>0.021331</td>
+<td>0.024832</td>
 </tr>
 <tr class="even">
-<td>2.1 Base model overview diagram</td>
-<td>Describe the base model using appropriate diagrams and description. This could include one or more process flow, activity cycle or equivalent diagrams sufficient to describe the model to readers. Avoid complicated diagrams in the main text. The goal is to describe the breadth and depth of the model with respect to the system being studied.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">Pharmacy Q wt</td>
+<td>1.026099</td>
+<td>1.030518</td>
 </tr>
 <tr class="odd">
-<td>2.2 Base model logic</td>
-<td>Give details of the base model logic. Give additional model logic details sufficient to communicate to the reader how the model works.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">Lab Q wt</td>
+<td>2.052675</td>
+<td>2.090808</td>
 </tr>
 <tr class="even">
-<td>2.3 Scenario logic</td>
-<td>Give details of the logical difference between the base case model and scenarios (if any). This could be incorporated as text or where differences are substantial could be incorporated in the same manner as 2.2.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">doc occ</td>
+<td>0.288934</td>
+<td>0.287949</td>
 </tr>
 <tr class="odd">
-<td>2.4 Algorithms</td>
-<td>Provide further detail on any algorithms in the model that (for example) mimic complex or manual processes in the real world (i.e.&nbsp;scheduling of arrivals/ appointments/ operations/ maintenance, operation of a conveyor system, machine breakdowns, etc.). Sufficient detail should be included (or referred to in other published work) for the algorithms to be reproducible. Pseudo-code may be used to describe an algorithm.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">Lab patient list</td>
+<td>189399.000000</td>
+<td>189266.100000</td>
 </tr>
 <tr class="even">
-<td>2.5.1 Components - entities</td>
-<td>Give details of all entities within the simulation including a description of their role in the model and a description of all their attributes.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">OPD q len</td>
+<td>0.018496</td>
+<td>0.021539</td>
 </tr>
 <tr class="odd">
-<td>2.5.2 Components - activities</td>
-<td>Describe the activities that entities engage in within the model. Provide details of entity routing into and out of the activity.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">ipd occ</td>
+<td>0.198000</td>
+<td>0.295000</td>
 </tr>
 <tr class="even">
-<td>2.5.3 Components - resources</td>
-<td>List all the resources included within the model and which activities make use of them.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">opd q len</td>
+<td>0.001887</td>
+<td>0.002197</td>
 </tr>
 <tr class="odd">
-<td>2.5.4 Components - queues</td>
-<td>Give details of the assumed queuing discipline used in the model (e.g.&nbsp;First in First Out, Last in First Out, prioritisation, etc.). Where one or more queues have a different discipline from the rest, provide a list of queues, indicating the queuing discipline used for each. If reneging, balking or jockeying occur, etc., provide details of the rules. Detail any delays or capacity constraints on the queues.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">pharmacy q len</td>
+<td>0.090196</td>
+<td>0.090532</td>
 </tr>
 <tr class="even">
-<td>2.5.5 Components - entry/exit points</td>
-<td>Give details of the model boundaries i.e.&nbsp;all arrival and exit points of entities. Detail the arrival mechanism (e.g.&nbsp;‘thinning’ to mimic a non-homogenous Poisson process or balking)</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">lab q len</td>
+<td>0.095263</td>
+<td>0.097073</td>
 </tr>
 <tr class="odd">
-<td><strong>Data</strong></td>
-<td></td>
-<td></td>
-<td></td>
+<td data-quarto-table-cell-role="th">NCD occ</td>
+<td>0.864274</td>
+<td>0.862607</td>
 </tr>
 <tr class="even">
-<td>3.1 Data sources</td>
-<td>List and detail all data sources. Sources may include:<br>• Interviews with stakeholders,<br>• Samples of routinely collected data,<br>• Prospectively collected samples for the purpose of the simulation study,<br>• Public domain data published in either academic or organisational literature. Provide, where possible, the link and DOI to the data or reference to published literature.<br>All data source descriptions should include details of the sample size, sample date ranges and use within the study.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">lab occ</td>
+<td>0.574714</td>
+<td>0.573885</td>
 </tr>
 <tr class="odd">
-<td>3.2 Pre-processing</td>
-<td>Provide details of any data manipulation that has taken place before its use in the simulation, e.g.&nbsp;interpolation to account for missing data or the removal of outliers.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">pharm occ</td>
+<td>0.642410</td>
+<td>0.642627</td>
 </tr>
 <tr class="even">
-<td>3.3 Input parameters</td>
-<td>List all input variables in the model. Provide a description of their use and include parameter values. For stochastic inputs provide details of any continuous, discrete or empirical distributions used along with all associated parameters. Give details of all time dependent parameters and correlation.<br>Clearly state:<br>• Base case data<br>• Data use in experimentation, where different from the base case.<br>• Where optimisation or design of experiments has been used, state the range of values that parameters can take.<br>• Where theoretical distributions are used, state how these were selected and prioritised above other candidate distributions.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">staff nurse occ</td>
+<td>0.533476</td>
+<td>0.532316</td>
 </tr>
 <tr class="odd">
-<td>3.4 Assumptions</td>
-<td>Where data or knowledge of the real system is unavailable what assumptions are included in the model? This might include parameter values, distributions or routing logic within the model.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">del occ</td>
+<td>0.484000</td>
+<td>0.479000</td>
 </tr>
 <tr class="even">
-<td><strong>Experimentation</strong></td>
-<td></td>
-<td></td>
-<td></td>
+<td data-quarto-table-cell-role="th">del referred</td>
+<td>201.600000</td>
+<td>205.500000</td>
 </tr>
 <tr class="odd">
-<td>4.1 Initialisation</td>
-<td>Report if the system modelled is terminating or non-terminating. State if a warm-up period has been used, its length and the analysis method used to select it. For terminating systems state the stopping condition.<br>State what if any initial model conditions have been included, e.g., pre-loaded queues and activities. Report whether initialisation of these variables is deterministic or stochastic.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">ipd bed occ</td>
+<td>1.122112</td>
+<td>1.115264</td>
 </tr>
 <tr class="even">
-<td>4.2 Run length</td>
-<td>Detail the run length of the simulation model and time units.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="odd">
-<td>4.3 Estimation approach</td>
-<td>State the method used to account for the stochasticity: For example, two common methods are multiple replications or batch means. Where multiple replications have been used, state the number of replications and for batch means, indicate the batch length and whether the batch means procedure is standard, spaced or overlapping. For both procedures provide a justification for the methods used and the number of replications/size of batches.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="even">
-<td><strong>Implementation</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>5.1 Software or programming language</td>
-<td>State the operating system and version and build number.<br>State the name, version and build number of commercial or open source DES software that the model is implemented in.<br>State the name and version of general-purpose programming languages used (e.g.&nbsp;Python 3.5).<br>Where frameworks and libraries have been used provide all details including version numbers.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="even">
-<td>5.2 Random sampling</td>
-<td>State the algorithm used to generate random samples in the software/programming language used e.g.&nbsp;Mersenne Twister.<br>If common random numbers are used, state how seeds (or random number streams) are distributed among sampling processes.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="odd">
-<td>5.3 Model execution</td>
-<td>State the event processing mechanism used e.g.&nbsp;three phase, event, activity, process interaction.<br><em>Note that in some commercial software the event processing mechanism may not be published. In these cases authors should adhere to item 5.1 software recommendations.</em><br>State all priority rules included if entities/activities compete for resources.<br>If the model is parallel, distributed and/or use grid or cloud computing, etc., state and preferably reference the technology used. For parallel and distributed simulations the time management algorithms used. If the HLA is used then state the version of the standard, which run-time infrastructure (and version), and any supporting documents (FOMs, etc.)</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="even">
-<td>5.4 System specification</td>
-<td>State the model run time and specification of hardware used. This is particularly important for large scale models that require substantial computing power. For parallel, distributed and/or use grid or cloud computing, etc. state the details of all systems used in the implementation (processors, network, etc.)</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="odd">
-<td><strong>Code access</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>6.1 Computer model sharing statement</td>
-<td>Describe how someone could obtain the model described in the paper, the simulation software and any other associated software (or hardware) needed to reproduce the results. Provide, where possible, the link and DOIs to these.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">prop_del_referred</td>
+<td>0.275046</td>
+<td>0.282149</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="des-checklist-derived-from-ispor-sdm" class="level2">
-<h2 class="anchored" data-anchor-id="des-checklist-derived-from-ispor-sdm">DES checklist derived from ISPOR-SDM</h2>
-<p>Of the <strong>18</strong> items in the checklist:</p>
-<!-- TODO: Add counts from evaluation -->
-<ul>
-<li><strong>X</strong> were met fully (✅)</li>
-<li><strong>X</strong> was partially met (🟡)</li>
-<li><strong>X</strong> was not met (❌)</li>
-<li><strong>X</strong> were not applicable (N/A)</li>
-</ul>
-<!-- TODO: Fill in the table. Options are ✅ Fully, 🟡 Partially, ❌ Not met, or N/A
-Handy tips:
-* 3 overlaps with STRESS-DES 2.1 Base model overview diagram and 2.2 Base model logic
-* 4 overlaps with STRESS-DES 4.2 Run length
-* 5 overlaps with STRESS-DES 1.3 Experimentation aims
-* 7 overlaps with STRESS-DES 3.1 Data source
-* 8 overlaps with STRESS-DES 3.3 Input parameters -->
-<table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 25%">
-<col style="width: 15%">
-<col style="width: 40%">
-</colgroup>
+
+</div>
+</div>
+</div>
+<div id="cell-11" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> process_results([i[<span class="st">'s_rep_file'</span>] <span class="cf">for</span> i <span class="kw">in</span> dict_list], xls<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> data.loc[[<span class="st">'ipd bed occ'</span>, <span class="st">'ipd occ'</span>]]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>result.to_csv(save_path, index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
-<th>Item</th>
-<th>Assessed if…</th>
-<th>Met by study?</th>
-<th>Evidence/location</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">in5_6bed</th>
+<th data-quarto-table-cell-role="th">in5_4bed</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Model conceptualisation</strong></td>
-<td></td>
-<td></td>
-<td></td>
+<td data-quarto-table-cell-role="th">ipd bed occ</td>
+<td>1.122112</td>
+<td>1.115264</td>
 </tr>
 <tr class="even">
-<td>1 Is the focused health-related decision problem clarified?</td>
-<td>…the decision problem under investigation was defined. DES studies included different types of decision problems, eg, those listed in previously developed taxonomies.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="odd">
-<td>2 Is the modeled healthcare setting/health condition clarified?</td>
-<td>…the physical context/scope (eg, a certain healthcare unit or a broader system) or disease spectrum simulated was described.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="even">
-<td>3 Is the model structure described?</td>
-<td>…the model’s conceptual structure was described in the form of either graphical or text presentation.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="odd">
-<td>4 Is the time horizon given?</td>
-<td>…the time period covered by the simulation was reported.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="even">
-<td>5 Are all simulated strategies/scenarios specified?</td>
-<td>…the comparators under test were described in terms of their components, corresponding variations, etc</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="odd">
-<td>6 Is the target population described?</td>
-<td>…the entities simulated and their main attributes were characterized.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="even">
-<td><strong>Paramaterisation and uncertainty assessment</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>7 Are data sources informing parameter estimations provided?</td>
-<td>…the sources of all data used to inform model inputs were reported.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="even">
-<td>8 Are the parameters used to populate model frameworks specified?</td>
-<td>…all relevant parameters fed into model frameworks were disclosed.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="odd">
-<td>9 Are model uncertainties discussed?</td>
-<td>…the uncertainty surrounding parameter estimations and adopted statistical methods (eg, 95% confidence intervals or possibility distributions) were reported.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="even">
-<td>10 Are sensitivity analyses performed and reported?</td>
-<td>…the robustness of model outputs to input uncertainties was examined, for example via deterministic (based on parameters’ plausible ranges) or probabilistic (based on a priori-defined probability distributions) sensitivity analyses, or both.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="odd">
-<td><strong>Validation</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>11 Is face validity evaluated and reported?</td>
-<td>…it was reported that the model was subjected to the examination on how well model designs correspond to the reality and intuitions. It was assumed that this type of validation should be conducted by external evaluators with no stake in the study.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="odd">
-<td>12 Is cross validation performed and reported</td>
-<td>…comparison across similar modeling studies which deal with the same decision problem was undertaken.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="even">
-<td>13 Is external validation performed and reported?</td>
-<td>…the modeler(s) examined how well the model’s results match the empirical data of an actual event modeled.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="odd">
-<td>14 Is predictive validation performed or attempted?</td>
-<td>…the modeler(s) examined the consistency of a model’s predictions of a future event and the actual outcomes in the future. If this was not undertaken, it was assessed whether the reasons were discussed.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="even">
-<td><strong>Generalisability and stakeholder involvement</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>15 Is the model generalizability issue discussed?</td>
-<td>…the modeler(s) discussed the potential of the resulting model for being applicable to other settings/populations (single/multiple application).</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="even">
-<td>16 Are decision makers or other stakeholders involved in modeling?</td>
-<td>…the modeler(s) reported in which part throughout the modeling process decision makers and other stakeholders (eg, subject experts) were engaged.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="odd">
-<td>17 Is the source of funding stated?</td>
-<td>…the sponsorship of the study was indicated.</td>
-<td><!----></td>
-<td><!----></td>
-</tr>
-<tr class="even">
-<td>18 Are model limitations discussed?</td>
-<td>…limitations of the assessed model, especially limitations of interest to decision makers, were discussed.</td>
-<td><!----></td>
-<td><!----></td>
+<td data-quarto-table-cell-role="th">ipd occ</td>
+<td>0.198000</td>
+<td>0.295000</td>
 </tr>
 </tbody>
 </table>
 
+</div>
+</div>
+</div>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-monks_strengthening_2019" class="csl-entry" role="listitem">
-Monks, Thomas, Christine S. M. Currie, Bhakti Stephan Onggo, Stewart Robinson, Martin Kunc, and Simon J. E. Taylor. 2019. <span>“Strengthening the Reporting of Empirical Simulation Studies: <span>Introducing</span> the <span>STRESS</span> Guidelines.”</span> <em>Journal of Simulation</em> 13 (1): 55–67. <a href="https://doi.org/10.1080/17477778.2018.1442155">https://doi.org/10.1080/17477778.2018.1442155</a>.
-</div>
-<div id="ref-zhang_reporting_2020" class="csl-entry" role="listitem">
-Zhang, Xiange, Stefan K. Lhachimi, and Wolf H. Rogowski. 2020. <span>“Reporting <span>Quality</span> of <span>Discrete</span> <span>Event</span> <span>Simulations</span> in <span>Healthcare</span>—<span>Results</span> <span>From</span> a <span>Generic</span> <span>Reporting</span> <span>Checklist</span>.”</span> <em>Value in Health</em> 23 (4): 506–14. <a href="https://doi.org/10.1016/j.jval.2020.01.005">https://doi.org/10.1016/j.jval.2020.01.005</a>.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1069,7 +957,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/evaluation/reporting.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/main/reproduction/reproduce_txt5.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

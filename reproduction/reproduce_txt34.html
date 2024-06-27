@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Reproducing Shoaib and Ramamohan 2022 - Reproducing in-text result 3</title>
+<title>Reproducing Shoaib and Ramamohan 2022 - Reproducing in-text results 3 and 4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -157,6 +157,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../reproduction/reproduce_fig4.html">
  <span class="dropdown-text">Reproducing Figure 4</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../reproduction/reproduce_txt2.html">
+ <span class="dropdown-text">Reproducing in-text result 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reproduction/reproduce_txt34.html">
+ <span class="dropdown-text">Reproducing in-text results 3 and 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reproduction/reproduce_txt5.html">
+ <span class="dropdown-text">Reproducing in-text result 5</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -220,15 +232,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#set-up" id="toc-set-up" class="nav-link active" data-scroll-target="#set-up">Set up</a></li>
   <li><a href="#run-model" id="toc-run-model" class="nav-link" data-scroll-target="#run-model">Run model</a></li>
   <li><a href="#process-results" id="toc-process-results" class="nav-link" data-scroll-target="#process-results">Process results</a></li>
+  <li><a href="#get-in-text-result-3" id="toc-get-in-text-result-3" class="nav-link" data-scroll-target="#get-in-text-result-3">Get in-text result 3</a></li>
+  <li><a href="#get-in-text-result-4" id="toc-get-in-text-result-4" class="nav-link" data-scroll-target="#get-in-text-result-4">Get in-text result 4</a></li>
+  <li><a href="#run-time" id="toc-run-time" class="nav-link" data-scroll-target="#run-time">Run time</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/main/reproduction/reproduce_txt3.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/main/reproduction/reproduce_txt34.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Reproducing in-text result 3</h1>
+<h1 class="title">Reproducing in-text results 3 and 4</h1>
 </div>
 
 
@@ -245,34 +260,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This result starts with the doctor utilisation from Figure 2A which is over 100% when patient load is 170 (IAT 3) and appointment times are 5 minutes (mean 5, SD 1, boundary 2).</p>
-<p>The variant introduced is to reduce the doctor intervention during delivery so that:</p>
+<p>This result starts with the doctor utilisation from Figure 2A which is over 100% when patient load is 170 (IAT 3) and appointment times are 5 minutes (mean 5, SD 1, boundary 2), and with admin assigned to the staff nurse rather than the doctor</p>
+<p>The variants introduced are to reduce the doctor intervention during delivery so that:</p>
 <ul>
 <li>50% delivery cases: no doctor</li>
 <li>30% delivery cases: doctor but only one-third of typical intervention</li>
 <li>20% delivery cases: doctor and full intervention</li>
 </ul>
+<p>And adding an additional doctor.</p>
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set up</h2>
 <div id="cell-3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To run model</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> PHC</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> reproduction_helpers <span class="im">import</span> process_results</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># To import results and produce figures</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xlrd</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># To import results and produce figures</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> reproduction_helpers <span class="im">import</span> process_results</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># To speed up run time</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> multiprocessing <span class="im">import</span> Pool</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># To speed up run time</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> multiprocessing <span class="im">import</span> Pool</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Additional package to record runtime of this notebook</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> time.time()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paths to save image files to</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>output_folder <span class="op">=</span> <span class="st">'outputs'</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>save_path <span class="op">=</span> os.path.join(output_folder, <span class="st">'intext3.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>txt3 <span class="op">=</span> os.path.join(output_folder, <span class="st">'intext3.csv'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>txt4 <span class="op">=</span> os.path.join(output_folder, <span class="st">'intext4.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="run-model" class="level2">
@@ -290,22 +308,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Model variants</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>variants <span class="op">=</span> [</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">'doctor_delivery_scenario'</span>: <span class="va">False</span>,</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">'admin_to_staff_nurse'</span>: <span class="va">False</span>,</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">'rep_file'</span>: <span class="st">'in3_normal.xls'</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Base case for in-text result 3 and 4</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">'rep_file'</span>: <span class="st">'in34_normal.xls'</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Scenarios for in-text result 3</span></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">'doctor_delivery_scenario'</span>: <span class="va">False</span>,</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">'admin_to_staff_nurse'</span>: <span class="va">True</span>,</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">'rep_file'</span>: <span class="st">'in3_admin.xls'</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">'doctor_delivery_scenario'</span>: <span class="va">True</span>,</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">'admin_to_staff_nurse'</span>: <span class="va">True</span>,</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">'rep_file'</span>: <span class="st">'in3_admin_delivery.xls'</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">'admin_to_staff_nurse'</span>: <span class="va">True</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">'rep_file'</span>: <span class="st">'in3_admin.xls'</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">'doctor_delivery_scenario'</span>: <span class="va">True</span>,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">'rep_file'</span>: <span class="st">'in3_delivery.xls'</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">'doctor_delivery_scenario'</span>: <span class="va">True</span>,</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">'admin_to_staff_nurse'</span>: <span class="va">True</span>,</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        <span class="st">'rep_file'</span>: <span class="st">'in3_admin_delivery.xls'</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Scenarios for in-text result 4</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">'doc_cap'</span>: <span class="dv">3</span>,</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>        <span class="st">'rep_file'</span>: <span class="st">'in4_doctor.xls'</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        <span class="st">'doc_cap'</span>: <span class="dv">3</span>,</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="st">'doctor_delivery_scenario'</span>: <span class="va">True</span>,</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        <span class="st">'admin_to_staff_nurse'</span>: <span class="va">True</span>,</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="st">'rep_file'</span>: <span class="st">'in4_admin_delivery_doctor.xls'</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-7" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine dictionaries</span></span>
@@ -317,46 +349,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, d <span class="kw">in</span> <span class="bu">enumerate</span>(dict_list):</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    dict_list[i] <span class="op">=</span> {<span class="ss">f's_</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">'</span>: v <span class="cf">for</span> k, v <span class="kw">in</span> d.items()}</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># View dictionaries</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>dict_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># View example</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>dict_list[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>[{'s_OPD_iat': 3,
-  's_rep_file': 'in3_normal.xls',
-  's_mean': 5,
-  's_sd': 1,
-  's_consult_boundary_1': 2,
-  's_consult_boundary_2': 2,
-  's_doctor_delivery_scenario': False,
-  's_admin_to_staff_nurse': False},
- {'s_OPD_iat': 3,
-  's_rep_file': 'in3_admin.xls',
-  's_mean': 5,
-  's_sd': 1,
-  's_consult_boundary_1': 2,
-  's_consult_boundary_2': 2,
-  's_doctor_delivery_scenario': False,
-  's_admin_to_staff_nurse': True},
- {'s_OPD_iat': 3,
-  's_rep_file': 'in3_admin_delivery.xls',
-  's_mean': 5,
-  's_sd': 1,
-  's_consult_boundary_1': 2,
-  's_consult_boundary_2': 2,
-  's_doctor_delivery_scenario': True,
-  's_admin_to_staff_nurse': True}]</code></pre>
+<pre><code>{'s_OPD_iat': 3,
+ 's_rep_file': 'in34_normal.xls',
+ 's_mean': 5,
+ 's_sd': 1,
+ 's_consult_boundary_1': 2,
+ 's_consult_boundary_2': 2}</code></pre>
 </div>
 </div>
 <div id="cell-8" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">'''# Wrapper function to allow input of dictionary with pool</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">def wrapper(d):</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">    return PHC.main(**d)</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrapper function to allow input of dictionary with pool</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> wrapper(d):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> PHC.main(<span class="op">**</span>d)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a process pool that uses all CPUs</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">with Pool() as pool:</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">    # Run PHC.main() using each of inputs from config</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">    pool.map(wrapper, dict_list)'''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>'# Wrapper function to allow input of dictionary with pool\ndef wrapper(d):\n    return PHC.main(**d)\n\n# Create a process pool that uses all CPUs\nwith Pool() as pool:\n    # Run PHC.main() using each of inputs from config\n    pool.map(wrapper, dict_list)'</code></pre>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> Pool() <span class="im">as</span> pool:</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Run PHC.main() using each of inputs from config</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    pool.<span class="bu">map</span>(wrapper, dict_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> No of replications done 0
+ No of replications done 0
+ No of replications done 0
+ No of replications done 0
+ No of replications done 0
+ No of replications done 0
+ No of replications done 1
+ No of replications done 1
+ No of replications done 1
+ No of replications done 1
+ No of replications done 2
+ No of replications done 2
+ No of replications done 2
+ No of replications done 1
+ No of replications done 2
+ No of replications done 1
+ No of replications done 3
+ No of replications done 3
+ No of replications done 3
+ No of replications done 4
+ No of replications done 2
+ No of replications done 4
+ No of replications done 3
+ No of replications done 2
+ No of replications done 4
+ No of replications done 5
+ No of replications done 5
+ No of replications done 4
+ No of replications done 3
+ No of replications done 3
+ No of replications done 6
+ No of replications done 5
+ No of replications done 5
+ No of replications done 4
+ No of replications done 4
+ No of replications done 6
+ No of replications done 7
+ No of replications done 6
+ No of replications done 6
+ No of replications done 5
+ No of replications done 5
+ No of replications done 7
+ No of replications done 8
+ No of replications done 7
+ No of replications done 7
+ No of replications done 6
+ No of replications done 6
+ No of replications done 8
+ No of replications done 9
+ No of replications done 8
+ No of replications done 8
+ No of replications done 7
+ No of replications done 7
+ No of replications done 9
+ No of replications done 9
+ No of replications done 8
+ No of replications done 9
+ No of replications done 8
+ No of replications done 9
+ No of replications done 9</code></pre>
 </div>
 </div>
 </section>
@@ -373,143 +446,212 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">in3_normal</th>
+<th data-quarto-table-cell-role="th">in34_normal</th>
 <th data-quarto-table-cell-role="th">in3_admin</th>
+<th data-quarto-table-cell-role="th">in3_delivery</th>
 <th data-quarto-table-cell-role="th">in3_admin_delivery</th>
+<th data-quarto-table-cell-role="th">in4_doctor</th>
+<th data-quarto-table-cell-role="th">in4_admin_delivery_doctor</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD patients</td>
-<td>43947.100000</td>
-<td>44138.300000</td>
-<td>43930.100000</td>
+<td>44140.500000</td>
+<td>43916.500000</td>
+<td>44095.800000</td>
+<td>43912.600000</td>
+<td>44039.800000</td>
+<td>44022.400000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">IPD patients</td>
-<td>188.000000</td>
-<td>184.200000</td>
-<td>181.400000</td>
+<td>186.900000</td>
+<td>180.900000</td>
+<td>178.800000</td>
+<td>182.400000</td>
+<td>184.600000</td>
+<td>175.800000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ANC patients</td>
-<td>365.600000</td>
-<td>372.300000</td>
-<td>368.300000</td>
+<td>365.700000</td>
+<td>355.100000</td>
+<td>365.800000</td>
+<td>366.500000</td>
+<td>360.200000</td>
+<td>363.700000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Del patients</td>
-<td>351.300000</td>
-<td>372.700000</td>
-<td>372.600000</td>
+<td>367.300000</td>
+<td>363.300000</td>
+<td>360.300000</td>
+<td>367.100000</td>
+<td>365.600000</td>
+<td>358.800000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">OPD Q wt</td>
-<td>6.920531</td>
-<td>7.049388</td>
-<td>6.416563</td>
+<td>7.159590</td>
+<td>6.948595</td>
+<td>6.689755</td>
+<td>6.622755</td>
+<td>0.537570</td>
+<td>0.518344</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Pharmacy Q wt</td>
-<td>1.277924</td>
-<td>1.279752</td>
-<td>1.274500</td>
+<td>1.284398</td>
+<td>1.274216</td>
+<td>1.291435</td>
+<td>1.281982</td>
+<td>2.396262</td>
+<td>2.412925</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab Q wt</td>
-<td>3.106386</td>
-<td>3.131800</td>
-<td>3.114614</td>
+<td>3.205638</td>
+<td>3.158535</td>
+<td>3.130295</td>
+<td>3.084767</td>
+<td>4.547717</td>
+<td>4.475102</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">doc occ</td>
-<td>1.140580</td>
-<td>1.026931</td>
-<td>1.009861</td>
+<td>1.147368</td>
+<td>1.022542</td>
+<td>1.132706</td>
+<td>1.009160</td>
+<td>0.763157</td>
+<td>0.674460</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Lab patient list</td>
-<td>253626.600000</td>
-<td>253917.500000</td>
-<td>253304.700000</td>
+<td>254847.600000</td>
+<td>254188.200000</td>
+<td>253948.100000</td>
+<td>254494.300000</td>
+<td>252912.200000</td>
+<td>253145.700000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">OPD q len</td>
-<td>6.690514</td>
-<td>6.898998</td>
-<td>6.359794</td>
+<td>7.056249</td>
+<td>6.802469</td>
+<td>6.704831</td>
+<td>6.469640</td>
+<td>0.530510</td>
+<td>0.508225</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ipd occ</td>
-<td>0.097000</td>
 <td>0.096000</td>
-<td>0.099000</td>
+<td>0.098000</td>
+<td>0.098000</td>
+<td>0.098000</td>
+<td>0.098000</td>
+<td>0.096000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">opd q len</td>
-<td>0.811011</td>
-<td>0.829252</td>
-<td>0.749972</td>
+<td>0.842024</td>
+<td>0.814242</td>
+<td>0.785077</td>
+<td>0.775441</td>
+<td>0.063117</td>
+<td>0.060826</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">pharmacy q len</td>
-<td>0.149437</td>
-<td>0.150193</td>
-<td>0.148631</td>
+<td>0.150706</td>
+<td>0.148995</td>
+<td>0.151235</td>
+<td>0.149769</td>
+<td>0.280754</td>
+<td>0.282527</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">lab q len</td>
-<td>0.186431</td>
-<td>0.189279</td>
-<td>0.187627</td>
+<td>0.194156</td>
+<td>0.190662</td>
+<td>0.188459</td>
+<td>0.185722</td>
+<td>0.273372</td>
+<td>0.269585</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">NCD occ</td>
-<td>1.227133</td>
-<td>1.241596</td>
-<td>1.221015</td>
+<td>1.230734</td>
+<td>1.228132</td>
+<td>1.230721</td>
+<td>1.224971</td>
+<td>1.241680</td>
+<td>1.245297</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">lab occ</td>
-<td>0.733833</td>
-<td>0.738327</td>
-<td>0.740374</td>
+<td>0.739835</td>
+<td>0.736296</td>
+<td>0.735660</td>
+<td>0.734819</td>
+<td>0.738849</td>
+<td>0.734438</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">pharm occ</td>
-<td>0.853612</td>
-<td>0.857607</td>
-<td>0.852630</td>
+<td>0.857268</td>
+<td>0.854196</td>
+<td>0.856880</td>
+<td>0.852376</td>
+<td>0.855818</td>
+<td>0.854774</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">staff nurse occ</td>
-<td>0.317704</td>
-<td>0.405283</td>
-<td>0.403354</td>
+<td>0.324816</td>
+<td>0.400459</td>
+<td>0.320102</td>
+<td>0.402693</td>
+<td>0.323201</td>
+<td>0.398748</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">del occ</td>
-<td>0.281000</td>
 <td>0.283000</td>
 <td>0.283000</td>
+<td>0.283000</td>
+<td>0.284000</td>
+<td>0.284000</td>
+<td>0.284000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">del referred</td>
-<td>51.700000</td>
-<td>62.900000</td>
-<td>57.700000</td>
+<td>60.900000</td>
+<td>58.300000</td>
+<td>52.000000</td>
+<td>54.500000</td>
+<td>54.900000</td>
+<td>50.600000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ipd bed occ</td>
-<td>0.092341</td>
-<td>0.094244</td>
-<td>0.095597</td>
+<td>0.093606</td>
+<td>0.092754</td>
+<td>0.093468</td>
+<td>0.094771</td>
+<td>0.094604</td>
+<td>0.093871</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">prop_del_referred</td>
-<td>0.146916</td>
-<td>0.168770</td>
-<td>0.154918</td>
+<td>0.165298</td>
+<td>0.160159</td>
+<td>0.143896</td>
+<td>0.148182</td>
+<td>0.149698</td>
+<td>0.140856</td>
 </tr>
 </tbody>
 </table>
@@ -518,53 +660,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-11" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_utilisation(index_name, new_name):</span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_utilisation(df, index_name, new_name):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Creates dataframe with columns for utilisation (for a given row) before and</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">    after scenario change.</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">    -----------</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">    index_name : string</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">        Name of row with utilisation data</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">    new_name : string</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">        To rename the utilisation row (e.g. doc occ -&gt; doctor utilisation)</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">    --------</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">    util : pandas DataFrame</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">        Dataframe with three columns for utilisation before and after admin,</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">        and change in utilisation.</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get utilisation</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    util <span class="op">=</span> <span class="bu">round</span>(pd.DataFrame(data.loc[index_name]).T, <span class="dv">3</span>)</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Rename index</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    util <span class="op">=</span> util.rename_axis(<span class="st">'Output'</span>)</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Rename row</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    util <span class="op">=</span> util.rename({index_name: new_name})</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Rename columns for clarity for readers</span></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    util <span class="op">=</span> util.rename({</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>        <span class="st">'in3_normal'</span>: <span class="st">'Normal'</span>,</span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>        <span class="st">'in3_admin'</span>: <span class="st">'Less admin for doctor'</span>,</span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">'in3_admin_delivery'</span>: <span class="st">'Less admin and delivery for doctor'</span>}, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> util</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">    df : pandas DataFrame</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">        Results from across the replications</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">    index_name : string</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">        Name of row with utilisation data</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">    new_name : string</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">        To rename the utilisation row (e.g. doc occ -&gt; doctor utilisation)</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">    --------</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">    util : pandas DataFrame</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">        Dataframe with three columns for utilisation before and after admin,</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">        and change in utilisation.</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get utilisation</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    util <span class="op">=</span> <span class="bu">round</span>(pd.DataFrame(df.loc[index_name]).T, <span class="dv">3</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Rename index</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    util <span class="op">=</span> util.rename_axis(<span class="st">'Output'</span>)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Rename row</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    util <span class="op">=</span> util.rename({index_name: new_name})</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Rename columns for clarity for readers</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    util <span class="op">=</span> util.rename({</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">'in34_normal'</span>: <span class="st">'Normal'</span>,</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">'in3_delivery'</span>: <span class="st">'Less delivery'</span>,</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>        <span class="st">'in3_admin'</span>: <span class="st">'Less admin'</span>,</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        <span class="st">'in3_admin_delivery'</span>: <span class="st">'Less admin + less delivery'</span>,</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>        <span class="st">'in4_doctor'</span>: <span class="st">'Extra doctor'</span>,</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        <span class="st">'in4_admin_delivery_doctor'</span>: (</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Extra doctor + less admin + less delivery'</span>)}, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> util</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="8">
+</section>
+<section id="get-in-text-result-3" class="level2">
+<h2 class="anchored" data-anchor-id="get-in-text-result-3">Get in-text result 3</h2>
+<div id="cell-13" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get results for doctor utilisation and staff nurse utilisation</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>util <span class="op">=</span> pd.concat([</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    get_utilisation(<span class="st">'doc occ'</span>, <span class="st">'Doctor utilisation'</span>),</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    get_utilisation(<span class="st">'staff nurse occ'</span>, <span class="st">'Staff nurse utilisation'</span>)])</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>display(util)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Save results</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>util.to_csv(save_path, index<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>subset3 <span class="op">=</span> data[[<span class="st">'in34_normal'</span>, <span class="st">'in3_delivery'</span>, <span class="st">'in3_admin'</span>, <span class="st">'in3_admin_delivery'</span>]]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>util3 <span class="op">=</span> pd.concat([</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    get_utilisation(subset3, <span class="st">'doc occ'</span>, <span class="st">'Doctor utilisation'</span>),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    get_utilisation(subset3, <span class="st">'staff nurse occ'</span>, <span class="st">'Staff nurse utilisation'</span>)])</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Save results and display results</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>util3.to_csv(txt3, index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>util3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -573,8 +723,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">Normal</th>
-<th data-quarto-table-cell-role="th">Less admin for doctor</th>
-<th data-quarto-table-cell-role="th">Less admin and delivery for doctor</th>
+<th data-quarto-table-cell-role="th">Less delivery</th>
+<th data-quarto-table-cell-role="th">Less admin</th>
+<th data-quarto-table-cell-role="th">Less admin + less delivery</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Output</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Doctor utilisation</td>
+<td>1.147</td>
+<td>1.133</td>
+<td>1.023</td>
+<td>1.009</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
+<td>0.325</td>
+<td>0.320</td>
+<td>0.400</td>
+<td>0.403</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="get-in-text-result-4" class="level2">
+<h2 class="anchored" data-anchor-id="get-in-text-result-4">Get in-text result 4</h2>
+<div id="cell-15" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get results for doctor utilisation and staff nurse utilisation</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>subset4 <span class="op">=</span> data[[<span class="st">'in34_normal'</span>, <span class="st">'in4_doctor'</span>, <span class="st">'in4_admin_delivery_doctor'</span>]]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>util4 <span class="op">=</span> get_utilisation(subset4, <span class="st">'doc occ'</span>, <span class="st">'Doctor utilisation'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Save results and display results</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>util4.to_csv(txt4, index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>util4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Normal</th>
+<th data-quarto-table-cell-role="th">Extra doctor</th>
+<th data-quarto-table-cell-role="th">Extra doctor + less admin + less delivery</th>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">Output</th>
@@ -586,20 +789,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Doctor utilisation</td>
-<td>1.141</td>
-<td>1.027</td>
-<td>1.010</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Staff nurse utilisation</td>
-<td>0.318</td>
-<td>0.405</td>
-<td>0.403</td>
+<td>1.147</td>
+<td>0.763</td>
+<td>0.674</td>
 </tr>
 </tbody>
 </table>
 
 </div>
+</div>
+</div>
+</section>
+<section id="run-time" class="level2">
+<h2 class="anchored" data-anchor-id="run-time">Run time</h2>
+<div id="cell-17" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find run time in seconds</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> time.time()</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>runtime <span class="op">=</span> <span class="bu">round</span>(end<span class="op">-</span>start)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display converted to minutes and seconds</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Notebook run time: </span><span class="sc">{</span>runtime<span class="op">//</span><span class="dv">60</span><span class="sc">}</span><span class="ss">m </span><span class="sc">{</span>runtime<span class="op">%</span><span class="dv">60</span><span class="sc">}</span><span class="ss">s'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Notebook run time: 4m 30s</code></pre>
 </div>
 </div>
 
@@ -1040,7 +1251,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/main/reproduction/reproduce_txt3.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/main/reproduction/reproduce_txt34.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
