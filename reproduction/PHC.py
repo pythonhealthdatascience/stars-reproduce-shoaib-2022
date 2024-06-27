@@ -652,6 +652,7 @@ class Delivery_with_doctor(sim.Component):
 
     global an_list
     global fail1
+    global doctor_delivery_scenario
 
     doc_delivery_time = 0
     del_OPD = 0
@@ -667,6 +668,16 @@ class Delivery_with_doctor(sim.Component):
             self.enter_at_head(waitingline_OPD)
             yield self.request((doctor, 1), fail_delay=20)
             doc_time = round(sim.Uniform(30, 60, 'minutes').sample(),2)
+
+            # If we are in a scenario where we are reducing the time spent
+            # by doctors during delivery to one third of normal time, for 60%
+            # of delivery patients...
+            if doctor_delivery_scenario:
+                # Sample to get probability of short intervention
+                short_int_prop = sim.Uniform(0, 1).sample()
+                if short_int_prop >= 0.4:
+                    doc_time = round(doc_time / 3, 2)
+
             if self.failed():
                 self.leave(waitingline_OPD)
                 yield self.request(staff_nurse)
@@ -714,7 +725,7 @@ class Delivery_with_doctor(sim.Component):
                 # Sample to get probability of short intervention
                 short_int_prop = sim.Uniform(0, 1).sample()
                 if short_int_prop >= 0.4:
-                    doc_time = doc_time / 3
+                    doc_time = round(doc_time / 3, 2)
 
             # Save doctor time
             Patient.doc_service_time.append(doc_time)
@@ -1032,6 +1043,7 @@ def main(
     global ncd_time
     global ncd_util
 
+    # Defining other global variables
     global bed_time
     global admin_to_staff_nurse
     global doctor_delivery_scenario

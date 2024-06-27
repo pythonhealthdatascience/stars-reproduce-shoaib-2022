@@ -101,10 +101,22 @@ import pandas as pd
 pd.read_csv('intext3_wrong.csv')
 ```
 
-
-
 ::: {.callout-tip}
 ## Reflections
 
 As before, time spent working out how to implement scenarios from the article
 :::
+
+## 10.41-X: Problem-solving in-text result 3
+
+Noticed I hadn't add `global doctor_delivery_scenario` to `Delivery_with_doctor`, and that I hadn't add the scenario to the warm-up section either. However, that seemed to have no impact -
+
+```{python}
+import pandas as pd
+
+pd.read_csv('intext3_wrong2.csv')
+```
+
+I tried running it with print statements after the 50% chance of doctor assignment, which confirmed that patients were being split between getting a doctor and not. I also ran with print statement around shortening of doctor time, which likewise confirmed that around 60% were having their times shortened.
+
+I looked across all the outputs and could spot only minor differences between the normal and reduced delivery results.
