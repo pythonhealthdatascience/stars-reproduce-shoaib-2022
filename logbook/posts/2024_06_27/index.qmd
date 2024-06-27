@@ -254,7 +254,7 @@ times = [
 calculate_times(used_to_date, times)
 ```
 
-## 15.58-X: Reproducing in-text result 7
+## 15.58-16.44: Starting on in-text result 7
 
 This scenario appears to build on-top of the change in admin work ("in addition to the administrative work"). In it, 10% of the NCD cases are assigned to the staff nurse instead of the NCD nurse.
 
@@ -290,6 +290,10 @@ pd.read_csv('intext7_close.csv')
 ```
 
 I tried adding a scenario with just appointments (and not the admin change), just in case this could relate to misinterpretation of the next (although wouldn't expect it to go lower, so wasn't optimistic). As expected, this was not the solution, and the results were higher.
+
+```{python}
+pd.read_csv('intext7_wrong.csv')
+```
 
 ## Timings
 
