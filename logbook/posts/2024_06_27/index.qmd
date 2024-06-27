@@ -1,0 +1,37 @@
+---
+title: "Day 6"
+author: "Amy Heather"
+date: "2024-06-27"
+categories: [reproduce]
+bibliography: ../../../quarto_site/references.bib
+---
+
+::: {.callout-note}
+
+TBC. Total time used: TBCh TBCm (TBC%)
+
+:::
+
+## Consensus
+
+I emailed Figure 4 and in-text results 1 and 2 to Tom and Alison, who both confirmed that they agreed these to be successfully reproduced.
+
+## 9.22-9.34: In-text result 2
+
+On reflection, I realised that I had not looked at the result for staff nurse utilisation. Add this, and it was consistent with the text. Hence, successfully reproduced at 9.34.
+
+```{python}
+import sys
+sys.path.append('../')
+from timings import calculate_times
+
+# Minutes used prior to today
+used_to_date = 1262
+
+# Times from today
+times = [
+    ('9.22', '9.34')
+]
+
+calculate_times(used_to_date, times)
+```

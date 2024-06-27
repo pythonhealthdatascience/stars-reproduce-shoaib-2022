@@ -34,8 +34,8 @@ time_list = [
     [1012, 'Figure 3D'],
     [1165, 'Figure 4'],
     [1196, 'In-text result 1'],
+    [1274, 'In-text result 2'],
     # TODO: Update these to actual times once complete
-    [np.nan, 'In-text result 2'],
     [np.nan, 'In-text result 2'],
     [np.nan, 'In-text result 3'],
     [np.nan, 'In-text result 4'],
@@ -56,38 +56,6 @@ times_clean['ecdf'] = np.arange(1, len(times_clean) + 1) / len(times_clean) * 10
 times_clean.loc[-1] = [0, 'Start', 0]
 times_clean.index = times_clean.index + 1
 times_clean = times_clean.sort_index()
-```
-
-Interactive plot but without start and end points:
-
-```{python}
-# Create ECDF plot
-fig = px.ecdf(times, x='time', markers=True, ecdfnorm='percent',
-              hover_data=['time', 'item'])
-
-# Amend appearance
-fig.update_layout(xaxis_range=[0, 2400])
-
-# Show plot, hiding toolbar and not allowing zoom
-fig.layout.xaxis.fixedrange = True
-fig.layout.yaxis.fixedrange = True
-fig.show(config={'displayModeBar': False})
-```
-
-Interactive plot but connected diagonally:
-
-```{python}
-# Create ECDF plot
-fig = px.line(times_clean, x='time', y='ecdf', markers=True, 
-              hover_data=['time', 'item'])
-
-# Update layout to ensure proper axis ranges
-fig.update_layout(xaxis_range=[0, 2400], yaxis_range=[0, 100])
-
-# Show plot, hiding toolbar and not allowing zoom
-fig.layout.xaxis.fixedrange = True
-fig.layout.yaxis.fixedrange = True
-fig.show(config={'displayModeBar': False})
 ```
 
 Correctly plot but non-interactive:
@@ -125,6 +93,38 @@ ax.yaxis.set_major_formatter(mtick.PercentFormatter())
 #ax.grid()
 #ax.set_axisbelow(True)
 plt.show()
+```
+
+Interactive plot but without start and end points:
+
+```{python}
+# Create ECDF plot
+fig = px.ecdf(times, x='time', markers=True, ecdfnorm='percent',
+              hover_data=['time', 'item'])
+
+# Amend appearance
+fig.update_layout(xaxis_range=[0, 2400])
+
+# Show plot, hiding toolbar and not allowing zoom
+fig.layout.xaxis.fixedrange = True
+fig.layout.yaxis.fixedrange = True
+fig.show(config={'displayModeBar': False})
+```
+
+Interactive plot but connected diagonally:
+
+```{python}
+# Create ECDF plot
+fig = px.line(times_clean, x='time', y='ecdf', markers=True, 
+              hover_data=['time', 'item'])
+
+# Update layout to ensure proper axis ranges
+fig.update_layout(xaxis_range=[0, 2400], yaxis_range=[0, 100])
+
+# Show plot, hiding toolbar and not allowing zoom
+fig.layout.xaxis.fixedrange = True
+fig.layout.yaxis.fixedrange = True
+fig.show(config={'displayModeBar': False})
 ```
 
 :::
@@ -281,6 +281,8 @@ Reproduction:
 
 ## Figure 4
 
+**Successfully reproduced**
+
 Original (@shoaib_simulation_2021):
 
 ![](../original_study/fig4.png){width=80% fig-align="center}
@@ -294,6 +296,8 @@ Reproduction:
 ::: {.callout-note appearance="minimal" collapse=true}
 
 ## In-text result 1
+
+**Successfully reproduced**
 
 **Original:**
 
@@ -318,6 +322,8 @@ pd.read_csv('../reproduction/outputs/intext1.csv')
 
 ## In-text result 2
 
+**Successfully reproduced**
+
 **Original:**
 
 From section 4.3.1: "To address this, we experimented with letting the staff nurse (whose utilisation is approximately 32%) take over the administrative work. This led to a 12% drop in the utilisation level, which implied that the doctor’s utilisation still exceeded 100%. Implementing this measure resulted in increasing the staff nurse utilisation to nearly 40%."
@@ -327,11 +333,11 @@ Interpretation:
 * Average patient load of 170 per day
 * Average consultation time of 5 min per patient
 * Change doctor to have no administrative work, and assign all to staff nurse
-* Results: doctor utilisation 103%
+* Results: doctor utilisation 103%, staff nurse utilisation nearly 40%
 
 **Reproduction:**
 
-We observe utilisation drop 12% (114% to 102%).
+We observe doctor utilisation drop 12% (114% to 102%), and staff nurse utilisation rise from 32% to 40%.
 
 ```{python}
 pd.read_csv('../reproduction/outputs/intext2.csv')

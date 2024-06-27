@@ -205,28 +205,13 @@ The `NT_list` is the nurse time list. It is created from `Main.NT_list.append(te
 
 As such, I think that we should be able to add the admin work to the nurse time by appending k to `NT_list`. I amended `PHC.py` to enable input of a boolean to `main()` that adjusts who receives that time in `Main()`.
 
-I observed a decrease in utilisation of 12% (114% utilisation to 102%), and so mark as successfully reproduced at 16.33.
+I observed a decrease in utilisation of 12% (114% utilisation to 102%).
 
 ::: {.callout-tip}
 ## Reflections
 
 Making it clear and easy to modify the model - as least, for the variants presented in the paper. In this case, challenging to identify how to re-allocate admin tasks.
 :::
-
-```{python}
-
-# Minutes used prior to this reslut
-used_to_date = 1196
-
-# Times from today
-times = [
-    ('15.05', '15.22'),
-    ('15.39', '16.23'),
-    ('16.28', '16.33')
-]
-
-calculate_times(used_to_date, times)
-```
 
 ## Timings
 

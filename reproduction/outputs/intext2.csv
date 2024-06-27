@@ -1,2 +1,3 @@
-Original doctor utilisation,Doctor utilisation if admin is assigned to the staff nurse,Change
-1.142,1.023,0.119
+Output,Original utilisation,Utilisation if admin is assigned to the staff nurse,Change
+Doctor utilisation,1.142,1.023,-0.119
+Staff nurse utilisation,0.323,0.403,0.08000000000000002
