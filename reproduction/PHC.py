@@ -412,6 +412,7 @@ class Patient(sim.Component):
     global ncd_time
     global consult_boundary_1
     global consult_boundary_2
+    global opd_10p_ncd_to_staff
 
     thirty_plus_patients = 0
     OPD_visits = 0
@@ -434,7 +435,20 @@ class Patient(sim.Component):
         if env.now() <= Main.warm_up:
             #self.priority = 2       # assigns priority, less than IPD patients
             if OPD_PatientGenerator.OPD_List[OPD_PatientGenerator.patient_count]["Age"] >= 30:  #patients's age>30, check BP
-                yield self.request((NCD_Nurse, 1))          # requests one staff nurse
+
+                # Request a nurse for the case. We conduct a sensitivity
+                # analysis where 10% are assigned to a staff nurse instead of
+                # an NCD nurse. In the base case, all are assigned to an
+                # NCD nurse.
+                if opd_10p_ncd_to_staff:
+                    assign_prob = sim.Uniform(0, 1).sample()
+                    if assign_prob <= 0.1:
+                        yield self.request(staff_nurse)
+                    else:
+                        yield self.request((NCD_Nurse, 1))
+                else:
+                    yield self.request((NCD_Nurse, 1))
+
                 yield self.hold(sim.Uniform(2, 5, 'minutes').sample())             #bounded variable-cannot take negative values
                 self.release()
             self.enter(waitingline_OPD)
@@ -466,18 +480,46 @@ class Patient(sim.Component):
             """ Includes number of times patients go to OPD, it includes - single, double and triple visits patients.
             Can be less than the actual visits because some visits are scheduled in future after the simulation time. """
 
-            #self.priority = 2       # assigns priority, less than IPD patients
+            # self.priority = 2       # assigns priority, less than IPD patients
             if OPD_PatientGenerator.OPD_List[OPD_PatientGenerator.patient_count]["Age"] >= 30:  #patients's age>30, check BP
                 Patient.thirty_plus_patients += 1
                 x0 = env.now()
-                yield self.request((NCD_Nurse, 1))          # requests one staff nurse
-                yield self.hold(sim.Uniform(2, 5, 'minutes').sample())             #bounded variable-cannot take negative values
+
+                # Request a nurse for the case. We conduct a sensitivity
+                # analysis where 10% are assigned to a staff nurse instead of
+                # an NCD nurse. In the base case, all are assigned to an
+                # NCD nurse.
+                # Sensitivity analysis:
+                if opd_10p_ncd_to_staff:
+                    assign_prob = sim.Uniform(0, 1).sample()
+                    if assign_prob <= 0.1:
+                        yield self.request(staff_nurse)
+                        requested = 'staff'
+                    else:
+                        yield self.request((NCD_Nurse, 1))
+                        requested = 'ncd'
+                # Base case:
+                else:
+                    yield self.request((NCD_Nurse, 1))
+                    requested = 'ncd'
+
+                # Sample time with the nurse
+                # Bounded variable - cannot take negative values
+                yield self.hold(sim.Uniform(2, 5, 'minutes').sample())
                 self.release()
                 x1 = env.now()
                 x = (x1-x0)
-                Patient.NCD_Nurse_time_list.append(x)
-                Patient.NCD_Nusre_1_time += x
-                ncd_time += x
+
+                # Depending on who was requested, either save times for the
+                # NCD nurse or the staff nurse
+                if requested == 'ncd':
+                    Patient.NCD_Nurse_time_list.append(x)
+                    Patient.NCD_Nusre_1_time += x
+                    ncd_time += x
+                elif requested == 'staff':
+                    Main.NT_list.append(x)
+                    Main.SN_time += x
+
             self.enter(waitingline_OPD)
             temp1 = Patient.enter_time(self, waitingline_OPD)
             yield self.request((doctor,1))
@@ -881,7 +923,8 @@ def main(
         s_any_delivery=True,
         s_admin_doc_to_staff=False,
         s_admin_ncd_to_staff=False,
-        s_doctor_delivery_scenario=False
+        s_doctor_delivery_scenario=False,
+        s_opd_10p_ncd_to_staff=False
 ):
     '''
     Run the model.
@@ -889,86 +932,90 @@ def main(
     Parameters:
     -----------
     s_OPD_iat : int
-        Inter-arrival time for outpatient department (OPD)
+        Inter-arrival time for outpatient department (OPD).
     s_delivery_iat : int
-        Inter-arrival time for delivery patients (labour)
+        Inter-arrival time for delivery patients (labour).
     s_IPD_iat : int
-        Inter-arrival time for inpatient department (IPD)
+        Inter-arrival time for inpatient department (IPD).
     s_ANC_iat : int
-        Inter-arrival time for antenatal services (ANC)
+        Inter-arrival time for antenatal services (ANC).
     s_mean : num
-        Mean for sampling consultation time with doctor
+        Mean for sampling consultation time with doctor.
     s_sd : num
-        Standard deviation for sampling consultation time with doctor
+        Standard deviation for sampling consultation time with doctor.
     s_consult_boundary_1 : num
         Minimum consultation time with doctor (value from if env.now() <=
-        Main.warm_up:)
+        Main.warm_up:).
     s_consult_boundary_2 : num
-        Minimum consultation time with doctor (values from else:)
+        Minimum consultation time with doctor (values from else:).
     s_pharm_mean : num
-        Mean for sampling pharmacy time
+        Mean for sampling pharmacy time.
     s_pharm_sd : num
-        Standard deviation for sampling pharmacy time
+        Standard deviation for sampling pharmacy time.
     s_j : num
-        Used when calculating NCD nurse time
+        Used when calculating NCD nurse time.
     s_f : int
-        For calculating sum of OPD queue waiting time
+        For calculating sum of OPD queue waiting time.
     s_f1 : int
-        For calculating sum of OPD queue length
+        For calculating sum of OPD queue length.
     s_f2 : int
-        For calculating sum of pharmacy queue waiting time
+        For calculating sum of pharmacy queue waiting time.
     s_f3 : int
-        For calculating sum of pharmacy queue length
+        For calculating sum of pharmacy queue length.
     s_f4 : int
-        For calculating sum of lab queue waiting time
+        For calculating sum of lab queue waiting time.
     s_f5 : int
-        For calculating sum of lab queue length
+        For calculating sum of lab queue length.
     s_doc_tot_time : int
-        For calculating total doctor time
+        For calculating total doctor time.
     s_lab_patients : int
-        Stores count of patients requiring a laboratory test
+        Stores count of patients requiring a laboratory test.
     s_days : int
-        Number of days in simulation
+        Number of days in simulation.
     s_shifts : int
-        Number of shifts per day
+        Number of shifts per day.
     s_hours : int
-        Length of shifts
+        Length of shifts.
     s_doc_cap : int
-        Number of doctors
+        Number of doctors.
     s_staff_nurse_cap : int
-        Number of nurses
+        Number of nurses.
     s_NCD_nurse_cap : int
-        Number of NCD nurses
+        Number of NCD nurses.
     s_pharmacist_cap : int
-        Number of pharmacists
+        Number of pharmacists.
     s_lab_cap : int
-        Number of lab technicians
+        Number of lab technicians.
     s_replication : int
-        Number of model replications to run
+        Number of model replications to run.
     s_inpatient_bed_n : int
-        Number of inpatient beds
+        Number of inpatient beds.
     s_delivery_bed_n : int
-        Number of labour room beds
+        Number of labour room beds.
     s_results_path : str
-        Folder with results
+        Folder with results.
     s_rep_file : str
-        File for replication results
+        File for replication results.
     s_full_file : str
-        File for full results
+        File for full results.
     s_output_full_results : boolean
-        Whether to create full results file
+        Whether to create full results file.
     s_any_ANC : boolean
-        Whether there are any ANC patients
+        Whether there are any ANC patients.
     s_any_delivery=True : boolean
-        Whether there are any labour patients
+        Whether there are any labour patients.
     s_admin_doc_to_staff : boolean
         Whether to do scenario where admin work is given to the staff nurse
-        instead of the doctor
+        instead of the doctor.
     s_admin_ncd_to_staff : boolean
         Whether to do scenario where admin work is given to the staff nurse
-        instead of the NCD nurse
+        instead of the NCD nurse.
     s_doctor_delivery_scenario : boolean
-        Whether to do scenario where doctor intervention in delivery is reduced
+        Whether to do scenario where doctor intervention in delivery is
+        reduced.
+    s_opd_10p_ncd_to_staff : boolean
+        Whether to do scenario where 10% of OPD cases are moved from NCD nurse
+        to staff nurse (so 90% NCD, 10% staff nurse).
     '''
     # Define global variables
     # defining simulation input parameters
@@ -1048,11 +1095,11 @@ def main(
     global ncd_time
     global ncd_util
 
-    # Defining other global variables
     global bed_time
     global admin_doc_to_staff
     global admin_ncd_to_staff
     global doctor_delivery_scenario
+    global opd_10p_ncd_to_staff
 
     ncd_util =[]
     bed_util = []
@@ -1114,6 +1161,7 @@ def main(
     admin_doc_to_staff = s_admin_doc_to_staff
     admin_ncd_to_staff = s_admin_ncd_to_staff
     doctor_delivery_scenario = s_doctor_delivery_scenario
+    opd_10p_ncd_to_staff = s_opd_10p_ncd_to_staff
 
     for x in range(0, replication):
         n = np.random.randint(0, 101)

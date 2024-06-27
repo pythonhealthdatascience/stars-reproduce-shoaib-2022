@@ -254,6 +254,43 @@ times = [
 calculate_times(used_to_date, times)
 ```
 
+## 15.58-X: Reproducing in-text result 7
+
+This scenario appears to build on-top of the change in admin work ("in addition to the administrative work"). In it, 10% of the NCD cases are assigned to the staff nurse instead of the NCD nurse.
+
+In `PHC.py`, I can see that the NCD nurses do admin and do OPD appointments. The appointments are in the class `Patient()`, and `if OPD_PatientGenerator.OPD_List[OPD_PatientGenerator.patient_count]["Age"] >= 30`, then it requests an NCD nurse (`yield self.request((NCD_Nurse, 1))`). Their time spent is then saved to:
+
+```
+Patient.NCD_Nurse_time_list.append(x)
+Patient.NCD_Nusre_1_time += x
+ncd_time += x
+```
+
+This code is repeated before and after warm-up (with the difference being in whether results are saved). As such, to implement this scenario, it appears I need to change this section to instead:
+
+* Request a staff nurse - from other sections, can see this is `yield self.request(staff_nurse)`
+* Save the time to the staff nurse time - from other sections, can see this is:
+
+```
+Main.NT_list.append(temp)
+Main.SN_time += z
+Main.staff_nurse_IPD += temp
+```
+
+* The `NT_list` is what I modified for in-text result 2.
+* `SN_time` appears to be legacy code, as it is not used in the results section.
+* `staff_nurse_IPD` is used to store staff nurse time specifically spent on IPD (as opposed to delivery or ANC). It is just used in the large results spreadsheet. However, this is specific to IPD appointments rather than OPD.
+
+I sampled from a uniform distribution to control assignment of 10% of cases to the staff nurse.
+
+Upon running the model, I found these modifications reduced the NCD nurse utilisation markedly (99% to 84%), although not as much as in the paper (100% to 71%).
+
+```{python}
+pd.read_csv('intext7_close.csv')
+```
+
+I tried adding a scenario with just appointments (and not the admin change), just in case this could relate to misinterpretation of the next (although wouldn't expect it to go lower, so wasn't optimistic). As expected, this was not the solution, and the results were higher.
+
 ## Timings
 
 ```{python}
