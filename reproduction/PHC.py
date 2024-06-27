@@ -1146,7 +1146,7 @@ def main(
         ncd_util.append(ncd_time/(420*365))
         ncd_time=0
 
-        bed_util.append(bed_time/(days*1440*6))
+        bed_util.append(bed_time/(days*1440*delivery_bed_n))
 
         """ To update lists containing waiting time, number of patients and average length per replication"""
         OPD_q_waiting_time_list.append(waitingline_OPD.length_of_stay.mean())
@@ -1467,22 +1467,21 @@ def main(
         ws.write(12, index+1, item)
     for index, item in enumerate(lab_q_length_list):        # length of lab for each replication
         ws.write(13, index+1, item)
-    for index, item in enumerate(NCD_occ_list):        # length of lab for each replication
+    for index, item in enumerate(NCD_occ_list):
         ws.write(14, index+1, item)
-    for index, item in enumerate(lab_occ_list):        # length of lab for each replication
+    for index, item in enumerate(lab_occ_list):
         ws.write(15, index+1, item)
-    for index, item in enumerate(pharm_occ_list):        # length of lab for each replication
+    for index, item in enumerate(pharm_occ_list):
         ws.write(16, index+1, item)
-    for index, item in enumerate(nurse_occ_list):        # length of lab for each replication
+    for index, item in enumerate(nurse_occ_list):
         ws.write(17, index+1, item)
-    for index, item in enumerate(delivery_bed_occ_list):        # length of lab for each replication
+    for index, item in enumerate(delivery_bed_occ_list):
         ws.write(18, index+1, item)
     for index, item in enumerate(fail_count_list):        # length of delivery patients tured away
         ws.write(19, index+1, item)
-    for index, item in enumerate(ncd_util):        # length of delivery patients tured away
+    for index, item in enumerate(ncd_util):
         ws.write(20, index+1, item)
-
-    for index, item in enumerate(bed_util):        # length of delivery patients tured away
+    for index, item in enumerate(bed_util):
         ws.write(21, index+1, item)
 
     wb.save(outputs_path)

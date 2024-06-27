@@ -124,8 +124,6 @@ I looked across all the outputs and could spot only minor differences between th
 I then tried setting the implementation up in a different way - instead of assigning people to the `Delivery_no_doc()` class, setting the intervention time to 0 in the `Delivery_with_doctor()` class. However, this made no difference:
 
 ```{python}
-import pandas as pd
-
 pd.read_csv('intext3_wrong3.csv')
 ```
 
@@ -151,6 +149,88 @@ times = [
 calculate_times(used_to_date, times)
 ```
 
+## 11.55-12.03, 12.06-12.11: Reproducing in-text result 4
+
+It is again unclear whether the intervention in this case - adding a doctor - is in addition to or seperate to the prior interventions. As such, I will try running both options (just on top of base case, or in addition to admin and delivery changes).
+
+Either result matches up with the description, so present both as possible answers, but consder to be succesfully reproduced at 12.11
+
+```{python}
+# Minutes used prior to this item
+used_to_date = 1383
+
+# Times from today
+times = [
+    ('11.55', '12.03'),
+    ('12.06', '12.11')
+]
+
+calculate_times(used_to_date, times)
+```
+
+## Times below: Start on in-text result 5 (and amend result 3's table)
+
+Times:
+
+* 12.14-12.18
+* 12.21-12.37
+* 12.41-12.56
+* 13.38-13.53
+* 15.10-15.23
+
+Re-ran with less delivery as an option alone for in-text result 3 (as this was missing from the table but would provide helpful context). Whilst that ran, started on in-text result 5.
+
+This result appears to build on configuration 1 but with:
+
+* High demand conditions (2 inpatient and childbirth cases per day - as in Figure 3A-D with (2/2/2))
+* Varying the number of inpatient beds (6 to 4)
+
+However, changing the bed number with `inpatient_bed_n` had no impact on results, with utilisation at 18% for 4 and 6 beds.
+
+This was based on `ipd bed occ` - although I noticed that `ipd occ` had results of 0.196 and then 0.295, which - if that is referring to utilisation - is much closer to the paper result of 33%. I explored how each of these were calculated:
+
+`ipd bed occ`:
+
+* This was what I used for inpatient bed utilisation in Table 6 and Figure 3C
+* `ipd bed occ` is equal to `bed_util`
+* `bed_util` is based on `bed_time` - `bed_util.append(bed_time/(days*1440*6))`
+* `bed_time` is used in `Delivery_no_doc()`, `Delivery_with_doctor()`, `IPD_no_doc()`, and `IPD_with_doc()`. In each case, it is `bed_time += y`, where y is sampling from a distribution (e.g. `y = sim.Uniform(240, 1440, 'minutes').sample()`, `y = sim.Triangular(60, 360, 180, 'minutes').bounded_sample(0)`)
+
+`ipd occ`:
+
+* Created from `bed_occupancy_list`
+* That is based on `bed.occupancy`: `bed_occupancy_list.append(round(bed.occupancy.mean(), 2))`
+* `bed` is made from `sim.Resource("Bed", capacity=inpatient_bed_n)`. It is used in `Delivery_no_doc()`, `Delivery_with_doctor()`, `IPD_no_doc()`, and `IPD_with_doc()`
+* In [Salabim](https://www.salabim.org/manual/Resource.html), a Resource occupancy is described as "occupancy (=claimed_quantity / capacity)", which fits with being related to utilisation.
+
+Hence, both methods should be providing utilisation of the beds (since both are based on time the beds are in use over the total possible time) - yet they have differing results - **particularly** when set to 4 beds.
+
+```{python}
+pd.read_csv('intext5_wrong.csv', index_col=0)
+```
+
+`ipd occ` is based on the `bed` SimPy resource, which is what we altered to change the number of beds. Hence, it seems the bed capacity has been altered for that, but not altered somewhere for `ipd bed occ`.
+
+I looked back at the calculation of `ipd bed occ` and noticed that bed utilisation has 6 beds hard coded into it - `bed_util.append(bed_time/(days*1440*6))`. When I amended the script to adjust the bed capacity via a parameter input to main(), I had not noticed this, and had only changed it in the simpy Resource. I amended this accordingly and re-ran. Unfortunately, this did not fix it.
+
+```{python}
+pd.read_csv('intext5_wrong2.csv', index_col=0)
+```
+
+I then searched for all occurrences of the number 6, but identified nothing further that related to the number of beds.
+
+Struggling to identify a solution, I moved onto the next item in the scope, and plan to return to this later.
+
+::: {.callout-tip}
+## Reflections
+
+Confusion from duplicate outputs.
+
+Hard-coding of parameters (which can then be tricky to spot afterwards to change).
+:::
+
+## 15.24-X: Starting on in-text result 6
+
 ## Timings
 
 ```{python}
@@ -162,7 +242,14 @@ times = [
     ('9.22', '9.34'),
     ('9.37', '10.32'),
     ('10.41', '11.16'),
-    ('11.28', '11.47')
+    ('11.28', '11.47'),
+    ('11.55', '12.03'),
+    ('12.06', '12.11'),
+    ('12.14', '12.18'),
+    ('12.21', '12.37'),
+    ('12.41', '12.56'),
+    ('13.38', '13.53'),
+    ('15.10', '15.23')
 ]
 
 calculate_times(used_to_date, times)
