@@ -197,6 +197,7 @@ class Delivery(sim.Component):
 
     global delivery_iat
     global N
+    global doctor_delivery_scenario
 
     Delivery_list = {}
     Delivery_count = 0
@@ -217,8 +218,22 @@ class Delivery(sim.Component):
             self.id = Delivery.Delivery_count
             self.sex = "Female"
             Delivery.Delivery_list[self.id] = [self.registration_time, self.id, self.sex]
+            # If during OPD hours...
             if 0 < (self.registration_time - N * 1440) < 480:
-                Delivery_with_doctor(urgent=True)      # sets priority
+                # If True for scenario where reduce doctor intervention...
+                if doctor_delivery_scenario:
+                    # Sample intervention probability (between 0 and 1)
+                    int_prob = sim.Uniform(0, 1).sample()
+                    # Assign 50% to receive doctor, and 50% to not
+                    if int_prob >= 0.5:
+                        Delivery_with_doctor(urgent=True)
+                    else:
+                        Delivery_no_doc(urgent=True)
+                # If scenario not in place (i.e. base case, normal function),
+                # then just assign all to receive doctor...
+                else:
+                    Delivery_with_doctor(urgent=True)
+            # If not during OPD hours...
             else:
                 Delivery_no_doc(urgent=True)
             self.hold_time = sim.Exponential(delivery_iat).sample()
@@ -690,7 +705,18 @@ class Delivery_with_doctor(sim.Component):
             self.enter_at_head(waitingline_OPD)
             temp1 = self.enter_time(waitingline_OPD)  # manually calculate queue enter time
             yield self.request((doctor, 1), fail_delay=20)
-            doc_time = round(sim.Uniform(30, 60, 'minutes').sample(),2)
+            doc_time = round(sim.Uniform(30, 60, 'minutes').sample(), 2)
+
+            # If we are in a scenario where we are reducing the time spent
+            # by doctors during delivery to one third of normal time, for 60%
+            # of delivery patients...
+            if doctor_delivery_scenario:
+                # Sample to get probability of short intervention
+                short_int_prop = sim.Uniform(0, 1).sample()
+                if short_int_prop >= 0.4:
+                    doc_time = doc_time / 3
+
+            # Save doctor time
             Patient.doc_service_time.append(doc_time)
             Delivery_with_doctor.doc_delivery_time += doc_time
 
@@ -1008,6 +1034,7 @@ def main(
 
     global bed_time
     global admin_to_staff_nurse
+    global doctor_delivery_scenario
 
     ncd_util =[]
     bed_util = []
@@ -1037,36 +1064,37 @@ def main(
 
     # Set variables based on inputs to the function
     OPD_iat = s_OPD_iat
-    delivery_iat = s_delivery_iat  # inter-arrival delivery patient time
-    IPD_iat = s_IPD_iat            # inter-arrival IPD patient time
-    ANC_iat = s_ANC_iat            # inter-arrival ANC patient time
-    mean = s_mean                  # consultation time mean
-    sd = s_sd                      # consultation time sd
-    consult_boundary_1 = s_consult_boundary_1  # consultation time lower boundary
-    consult_boundary_2 = s_consult_boundary_2  # consultation time lower boundary
+    delivery_iat = s_delivery_iat
+    IPD_iat = s_IPD_iat
+    ANC_iat = s_ANC_iat
+    mean = s_mean
+    sd = s_sd
+    consult_boundary_1 = s_consult_boundary_1
+    consult_boundary_2 = s_consult_boundary_2
     pharm_mean = s_pharm_mean
     pharm_sd = s_pharm_sd
     j = s_j
-    f = s_f                             # for calculating sum of OPD q waiting time
-    f1 = s_f1                           # for calculating sum of OPD q length
-    f2 = s_f2                           # for calculating sum of pharmacy q waiting time
-    f3 = s_f3                           # for calculating sum of pharmacy q length
-    f4 = s_f4                           # for calculating sum of lab q waiting time
-    f5 = s_f5                           # for calculating sum of lab q length
+    f = s_f
+    f1 = s_f1
+    f2 = s_f2
+    f3 = s_f3
+    f4 = s_f4
+    f5 = s_f5
     doc_tot_time = s_doc_tot_time
     lab_patients = s_lab_patients
     days = s_days
     shifts = s_shifts
     hours = s_hours
-    doc_cap = s_doc_cap                  # number of doctors
-    staff_nurse_cap = s_staff_nurse_cap  # number of nurses
-    NCD_nurse_cap = s_NCD_nurse_cap      # number of NCD nurses
-    pharmacist_cap = s_pharmacist_cap    # number of pharmacists
-    lab_cap = s_lab_cap                  # number of lab technicians
+    doc_cap = s_doc_cap
+    staff_nurse_cap = s_staff_nurse_cap
+    NCD_nurse_cap = s_NCD_nurse_cap
+    pharmacist_cap = s_pharmacist_cap
+    lab_cap = s_lab_cap
     replication = s_replication
-    inpatient_bed_n = s_inpatient_bed_n  # Number of inpatient beds
-    delivery_bed_n = s_delivery_bed_n    # Number of labour room beds
+    inpatient_bed_n = s_inpatient_bed_n
+    delivery_bed_n = s_delivery_bed_n
     admin_to_staff_nurse = s_admin_to_staff_nurse
+    doctor_delivery_scenario = s_doctor_delivery_scenario
 
     for x in range(0, replication):
         n = np.random.randint(0, 101)
