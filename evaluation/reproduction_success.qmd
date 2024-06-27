@@ -436,7 +436,7 @@ Interpretation:
 
 **Reproduction:**
 
-NCD nurse utilisation drops from 124% to 100%.
+NCD nurse utilisation drops from 124% to 99%.
 
 ```{python}
 pd.read_csv('../reproduction/outputs/intext6.csv')
