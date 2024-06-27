@@ -414,7 +414,9 @@ Interpretation:
 
 **Reproduction:**
 
-**TBC**
+```{python}
+pd.read_csv('../reproduction/outputs/intext5.csv')
+```
 
 :::
 
@@ -459,6 +461,8 @@ Interpretation:
 
 **Reproduction:**
 
-**TBC**
+```{python}
+pd.read_csv('../reproduction/outputs/intext7.csv')
+```
 
 :::
