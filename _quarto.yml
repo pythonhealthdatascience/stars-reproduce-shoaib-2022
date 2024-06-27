@@ -26,6 +26,8 @@ website:
           - reproduction/reproduce_fig2.ipynb
           - reproduction/reproduce_fig3_txt1.ipynb
           - reproduction/reproduce_fig4.ipynb
+          - reproduction/reproduce_txt2.ipynb
+          - reproduction/reproduce_txt34.ipynb
       - text: Evaluation
         menu:
           - evaluation/scope.qmd
