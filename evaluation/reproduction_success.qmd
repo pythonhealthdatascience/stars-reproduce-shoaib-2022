@@ -38,8 +38,8 @@ time_list = [
     [1196, 'In-text result 1'],
     [1274, 'In-text result 2'],
     [1383, 'In-text result 3'],
+    [1396, 'In-text result 4'],
     # TODO: Update these to actual times once complete
-    [np.nan, 'In-text result 4'],
     [np.nan, 'In-text result 5'],
     [np.nan, 'In-text result 6'],
     [np.nan, 'In-text result 7']]
@@ -363,6 +363,8 @@ Interpretation:
 
 **Reproduction:**
 
+The above interpretation was incorrect - this result is obtained by changing the delivery in addition to the admin changes.
+
 Doctor utilisation decreases by a further 1% (102% to 101%). No change in staff nurse utilisation - but remains around 40%, and the original paper describes the nurse utilisation as not changing significantly, and from changing from "nearly 40%" to 40%, so our slight difference from that is very small and likely just model stochasticity and having run 10 replications.
 
 ```{python}
@@ -388,7 +390,11 @@ Interpretation:
 
 **Reproduction:**
 
-**TBC**
+The exact parameters of the scenario are ambiguous. However, regardless of whether the additional doctor is alone (as in interpretation above), or in addition to the previous admin and delivery changes (as was the case for in-text result 3), in both cases the doctor utilisation can safely be described as "well below 100%".
+
+```{python}
+pd.read_csv('../reproduction/outputs/intext4.csv')
+```
 
 :::
 
