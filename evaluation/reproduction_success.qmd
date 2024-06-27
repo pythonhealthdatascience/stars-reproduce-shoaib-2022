@@ -10,6 +10,8 @@ Of the X items in the scope, X% (X out of X) were considered to be **successfull
 
 As cited throughout, images on this page are sourced from @shoaib_simulation_2021, which is shared under [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/).
 
+Table 6 was run with 100 replications as it presents mean and standard deviation results. The remaining items present means and so are only run to 10 replications, since increasing replications should have a fairly minimal impact on the mean, and since running 100 replications is computationally expensive and time consuming, with the number of model variants being explored in the sensitivity analyses.
+
 ::: {.callout-note appearance="minimal" collapse=true}
 
 ## Time-to-completion figure
@@ -35,9 +37,8 @@ time_list = [
     [1165, 'Figure 4'],
     [1196, 'In-text result 1'],
     [1274, 'In-text result 2'],
+    [1383, 'In-text result 3'],
     # TODO: Update these to actual times once complete
-    [np.nan, 'In-text result 2'],
-    [np.nan, 'In-text result 3'],
     [np.nan, 'In-text result 4'],
     [np.nan, 'In-text result 5'],
     [np.nan, 'In-text result 6'],
@@ -133,7 +134,7 @@ fig.show(config={'displayModeBar': False})
 
 ## Table 6
 
-**Successfully reproduced**
+**Consensus: Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
@@ -153,7 +154,7 @@ pd.read_csv('../reproduction/outputs/tab6.csv')
 
 ## Figure 2A
 
-**Successfully reproduced**
+**Consensus: Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
@@ -169,7 +170,7 @@ Reproduction:
 
 ## Figure 2B
 
-**Successfully reproduced**
+**Consensus: Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
@@ -185,7 +186,7 @@ Reproduction:
 
 ## Figure 2C
 
-**Successfully reproduced**
+**Consensus: Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
@@ -201,7 +202,7 @@ Reproduction:
 
 ## Figure 2D
 
-**Successfully reproduced**
+**Consensus: Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
@@ -217,7 +218,7 @@ Reproduction:
 
 ## Figure 3A
 
-**Successfully reproduced**
+**Consensus: Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
@@ -233,7 +234,7 @@ Reproduction:
 
 ## Figure 3B
 
-**Successfully reproduced**
+**Consensus: Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
@@ -249,7 +250,7 @@ Reproduction:
 
 ## Figure 3C
 
-**Successfully reproduced**
+**Consensus: Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
@@ -265,7 +266,7 @@ Reproduction:
 
 ## Figure 3D
 
-**Successfully reproduced**
+**Consensus: Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
@@ -281,7 +282,7 @@ Reproduction:
 
 ## Figure 4
 
-**Successfully reproduced**
+**Consensus: Successfully reproduced**
 
 Original (@shoaib_simulation_2021):
 
@@ -297,7 +298,7 @@ Reproduction:
 
 ## In-text result 1
 
-**Successfully reproduced**
+**Consensus: Successfully reproduced**
 
 **Original:**
 
@@ -322,7 +323,7 @@ pd.read_csv('../reproduction/outputs/intext1.csv')
 
 ## In-text result 2
 
-**Successfully reproduced**
+**Consensus: Successfully reproduced**
 
 **Original:**
 
@@ -362,7 +363,11 @@ Interpretation:
 
 **Reproduction:**
 
-**TBC**
+Doctor utilisation decreases by a further 1% (102% to 101%). No change in staff nurse utilisation - but remains around 40%, and the original paper describes the nurse utilisation as not changing significantly, and from changing from "nearly 40%" to 40%, so our slight difference from that is very small and likely just model stochasticity and having run 10 replications.
+
+```{python}
+pd.read_csv('../reproduction/outputs/intext3.csv')
+```
 
 :::
 

@@ -107,7 +107,7 @@ pd.read_csv('intext3_wrong.csv')
 As before, time spent working out how to implement scenarios from the article
 :::
 
-## 10.41-X: Problem-solving in-text result 3
+## 10.41-11.16, 11.28-11.47: Problem-solving in-text result 3
 
 Noticed I hadn't add `global doctor_delivery_scenario` to `Delivery_with_doctor`, and that I hadn't add the scenario to the warm-up section either. However, that seemed to have no impact -
 
@@ -127,4 +127,43 @@ I then tried setting the implementation up in a different way - instead of assig
 import pandas as pd
 
 pd.read_csv('intext3_wrong3.csv')
+```
+
+On reflection, I wondered if perhaps I had misinterpreted this scenario - and that actually, this scenario was on top of the change in admin, and that the language was ambiguous (that actually, it could be describing doing this seperately or in addition). This then resolved the issue, with results matching up to the paper. Hence, feel it is successfully reproduced at 11.47.
+
+::: {.callout-tip}
+## Reflections
+
+Potential misinterpretation of scenarios from a text description which can be ambiguous.
+:::
+
+```{python}
+# Minutes used prior to this item
+used_to_date = 1274
+
+# Times from today
+times = [
+    ('9.37', '10.32'),
+    ('10.41', '11.16'),
+    ('11.28', '11.47')
+]
+
+calculate_times(used_to_date, times)
+```
+
+## Timings
+
+```{python}
+# Minutes used prior to today
+used_to_date = 1262
+
+# Times from today
+times = [
+    ('9.22', '9.34'),
+    ('9.37', '10.32'),
+    ('10.41', '11.16'),
+    ('11.28', '11.47')
+]
+
+calculate_times(used_to_date, times)
 ```
