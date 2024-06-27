@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.4.556">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -303,7 +303,7 @@ Note
 <p>This brought the result closer, although still some small differences.</p>
 <p><img src="fig4_25.png" class="img-fluid"></p>
 <p>As the figure is labelled, I can compare the numbers:</p>
-<div id="cec260ef" class="cell" data-execution_count="1">
+<div id="b16a26a7" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Input results from original and reproduced figures</span></span>
@@ -413,7 +413,7 @@ Reflections
 <p>Have assumed here that potentially the result might be from two IAT (cannot guarnatee that to be the case, but is what enabled me to get more consistent results with original paper). Regardless of what is true in this case (as we cannot necessarily know), a learning here is that if you do directly change parameters in a script for scenarios, it potentially leaves more margin for error than if it is done programmatically.</p>
 </div>
 </div>
-<div id="66f5bd48" class="cell" data-execution_count="2">
+<div id="e696bf8c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -444,7 +444,7 @@ Used 48.5% of 40 hours max</code></pre>
 <h2 class="anchored" data-anchor-id="in-text-result-1">13.42-14.13: In-text result 1</h2>
 <p>Used output from creating Figure 3, but focussed on waiting times for lab and OPD. Saved results as tables as actual change in minutes is only small, but plotting the figures makes it appear larger than it is.</p>
 <p>Satisifed that these represent “marginal increases” in these outcomes, and consider successfully reproduced at 14.13.</p>
-<div id="17fd6dad" class="cell" data-execution_count="3">
+<div id="8add916d" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this reslut</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1165</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -512,7 +512,7 @@ ncd_time += k</code></pre>
 <p>That list is created from <code>nurse_occ_list.append((sum(Main.NT_list)+180*days)/(21*60*days))</code>.</p>
 <p>The <code>NT_list</code> is the nurse time list. It is created from <code>Main.NT_list.append(temp)</code> (which occurs several times in the script). In each case, <code>temp</code> refers to a sampled time (e.g.&nbsp;<code>temp = sim.Uniform(120, 240, 'minutes').sample()</code>, <code>temp = sim.Triangular(8, 20.6, 12.3).sample()</code>).</p>
 <p>As such, I think that we should be able to add the admin work to the nurse time by appending k to <code>NT_list</code>. I amended <code>PHC.py</code> to enable input of a boolean to <code>main()</code> that adjusts who receives that time in <code>Main()</code>.</p>
-<p>I observed a decrease in utilisation of 12% (114% utilisation to 102%), and so mark as successfully reproduced at 16.33.</p>
+<p>I observed a decrease in utilisation of 12% (114% utilisation to 102%).</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -526,47 +526,28 @@ Reflections
 <p>Making it clear and easy to modify the model - as least, for the variants presented in the paper. In this case, challenging to identify how to re-allocate admin tasks.</p>
 </div>
 </div>
-<div id="1512386b" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this reslut</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1196</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.05'</span>, <span class="st">'15.22'</span>),</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.39'</span>, <span class="st">'16.23'</span>),</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'16.28'</span>, <span class="st">'16.33'</span>)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Time spent today: 66m, or 1h 6m
-Total used to date: 1262m, or 21h 2m
-Time remaining: 1138m, or 18h 58m
-Used 52.6% of 40 hours max</code></pre>
-</div>
-</div>
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="ce84a408" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1012</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.31'</span>, <span class="st">'9.49'</span>),</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.04'</span>, <span class="st">'10.50'</span>),</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.01'</span>, <span class="st">'11.48'</span>),</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.56'</span>, <span class="st">'12.02'</span>),</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.50'</span>, <span class="st">'12.56'</span>),</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.08'</span>, <span class="st">'13.38'</span>),</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.42'</span>, <span class="st">'14.13'</span>),</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.05'</span>, <span class="st">'15.22'</span>),</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.39'</span>, <span class="st">'16.23'</span>),</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'16.28'</span>, <span class="st">'16.33'</span>)</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5bb2be0c" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1012</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.31'</span>, <span class="st">'9.49'</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.04'</span>, <span class="st">'10.50'</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.01'</span>, <span class="st">'11.48'</span>),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.56'</span>, <span class="st">'12.02'</span>),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'12.50'</span>, <span class="st">'12.56'</span>),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.08'</span>, <span class="st">'13.38'</span>),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'13.42'</span>, <span class="st">'14.13'</span>),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.05'</span>, <span class="st">'15.22'</span>),</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.39'</span>, <span class="st">'16.23'</span>),</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'16.28'</span>, <span class="st">'16.33'</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Time spent today: 250m, or 4h 10m
 Total used to date: 1262m, or 21h 2m
