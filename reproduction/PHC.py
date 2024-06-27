@@ -197,7 +197,6 @@ class Delivery(sim.Component):
 
     global delivery_iat
     global N
-    global doctor_delivery_scenario
 
     Delivery_list = {}
     Delivery_count = 0
@@ -218,22 +217,8 @@ class Delivery(sim.Component):
             self.id = Delivery.Delivery_count
             self.sex = "Female"
             Delivery.Delivery_list[self.id] = [self.registration_time, self.id, self.sex]
-            # If during OPD hours...
             if 0 < (self.registration_time - N * 1440) < 480:
-                # If True for scenario where reduce doctor intervention...
-                if doctor_delivery_scenario:
-                    # Sample intervention probability (between 0 and 1)
-                    int_prob = sim.Uniform(0, 1).sample()
-                    # Assign 50% to receive doctor, and 50% to not
-                    if int_prob >= 0.5:
-                        Delivery_with_doctor(urgent=True)
-                    else:
-                        Delivery_no_doc(urgent=True)
-                # If scenario not in place (i.e. base case, normal function),
-                # then just assign all to receive doctor...
-                else:
-                    Delivery_with_doctor(urgent=True)
-            # If not during OPD hours...
+                Delivery_with_doctor(urgent=True)
             else:
                 Delivery_no_doc(urgent=True)
             self.hold_time = sim.Exponential(delivery_iat).sample()
@@ -670,13 +655,17 @@ class Delivery_with_doctor(sim.Component):
             doc_time = round(sim.Uniform(30, 60, 'minutes').sample(),2)
 
             # If we are in a scenario where we are reducing the time spent
-            # by doctors during delivery to one third of normal time, for 60%
-            # of delivery patients...
+            # by doctors during delivery...
             if doctor_delivery_scenario:
                 # Sample to get probability of short intervention
-                short_int_prop = sim.Uniform(0, 1).sample()
-                if short_int_prop >= 0.4:
+                int_prob = sim.Uniform(0, 1).sample()
+                # 50% have no time with doctor
+                if int_prob >= 0.5:
+                    doc_time = 0
+                # 30% have reduced time with doctor
+                elif int_prob >= 0.2 and int_prob < 0.5:
                     doc_time = round(doc_time / 3, 2)
+                # ... and 20% have no change to time with doctor
 
             if self.failed():
                 self.leave(waitingline_OPD)
@@ -719,13 +708,17 @@ class Delivery_with_doctor(sim.Component):
             doc_time = round(sim.Uniform(30, 60, 'minutes').sample(), 2)
 
             # If we are in a scenario where we are reducing the time spent
-            # by doctors during delivery to one third of normal time, for 60%
-            # of delivery patients...
+            # by doctors during delivery...
             if doctor_delivery_scenario:
                 # Sample to get probability of short intervention
-                short_int_prop = sim.Uniform(0, 1).sample()
-                if short_int_prop >= 0.4:
+                int_prob = sim.Uniform(0, 1).sample()
+                # 50% have no time with doctor
+                if int_prob >= 0.5:
+                    doc_time = 0
+                # 30% have reduced time with doctor
+                elif int_prob >= 0.2 and int_prob < 0.5:
                     doc_time = round(doc_time / 3, 2)
+                # ... and 20% have no change to time with doctor
 
             # Save doctor time
             Patient.doc_service_time.append(doc_time)

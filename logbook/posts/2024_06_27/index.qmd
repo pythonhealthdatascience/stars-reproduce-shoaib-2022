@@ -120,3 +120,11 @@ pd.read_csv('intext3_wrong2.csv')
 I tried running it with print statements after the 50% chance of doctor assignment, which confirmed that patients were being split between getting a doctor and not. I also ran with print statement around shortening of doctor time, which likewise confirmed that around 60% were having their times shortened.
 
 I looked across all the outputs and could spot only minor differences between the normal and reduced delivery results.
+
+I then tried setting the implementation up in a different way - instead of assigning people to the `Delivery_no_doc()` class, setting the intervention time to 0 in the `Delivery_with_doctor()` class. However, this made no difference:
+
+```{python}
+import pandas as pd
+
+pd.read_csv('intext3_wrong3.csv')
+```
