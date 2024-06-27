@@ -17,7 +17,8 @@ class Main(sim.Component):
     global OPD_iat
     global fail_count
     global ncd_time
-    global admin_to_staff_nurse
+    global admin_doc_to_staff
+    global admin_ncd_to_staff
 
     env = sim.Environment()
 
@@ -62,17 +63,24 @@ class Main(sim.Component):
                 if env.now() <= Main.warm_up:
                     pass
                 else:
-                    # Used in sensitivity analysis for the paper
-                    # Assign time for admin work to staff nurse or doctor
-                    if admin_to_staff_nurse:
-                        # List containing all staff nurse times
+                    # This section assigns admin work to the doctor, staff
+                    # nurse, or NCD nurse. It is varied within sensitivity
+                    # analyses in the paper. In each case, the time k is add
+                    # to the list/s containing that staff member's times
+
+                    # Part 1: Doctor (normal) or staff nurse (sensitivity)
+                    if admin_doc_to_staff:
                         Main.NT_list.append(k)
                     else:
-                        # List containing all doctor service times
                         Patient.doc_service_time.append(k)
-                    # Then, also assign admin work time to the NCD nurse
-                    Main.NCD_admin_work.append(k)
-                    ncd_time += k
+
+                    # Part 2: NCD nurse (normal) or staff nurse (sensitivity)
+                    if admin_ncd_to_staff:
+                        Main.NT_list.append(k)
+                    else:
+                        Main.NCD_admin_work.append(k)
+                        ncd_time += k
+
                 yield self.hold(120)
                 self.sim_time = 481
             self.z += 3
@@ -871,7 +879,8 @@ def main(
         s_output_full_results=False,
         s_any_ANC=True,
         s_any_delivery=True,
-        s_admin_to_staff_nurse=False,
+        s_admin_doc_to_staff=False,
+        s_admin_ncd_to_staff=False,
         s_doctor_delivery_scenario=False
 ):
     '''
@@ -952,9 +961,12 @@ def main(
         Whether there are any ANC patients
     s_any_delivery=True : boolean
         Whether there are any labour patients
-    s_admin_to_staff_nurse : boolean
+    s_admin_doc_to_staff : boolean
         Whether to do scenario where admin work is given to the staff nurse
         instead of the doctor
+    s_admin_ncd_to_staff : boolean
+        Whether to do scenario where admin work is given to the staff nurse
+        instead of the NCD nurse
     s_doctor_delivery_scenario : boolean
         Whether to do scenario where doctor intervention in delivery is reduced
     '''
@@ -1038,7 +1050,8 @@ def main(
 
     # Defining other global variables
     global bed_time
-    global admin_to_staff_nurse
+    global admin_doc_to_staff
+    global admin_ncd_to_staff
     global doctor_delivery_scenario
 
     ncd_util =[]
@@ -1098,7 +1111,8 @@ def main(
     replication = s_replication
     inpatient_bed_n = s_inpatient_bed_n
     delivery_bed_n = s_delivery_bed_n
-    admin_to_staff_nurse = s_admin_to_staff_nurse
+    admin_doc_to_staff = s_admin_doc_to_staff
+    admin_ncd_to_staff = s_admin_ncd_to_staff
     doctor_delivery_scenario = s_doctor_delivery_scenario
 
     for x in range(0, replication):
