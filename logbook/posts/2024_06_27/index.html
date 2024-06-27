@@ -284,7 +284,7 @@ Note
 <section id="in-text-result-2" class="level2">
 <h2 class="anchored" data-anchor-id="in-text-result-2">9.22-9.34: In-text result 2</h2>
 <p>On reflection, I realised that I had not looked at the result for staff nurse utilisation. Add this, and it was consistent with the text. Hence, successfully reproduced at 9.34.</p>
-<div id="724cb71a" class="cell" data-execution_count="1">
+<div id="7d3e9f8b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -351,7 +351,7 @@ if doctor_delivery_scenario:
     if short_int_prop &gt;= 0.4:
         doc_time = doc_time / 3</code></pre>
 <p>However, this came back wrong, with very little change in utilisation:</p>
-<div id="8da36b77" class="cell" data-execution_count="2">
+<div id="c092bbd9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'intext3_wrong.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -407,7 +407,7 @@ Reflections
 <section id="x-problem-solving-in-text-result-3" class="level2">
 <h2 class="anchored" data-anchor-id="x-problem-solving-in-text-result-3">10.41-X: Problem-solving in-text result 3</h2>
 <p>Noticed I hadn’t add <code>global doctor_delivery_scenario</code> to <code>Delivery_with_doctor</code>, and that I hadn’t add the scenario to the warm-up section either. However, that seemed to have no impact -</p>
-<div id="bdf1ed65" class="cell" data-execution_count="3">
+<div id="a413946f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'intext3_wrong2.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -448,6 +448,46 @@ Reflections
 </div>
 <p>I tried running it with print statements after the 50% chance of doctor assignment, which confirmed that patients were being split between getting a doctor and not. I also ran with print statement around shortening of doctor time, which likewise confirmed that around 60% were having their times shortened.</p>
 <p>I looked across all the outputs and could spot only minor differences between the normal and reduced delivery results.</p>
+<p>I then tried setting the implementation up in a different way - instead of assigning people to the <code>Delivery_no_doc()</code> class, setting the intervention time to 0 in the <code>Delivery_with_doctor()</code> class. However, this made no difference:</p>
+<div id="e597c363" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'intext3_wrong3.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Output</th>
+<th data-quarto-table-cell-role="th">Normal delivery</th>
+<th data-quarto-table-cell-role="th">Reduced doctor intervention</th>
+<th data-quarto-table-cell-role="th">Change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Doctor utilisation</td>
+<td>1.144</td>
+<td>1.129</td>
+<td>-0.015</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Staff nurse utilisation</td>
+<td>0.326</td>
+<td>0.320</td>
+<td>-0.006</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 
 
 </section>
