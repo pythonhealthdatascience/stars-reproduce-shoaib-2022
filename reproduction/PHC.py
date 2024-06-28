@@ -412,7 +412,7 @@ class Patient(sim.Component):
     global ncd_time
     global consult_boundary_1
     global consult_boundary_2
-    global opd_10p_ncd_to_staff
+    global opd_ncd_to_staff
 
     thirty_plus_patients = 0
     OPD_visits = 0
@@ -437,17 +437,17 @@ class Patient(sim.Component):
             if OPD_PatientGenerator.OPD_List[OPD_PatientGenerator.patient_count]["Age"] >= 30:  #patients's age>30, check BP
 
                 # Request a nurse for the case. We conduct a sensitivity
-                # analysis where 10% are assigned to a staff nurse instead of
-                # an NCD nurse. In the base case, all are assigned to an
-                # NCD nurse.
-                if opd_10p_ncd_to_staff:
+                # analysis where a percentage of OPD cases are assigned to a
+                # staff nurse instead of an NCD nurse. In the base case, all
+                # are assigned to an NCD nurse.
+                if opd_ncd_to_staff == 0:
+                    yield self.request((NCD_Nurse, 1))
+                else:
                     assign_prob = sim.Uniform(0, 1).sample()
-                    if assign_prob <= 0.1:
+                    if assign_prob <= opd_ncd_to_staff:
                         yield self.request(staff_nurse)
                     else:
                         yield self.request((NCD_Nurse, 1))
-                else:
-                    yield self.request((NCD_Nurse, 1))
 
                 # Sample time with the nurse
                 # Bounded variable - cannot take negative values
@@ -492,19 +492,19 @@ class Patient(sim.Component):
                 # analysis where 10% are assigned to a staff nurse instead of
                 # an NCD nurse. In the base case, all are assigned to an
                 # NCD nurse.
+                # Base case:
+                if opd_ncd_to_staff == 0:
+                    yield self.request((NCD_Nurse, 1))
+                    requested = 'ncd'
                 # Sensitivity analysis:
-                if opd_10p_ncd_to_staff:
+                else:
                     assign_prob = sim.Uniform(0, 1).sample()
-                    if assign_prob <= 0.1:
+                    if assign_prob <= opd_ncd_to_staff:
                         yield self.request(staff_nurse)
                         requested = 'staff'
                     else:
                         yield self.request((NCD_Nurse, 1))
                         requested = 'ncd'
-                # Base case:
-                else:
-                    yield self.request((NCD_Nurse, 1))
-                    requested = 'ncd'
 
                 # Sample time with the nurse
                 # Bounded variable - cannot take negative values
@@ -927,7 +927,7 @@ def main(
         s_admin_doc_to_staff=False,
         s_admin_ncd_to_staff=False,
         s_doctor_delivery_scenario=False,
-        s_opd_10p_ncd_to_staff=False
+        s_opd_ncd_to_staff=0
 ):
     '''
     Run the model.
@@ -1016,9 +1016,9 @@ def main(
     s_doctor_delivery_scenario : boolean
         Whether to do scenario where doctor intervention in delivery is
         reduced.
-    s_opd_10p_ncd_to_staff : boolean
-        Whether to do scenario where 10% of OPD cases are moved from NCD nurse
-        to staff nurse (so 90% NCD, 10% staff nurse).
+    s_opd_ncd_to_staff : number between 0 and 1
+        Proportion of OPD cases to be moved to staff nurse (e.g. 0.1 would
+        mean 90% OPD cases are by NCD nurse and 10% are by staff nurse).
     '''
     # Define global variables
     # defining simulation input parameters
@@ -1102,7 +1102,7 @@ def main(
     global admin_doc_to_staff
     global admin_ncd_to_staff
     global doctor_delivery_scenario
-    global opd_10p_ncd_to_staff
+    global opd_ncd_to_staff
 
     ncd_util =[]
     bed_util = []
@@ -1164,7 +1164,7 @@ def main(
     admin_doc_to_staff = s_admin_doc_to_staff
     admin_ncd_to_staff = s_admin_ncd_to_staff
     doctor_delivery_scenario = s_doctor_delivery_scenario
-    opd_10p_ncd_to_staff = s_opd_10p_ncd_to_staff
+    opd_ncd_to_staff = s_opd_ncd_to_staff
 
     for x in range(0, replication):
         n = np.random.randint(0, 101)
