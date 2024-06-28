@@ -8,7 +8,7 @@ bibliography: ../../../quarto_site/references.bib
 
 ::: {.callout-note}
 
-Reproduced in-text result 5 but couldn't get 7 so emailed author. Total time used: 28h 14m (70.6%). Started on evaluation against guidelines.
+Reproduced in-text result 5 but couldn't get 7 so emailed author. Total time used: 28h 14m (70.6%). Completed individual evaluation against guidelines (just require second opinion on uncertain and unmet).
 
 :::
 
@@ -114,3 +114,44 @@ Uncertain:
 
 * **License**: As for badges.
 * **ORCID**: Have marked as not met, as there are no ORCID in the repository, although Varun Ramamohan does have ORCID ID with publication in SIMULATION.
+
+## 14.28-14.57, 15.10-15.47: STRESS-DES
+
+Uncertain:
+
+* **1.2 Model outputs**: Is what I have quoted sufficient for rating of "Partially"?
+
+::: {.callout-tip}
+## Reflections on STRESS-DES
+
+Doesn't necessarily feel like names are essential (re: 1.3)
+
+Not certain on difference between (A) and (B) (re: 1.3)
+
+Overlap between 2.4 scheduling of arrivals and 2.5.5 detail the arrival mechanism
+:::
+
+## 15.48-16.28: ISPOR-SDM
+
+Uncertain:
+
+* **12 Cross-validation**: Is my conclusion reasonable?
+* **14 Predictive validity**: There's alot of validation work done, but not sure I can spot this, or any justification against it?
+
+## Timings for evaluation
+
+```{python}
+# Minutes used prior to today
+used_to_date = 0
+
+# Times from today
+times = [
+    ('14.05', '14.17'),
+    ('14.18', '14.26'),
+    ('14.28', '14.57'),
+    ('15.10', '15.47'),
+    ('15.48', '16.28')
+]
+
+calculate_times(used_to_date, times, limit=False)
+```
