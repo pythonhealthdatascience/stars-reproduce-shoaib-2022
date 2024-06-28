@@ -4,9 +4,7 @@ bibliography: ../quarto_site/references.bib
 echo: False
 ---
 
-<!-- TODO: Use skeleton to create page describing reproduction success. If it is subjective (e.g. comparing figures), be sure to explain how you decided that the figure was now successfully reproduced or not -->
-
-Of the X items in the scope, X% (X out of 17) were considered to be **successfully reproduced**.
+Of the X items in the scope, 94% (16 out of 17) were considered to be **successfully reproduced**.
 
 As cited throughout, images on this page are sourced from @shoaib_simulation_2021, which is shared under [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/).
 
@@ -40,7 +38,7 @@ time_list = [
     [1396, 'In-text result 4'],
     [1557, 'In-text result 5'],
     [1490, 'In-text result 6'],
-    [1612, 'In-text result 7']]
+    [1694, 'In-text result 7']]
 ```
 
 ```{python}
@@ -354,6 +352,8 @@ pd.read_csv('../reproduction/outputs/intext2.csv')
 
 ## In-text result 3
 
+**Consensus: Successfully reproduced**
+
 **Original:**
 
 From section 4.3.1: "then considered a situation wherein the staff nurses require minimal intervention in childbirth cases. We assumed that in 50% of childbirth cases, staff nurses require no intervention by the doctor; require only one- third of the typical amount of intervention in 30% of cases, and require full intervention in the remaining 20% of cases. This led to a decrease of the doctor’s utilisation to 101% (a further decrease of approximately 1%), and an increase in the nurse’s utilisation to 40%."
@@ -381,6 +381,8 @@ pd.read_csv('../reproduction/outputs/intext3.csv')
 
 ## In-text result 4
 
+**Consensus: Successfully reproduced**
+
 **Original:**
 
 From section 4.3.1: "investigated the effect of stationing an additional doctor in the PHC. This yielded an average utilisation of well below 100% for each doctor."
@@ -405,6 +407,8 @@ pd.read_csv('../reproduction/outputs/intext4.csv')
 ::: {.callout-note appearance="minimal" collapse=true}
 
 ## In-text result 5
+
+**Consensus: Successfully reproduced**
 
 **Original:**
 
@@ -432,6 +436,8 @@ pd.read_csv('../reproduction/outputs/intext5.csv')
 
 ## In-text result 6
 
+**Consensus: Successfully reproduced**
+
 **Original:**
 
 From section 4.3.3: "When the administrative work alone is assigned to the staff nurse the average utilisation of the NCD nurse decreases to 100%"
@@ -454,6 +460,8 @@ pd.read_csv('../reproduction/outputs/intext6.csv')
 
 ## In-text result 7
 
+**Consensus: Not reproduced**
+
 **Original:**
 
 From section 4.3.3: "Further, in addition to the administrative work when the staff nurse assisted for NCD checks (for 10% cases) the utilisation of NCD nurse dropped to 71%."
@@ -467,8 +475,24 @@ Interpretation:
 
 **Reproduction:**
 
+We see a large decrease, but still a fair bit higher than 71%. We get a closer result if we set 20% of cases to be referred to the staff nurse.
+
+Result when 10% cases are transferred (10 replications):
+
 ```{python}
 pd.read_csv('../reproduction/outputs/intext7.csv')
+```
+
+Result when 10% cases are transferred (100 replications):
+
+```{python}
+pd.read_csv('../reproduction/outputs/intext7_100rep.csv')
+```
+
+Result when 20% cases are transferred (10 replications):
+
+```{python}
+pd.read_csv('../reproduction/outputs/intext7_20p.csv')
 ```
 
 :::
