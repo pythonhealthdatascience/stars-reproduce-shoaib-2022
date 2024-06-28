@@ -8,7 +8,7 @@ bibliography: ../../../quarto_site/references.bib
 
 ::: {.callout-note}
 
-TBC. Total time used: TBCh TBCm (TBC%)
+Reproduced in-text results 3, 4 and 6. Progress with 5 and 7. Total time used: 25h 36m (64.0%)
 
 :::
 
@@ -314,7 +314,8 @@ times = [
     ('12.41', '12.56'),
     ('13.38', '13.53'),
     ('15.10', '15.23'),
-    ('15.24', '15.55')
+    ('15.24', '15.55'),
+    ('15.58', '16.44')
 ]
 
 calculate_times(used_to_date, times)
