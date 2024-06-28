@@ -78,6 +78,8 @@ I then sent the email to Shoaib. This now marks the end of my work on in-text re
 
 ## Timings for reproduction
 
+After this point, unless otherwise noted, timings will be for the evaluation stage (which are seperate to the reproduction timings).
+
 ```{python}
 # Minutes used prior to today
 used_to_date = 1536
@@ -98,6 +100,17 @@ times = [
 calculate_times(used_to_date, times)
 ```
 
-## Archive repository
+## 14.05-14.17: Badges
 
-Archived repository on Zenodo, marking the end of reproduction (unless any further suggestions later from email).
+Uncertain:
+
+* **License:** Couldn't remember if we'd agreed that a license added upon our request should be marked as a condition met or not. Tentatively marked as '1'.
+* **Complete:** Uncertain on this, as I had to modify the script alot to get results (i.e. writing scenario logic). However, arguably, I did have all the information I would need to do that? Tentatively marked as '1'.
+* **Structure:** Does use object-oriented programming (which is great), but parameters are hard coded and uses global variables. Tentatively marked as '0'.
+
+## 14.18-14.26: STARS
+
+Uncertain:
+
+* **License**: As for badges.
+* **ORCID**: Have marked as not met, as there are no ORCID in the repository, although Varun Ramamohan does have ORCID ID with publication in SIMULATION.
