@@ -42,3 +42,23 @@ times = [
 
 calculate_times(used_to_date, times)
 ```
+
+## 9.53-10.03, 10.07-10.08, 10.35-: Continuing to troubleshoot in-text result 7
+
+I can't spot any issues in `PHC.py` currently, so I tried instead outputting the full results spreadsheet and to see if there could be any differences. However, the results for NCD nurse utilisation matched up with the results from the replication results.
+
+## Timings
+
+```{python}
+# Minutes used prior to today
+used_to_date = 1536
+
+# Times from today
+times = [
+    ('9.15', '9.25'),
+    ('9.31', '9.41'),
+    ('9.46', '9.47')
+]
+
+calculate_times(used_to_date, times)
+```
