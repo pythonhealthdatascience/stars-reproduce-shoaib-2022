@@ -264,6 +264,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#continuing-to-troubleshoot-in-text-result-5" id="toc-continuing-to-troubleshoot-in-text-result-5" class="nav-link active" data-scroll-target="#continuing-to-troubleshoot-in-text-result-5">9.15-9.25, 9.31-9.41, 9.46-9.47: Continuing to troubleshoot in-text result 5</a></li>
+  <li><a href="#continuing-to-troubleshoot-in-text-result-7" id="toc-continuing-to-troubleshoot-in-text-result-7" class="nav-link" data-scroll-target="#continuing-to-troubleshoot-in-text-result-7">9.53-10.03, 10.07-10.08, 10.35-: Continuing to troubleshoot in-text result 7</a></li>
+  <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_28/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -297,7 +299,7 @@ Note
 <p>However, logically, this looks like it should be right? Since the calculation is <code>days</code> (length of simulation), <code>1440</code> (24h in min), and then <code>6</code> (the standard number of beds). And it’s working out the proportion of time that beds are utilised, so it makes sense that this six should be the number of beds. Moreover, for the first result, it should’ve remained the same as before (as <code>delivery_bed_n</code>=6).</p>
 <p>I then realised my mistake! I had input <code>delivery_bed_n</code> when I should have input <code>inpatient_bed_n</code>! And this fixed it!</p>
 <p>Reviewing the values, although they are a little lower (3-4%), they do represent a marked increase from the 6 bed values, and so I feel (bearing that in mind), that this difference is minimal enough to consider them successfully reproduced as of 9.47.</p>
-<div id="c0c607cd" class="cell" data-execution_count="1">
+<div id="f4581526" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -313,6 +315,32 @@ Note
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time spent today: 21m, or 0h 21m
+Total used to date: 1557m, or 25h 57m
+Time remaining: 843m, or 14h 3m
+Used 64.9% of 40 hours max</code></pre>
+</div>
+</div>
+</section>
+<section id="continuing-to-troubleshoot-in-text-result-7" class="level2">
+<h2 class="anchored" data-anchor-id="continuing-to-troubleshoot-in-text-result-7">9.53-10.03, 10.07-10.08, 10.35-: Continuing to troubleshoot in-text result 7</h2>
+<p>I can’t spot any issues in <code>PHC.py</code> currently, so I tried instead outputting the full results spreadsheet and to see if there could be any differences. However, the results for NCD nurse utilisation matched up with the results from the replication results.</p>
+</section>
+<section id="timings" class="level2">
+<h2 class="anchored" data-anchor-id="timings">Timings</h2>
+<div id="a011b8c4" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1536</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.15'</span>, <span class="st">'9.25'</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.31'</span>, <span class="st">'9.41'</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.46'</span>, <span class="st">'9.47'</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Time spent today: 21m, or 0h 21m
 Total used to date: 1557m, or 25h 57m
