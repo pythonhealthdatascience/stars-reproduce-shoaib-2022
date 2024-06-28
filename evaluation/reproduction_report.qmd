@@ -5,6 +5,7 @@ format:
   html:
     page-layout: full
 echo: False
+bibliography: ../quarto_site/references.bib
 ---
 
 <!-- TODO: Remove this warning once filled out report -->
@@ -18,9 +19,11 @@ echo: False
 
 [Paragraph summarising model]
 
+Images on this page are sourced from @shoaib_simulation_2021, which is shared under [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/).
+
 ## Computational reproducibility
 
-Successfully reproduced **X figures (X%)** within scope in **Xh Xm (X%)**.
+Successfully reproduced **16 out of 17 (94%)** of items in the scope in **28h 14m (70.6%)**.
 
 Required troubleshooting:
 
@@ -28,22 +31,125 @@ Required troubleshooting:
 
 ::: {.panel-tabset}
 
-## Item X
+## Table 6
 
-[One sentence description of item X]
+```{python}
+import pandas as pd
+import dataframe_image as dfi
 
-[Display side-by-side]
+file = '../reproduction/outputs/tab6'
+df = pd.read_csv(f'{file}.csv')
+dfi.export(df, f'{file}.png')
+```
+
+![Original](../original_study/tab6.png){width=49% .lightbox}
+![Reproduction](../reproduction/outputs/tab6.png){width=49% .lightbox}
+
 <!-- Example:
+
 ![Original](../original_study/article_fig2.png){width=49% .lightbox}
 ![Reproduction](../reproduction/output/patients_base_3_month.png){width=49% .lightbox} -->
 
-## Item Y
+## Figure 2A
 
-[Set-up as for Item X]
+![Original](../original_study/fig2a.png){width=49% .lightbox}
+![Reproduction](../reproduction/outputs/fig2a.png){width=49% .lightbox}
+
+## Figure 2B
+
+![Original](../original_study/fig2b.png){width=49% .lightbox}
+![Reproduction](../reproduction/outputs/fig2b.png){width=49% .lightbox}
+
+## Figure 2C
+
+![Original](../original_study/fig2c.png){width=49% .lightbox}
+![Reproduction](../reproduction/outputs/fig2c.png){width=49% .lightbox}
+
+## Figure 2D
+
+![Original](../original_study/fig2d.png){width=49% .lightbox}
+![Reproduction](../reproduction/outputs/fig2d.png){width=49% .lightbox}
+
+## Figure 3A
+
+![Original](../original_study/fig3a.png){width=49% .lightbox}
+![Reproduction](../reproduction/outputs/fig3a.png){width=49% .lightbox}
+
+## Figure 3B
+
+![Original](../original_study/fig3b.png){width=49% .lightbox}
+![Reproduction](../reproduction/outputs/fig3b.png){width=49% .lightbox}
+
+## Figure 3C
+
+![Original](../original_study/fig3c.png){width=49% .lightbox}
+![Reproduction](../reproduction/outputs/fig3c.png){width=49% .lightbox}
+
+## Figure 3D
+
+![Original](../original_study/fig3d.png){width=49% .lightbox}
+![Reproduction](../reproduction/outputs/fig3d.png){width=49% .lightbox}
 
 ## Figure 4
 
-[Set-up as for Item X]
+![Original](../original_study/fig4.png){width=49% .lightbox}
+![Reproduction](../reproduction/outputs/fig4.png){width=49% .lightbox}
+
+## In-text result 1
+
+"We also note that waiting times for outpatient-related resources (laboratory, OPD consultation, etc. - not depicted in Figures 3a – 3d) increase marginally because the associated resources are also required by inpatient/childbirth/ANC cases, which increase in number in the above scenarios"
+
+```{python}
+pd.read_csv('../reproduction/outputs/intext1.csv')
+```
+
+## In-text result 2
+
+"To address this, we experimented with letting the staff nurse (whose utilisation is approximately 32%) take over the administrative work. This led to a 12% drop in the utilisation level, which implied that the doctor’s utilisation still exceeded 100%. Implementing this measure resulted in increasing the staff nurse utilisation to nearly 40%."
+
+```{python}
+pd.read_csv('../reproduction/outputs/intext2.csv')
+```
+
+## In-text result 3
+
+"...then considered a situation wherein the staff nurses require minimal intervention in childbirth cases. We assumed that in 50% of childbirth cases, staff nurses require no intervention by the doctor; require only one- third of the typical amount of intervention in 30% of cases, and require full intervention in the remaining 20% of cases. This led to a decrease of the doctor’s utilisation to 101% (a further decrease of approximately 1%), and an increase in the nurse’s utilisation to 40%."
+
+```{python}
+pd.read_csv('../reproduction/outputs/intext3.csv')
+```
+
+## In-text result 4
+
+"..investigated the effect of stationing an additional doctor in the PHC. This yielded an average utilisation of well below 100% for each doctor."
+
+```{python}
+pd.read_csv('../reproduction/outputs/intext4.csv')
+```
+
+## In-text result 5
+
+"We also observe that if the number of beds is reduced to four from six, the utilisation level is observed to be approximately thirty-three percent even under higher demand conditions (two inpatient and childbirth cases/day)."
+
+```{python}
+pd.read_csv('../reproduction/outputs/intext5.csv')
+```
+
+## In-text result 6
+
+"When the administrative work alone is assigned to the staff nurse the average utilisation of the NCD nurse decreases to 100%"
+
+```{python}
+pd.read_csv('../reproduction/outputs/intext6.csv')
+```
+
+## In-text result 7
+
+"Further, in addition to the administrative work when the staff nurse assisted for NCD checks (for 10% cases) the utilisation of NCD nurse dropped to 71%."
+
+```{python}
+pd.read_csv('../reproduction/outputs/intext7.csv')
+```
 
 :::
 

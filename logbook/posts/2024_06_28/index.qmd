@@ -2,7 +2,7 @@
 title: "Day 7"
 author: "Amy Heather"
 date: "2024-06-28"
-categories: [reproduce, guidelines]
+categories: [reproduce, guidelines, report]
 bibliography: ../../../quarto_site/references.bib
 ---
 
@@ -155,3 +155,7 @@ times = [
 
 calculate_times(used_to_date, times, limit=False)
 ```
+
+## Summary report
+
+With evaluation complete (barring discussion on uncertainities and unmet), now started working on summary report.
