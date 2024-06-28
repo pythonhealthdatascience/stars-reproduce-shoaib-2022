@@ -6,7 +6,7 @@ echo: False
 
 <!-- TODO: Use skeleton to create page describing reproduction success. If it is subjective (e.g. comparing figures), be sure to explain how you decided that the figure was now successfully reproduced or not -->
 
-Of the X items in the scope, X% (X out of X) were considered to be **successfully reproduced**.
+Of the X items in the scope, X% (X out of 17) were considered to be **successfully reproduced**.
 
 As cited throughout, images on this page are sourced from @shoaib_simulation_2021, which is shared under [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/).
 
@@ -40,8 +40,7 @@ time_list = [
     [1396, 'In-text result 4'],
     [1557, 'In-text result 5'],
     [1490, 'In-text result 6'],
-    # TODO: Update these to actual times once complete
-    [np.nan, 'In-text result 7']]
+    [1612, 'In-text result 7']]
 ```
 
 ```{python}
@@ -55,6 +54,11 @@ times_clean = times.sort_values(by='time').reset_index(drop=True)
 
 # Compute the ECDF values
 times_clean['ecdf'] = np.arange(1, len(times_clean) + 1) / len(times_clean) * 100
+
+# AMEND result 7 as not successful, so set ecdf to that of the last item
+times_clean.loc[times_clean['item'] == 'In-text result 7', 'ecdf'] = np.nan
+times_clean.loc[times_clean['item'] == 'In-text result 7', 'ecdf'] = (
+    max(times_clean['ecdf']))
 
 # Insert the starting point (0, 0) in the ECDF
 times_clean.loc[-1] = [0, 'Start', 0]
