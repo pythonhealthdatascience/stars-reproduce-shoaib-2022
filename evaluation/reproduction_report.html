@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -40,6 +60,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -253,39 +276,333 @@ require(['plotly'], function(Plotly) {
 <p>[Authors]. <strong>[Title]</strong>. <em>[Journal]</em> [Volume], [Edition] ([Year]). &lt;[URL]&gt;.</p>
 </blockquote>
 <p>[Paragraph summarising model]</p>
+<p>Images on this page are sourced from <span class="citation" data-cites="shoaib_simulation_2021">Shoaib and Ramamohan (<a href="#ref-shoaib_simulation_2021" role="doc-biblioref">2021</a>)</span>, which is shared under <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND</a>.</p>
 </section>
 <section id="computational-reproducibility" class="level2">
 <h2 class="anchored" data-anchor-id="computational-reproducibility">Computational reproducibility</h2>
-<p>Successfully reproduced <strong>X figures (X%)</strong> within scope in <strong>Xh Xm (X%)</strong>.</p>
+<p>Successfully reproduced <strong>16 out of 17 (94%)</strong> of items in the scope in <strong>28h 14m (70.6%)</strong>.</p>
 <p>Required troubleshooting:</p>
 <ul>
 <li>[List of required changes to code]</li>
 </ul>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Item X</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Item Y</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Figure 4</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Table 6</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Figure 2A</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Figure 2B</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Figure 2C</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">Figure 2D</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">Figure 3A</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-7" role="tab" aria-controls="tabset-1-7" aria-selected="false">Figure 3B</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-8-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-8" role="tab" aria-controls="tabset-1-8" aria-selected="false">Figure 3C</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-9-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-9" role="tab" aria-controls="tabset-1-9" aria-selected="false">Figure 3D</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-10-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-10" role="tab" aria-controls="tabset-1-10" aria-selected="false">Figure 4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-11-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-11" role="tab" aria-controls="tabset-1-11" aria-selected="false">In-text result 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-12-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-12" role="tab" aria-controls="tabset-1-12" aria-selected="false">In-text result 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-13-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-13" role="tab" aria-controls="tabset-1-13" aria-selected="false">In-text result 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-14-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-14" role="tab" aria-controls="tabset-1-14" aria-selected="false">In-text result 4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-15-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-15" role="tab" aria-controls="tabset-1-15" aria-selected="false">In-text result 5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-16-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-16" role="tab" aria-controls="tabset-1-16" aria-selected="false">In-text result 6</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-17-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-17" role="tab" aria-controls="tabset-1-17" aria-selected="false">In-text result 7</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>[One sentence description of item X]</p>
-<p>[Display side-by-side] <!-- Example:
+<p><a href="../original_study/tab6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Original"><img src="../original_study/tab6.png" class="img-fluid" style="width:49.0%" alt="Original"></a> <a href="../reproduction/outputs/tab6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Reproduction"><img src="../reproduction/outputs/tab6.png" class="img-fluid" style="width:49.0%" alt="Reproduction"></a></p>
+<!-- Example:
+
 ![Original](../original_study/article_fig2.png){width=49% .lightbox}
-![Reproduction](../reproduction/output/patients_base_3_month.png){width=49% .lightbox} --></p>
+![Reproduction](../reproduction/output/patients_base_3_month.png){width=49% .lightbox} -->
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>[Set-up as for Item X]</p>
+<p><a href="../original_study/fig2a.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Original"><img src="../original_study/fig2a.png" class="img-fluid" style="width:49.0%" alt="Original"></a> <a href="../reproduction/outputs/fig2a.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Reproduction"><img src="../reproduction/outputs/fig2a.png" class="img-fluid" style="width:49.0%" alt="Reproduction"></a></p>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<p>[Set-up as for Item X]</p>
+<p><a href="../original_study/fig2b.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Original"><img src="../original_study/fig2b.png" class="img-fluid" style="width:49.0%" alt="Original"></a> <a href="../reproduction/outputs/fig2b.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Reproduction"><img src="../reproduction/outputs/fig2b.png" class="img-fluid" style="width:49.0%" alt="Reproduction"></a></p>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p><a href="../original_study/fig2c.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Original"><img src="../original_study/fig2c.png" class="img-fluid" style="width:49.0%" alt="Original"></a> <a href="../reproduction/outputs/fig2c.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Reproduction"><img src="../reproduction/outputs/fig2c.png" class="img-fluid" style="width:49.0%" alt="Reproduction"></a></p>
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<p><a href="../original_study/fig2d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Original"><img src="../original_study/fig2d.png" class="img-fluid" style="width:49.0%" alt="Original"></a> <a href="../reproduction/outputs/fig2d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Reproduction"><img src="../reproduction/outputs/fig2d.png" class="img-fluid" style="width:49.0%" alt="Reproduction"></a></p>
+</div>
+<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
+<p><a href="../original_study/fig3a.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Original"><img src="../original_study/fig3a.png" class="img-fluid" style="width:49.0%" alt="Original"></a> <a href="../reproduction/outputs/fig3a.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Reproduction"><img src="../reproduction/outputs/fig3a.png" class="img-fluid" style="width:49.0%" alt="Reproduction"></a></p>
+</div>
+<div id="tabset-1-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-7-tab">
+<p><a href="../original_study/fig3b.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Original"><img src="../original_study/fig3b.png" class="img-fluid" style="width:49.0%" alt="Original"></a> <a href="../reproduction/outputs/fig3b.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Reproduction"><img src="../reproduction/outputs/fig3b.png" class="img-fluid" style="width:49.0%" alt="Reproduction"></a></p>
+</div>
+<div id="tabset-1-8" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-8-tab">
+<p><a href="../original_study/fig3c.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Original"><img src="../original_study/fig3c.png" class="img-fluid" style="width:49.0%" alt="Original"></a> <a href="../reproduction/outputs/fig3c.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Reproduction"><img src="../reproduction/outputs/fig3c.png" class="img-fluid" style="width:49.0%" alt="Reproduction"></a></p>
+</div>
+<div id="tabset-1-9" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-9-tab">
+<p><a href="../original_study/fig3d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Original"><img src="../original_study/fig3d.png" class="img-fluid" style="width:49.0%" alt="Original"></a> <a href="../reproduction/outputs/fig3d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Reproduction"><img src="../reproduction/outputs/fig3d.png" class="img-fluid" style="width:49.0%" alt="Reproduction"></a></p>
+</div>
+<div id="tabset-1-10" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-10-tab">
+<p><a href="../original_study/fig4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Original"><img src="../original_study/fig4.png" class="img-fluid" style="width:49.0%" alt="Original"></a> <a href="../reproduction/outputs/fig4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Reproduction"><img src="../reproduction/outputs/fig4.png" class="img-fluid" style="width:49.0%" alt="Reproduction"></a></p>
+</div>
+<div id="tabset-1-11" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-11-tab">
+<p>“We also note that waiting times for outpatient-related resources (laboratory, OPD consultation, etc. - not depicted in Figures 3a – 3d) increase marginally because the associated resources are also required by inpatient/childbirth/ANC cases, which increase in number in the above scenarios”</p>
+<div id="28177b09" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Consultation time: mean (SD)</th>
+<th data-quarto-table-cell-role="th">(1/1/1)</th>
+<th data-quarto-table-cell-role="th">(2/1/1)</th>
+<th data-quarto-table-cell-role="th">(2/2/2)</th>
+<th data-quarto-table-cell-role="th">Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.87 (0.21)</td>
+<td>0.009</td>
+<td>0.011</td>
+<td>0.026</td>
+<td>OPD queue waiting time (minutes)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2.5 (0.5)</td>
+<td>0.120</td>
+<td>0.128</td>
+<td>0.162</td>
+<td>OPD queue waiting time (minutes)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.87 (0.21)</td>
+<td>2.104</td>
+<td>2.096</td>
+<td>2.125</td>
+<td>Lab queue waiting time (minutes)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2.5 (0.5)</td>
+<td>2.318</td>
+<td>2.297</td>
+<td>2.322</td>
+<td>Lab queue waiting time (minutes)</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-12" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-12-tab">
+<p>“To address this, we experimented with letting the staff nurse (whose utilisation is approximately 32%) take over the administrative work. This led to a 12% drop in the utilisation level, which implied that the doctor’s utilisation still exceeded 100%. Implementing this measure resulted in increasing the staff nurse utilisation to nearly 40%.”</p>
+<div id="931db24f" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Output</th>
+<th data-quarto-table-cell-role="th">Original utilisation</th>
+<th data-quarto-table-cell-role="th">Utilisation if admin is assigned to the staff nurse</th>
+<th data-quarto-table-cell-role="th">Change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Doctor utilisation</td>
+<td>1.142</td>
+<td>1.023</td>
+<td>-0.119</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Staff nurse utilisation</td>
+<td>0.323</td>
+<td>0.403</td>
+<td>0.080</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-13" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-13-tab">
+<p>“…then considered a situation wherein the staff nurses require minimal intervention in childbirth cases. We assumed that in 50% of childbirth cases, staff nurses require no intervention by the doctor; require only one- third of the typical amount of intervention in 30% of cases, and require full intervention in the remaining 20% of cases. This led to a decrease of the doctor’s utilisation to 101% (a further decrease of approximately 1%), and an increase in the nurse’s utilisation to 40%.”</p>
+<div id="9b166cf5" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Output</th>
+<th data-quarto-table-cell-role="th">Normal</th>
+<th data-quarto-table-cell-role="th">Less delivery</th>
+<th data-quarto-table-cell-role="th">Less admin</th>
+<th data-quarto-table-cell-role="th">Less admin + less delivery</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Doctor utilisation</td>
+<td>1.147</td>
+<td>1.132</td>
+<td>1.026</td>
+<td>1.015</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Staff nurse utilisation</td>
+<td>0.327</td>
+<td>0.326</td>
+<td>0.401</td>
+<td>0.404</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-14" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-14-tab">
+<p>“..investigated the effect of stationing an additional doctor in the PHC. This yielded an average utilisation of well below 100% for each doctor.”</p>
+<div id="a094f701" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Output</th>
+<th data-quarto-table-cell-role="th">Normal</th>
+<th data-quarto-table-cell-role="th">Extra doctor</th>
+<th data-quarto-table-cell-role="th">Extra doctor + less admin + less delivery</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Doctor utilisation</td>
+<td>1.147</td>
+<td>0.76</td>
+<td>0.675</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-15" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-15-tab">
+<p>“We also observe that if the number of beds is reduced to four from six, the utilisation level is observed to be approximately thirty-three percent even under higher demand conditions (two inpatient and childbirth cases/day).”</p>
+<div id="5cfcf962" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Output</th>
+<th data-quarto-table-cell-role="th">6 beds</th>
+<th data-quarto-table-cell-role="th">4 beds</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Inpatient bed utilisation (metric 1)</td>
+<td>0.188294</td>
+<td>0.28155</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Inpatient bed utilisation (metric 2)</td>
+<td>0.199000</td>
+<td>0.29800</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-16" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-16-tab">
+<p>“When the administrative work alone is assigned to the staff nurse the average utilisation of the NCD nurse decreases to 100%”</p>
+<div id="caf95021" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Output</th>
+<th data-quarto-table-cell-role="th">Normal</th>
+<th data-quarto-table-cell-role="th">Admin from NCD to staff nurse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>NCD nurse utilisation</td>
+<td>1.234</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-17" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-17-tab">
+<p>“Further, in addition to the administrative work when the staff nurse assisted for NCD checks (for 10% cases) the utilisation of NCD nurse dropped to 71%.”</p>
+<div id="ab6c3362" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Output</th>
+<th data-quarto-table-cell-role="th">Normal</th>
+<th data-quarto-table-cell-role="th">Admin from NCD to staff nurse</th>
+<th data-quarto-table-cell-role="th">10% OPD appointments from NCD to staff nurse</th>
+<th data-quarto-table-cell-role="th">Admin and 10% OPD appointments from NCD to staff nurse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>NCD nurse utilisation</td>
+<td>1.234</td>
+<td>1.0</td>
+<td>1.067</td>
+<td>0.823</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </section>
 <section id="evaluation-against-guidelines" class="level2">
 <h2 class="anchored" data-anchor-id="evaluation-against-guidelines">Evaluation against guidelines</h2>
-<div id="77704f85" class="cell" data-execution_count="1">
+<div id="aef3b5fb" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
-<div>                            <div id="046dccc6-c2cd-4dc2-b84d-e7013a5e1708" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("046dccc6-c2cd-4dc2-b84d-e7013a5e1708")) {                    Plotly.newPlot(                        "046dccc6-c2cd-4dc2-b84d-e7013a5e1708",                        [{"alignmentgroup":"True","customdata":[[3,"37.5%","fully"],[0,"0.0%","fully"],[5,"41.7%","fully"],[5,"41.7%","fully"],[17,"70.8%","fully"],[12,"66.7%","fully"]],"hovertemplate":"count=%{customdata[0]}\u003cbr\u003epercentage=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"fully","marker":{"color":"#06a94d","pattern":{"shape":""}},"name":"Fully met","offsetgroup":"fully","orientation":"h","showlegend":true,"textposition":"auto","x":[0.375,0.0,0.4166666666666667,0.4166666666666667,0.7083333333333334,0.6666666666666666],"xaxis":"x","y":["STARS (essential)","STARS (optional)","Badges (criteria)","Badges (badges)","STRESS-DES","ISPOR-SDM"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","customdata":[[0,"0.0%","partially"],[0,"0.0%","partially"],[0,"0.0%","partially"],[0,"0.0%","partially"],[6,"25.0%","partially"],[2,"11.1%","partially"]],"hovertemplate":"count=%{customdata[0]}\u003cbr\u003epercentage=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"partially","marker":{"color":"#ffd68c","pattern":{"shape":""}},"name":"Partially met","offsetgroup":"partially","orientation":"h","showlegend":true,"textposition":"auto","x":[0.0,0.0,0.0,0.0,0.25,0.1111111111111111],"xaxis":"x","y":["STARS (essential)","STARS (optional)","Badges (criteria)","Badges (badges)","STRESS-DES","ISPOR-SDM"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","customdata":[[5,"62.5%","not"],[5,"100.0%","not"],[7,"58.3%","not"],[7,"58.3%","not"],[1,"4.2%","not"],[3,"16.7%","not"]],"hovertemplate":"count=%{customdata[0]}\u003cbr\u003epercentage=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"not","marker":{"color":"#ff9999","pattern":{"shape":""}},"name":"Not met","offsetgroup":"not","orientation":"h","showlegend":true,"textposition":"auto","x":[0.625,1.0,0.5833333333333334,0.5833333333333334,0.041666666666666664,0.16666666666666666],"xaxis":"x","y":["STARS (essential)","STARS (optional)","Badges (criteria)","Badges (badges)","STRESS-DES","ISPOR-SDM"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","customdata":[[0,"0.0%","na"],[0,"0.0%","na"],[0,"0.0%","na"],[0,"0.0%","na"],[0,"0.0%","na"],[1,"5.6%","na"]],"hovertemplate":"count=%{customdata[0]}\u003cbr\u003epercentage=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"na","marker":{"color":"#d1dcea","pattern":{"shape":""}},"name":"Not applicable","offsetgroup":"na","orientation":"h","showlegend":true,"textposition":"auto","x":[0.0,0.0,0.0,0.0,0.0,0.05555555555555555],"xaxis":"x","y":["STARS (essential)","STARS (optional)","Badges (criteria)","Badges (badges)","STRESS-DES","ISPOR-SDM"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":""},"range":[0,1],"tickmode":"array","tickvals":[0,0.2,0.4,0.6,0.8,1],"ticktext":["0%","20%","40%","60%","80%","100%"]},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":""},"autorange":"reversed","ticksuffix":"  "},"legend":{"title":{"text":"Result"},"tracegroupgap":0},"barmode":"relative"},                        {"displayModeBar": false, "responsive": true}                    ).then(function(){
+<div>                            <div id="bafd505f-706c-4746-8a1a-49090ca51fd8" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("bafd505f-706c-4746-8a1a-49090ca51fd8")) {                    Plotly.newPlot(                        "bafd505f-706c-4746-8a1a-49090ca51fd8",                        [{"alignmentgroup":"True","customdata":[[3,"37.5%","fully"],[0,"0.0%","fully"],[5,"41.7%","fully"],[5,"41.7%","fully"],[17,"70.8%","fully"],[12,"66.7%","fully"]],"hovertemplate":"count=%{customdata[0]}\u003cbr\u003epercentage=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"fully","marker":{"color":"#06a94d","pattern":{"shape":""}},"name":"Fully met","offsetgroup":"fully","orientation":"h","showlegend":true,"textposition":"auto","x":[0.375,0.0,0.4166666666666667,0.4166666666666667,0.7083333333333334,0.6666666666666666],"xaxis":"x","y":["STARS (essential)","STARS (optional)","Badges (criteria)","Badges (badges)","STRESS-DES","ISPOR-SDM"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","customdata":[[0,"0.0%","partially"],[0,"0.0%","partially"],[0,"0.0%","partially"],[0,"0.0%","partially"],[6,"25.0%","partially"],[2,"11.1%","partially"]],"hovertemplate":"count=%{customdata[0]}\u003cbr\u003epercentage=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"partially","marker":{"color":"#ffd68c","pattern":{"shape":""}},"name":"Partially met","offsetgroup":"partially","orientation":"h","showlegend":true,"textposition":"auto","x":[0.0,0.0,0.0,0.0,0.25,0.1111111111111111],"xaxis":"x","y":["STARS (essential)","STARS (optional)","Badges (criteria)","Badges (badges)","STRESS-DES","ISPOR-SDM"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","customdata":[[5,"62.5%","not"],[5,"100.0%","not"],[7,"58.3%","not"],[7,"58.3%","not"],[1,"4.2%","not"],[3,"16.7%","not"]],"hovertemplate":"count=%{customdata[0]}\u003cbr\u003epercentage=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"not","marker":{"color":"#ff9999","pattern":{"shape":""}},"name":"Not met","offsetgroup":"not","orientation":"h","showlegend":true,"textposition":"auto","x":[0.625,1.0,0.5833333333333334,0.5833333333333334,0.041666666666666664,0.16666666666666666],"xaxis":"x","y":["STARS (essential)","STARS (optional)","Badges (criteria)","Badges (badges)","STRESS-DES","ISPOR-SDM"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","customdata":[[0,"0.0%","na"],[0,"0.0%","na"],[0,"0.0%","na"],[0,"0.0%","na"],[0,"0.0%","na"],[1,"5.6%","na"]],"hovertemplate":"count=%{customdata[0]}\u003cbr\u003epercentage=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"na","marker":{"color":"#d1dcea","pattern":{"shape":""}},"name":"Not applicable","offsetgroup":"na","orientation":"h","showlegend":true,"textposition":"auto","x":[0.0,0.0,0.0,0.0,0.0,0.05555555555555555],"xaxis":"x","y":["STARS (essential)","STARS (optional)","Badges (criteria)","Badges (badges)","STRESS-DES","ISPOR-SDM"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":""},"range":[0,1],"tickmode":"array","tickvals":[0,0.2,0.4,0.6,0.8,1],"ticktext":["0%","20%","40%","60%","80%","100%"]},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":""},"autorange":"reversed","ticksuffix":"  "},"legend":{"title":{"text":"Result"},"tracegroupgap":0},"barmode":"relative"},                        {"displayModeBar": false, "responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('046dccc6-c2cd-4dc2-b84d-e7013a5e1708');
+var gd = document.getElementById('bafd505f-706c-4746-8a1a-49090ca51fd8');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -313,9 +630,14 @@ if (outputEl) {{
 <p><sup>Context: The original study repository was evaluated against criteria from journal badges relating to how open and reproducible the model is and against guidance for sharing artefacts from the STARS framework. The original study article and supplementary materials (excluding code) were evaluated against reporting guidelines for DES models: STRESS-DES, and guidelines adapted from ISPOR-SDM.</sup></p>
 
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-shoaib_simulation_2021" class="csl-entry" role="listitem">
+Shoaib, Mohd, and Varun Ramamohan. 2021. <span>“Simulation <span>Modelling</span> and <span>Analysis</span> of <span>Primary</span> <span>Health</span> <span>Centre</span> <span>Operations</span>.”</span> <em>arXiv</em>, June. <a href="https://doi.org/10.48550/arXiv.2104.12492">https://doi.org/10.48550/arXiv.2104.12492</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -762,6 +1084,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","loop":false});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 

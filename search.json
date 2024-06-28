@@ -256,7 +256,7 @@
     "href": "logbook/logbook.html",
     "title": "Logbook",
     "section": "",
-    "text": "These diary entries record daily progress in reproduction of the study, providing a transparent and detailed record of work.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 7\n\n\n\n\n\n\nreproduce\n\n\nguidelines\n\n\n\n\n\n\n\n\n\nJun 28, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 6\n\n\n\n\n\n\nreproduce\n\n\n\n\n\n\n\n\n\nJun 27, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 5\n\n\n\n\n\n\nreproduce\n\n\n\n\n\n\n\n\n\nJun 26, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 4\n\n\n\n\n\n\nreproduce\n\n\n\n\n\n\n\n\n\nJun 25, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 3\n\n\n\n\n\n\nreproduce\n\n\n\n\n\n\n\n\n\nJun 24, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2\n\n\n\n\n\n\nscope\n\n\nread\n\n\nreproduce\n\n\n\n\n\n\n\n\n\nJun 21, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1\n\n\n\n\n\n\nsetup\n\n\nread\n\n\nscope\n\n\n\n\n\n\n\n\n\nJun 20, 2024\n\n\nAmy Heather\n\n\n\n\n\n\nNo matching items"
+    "text": "These diary entries record daily progress in reproduction of the study, providing a transparent and detailed record of work.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 7\n\n\n\n\n\n\nreproduce\n\n\nguidelines\n\n\nreport\n\n\n\n\n\n\n\n\n\nJun 28, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 6\n\n\n\n\n\n\nreproduce\n\n\n\n\n\n\n\n\n\nJun 27, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 5\n\n\n\n\n\n\nreproduce\n\n\n\n\n\n\n\n\n\nJun 26, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 4\n\n\n\n\n\n\nreproduce\n\n\n\n\n\n\n\n\n\nJun 25, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 3\n\n\n\n\n\n\nreproduce\n\n\n\n\n\n\n\n\n\nJun 24, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2\n\n\n\n\n\n\nscope\n\n\nread\n\n\nreproduce\n\n\n\n\n\n\n\n\n\nJun 21, 2024\n\n\nAmy Heather\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1\n\n\n\n\n\n\nsetup\n\n\nread\n\n\nscope\n\n\n\n\n\n\n\n\n\nJun 20, 2024\n\n\nAmy Heather\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "logbook/posts/2024_06_28/index.html",
@@ -327,6 +327,13 @@
     "title": "Day 7",
     "section": "Timings for evaluation",
     "text": "Timings for evaluation\n\n# Minutes used prior to today\nused_to_date = 0\n\n# Times from today\ntimes = [\n    ('14.05', '14.17'),\n    ('14.18', '14.26'),\n    ('14.28', '14.57'),\n    ('15.10', '15.47'),\n    ('15.48', '16.28')\n]\n\ncalculate_times(used_to_date, times, limit=False)\n\nTime spent today: 126m, or 2h 6m\nTotal used to date: 126m, or 2h 6m"
+  },
+  {
+    "objectID": "logbook/posts/2024_06_28/index.html#summary-report",
+    "href": "logbook/posts/2024_06_28/index.html#summary-report",
+    "title": "Day 7",
+    "section": "Summary report",
+    "text": "Summary report\nWith evaluation complete (barring discussion on uncertainities and unmet), now started working on summary report."
   },
   {
     "objectID": "logbook/posts/2024_06_27/index.html",
@@ -522,14 +529,14 @@
     "href": "evaluation/reproduction_report.html#study",
     "title": "Summary report",
     "section": "Study",
-    "text": "Study\n\n[Authors]. [Title]. [Journal] [Volume], [Edition] ([Year]). &lt;[URL]&gt;.\n\n[Paragraph summarising model]"
+    "text": "Study\n\n[Authors]. [Title]. [Journal] [Volume], [Edition] ([Year]). &lt;[URL]&gt;.\n\n[Paragraph summarising model]\nImages on this page are sourced from Shoaib and Ramamohan (2021), which is shared under CC BY-NC-ND."
   },
   {
     "objectID": "evaluation/reproduction_report.html#computational-reproducibility",
     "href": "evaluation/reproduction_report.html#computational-reproducibility",
     "title": "Summary report",
     "section": "Computational reproducibility",
-    "text": "Computational reproducibility\nSuccessfully reproduced X figures (X%) within scope in Xh Xm (X%).\nRequired troubleshooting:\n\n[List of required changes to code]\n\n\nItem XItem YFigure 4\n\n\n[One sentence description of item X]\n[Display side-by-side] \n\n\n[Set-up as for Item X]\n\n\n[Set-up as for Item X]"
+    "text": "Computational reproducibility\nSuccessfully reproduced 16 out of 17 (94%) of items in the scope in 28h 14m (70.6%).\nRequired troubleshooting:\n\n[List of required changes to code]\n\n\nTable 6Figure 2AFigure 2BFigure 2CFigure 2DFigure 3AFigure 3BFigure 3CFigure 3DFigure 4In-text result 1In-text result 2In-text result 3In-text result 4In-text result 5In-text result 6In-text result 7\n\n\n \n\n\n\n \n\n\n \n\n\n \n\n\n \n\n\n \n\n\n \n\n\n \n\n\n \n\n\n \n\n\n“We also note that waiting times for outpatient-related resources (laboratory, OPD consultation, etc. - not depicted in Figures 3a – 3d) increase marginally because the associated resources are also required by inpatient/childbirth/ANC cases, which increase in number in the above scenarios”\n\n\n\n\n\n\n\n\n\nConsultation time: mean (SD)\n(1/1/1)\n(2/1/1)\n(2/2/2)\nOutput\n\n\n\n\n0\n0.87 (0.21)\n0.009\n0.011\n0.026\nOPD queue waiting time (minutes)\n\n\n1\n2.5 (0.5)\n0.120\n0.128\n0.162\nOPD queue waiting time (minutes)\n\n\n2\n0.87 (0.21)\n2.104\n2.096\n2.125\nLab queue waiting time (minutes)\n\n\n3\n2.5 (0.5)\n2.318\n2.297\n2.322\nLab queue waiting time (minutes)\n\n\n\n\n\n\n\n\n\n“To address this, we experimented with letting the staff nurse (whose utilisation is approximately 32%) take over the administrative work. This led to a 12% drop in the utilisation level, which implied that the doctor’s utilisation still exceeded 100%. Implementing this measure resulted in increasing the staff nurse utilisation to nearly 40%.”\n\n\n\n\n\n\n\n\n\nOutput\nOriginal utilisation\nUtilisation if admin is assigned to the staff nurse\nChange\n\n\n\n\n0\nDoctor utilisation\n1.142\n1.023\n-0.119\n\n\n1\nStaff nurse utilisation\n0.323\n0.403\n0.080\n\n\n\n\n\n\n\n\n\n“…then considered a situation wherein the staff nurses require minimal intervention in childbirth cases. We assumed that in 50% of childbirth cases, staff nurses require no intervention by the doctor; require only one- third of the typical amount of intervention in 30% of cases, and require full intervention in the remaining 20% of cases. This led to a decrease of the doctor’s utilisation to 101% (a further decrease of approximately 1%), and an increase in the nurse’s utilisation to 40%.”\n\n\n\n\n\n\n\n\n\nOutput\nNormal\nLess delivery\nLess admin\nLess admin + less delivery\n\n\n\n\n0\nDoctor utilisation\n1.147\n1.132\n1.026\n1.015\n\n\n1\nStaff nurse utilisation\n0.327\n0.326\n0.401\n0.404\n\n\n\n\n\n\n\n\n\n“..investigated the effect of stationing an additional doctor in the PHC. This yielded an average utilisation of well below 100% for each doctor.”\n\n\n\n\n\n\n\n\n\nOutput\nNormal\nExtra doctor\nExtra doctor + less admin + less delivery\n\n\n\n\n0\nDoctor utilisation\n1.147\n0.76\n0.675\n\n\n\n\n\n\n\n\n\n“We also observe that if the number of beds is reduced to four from six, the utilisation level is observed to be approximately thirty-three percent even under higher demand conditions (two inpatient and childbirth cases/day).”\n\n\n\n\n\n\n\n\n\nOutput\n6 beds\n4 beds\n\n\n\n\n0\nInpatient bed utilisation (metric 1)\n0.188294\n0.28155\n\n\n1\nInpatient bed utilisation (metric 2)\n0.199000\n0.29800\n\n\n\n\n\n\n\n\n\n“When the administrative work alone is assigned to the staff nurse the average utilisation of the NCD nurse decreases to 100%”\n\n\n\n\n\n\n\n\n\nOutput\nNormal\nAdmin from NCD to staff nurse\n\n\n\n\n0\nNCD nurse utilisation\n1.234\n1.0\n\n\n\n\n\n\n\n\n\n“Further, in addition to the administrative work when the staff nurse assisted for NCD checks (for 10% cases) the utilisation of NCD nurse dropped to 71%.”\n\n\n\n\n\n\n\n\n\nOutput\nNormal\nAdmin from NCD to staff nurse\n10% OPD appointments from NCD to staff nurse\nAdmin and 10% OPD appointments from NCD to staff nurse\n\n\n\n\n0\nNCD nurse utilisation\n1.234\n1.0\n1.067\n0.823"
   },
   {
     "objectID": "evaluation/reproduction_report.html#evaluation-against-guidelines",
