@@ -8,7 +8,7 @@ bibliography: ../../../quarto_site/references.bib
 
 ::: {.callout-note}
 
-TBC. Total time used: TBCh TBCm (TBC%)
+Reproduced in-text result 5 but couldn't get 7. Total time used: TBCh TBCm (TBC%)
 
 :::
 
@@ -43,9 +43,38 @@ times = [
 calculate_times(used_to_date, times)
 ```
 
-## 9.53-10.03, 10.07-10.08, 10.35-: Continuing to troubleshoot in-text result 7
+## 9.53-10.03, 10.07-10.08, 10.35-11.00, 11.04-: Continuing to troubleshoot in-text result 7
 
 I can't spot any issues in `PHC.py` currently, so I tried instead outputting the full results spreadsheet and to see if there could be any differences. However, the results for NCD nurse utilisation matched up with the results from the replication results.
+
+Continued looking over article, code and results to see if I can spot anything, to no avail.
+
+Tried changing the proportion of cases assigned to the staff nurse to see what impact this had (although well aware that text does state that it is 10%, and not more). As expected, the utilisation drops further - here, with 20% of cases assigned, the utilisation dropped to 69% (which is much closer to the original study's 71%). However, that doesn't align with how they described the scenario in the text.
+
+```{python}
+import pandas as pd
+
+pd.read_csv('intext7_20.csv')
+```
+
+I considered changing the arrivals although, realistically, this should be fine, since in-text result 7 just builds on the scenario established in in-text result 6, which matches up to the text, and - as stated in Figure 2B - the doctor's consultation time should not affect the outcome (so shouldn't need to change that either).
+
+I kept looking back over everything, but still, could not spot anything. As such, currently marked as not successfully reproduced at time 11.23. Have emailed Tom and Alison to ask for their thoughts (as well as to get consensus on reproduction of prior items). I'm not sure if this is necessarily a case for contacting the author or not, given that the scenario appears to have been successfully set up (with utilisation dropping - and dropping further if 20% assigned).
+
+```{python}
+# Minutes used prior to this item
+used_to_date = 1557
+
+# Times from today
+times = [
+    ('9.53', '10.03'),
+    ('10.07', '10.08'),
+    ('10.35', '11.00'),
+    ('11.04', '11.23')
+]
+
+calculate_times(used_to_date, times)
+```
 
 ## Timings
 
