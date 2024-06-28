@@ -39,9 +39,9 @@ time_list = [
     [1274, 'In-text result 2'],
     [1383, 'In-text result 3'],
     [1396, 'In-text result 4'],
-    # TODO: Update these to actual times once complete
-    [np.nan, 'In-text result 5'],
+    [1557, 'In-text result 5'],
     [1490, 'In-text result 6'],
+    # TODO: Update these to actual times once complete
     [np.nan, 'In-text result 7']]
 
 # Convert to dataframe
@@ -413,6 +413,10 @@ Interpretation:
 * Result: Approximately 33% utilisation
 
 **Reproduction:**
+
+For this result, I realised there were two metrics for bed utilisation being calculated. In prior results (e.g. Figure 3C), I used the first metric, which was calculated manually by the original study author. The second metric is the occupancy returned by the bed SimPy resource. Regardless of which metric we might or should use, both have fairly similar results (differing by 1%) - either raising from 19% to 28%, or from 20% to 30%.
+
+Although this is a bit different from the original study result, I feel it is reasonably similar enough - and a marked increase - to be considered successfully reproduced.
 
 ```{python}
 pd.read_csv('../reproduction/outputs/intext5.csv')

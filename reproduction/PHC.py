@@ -1208,7 +1208,7 @@ def main(
         ncd_util.append(ncd_time/(420*365))
         ncd_time=0
 
-        bed_util.append(bed_time/(days*1440*delivery_bed_n))
+        bed_util.append(bed_time/(days*1440*inpatient_bed_n))
 
         """ To update lists containing waiting time, number of patients and average length per replication"""
         OPD_q_waiting_time_list.append(waitingline_OPD.length_of_stay.mean())

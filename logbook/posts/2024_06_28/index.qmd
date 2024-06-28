@@ -1,0 +1,44 @@
+---
+title: "Day 7"
+author: "Amy Heather"
+date: "2024-06-28"
+categories: [reproduce]
+bibliography: ../../../quarto_site/references.bib
+---
+
+::: {.callout-note}
+
+TBC. Total time used: TBCh TBCm (TBC%)
+
+:::
+
+## 9.15-9.25, 9.31-9.41, 9.46-9.47: Continuing to troubleshoot in-text result 5
+
+I noticed that my "fix" of changing a 6 yesterday actually messed up the `ipd bed occ` results (they're now 1.1 something). The change was:
+
+* `bed_util.append(bed_time/(days*1440*6))` to
+* `bed_util.append(bed_time/(days*1440*delivery_bed_n))`
+
+However, logically, this looks like it should be right? Since the calculation is `days` (length of simulation), `1440` (24h in min), and then `6` (the standard number of beds). And it's working out the proportion of time that beds are utilised, so it makes sense that this six should be the number of beds. Moreover, for the first result, it should've remained the same as before (as `delivery_bed_n`=6).
+
+I then realised my mistake! I had input `delivery_bed_n` when I should have input `inpatient_bed_n`! And this fixed it!
+
+Reviewing the values, although they are a little lower (3-4%), they do represent a marked increase from the 6 bed values, and so I feel (bearing that in mind), that this difference is minimal enough to consider them successfully reproduced as of 9.47.
+
+```{python}
+import sys
+sys.path.append('../')
+from timings import calculate_times
+
+# Minutes used prior to today
+used_to_date = 1536
+
+# Times from today
+times = [
+    ('9.15', '9.25'),
+    ('9.31', '9.41'),
+    ('9.46', '9.47')
+]
+
+calculate_times(used_to_date, times)
+```
