@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.556">
+<meta name="generator" content="quarto-1.4.557">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -359,7 +359,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="process-results" class="level2">
 <h2 class="anchored" data-anchor-id="process-results">Process results</h2>
 <div id="cell-10" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Process results</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> process_results([i[<span class="st">'s_rep_file'</span>] <span class="cf">for</span> i <span class="kw">in</span> dict_list], xls<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get bed utilisation metrics</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> data.loc[[<span class="st">'ipd bed occ'</span>, <span class="st">'ipd occ'</span>]]</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Relabel dataframe for readability</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> result.rename_axis(<span class="st">'Output'</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> result.rename({<span class="st">'ipd bed occ'</span>: <span class="st">'Inpatient bed utilisation (metric 1)'</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'ipd occ'</span>: <span class="st">'Inpatient bed utilisation (metric 2)'</span>})</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> result.rename({<span class="st">'in5_6bed'</span>: <span class="st">'6 beds'</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'in5_4bed'</span>: <span class="st">'4 beds'</span>}, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Save and display result</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>result.to_csv(save_path, index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
@@ -368,154 +383,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">in5_6bed</th>
-<th data-quarto-table-cell-role="th">in5_4bed</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">OPD patients</td>
-<td>33103.800000</td>
-<td>33065.600000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">IPD patients</td>
-<td>726.400000</td>
-<td>740.400000</td>
+<th data-quarto-table-cell-role="th">6 beds</th>
+<th data-quarto-table-cell-role="th">4 beds</th>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">ANC patients</td>
-<td>608.300000</td>
-<td>606.400000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Del patients</td>
-<td>731.800000</td>
-<td>727.400000</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">OPD Q wt</td>
-<td>0.021331</td>
-<td>0.024832</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Pharmacy Q wt</td>
-<td>1.026099</td>
-<td>1.030518</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Lab Q wt</td>
-<td>2.052675</td>
-<td>2.090808</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">doc occ</td>
-<td>0.288934</td>
-<td>0.287949</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Lab patient list</td>
-<td>189399.000000</td>
-<td>189266.100000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">OPD q len</td>
-<td>0.018496</td>
-<td>0.021539</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ipd occ</td>
-<td>0.198000</td>
-<td>0.295000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">opd q len</td>
-<td>0.001887</td>
-<td>0.002197</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">pharmacy q len</td>
-<td>0.090196</td>
-<td>0.090532</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">lab q len</td>
-<td>0.095263</td>
-<td>0.097073</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">NCD occ</td>
-<td>0.864274</td>
-<td>0.862607</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">lab occ</td>
-<td>0.574714</td>
-<td>0.573885</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">pharm occ</td>
-<td>0.642410</td>
-<td>0.642627</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">staff nurse occ</td>
-<td>0.533476</td>
-<td>0.532316</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">del occ</td>
-<td>0.484000</td>
-<td>0.479000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">del referred</td>
-<td>201.600000</td>
-<td>205.500000</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ipd bed occ</td>
-<td>1.122112</td>
-<td>1.115264</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">prop_del_referred</td>
-<td>0.275046</td>
-<td>0.282149</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<div id="cell-11" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> process_results([i[<span class="st">'s_rep_file'</span>] <span class="cf">for</span> i <span class="kw">in</span> dict_list], xls<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> data.loc[[<span class="st">'ipd bed occ'</span>, <span class="st">'ipd occ'</span>]]</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>result.to_csv(save_path, index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
+<th data-quarto-table-cell-role="th">Output</th>
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">in5_6bed</th>
-<th data-quarto-table-cell-role="th">in5_4bed</th>
+<th data-quarto-table-cell-role="th"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">ipd bed occ</td>
-<td>1.122112</td>
-<td>1.115264</td>
+<td data-quarto-table-cell-role="th">Inpatient bed utilisation (metric 1)</td>
+<td>0.188294</td>
+<td>0.28155</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">ipd occ</td>
-<td>0.198000</td>
-<td>0.295000</td>
+<td data-quarto-table-cell-role="th">Inpatient bed utilisation (metric 2)</td>
+<td>0.199000</td>
+<td>0.29800</td>
 </tr>
 </tbody>
 </table>
