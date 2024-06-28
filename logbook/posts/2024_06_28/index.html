@@ -302,7 +302,7 @@ Note
 <p>However, logically, this looks like it should be right? Since the calculation is <code>days</code> (length of simulation), <code>1440</code> (24h in min), and then <code>6</code> (the standard number of beds). And it’s working out the proportion of time that beds are utilised, so it makes sense that this six should be the number of beds. Moreover, for the first result, it should’ve remained the same as before (as <code>delivery_bed_n</code>=6).</p>
 <p>I then realised my mistake! I had input <code>delivery_bed_n</code> when I should have input <code>inpatient_bed_n</code>! And this fixed it!</p>
 <p>Reviewing the values, although they are a little lower (3-4%), they do represent a marked increase from the 6 bed values, and so I feel (bearing that in mind), that this difference is minimal enough to consider them successfully reproduced as of 9.47.</p>
-<div id="ef09a9a0" class="cell" data-execution_count="1">
+<div id="be1a0eed" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -331,7 +331,7 @@ Used 64.9% of 40 hours max</code></pre>
 <p>I can’t spot any issues in <code>PHC.py</code> currently, so I tried instead outputting the full results spreadsheet and to see if there could be any differences. However, the results for NCD nurse utilisation matched up with the results from the replication results.</p>
 <p>Continued looking over article, code and results to see if I can spot anything, to no avail.</p>
 <p>Tried changing the proportion of cases assigned to the staff nurse to see what impact this had (although well aware that text does state that it is 10%, and not more). As expected, the utilisation drops further - here, with 20% of cases assigned, the utilisation dropped to 69% (which is much closer to the original study’s 71%). However, that doesn’t align with how they described the scenario in the text.</p>
-<div id="0fe05100" class="cell" data-execution_count="2">
+<div id="6b0487c1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'intext7_20.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -367,7 +367,7 @@ Used 64.9% of 40 hours max</code></pre>
 </div>
 <p>I considered changing the arrivals although, realistically, this should be fine, since in-text result 7 just builds on the scenario established in in-text result 6, which matches up to the text, and - as stated in Figure 2B - the doctor’s consultation time should not affect the outcome (so shouldn’t need to change that either).</p>
 <p>I kept looking back over everything, but still, could not spot anything. As such, currently marked as not successfully reproduced at time 11.23. Have emailed Tom and Alison to ask for their thoughts (as well as to get consensus on reproduction of prior items). I’m not sure if this is necessarily a case for contacting the author or not, given that the scenario appears to have been successfully set up (with utilisation dropping - and dropping further if 20% assigned).</p>
-<div id="5dd27ce8" class="cell" data-execution_count="3">
+<div id="5f41d6df" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this item</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1557</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -390,7 +390,7 @@ Used 67.2% of 40 hours max</code></pre>
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="6cb91386" class="cell" data-execution_count="4">
+<div id="71aeb073" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1536</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>

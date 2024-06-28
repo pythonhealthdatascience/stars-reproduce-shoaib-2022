@@ -501,7 +501,7 @@
     "href": "evaluation/reproduction_success.html",
     "title": "Reproduction success",
     "section": "",
-    "text": "Of the X items in the scope, X% (X out of X) were considered to be successfully reproduced.\nAs cited throughout, images on this page are sourced from Shoaib and Ramamohan (2021), which is shared under CC BY-NC-ND.\nTable 6 was run with 100 replications as it presents mean and standard deviation results. The remaining items present means and so are only run to 10 replications, since increasing replications should have a fairly minimal impact on the mean, and since running 100 replications is computationally expensive and time consuming, with the number of model variants being explored in the sensitivity analyses."
+    "text": "Of the X items in the scope, X% (X out of 17) were considered to be successfully reproduced.\nAs cited throughout, images on this page are sourced from Shoaib and Ramamohan (2021), which is shared under CC BY-NC-ND.\nTable 6 was run with 100 replications, although this took a long time and results were very similar to with 10 replications. Since all remaining results present mean results, it was felt that running 10 replications should have a fairly minimal impact on the results, and save alot of time, and so all model variants in the sensitivity analysis were run with 10 replications."
   },
   {
     "objectID": "evaluation/reproduction_success.html#time-to-completion",
