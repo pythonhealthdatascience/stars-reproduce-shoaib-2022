@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -103,6 +103,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -264,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#continuing-to-troubleshoot-in-text-result-5" id="toc-continuing-to-troubleshoot-in-text-result-5" class="nav-link active" data-scroll-target="#continuing-to-troubleshoot-in-text-result-5">9.15-9.25, 9.31-9.41, 9.46-9.47: Continuing to troubleshoot in-text result 5</a></li>
-  <li><a href="#continuing-to-troubleshoot-in-text-result-7" id="toc-continuing-to-troubleshoot-in-text-result-7" class="nav-link" data-scroll-target="#continuing-to-troubleshoot-in-text-result-7">9.53-10.03, 10.07-10.08, 10.35-: Continuing to troubleshoot in-text result 7</a></li>
+  <li><a href="#continuing-to-troubleshoot-in-text-result-7" id="toc-continuing-to-troubleshoot-in-text-result-7" class="nav-link" data-scroll-target="#continuing-to-troubleshoot-in-text-result-7">9.53-10.03, 10.07-10.08, 10.35-11.00, 11.04-: Continuing to troubleshoot in-text result 7</a></li>
   <li><a href="#timings" id="toc-timings" class="nav-link" data-scroll-target="#timings">Timings</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_28/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -286,7 +289,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TBC. Total time used: TBCh TBCm (TBC%)</p>
+<p>Reproduced in-text result 5 but couldn’t get 7. Total time used: TBCh TBCm (TBC%)</p>
 </div>
 </div>
 <section id="continuing-to-troubleshoot-in-text-result-5" class="level2">
@@ -299,7 +302,7 @@ Note
 <p>However, logically, this looks like it should be right? Since the calculation is <code>days</code> (length of simulation), <code>1440</code> (24h in min), and then <code>6</code> (the standard number of beds). And it’s working out the proportion of time that beds are utilised, so it makes sense that this six should be the number of beds. Moreover, for the first result, it should’ve remained the same as before (as <code>delivery_bed_n</code>=6).</p>
 <p>I then realised my mistake! I had input <code>delivery_bed_n</code> when I should have input <code>inpatient_bed_n</code>! And this fixed it!</p>
 <p>Reviewing the values, although they are a little lower (3-4%), they do represent a marked increase from the 6 bed values, and so I feel (bearing that in mind), that this difference is minimal enough to consider them successfully reproduced as of 9.47.</p>
-<div id="f4581526" class="cell" data-execution_count="1">
+<div id="ef09a9a0" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -324,23 +327,81 @@ Used 64.9% of 40 hours max</code></pre>
 </div>
 </section>
 <section id="continuing-to-troubleshoot-in-text-result-7" class="level2">
-<h2 class="anchored" data-anchor-id="continuing-to-troubleshoot-in-text-result-7">9.53-10.03, 10.07-10.08, 10.35-: Continuing to troubleshoot in-text result 7</h2>
+<h2 class="anchored" data-anchor-id="continuing-to-troubleshoot-in-text-result-7">9.53-10.03, 10.07-10.08, 10.35-11.00, 11.04-: Continuing to troubleshoot in-text result 7</h2>
 <p>I can’t spot any issues in <code>PHC.py</code> currently, so I tried instead outputting the full results spreadsheet and to see if there could be any differences. However, the results for NCD nurse utilisation matched up with the results from the replication results.</p>
+<p>Continued looking over article, code and results to see if I can spot anything, to no avail.</p>
+<p>Tried changing the proportion of cases assigned to the staff nurse to see what impact this had (although well aware that text does state that it is 10%, and not more). As expected, the utilisation drops further - here, with 20% of cases assigned, the utilisation dropped to 69% (which is much closer to the original study’s 71%). However, that doesn’t align with how they described the scenario in the text.</p>
+<div id="0fe05100" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'intext7_20.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Output</th>
+<th data-quarto-table-cell-role="th">Normal</th>
+<th data-quarto-table-cell-role="th">Admin from NCD to staff nurse</th>
+<th data-quarto-table-cell-role="th">20% OPD appointments from NCD to staff nurse</th>
+<th data-quarto-table-cell-role="th">Admin and 20% OPD appointments from NCD to staff nurse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>NCD nurse utilisation</td>
+<td>1.237</td>
+<td>1.007</td>
+<td>0.924</td>
+<td>0.689</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>I considered changing the arrivals although, realistically, this should be fine, since in-text result 7 just builds on the scenario established in in-text result 6, which matches up to the text, and - as stated in Figure 2B - the doctor’s consultation time should not affect the outcome (so shouldn’t need to change that either).</p>
+<p>I kept looking back over everything, but still, could not spot anything. As such, currently marked as not successfully reproduced at time 11.23. Have emailed Tom and Alison to ask for their thoughts (as well as to get consensus on reproduction of prior items). I’m not sure if this is necessarily a case for contacting the author or not, given that the scenario appears to have been successfully set up (with utilisation dropping - and dropping further if 20% assigned).</p>
+<div id="5dd27ce8" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this item</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1557</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.53'</span>, <span class="st">'10.03'</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.07'</span>, <span class="st">'10.08'</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'10.35'</span>, <span class="st">'11.00'</span>),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'11.04'</span>, <span class="st">'11.23'</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time spent today: 55m, or 0h 55m
+Total used to date: 1612m, or 26h 52m
+Time remaining: 788m, or 13h 8m
+Used 67.2% of 40 hours max</code></pre>
+</div>
+</div>
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="a011b8c4" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1536</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.15'</span>, <span class="st">'9.25'</span>),</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.31'</span>, <span class="st">'9.41'</span>),</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.46'</span>, <span class="st">'9.47'</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6cb91386" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1536</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.15'</span>, <span class="st">'9.25'</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.31'</span>, <span class="st">'9.41'</span>),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'9.46'</span>, <span class="st">'9.47'</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Time spent today: 21m, or 0h 21m
 Total used to date: 1557m, or 25h 57m
