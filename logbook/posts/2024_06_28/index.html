@@ -271,7 +271,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#continuing-to-troubleshoot-in-text-result-7" id="toc-continuing-to-troubleshoot-in-text-result-7" class="nav-link" data-scroll-target="#continuing-to-troubleshoot-in-text-result-7">9.53-10.03, 10.07-10.08, 10.35-11.00, 11.04-11.23: Continuing to troubleshoot in-text result 7</a></li>
   <li><a href="#email-from-tom-and-email-to-shoaib" id="toc-email-from-tom-and-email-to-shoaib" class="nav-link" data-scroll-target="#email-from-tom-and-email-to-shoaib">11.30-12.22, 13.15-13.45: Email from Tom and email to Shoaib</a></li>
   <li><a href="#timings-for-reproduction" id="toc-timings-for-reproduction" class="nav-link" data-scroll-target="#timings-for-reproduction">Timings for reproduction</a></li>
-  <li><a href="#archive-repository" id="toc-archive-repository" class="nav-link" data-scroll-target="#archive-repository">Archive repository</a></li>
+  <li><a href="#badges" id="toc-badges" class="nav-link" data-scroll-target="#badges">14.05-14.17: Badges</a></li>
+  <li><a href="#stars" id="toc-stars" class="nav-link" data-scroll-target="#stars">14.18-14.26: STARS</a></li>
+  <li><a href="#stress-des" id="toc-stress-des" class="nav-link" data-scroll-target="#stress-des">14.28-14.57, 15.10-15.47: STRESS-DES</a></li>
+  <li><a href="#ispor-sdm" id="toc-ispor-sdm" class="nav-link" data-scroll-target="#ispor-sdm">15.48-16.28: ISPOR-SDM</a></li>
+  <li><a href="#timings-for-evaluation" id="toc-timings-for-evaluation" class="nav-link" data-scroll-target="#timings-for-evaluation">Timings for evaluation</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_06_28/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -292,7 +296,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Reproduced in-text result 5 but couldn’t get 7 so emailed author. Total time used: 28h 14m (70.6%). Started on evaluation against guidelines.</p>
+<p>Reproduced in-text result 5 but couldn’t get 7 so emailed author. Total time used: 28h 14m (70.6%). Completed individual evaluation against guidelines (just require second opinion on uncertain and unmet).</p>
 </div>
 </div>
 <section id="continuing-to-troubleshoot-in-text-result-5" class="level2">
@@ -305,7 +309,7 @@ Note
 <p>However, logically, this looks like it should be right? Since the calculation is <code>days</code> (length of simulation), <code>1440</code> (24h in min), and then <code>6</code> (the standard number of beds). And it’s working out the proportion of time that beds are utilised, so it makes sense that this six should be the number of beds. Moreover, for the first result, it should’ve remained the same as before (as <code>delivery_bed_n</code>=6).</p>
 <p>I then realised my mistake! I had input <code>delivery_bed_n</code> when I should have input <code>inpatient_bed_n</code>! And this fixed it!</p>
 <p>Reviewing the values, although they are a little lower (3-4%), they do represent a marked increase from the 6 bed values, and so I feel (bearing that in mind), that this difference is minimal enough to consider them successfully reproduced as of 9.47.</p>
-<div id="2a086d14" class="cell" data-execution_count="1">
+<div id="4e1dd2f2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -334,7 +338,7 @@ Used 64.9% of 40 hours max</code></pre>
 <p>I can’t spot any issues in <code>PHC.py</code> currently, so I tried instead outputting the full results spreadsheet and to see if there could be any differences. However, the results for NCD nurse utilisation matched up with the results from the replication results.</p>
 <p>Continued looking over article, code and results to see if I can spot anything, to no avail.</p>
 <p>Tried changing the proportion of cases assigned to the staff nurse to see what impact this had (although well aware that text does state that it is 10%, and not more). As expected, the utilisation drops further - here, with 20% of cases assigned, the utilisation dropped to 69% (which is much closer to the original study’s 71%). However, that doesn’t align with how they described the scenario in the text.</p>
-<div id="4c6ee203" class="cell" data-execution_count="2">
+<div id="ef50d814" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'intext7_20.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -386,7 +390,8 @@ Used 64.9% of 40 hours max</code></pre>
 </section>
 <section id="timings-for-reproduction" class="level2">
 <h2 class="anchored" data-anchor-id="timings-for-reproduction">Timings for reproduction</h2>
-<div id="91c034ed" class="cell" data-execution_count="3">
+<p>After this point, unless otherwise noted, timings will be for the evaluation stage (which are seperate to the reproduction timings).</p>
+<div id="dfc6698f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1536</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -412,9 +417,74 @@ Used 70.6% of 40 hours max</code></pre>
 </div>
 </div>
 </section>
-<section id="archive-repository" class="level2">
-<h2 class="anchored" data-anchor-id="archive-repository">Archive repository</h2>
-<p>Archived repository on Zenodo, marking the end of reproduction (unless any further suggestions later from email).</p>
+<section id="badges" class="level2">
+<h2 class="anchored" data-anchor-id="badges">14.05-14.17: Badges</h2>
+<p>Uncertain:</p>
+<ul>
+<li><strong>License:</strong> Couldn’t remember if we’d agreed that a license added upon our request should be marked as a condition met or not. Tentatively marked as ‘1’.</li>
+<li><strong>Complete:</strong> Uncertain on this, as I had to modify the script alot to get results (i.e.&nbsp;writing scenario logic). However, arguably, I did have all the information I would need to do that? Tentatively marked as ‘1’.</li>
+<li><strong>Structure:</strong> Does use object-oriented programming (which is great), but parameters are hard coded and uses global variables. Tentatively marked as ‘0’.</li>
+</ul>
+</section>
+<section id="stars" class="level2">
+<h2 class="anchored" data-anchor-id="stars">14.18-14.26: STARS</h2>
+<p>Uncertain:</p>
+<ul>
+<li><strong>License</strong>: As for badges.</li>
+<li><strong>ORCID</strong>: Have marked as not met, as there are no ORCID in the repository, although Varun Ramamohan does have ORCID ID with publication in SIMULATION.</li>
+</ul>
+</section>
+<section id="stress-des" class="level2">
+<h2 class="anchored" data-anchor-id="stress-des">14.28-14.57, 15.10-15.47: STRESS-DES</h2>
+<p>Uncertain:</p>
+<ul>
+<li><strong>1.2 Model outputs</strong>: Is what I have quoted sufficient for rating of “Partially”?</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reflections on STRESS-DES
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Doesn’t necessarily feel like names are essential (re: 1.3)</p>
+<p>Not certain on difference between (A) and (B) (re: 1.3)</p>
+<p>Overlap between 2.4 scheduling of arrivals and 2.5.5 detail the arrival mechanism</p>
+</div>
+</div>
+</section>
+<section id="ispor-sdm" class="level2">
+<h2 class="anchored" data-anchor-id="ispor-sdm">15.48-16.28: ISPOR-SDM</h2>
+<p>Uncertain:</p>
+<ul>
+<li><strong>12 Cross-validation</strong>: Is my conclusion reasonable?</li>
+<li><strong>14 Predictive validity</strong>: There’s alot of validation work done, but not sure I can spot this, or any justification against it?</li>
+</ul>
+</section>
+<section id="timings-for-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="timings-for-evaluation">Timings for evaluation</h2>
+<div id="c56e4adb" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Times from today</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> [</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.05'</span>, <span class="st">'14.17'</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.18'</span>, <span class="st">'14.26'</span>),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'14.28'</span>, <span class="st">'14.57'</span>),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.10'</span>, <span class="st">'15.47'</span>),</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'15.48'</span>, <span class="st">'16.28'</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>calculate_times(used_to_date, times, limit<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time spent today: 126m, or 2h 6m
+Total used to date: 126m, or 2h 6m</code></pre>
+</div>
+</div>
 
 
 </section>
