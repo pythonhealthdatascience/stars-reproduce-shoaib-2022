@@ -6,7 +6,7 @@ import pandas as pd
 import os
 
 
-def process_results(files, xls=False, output_folder='outputs'):
+def process_results(files, xls=False, output_folder='outputs', sd=False):
     '''
     Imports files in provided list and produces a single dataframe with mean
     results from across the replications
@@ -15,8 +15,12 @@ def process_results(files, xls=False, output_folder='outputs'):
     ----------
     files : list
         List of file names (exc. file type) containing replication results
+    xls : boolean
+        Whether the file names include '.xls' already or not
     output_folder : string
         Path to output folder
+    sd : boolean
+        Whether to calculate standard deviation
 
     Returns:
     --------
@@ -45,9 +49,14 @@ def process_results(files, xls=False, output_folder='outputs'):
         result.loc['prop_del_referred'] = (
             result.loc['del referred'] / result.loc['Del patients'])
 
-        # Find mean from the replication
+        # Find mean from the replication (and standard deviation, if desired)
         # Save as dataframe, dropping the duplicate rows (NCD occ twice)
-        res = pd.DataFrame({f: result.mean(axis=1)}).drop_duplicates()
+        if sd:
+            res = pd.DataFrame({
+                f'model_{f}_mean': result.mean(axis=1),
+                f'model_{f}_sd': result.std(axis=1)}).drop_duplicates()
+        else:
+            res = pd.DataFrame({f: result.mean(axis=1)}).drop_duplicates()
 
         # Remove index name
         res.index.name = None
