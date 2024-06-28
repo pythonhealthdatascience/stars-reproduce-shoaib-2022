@@ -11,3 +11,6 @@ tenacity==8.3.0
 
 # To read excel files
 xlrd==2.0.1
+
+# To save dataframes as an image
+dataframe_image==0.2.3
