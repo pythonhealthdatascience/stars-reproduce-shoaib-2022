@@ -2,13 +2,13 @@
 title: "Day 7"
 author: "Amy Heather"
 date: "2024-06-28"
-categories: [reproduce]
+categories: [reproduce, guidelines]
 bibliography: ../../../quarto_site/references.bib
 ---
 
 ::: {.callout-note}
 
-Reproduced in-text result 5 but couldn't get 7. Total time used: TBCh TBCm (TBC%)
+Reproduced in-text result 5 but couldn't get 7 so emailed author. Total time used: 28h 14m (70.6%). Started on evaluation against guidelines.
 
 :::
 
@@ -43,7 +43,7 @@ times = [
 calculate_times(used_to_date, times)
 ```
 
-## 9.53-10.03, 10.07-10.08, 10.35-11.00, 11.04-: Continuing to troubleshoot in-text result 7
+## 9.53-10.03, 10.07-10.08, 10.35-11.00, 11.04-11.23: Continuing to troubleshoot in-text result 7
 
 I can't spot any issues in `PHC.py` currently, so I tried instead outputting the full results spreadsheet and to see if there could be any differences. However, the results for NCD nurse utilisation matched up with the results from the replication results.
 
@@ -59,24 +59,24 @@ pd.read_csv('intext7_20.csv')
 
 I considered changing the arrivals although, realistically, this should be fine, since in-text result 7 just builds on the scenario established in in-text result 6, which matches up to the text, and - as stated in Figure 2B - the doctor's consultation time should not affect the outcome (so shouldn't need to change that either).
 
-I kept looking back over everything, but still, could not spot anything. As such, currently marked as not successfully reproduced at time 11.23. Have emailed Tom and Alison to ask for their thoughts (as well as to get consensus on reproduction of prior items). I'm not sure if this is necessarily a case for contacting the author or not, given that the scenario appears to have been successfully set up (with utilisation dropping - and dropping further if 20% assigned).
+I kept looking back over everything, but still, could not spot anything. Have emailed Tom and Alison to ask for their thoughts (as well as to get consensus on reproduction of prior items). I'm not sure if this is necessarily a case for contacting the author or not, given that the scenario appears to have been successfully set up (with utilisation dropping - and dropping further if 20% assigned).
 
-```{python}
-# Minutes used prior to this item
-used_to_date = 1557
+## 11.30-12.22, 13.15-13.45: Email from Tom and email to Shoaib
 
-# Times from today
-times = [
-    ('9.53', '10.03'),
-    ('10.07', '10.08'),
-    ('10.35', '11.00'),
-    ('11.04', '11.23')
-]
+Tom confirmed the other items were successfully reproduced. He also gave thoughts on in-text result 7, having looked over the code.
 
-calculate_times(used_to_date, times)
-```
+* He thought the scenario code I'd add was straightforward and logic seemed correct.
+* He suggested changing percentage of time to see what value is needed to get apx. 70% - I confirmed that 0.2 got close.
+* He asked about stability with replication. I double checked the change in NCD nurse utilisation between 10 and 100 replications (got results from Table 6 with 10 replications from old commit, processed and saved it with the logbook post from 24th June). Confirmed it was tiny. However, to rule it out, will re-run over lunch.
+* He suggested otherwise to contact the study authors to let them know we've been very successful but see if they have any suggestions for this one final thing that we can't quite get to work.
 
-## Timings
+I did a bit of tidying prior to emailing to Shoaib, drafted the email, and ran 100 replications for the final scenario over lunch.
+
+I also then add the results from setting the help as 20% rather than 10% (modifying the way I set this up in `PHC.py` so I could easily do so from the notebook).
+
+I then sent the email to Shoaib. This now marks the end of my work on in-text result 7 (since emailing was part of the troubleshooting for that) - although I may work on this further if we receive a response from Shoaib with any suggestions.
+
+## Timings for reproduction
 
 ```{python}
 # Minutes used prior to today
@@ -86,8 +86,18 @@ used_to_date = 1536
 times = [
     ('9.15', '9.25'),
     ('9.31', '9.41'),
-    ('9.46', '9.47')
+    ('9.46', '9.47'),
+    ('9.53', '10.03'),
+    ('10.07', '10.08'),
+    ('10.35', '11.00'),
+    ('11.04', '11.23'),
+    ('11.30', '12.22'),
+    ('13.15', '13.45')
 ]
 
 calculate_times(used_to_date, times)
 ```
+
+## Archive repository
+
+Archived repository on Zenodo, marking the end of reproduction (unless any further suggestions later from email).
