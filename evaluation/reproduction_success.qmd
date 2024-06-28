@@ -4,7 +4,7 @@ bibliography: ../quarto_site/references.bib
 echo: False
 ---
 
-Of the X items in the scope, 94% (16 out of 17) were considered to be **successfully reproduced**.
+Of the 17 items in the scope, 94% (16 out of 17) were considered to be **successfully reproduced**.
 
 As cited throughout, images on this page are sourced from @shoaib_simulation_2021, which is shared under [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/).
 
@@ -118,7 +118,9 @@ fig.add_trace(go.Scatter(
 fig.add_trace(go.Scatter(
     x=times_clean['hours'], y=times_clean['ecdf'],
     mode='markers', marker=dict(color='blue', size=6),
-    text=times_clean['item'], hoverinfo='text'))
+    hovertext=times_clean['item'], hoverlabel=dict(namelength=0),
+    hovertemplate = (
+        '%{hovertext}<br>Time: %{x:.1f} hours<br>Completion: %{y:.1f}%')))
 
 # Amend appearance
 fig.update_layout(xaxis_range=[0, 40], yaxis_range=[0, 100],
