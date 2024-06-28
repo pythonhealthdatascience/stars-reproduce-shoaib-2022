@@ -160,6 +160,12 @@ Hence, given the values match, and how it was created, the latter is evidently t
 
 Add standard deviation. Some percent change seem large as it's comparing very small number - but actual change between the model and table 6 all are small enough that I feel happy to say this has been successfully reproduced for the mean values.
 
+```{python}
+import pandas as pd
+
+pd.read_csv('table6_10rep.csv')
+```
+
 Will run 100 replications later, and confirm whether standard deviations are similar - but anticipate to take a while, so will work on something else for remainder of day, as not got time to run them all now.
 
 As the long run-time prevents me from checking this now, I will not yet timestamp this as complete.
