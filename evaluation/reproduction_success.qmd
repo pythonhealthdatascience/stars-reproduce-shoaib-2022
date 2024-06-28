@@ -12,9 +12,7 @@ As cited throughout, images on this page are sourced from @shoaib_simulation_202
 
 Table 6 was run with 100 replications as it presents mean and standard deviation results. The remaining items present means and so are only run to 10 replications, since increasing replications should have a fairly minimal impact on the mean, and since running 100 replications is computationally expensive and time consuming, with the number of model variants being explored in the sensitivity analyses.
 
-::: {.callout-note appearance="minimal" collapse=true}
-
-## Time-to-completion figure
+## Time-to-completion
 
 ```{python}
 import matplotlib.pyplot as plt
@@ -22,8 +20,9 @@ import matplotlib.ticker as mtick
 import numpy as np
 import pandas as pd
 import plotly.express as px
+from plotly import graph_objects as go
 
-# List of time to complete each item
+# List of time to complete each item ------------------------------------------
 time_list = [
     [856, 'Table 6'],
     [971, 'Figure 2A'],
@@ -43,6 +42,10 @@ time_list = [
     [1490, 'In-text result 6'],
     # TODO: Update these to actual times once complete
     [np.nan, 'In-text result 7']]
+```
+
+```{python}
+# Create times dataframe...
 
 # Convert to dataframe
 times = pd.DataFrame(time_list, columns=['time', 'item'])
@@ -57,11 +60,13 @@ times_clean['ecdf'] = np.arange(1, len(times_clean) + 1) / len(times_clean) * 10
 times_clean.loc[-1] = [0, 'Start', 0]
 times_clean.index = times_clean.index + 1
 times_clean = times_clean.sort_index()
+
+# Convert time to hours
+times_clean['hours'] = times_clean['time']/60
 ```
 
-Correctly plot but non-interactive:
-
 ```{python}
+# Add points for the 90 degree turns in the line...
 
 # Adjust index so it goes 0 2 4 6...
 times_original = times_clean.copy()
@@ -82,8 +87,13 @@ plt_times = pd.concat([times_original, times_extra]).sort_index()
 
 # Convert time to hours
 plt_times['hours'] = plt_times['time']/60
+```
 
-# Create plot
+Non-interactive plot:
+
+```{python}
+# Create non-interactive plot with matplotlib...
+
 fig, ax = plt.subplots()
 ax.plot(plt_times['hours'], plt_times['ecdf'], marker='.', markevery=2)
 plt.xlim(0, 40)
@@ -91,20 +101,26 @@ plt.ylim(0, 100)
 plt.xlabel('Time elapsed (hours)')
 plt.ylabel('Percentage of items reproduced')
 ax.yaxis.set_major_formatter(mtick.PercentFormatter())
-#ax.grid()
-#ax.set_axisbelow(True)
 plt.show()
 ```
 
-Interactive plot but without start and end points:
+Interactive plot:
 
 ```{python}
-# Create ECDF plot
-fig = px.ecdf(times, x='time', markers=True, ecdfnorm='percent',
-              hover_data=['time', 'item'])
+# Create interactive plot with plotly express...
+
+# Create plot using combination of scatter and line
+fig = go.Figure()
+fig.add_trace(go.Scatter(
+    x=plt_times['hours'], y=plt_times['ecdf'], mode='lines', hoverinfo='skip'))
+fig.add_trace(go.Scatter(
+    x=times_clean['hours'], y=times_clean['ecdf'],
+    mode='markers', marker=dict(color='blue', size=6),
+    text=times_clean['item'], hoverinfo='text'))
 
 # Amend appearance
-fig.update_layout(xaxis_range=[0, 2400])
+fig.update_layout(xaxis_range=[0, 40], yaxis_range=[0, 100],
+                  showlegend=False)
 
 # Show plot, hiding toolbar and not allowing zoom
 fig.layout.xaxis.fixedrange = True
@@ -112,23 +128,7 @@ fig.layout.yaxis.fixedrange = True
 fig.show(config={'displayModeBar': False})
 ```
 
-Interactive plot but connected diagonally:
-
-```{python}
-# Create ECDF plot
-fig = px.line(times_clean, x='time', y='ecdf', markers=True, 
-              hover_data=['time', 'item'])
-
-# Update layout to ensure proper axis ranges
-fig.update_layout(xaxis_range=[0, 2400], yaxis_range=[0, 100])
-
-# Show plot, hiding toolbar and not allowing zoom
-fig.layout.xaxis.fixedrange = True
-fig.layout.yaxis.fixedrange = True
-fig.show(config={'displayModeBar': False})
-```
-
-:::
+## Reproduction of items from the scope
 
 ::: {.callout-note appearance="minimal" collapse=true}
 
