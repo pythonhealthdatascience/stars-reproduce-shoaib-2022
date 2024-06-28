@@ -449,8 +449,11 @@ class Patient(sim.Component):
                 else:
                     yield self.request((NCD_Nurse, 1))
 
-                yield self.hold(sim.Uniform(2, 5, 'minutes').sample())             #bounded variable-cannot take negative values
+                # Sample time with the nurse
+                # Bounded variable - cannot take negative values
+                yield self.hold(sim.Uniform(2, 5, 'minutes').sample())
                 self.release()
+
             self.enter(waitingline_OPD)
             yield self.request((doctor,1))
             self.leave(waitingline_OPD)
