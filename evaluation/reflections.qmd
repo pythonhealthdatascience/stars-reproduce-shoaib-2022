@@ -1,0 +1,118 @@
+---
+title: "Reflections"
+echo: False
+---
+
+This page contains reflections on the facilitators and barriers to this reproduction, as well as a full list of the troubleshooting steps taken to reproduce this work.
+
+## What would have helped facilitate this reproduction?
+
+TBC
+
+## Full list of troubleshooting steps
+
+::: {.callout-note appearance="minimal" collapse=true}
+## View list
+
+Troubleshooting steps are grouped by theme, and the day these occurred is given in brackets at the end of each bullet.
+
+### Environment
+
+* No environment file, and no versions for Python or Salabim in paper (2)
+* Dependencies based on PHC.py and package versions on or prior to 14th March 2021 (2)
+* Environment slow to build with lots of package conflicts (2)
+* Tried only specifying Python version but still lots of conflicts (2)
+* Switched to using mamba which returned conflict message that was much easier to understand (2)
+* Statistics required Python 2.7 - changed this and it built successfully. (2)
+* Add pathlib to environment (2)
+* Salabim not working. Tried installing Pillow. Then realised mistake was that statistics on conda/PyPi is an import to allow it to work with 2.7, but actually, statistics is a built-in python module that was introduced in Python 3.4. (2)
+* Deleted statistics and rebuilt environment, which worked fine but several more recent packages than paper, but left for now (2)
+* Add greenlet to environment (required from salabim documentation) (2)
+* Wasn't working, so rebuilt environment with older versions like I'd planned originally, and it worked fine! So probably would've worked fine to begin with (with addition of pathlib and greenlet), if I'd not included statistics (2)
+* Add `xlrd` and `pandas` to environment so can import the `.xls` files produced and process them, and `openpyxl` so could import `.xlsx` (although understand that these weren't previously in environment as the provided code did not process the results) (2)
+
+This was time consuming - approximate time (exc. long `conda` computation time for solving environment):
+
+```{python}
+import sys
+sys.path.append('../logbook/posts')
+from timings import calculate_times
+
+used_to_date = 0
+
+# Times from today
+times = [
+    ('10.31', '10.47'),
+    ('11.00', '11.01'),
+    ('11.03', '11.04'),
+    ('11.12', '11.35'),
+    ('11.51', '11.57'),
+    ('12.03', '12.37'),
+    ('13.17', '13.25') # This is an estimated time
+]
+
+calculate_times(used_to_date, times, limit=False)
+```
+
+### Results spreadsheets
+
+* Default is to produce results with a hard coded name in main folder - modified code so this goes to an `outputs/` folder and has a specified file name (2)
+* Script had code to produce two results spreadsheets: `Outputs.xlsx` (replication spreadsheet, which was active) and `Config_3(2).xlsx` (full average results spreadsheet, which was disabled). Spent some time comparing results between these spreadsheets, finding they had different labels and sometimes missing certain results. The results also did not exactly match (when comparing base configuration 1) but all were likely due to rounding differences. Later inspection of the code revealed some were created consistently, and some results were calculated differently, between the spreadsheets. One was also missing standard deviation. Made a choice to use one of the spreadsheets rather than the other. (2)
+* Had to add proportion of childbirth cases referred (2)
+* The replication spreadsheet had two OPD queue length outputs with differing results, with only one being based on the list of OPD patients (`waitingline_OPD0`), whilst the other was based on a list of delivery patients (`an_list`) (3)
+* Had to add standard deviation (3)
+* The replication spreadsheet also had two inpatient bed utilisation metrics (one calculated manually, and one based on a Salabim Resource value)
+
+### Programmatically changing the parameter values
+
+* Modified the `main()` function so that the parameters provided to that functions are inputs, so that it can be run and parameters changed from a seperate script. (2)
+* Confirming that global variables were still operating as expected, following my changes to the code. (3)
+
+### Replications
+
+* Paper lists 100 replications, but script (for which all other parameters match up with configuration 1) is set up to run with 10 replications (2)
+* Takes a very long time to run 100, and since results look so similar to with 10, largely only ran 10 replications (with exception of first item, Table 6) (4)
+* These were very slow to run, so set up parallel processing to run the model variants. (4)
+
+### Discrepancies in the article
+
+* Configuration 4 stated 4 nurses in table but 5 nurses in the text (deduced should be 4, since described as working consecutive 8 hour shifts) (3)
+* Table 3 caption describes all configurations as 6 inpatient and 1 labour bed, whilst Table 6 describes configuration 3 as 0 labour beds, but since no labour arrival, has no impact on results. (3)
+* Differences in the number of arrivals for each configuration between Table 6 and section 3.3.1 (e.g. 125 v.s. 130). As inter-arrival times were provided for these (and we use that rather than number of arrivals), this didn't have an impact. (3)
+
+### Estimating IAT
+
+* Was unclear how to get the IAT, when only the number of arrivals is provided, and had to make rough estimates for these based on the know IAT and arrival numbers (3,5)
+* For Figure 4, the estimate I was confident in did not reproduce results, but an estimate I didn't think would be right did! (5)
+
+### Consultation boundaries
+
+* Didn't initially realise I needed to change the consultation lower boundary, as well as the mean and standard deviation for the appointment, as this was not listed in Table 4 (but is in the text) (3)
+* Noticed that the original `PHC.py` script had two different boundaries before and after warm-up. Not certain if this was intentional or not, but left as is. (3)
+* Did not provide consultation boundaries to use when mean is 2.5, so had to guess these. (4)
+
+### Creating tables and/or figures
+
+* For each result, had to manually produce the table and/or figure as no code was provided for this (2,3,4)
+
+### Ambiguous/unclear scenarios
+
+For each scenario, I had to identify the required parameters from the text. This was often relatively straightforward, although in some cases, it was less so -
+
+* For Figure 2C, initially misunderstood which consultation times to use (4)
+* For Figure 4, initially misunderstood this as adding 1 or 2 extra beds, rather than being a totaly of 1 or 2 beds (5)
+* For in-text result 3, initially misunderstood the change in doctor intervention as being seperate from the admin change, rather than in addition to the admin change (6)
+* For in-text result 4, it was likely unclear if the additiona of a doctor was seperate or in addition to prior changes (although regardless, the result worked out, as just needed to be utiliation "well below 100%") (6)
+
+### Working out how to change the model to add the scenarios
+
+* Configuration has no arrivals, and was unclear how to set this in the model. Tried giving high IAT but was getting 1 antenatal arrival with every run. Instead, set ANC() and Delivery as True/False in main(), which then successfully prevented arrivals. (3)
+* For in-text result 2, spent a while understanding how admin work was generated and use, so I knew how to add code that transfers it to the nurse. It was initially challenging to identify how to reallocate these tasks. (5)
+* Likewise, for in-text result 3, it took a while to understand how and where to change the code to modify the doctor's intervention in delivery cases. (6)
+* For in-text result 5 and 7, it took a while to identify where I needed to change the script to get consistent results. For result 5, I initially made a mistake when modifying the script, replacing hard-coded values with `delivery_bed_n` when I should've replaced them with `inpatient_bed_n` (6,7)
+
+### Whether scenario parameters reported are correct
+
+* For in-text 7, I was unable to reproduce results, without changing the scenario from a change of 10% cases transferred to 20% cases transferred. Although we cannot be sure whether this was definitely the answer - or whether there is anything wrong elsewhere.
+
+:::
