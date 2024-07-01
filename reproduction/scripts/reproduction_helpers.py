@@ -6,7 +6,7 @@ import pandas as pd
 import os
 
 
-def process_results(files, xls=False, output_folder='outputs', sd=False):
+def process_results(files, xls=False, output_folder='../outputs', sd=False):
     '''
     Imports files in provided list and produces a single dataframe with mean
     results from across the replications

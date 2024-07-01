@@ -918,7 +918,7 @@ def main(
         s_replication=10,
         s_inpatient_bed_n=6,
         s_delivery_bed_n=1,
-        s_results_path='outputs',
+        s_results_path='../outputs',
         s_rep_file='outputs.xls',
         s_full_file='full_results.xlsx',
         s_output_full_results=False,
