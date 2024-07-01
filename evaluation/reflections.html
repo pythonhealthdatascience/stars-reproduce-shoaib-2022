@@ -105,35 +105,35 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">README</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_tab6.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_tab6.html">
  <span class="dropdown-text">Reproducing Table 6</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_fig2.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_fig2.html">
  <span class="dropdown-text">Reproducing Figure 2A-D</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_fig3_txt1.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_fig3_txt1.html">
  <span class="dropdown-text">Reproducing Figure 3A-D and in-text result 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_fig4.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_fig4.html">
  <span class="dropdown-text">Reproducing Figure 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_txt2.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_txt2.html">
  <span class="dropdown-text">Reproducing in-text result 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_txt34.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_txt34.html">
  <span class="dropdown-text">Reproducing in-text results 3 and 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_txt5.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_txt5.html">
  <span class="dropdown-text">Reproducing in-text result 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_txt67.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_txt67.html">
  <span class="dropdown-text">Reproducing in-text results 6 and 7</span></a>
   </li>  
     </ul>
@@ -282,6 +282,10 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>This is so it is easier to read across and judge where a result is above or below a certain Y value</li>
 </ul>
+<p>Bonus: <strong>Ease of seeds in salabim</strong></p>
+<ul>
+<li>This wasn’t necessary for the reproduction due to the replication number, but I wanted to note that a great facilitator to this work was the ease of setting a seed with salabim package. I only had to change one line of code to then get consistent results between runs (unlike other simulation software like SimPy where you have to consider the use of seeds by different sampling functions). Moreover, by default, salabim would have set a seed (this was just overwridden by choice of original authors).</li>
+</ul>
 </section>
 <section id="full-list-of-troubleshooting-steps" class="level2">
 <h2 class="anchored" data-anchor-id="full-list-of-troubleshooting-steps">Full list of troubleshooting steps</h2>
@@ -315,7 +319,7 @@ View list
 <li>Add <code>xlrd</code> and <code>pandas</code> to environment so can import the <code>.xls</code> files produced and process them, and <code>openpyxl</code> so could import <code>.xlsx</code> (although understand that these weren’t previously in environment as the provided code did not process the results) (2)</li>
 </ul>
 <p>This was time consuming - approximate time (exc. long <code>conda</code> computation time for solving environment):</p>
-<div id="0fb81fed" class="cell" data-execution_count="1">
+<div id="2c4bf9fc" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>Time spent today: 89m, or 1h 29m
 Total used to date: 89m, or 1h 29m</code></pre>
@@ -346,6 +350,7 @@ Total used to date: 89m, or 1h 29m</code></pre>
 <li>Paper lists 100 replications, but script (for which all other parameters match up with configuration 1) is set up to run with 10 replications (2)</li>
 <li>Takes a very long time to run 100, and since results look so similar to with 10, largely only ran 10 replications (with exception of first item, Table 6) (4)</li>
 <li>These were very slow to run, so set up parallel processing to run the model variants. (4)</li>
+<li>Changed Table 6 to also run 10 replications (8)</li>
 </ul>
 </section>
 <section id="discrepancies-in-the-article" class="level3">
@@ -399,7 +404,13 @@ Total used to date: 89m, or 1h 29m</code></pre>
 <section id="whether-scenario-parameters-reported-are-correct" class="level3">
 <h3 class="anchored" data-anchor-id="whether-scenario-parameters-reported-are-correct">Whether scenario parameters reported are correct</h3>
 <ul>
-<li>For in-text 7, I was unable to reproduce results, without changing the scenario from a change of 10% cases transferred to 20% cases transferred. Although we cannot be sure whether this was definitely the answer - or whether there is anything wrong elsewhere.</li>
+<li>For in-text 7, I was unable to reproduce results, without changing the scenario from a change of 10% cases transferred to 20% cases transferred. Although we cannot be sure whether this was definitely the answer - or whether there is anything wrong elsewhere. (7)</li>
+</ul>
+</section>
+<section id="seeds" class="level3">
+<h3 class="anchored" data-anchor-id="seeds">Seeds</h3>
+<ul>
+<li>Add seed so get consistent results between runs (since was not needed to assess reproduction success, added during research compendium stage) (8)</li>
 </ul>
 </section>
 </div>

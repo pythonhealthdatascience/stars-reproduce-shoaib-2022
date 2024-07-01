@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -105,35 +139,35 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">README</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_tab6.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_tab6.html">
  <span class="dropdown-text">Reproducing Table 6</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_fig2.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_fig2.html">
  <span class="dropdown-text">Reproducing Figure 2A-D</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_fig3_txt1.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_fig3_txt1.html">
  <span class="dropdown-text">Reproducing Figure 3A-D and in-text result 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_fig4.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_fig4.html">
  <span class="dropdown-text">Reproducing Figure 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_txt2.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_txt2.html">
  <span class="dropdown-text">Reproducing in-text result 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_txt34.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_txt34.html">
  <span class="dropdown-text">Reproducing in-text results 3 and 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_txt5.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_txt5.html">
  <span class="dropdown-text">Reproducing in-text result 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reproduction/reproduce_txt67.html">
+    <a class="dropdown-item" href="../reproduction/scripts/reproduce_txt67.html">
  <span class="dropdown-text">Reproducing in-text results 6 and 7</span></a>
   </li>  
     </ul>
@@ -247,42 +281,82 @@ ul.task-list li input[type="checkbox"] {
 <!-- TODO: Fill out the README -->
 <section id="model-summary" class="level2">
 <h2 class="anchored" data-anchor-id="model-summary">Model summary</h2>
-<p>TBC</p>
+<blockquote class="blockquote">
+<p>Shoaib M, Ramamohan V. <strong>Simulation modeling and analysis of primary health center operations</strong>. <em>SIMULATION</em> 98(3):183-208. (2022). <a href="https://doi.org/10.1177/00375497211030931" class="uri">https://doi.org/10.1177/00375497211030931</a>.</p>
+</blockquote>
+<p>This is a discrete-event simulation modelling primary health centres (PHCs) in India. There are four patient types: outpatients, inpatients, childbirth cases and antenatal care patients. Four model configurations are developed based on observed PHC practices or government-mandated operational guidelines. The paper explores different operational patterns for scenarios where very high utilisation was observed, to explore what might help reduce utilisation of these resources.</p>
 </section>
 <section id="scope-of-the-reproduction" class="level2">
 <h2 class="anchored" data-anchor-id="scope-of-the-reproduction">Scope of the reproduction</h2>
-<p>TBC</p>
+<p>In this assessment, we attempted to reproduce 17 items: 1 table, 9 figures, and 7 in-text results.</p>
 </section>
 <section id="reproducing-these-results" class="level2">
 <h2 class="anchored" data-anchor-id="reproducing-these-results">Reproducing these results</h2>
 <section id="repository-overview" class="level3">
 <h3 class="anchored" data-anchor-id="repository-overview">Repository overview</h3>
-<p>TBC</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> data</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └──  ...</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> docker</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └──  ...</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> output</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └──  ...</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> sim</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └──  ...</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> tests</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └──  ...</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> environment.yaml</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> Makefile</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> README.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>docker/</code> - Instructions for creation of Docker container.</li>
+<li><code>outputs/</code> - Output files from the model.</li>
+<li><code>scripts/</code> - Code the model and for reproducing items from the scope.</li>
+<li><code>tests/</code> - Test to check that model produces consistent results with our reproduction.</li>
+<li><code>environment.yml</code> - Instructions for creation of python environment.</li>
+<li><code>README.md</code> - This file!</li>
+<li><code>run_all.py</code> - Contains instructions to run all the jupyter nobteooks in <code>scripts/</code> in sequence.</li>
+</ul>
 </section>
 <section id="step-1.-set-up-environment" class="level3">
 <h3 class="anchored" data-anchor-id="step-1.-set-up-environment">Step 1. Set up environment</h3>
-<p>TBC</p>
+<p>You’ll first want create an environment with the specified version of Python and the required packages installed. There are a few options…</p>
+<p>Option A: <strong>Conda/Mamba environment</strong></p>
+<blockquote class="blockquote">
+<p>Create the environment using this command in your terminal: <code>conda env create -f environment.yaml</code></p>
+<p>You can use this environment in your preferred IDE, such as VSCode.</p>
+<p>You can also use this file to create the environment using mamba: <code>mamba env create -f environment.yml</code></p>
+</blockquote>
+<p>Option B: <strong>Docker</strong></p>
+<blockquote class="blockquote">
+<p>You’ll need <code>docker</code> installed on your local machine. You can then obtain the image by either:</p>
+<ul>
+<li>Pulling a pre-built image from the GitHub container registry by running <code>docker pull ghcr.io/pythonhealthdatascience/shoaib2022:latest</code>, or</li>
+<li>Building the image locally from the Dockerfile by running <code>docker build --tag shoaib2022 .</code></li>
+</ul>
+<p>To run the image, you should then issue the following commands in your terminal:</p>
+<ul>
+<li><code>docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022</code></li>
+<li><code>conda activate shoaib2022</code></li>
+</ul>
+</blockquote>
 </section>
 <section id="step-2.-running-the-model" class="level3">
 <h3 class="anchored" data-anchor-id="step-2.-running-the-model">Step 2. Running the model</h3>
-<p>TBC</p>
+<!-- Add steps for running model and tests -->
 </section>
 </section>
 <section id="reproduction-specs-and-runtime" class="level2">
 <h2 class="anchored" data-anchor-id="reproduction-specs-and-runtime">Reproduction specs and runtime</h2>
-<p>TBC</p>
-<!-- Hint: On Linux, you can find specs by running the following commands in the terminal:
-cat /etc/os-release  # Shows operating system and version
-lscpu  # Shows computer model
-free -g  # Shows RAM in GB (combine total column) -->
+<p>This reproduction was conducted on an Intel Core i7-12700H with 32GB RAM running Ubuntu 22.04.4 Linux.</p>
+<p>Expected model runtime (given these specs) is <!-- Add times --></p>
 </section>
 <section id="citation" class="level2">
 <h2 class="anchored" data-anchor-id="citation">Citation</h2>
-<p>TBC</p>
+<p>To cite the original study, please refer to the reference above. To cite this reproduction, please refer to the CITATION.cff file in the parent folder.</p>
 </section>
 <section id="license" class="level2">
 <h2 class="anchored" data-anchor-id="license">License</h2>
-<p>TBC</p>
+<p>This repository is licensed under the MIT License.</p>
 
 
 </section>
