@@ -1,0 +1,24 @@
+---
+title: "Day 8"
+author: "Amy Heather"
+date: "2024-07-01"
+categories: [report, compendium]
+---
+
+::: {.callout-note}
+
+Reflections, summary report and research compendium.
+
+:::
+
+## Reflections
+
+Created reflections page with full list of troubleshooting steps, and a summarised list of barriers and facilitators to the reproduction, to learn from.
+
+## Summary report
+
+Finished up summary report.
+
+## Research compendium
+
+Making changes to the repository (as specified in the protocol) so it can serve as a "research compendium".
