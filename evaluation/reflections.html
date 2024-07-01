@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Reproducing Shoaib and Ramamohan 2022 - README for reproduction</title>
+<title>Reproducing Shoaib and Ramamohan 2022 - Reflections</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -174,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Summary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../evaluation/reflections.html"> 
+    <a class="nav-link active" href="../evaluation/reflections.html" aria-current="page"> 
 <span class="menu-text">Reflections</span></a>
   </li>  
 </ul>
@@ -200,30 +200,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#reproduction-readme" id="toc-reproduction-readme" class="nav-link active" data-scroll-target="#reproduction-readme">Reproduction README</a>
-  <ul class="collapse">
-  <li><a href="#model-summary" id="toc-model-summary" class="nav-link" data-scroll-target="#model-summary">Model summary</a></li>
-  <li><a href="#scope-of-the-reproduction" id="toc-scope-of-the-reproduction" class="nav-link" data-scroll-target="#scope-of-the-reproduction">Scope of the reproduction</a></li>
-  <li><a href="#reproducing-these-results" id="toc-reproducing-these-results" class="nav-link" data-scroll-target="#reproducing-these-results">Reproducing these results</a>
-  <ul class="collapse">
-  <li><a href="#repository-overview" id="toc-repository-overview" class="nav-link" data-scroll-target="#repository-overview">Repository overview</a></li>
-  <li><a href="#step-1.-set-up-environment" id="toc-step-1.-set-up-environment" class="nav-link" data-scroll-target="#step-1.-set-up-environment">Step 1. Set up environment</a></li>
-  <li><a href="#step-2.-running-the-model" id="toc-step-2.-running-the-model" class="nav-link" data-scroll-target="#step-2.-running-the-model">Step 2. Running the model</a></li>
-  </ul></li>
-  <li><a href="#reproduction-specs-and-runtime" id="toc-reproduction-specs-and-runtime" class="nav-link" data-scroll-target="#reproduction-specs-and-runtime">Reproduction specs and runtime</a></li>
-  <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
-  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
-  </ul></li>
+  <li><a href="#what-would-have-helped-facilitate-this-reproduction" id="toc-what-would-have-helped-facilitate-this-reproduction" class="nav-link active" data-scroll-target="#what-would-have-helped-facilitate-this-reproduction">What would have helped facilitate this reproduction?</a></li>
+  <li><a href="#full-list-of-troubleshooting-steps" id="toc-full-list-of-troubleshooting-steps" class="nav-link" data-scroll-target="#full-list-of-troubleshooting-steps">Full list of troubleshooting steps</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/quarto_site/reproduction_readme.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/evaluation/reflections.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">README for reproduction</h1>
-<p class="subtitle lead">This page contains a copy of the README produced to support reproduction</p>
+<h1 class="title">Reflections</h1>
 </div>
 
 
@@ -240,52 +227,186 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="reproduction-readme" class="level1">
-<h1>Reproduction README</h1>
-<!-- TODO: Remove this warning once filled out README -->
-<p><strong>Please note: This is a template README and has not yet been completed</strong></p>
-<!-- TODO: Fill out the README -->
-<section id="model-summary" class="level2">
-<h2 class="anchored" data-anchor-id="model-summary">Model summary</h2>
-<p>TBC</p>
+<p>This page contains reflections on the facilitators and barriers to this reproduction, as well as a full list of the troubleshooting steps taken to reproduce this work.</p>
+<section id="what-would-have-helped-facilitate-this-reproduction" class="level2">
+<h2 class="anchored" data-anchor-id="what-would-have-helped-facilitate-this-reproduction">What would have helped facilitate this reproduction?</h2>
+<p><strong>Provide environment (packages and versions)</strong></p>
+<ul>
+<li>Not all packages needed will be listed in the imports (e.g.&nbsp;greenlet, pathlib)</li>
+<li>Didn’t work with latest package versions, had to backdate it for it to work</li>
+<li>Struggled making environment due to confusion around base package statistics, which had mixed up with one that can be imported from conda/pypi</li>
+<li>Time consuming (apx. 1h30 exc. computation time)</li>
+</ul>
+<p><strong>Make clear results with all outputs</strong></p>
+<ul>
+<li>Spent some time comparing two alternative results spreadsheets, which had slightly different results for the same metrics, which was a little confusing</li>
+<li>Also, the same spreadsheet sometimes had duplicate metrics (either with the same or differing results), which again, could be a bit confusing</li>
+<li>Had to add some outputs and calculations (e.g.&nbsp;proportion of childbirth cases referred, standard deviation)</li>
+</ul>
+<p><strong>Write the model so it can be modified programmatically and avoid hard-coded values</strong></p>
+<ul>
+<li>This is so you don’t have to directly change parameters in the script itself.</li>
+<li>Makes it easier for reproduction to run multiple versions of the model using the same script</li>
+<li>Makes hidden errors less likely (e.g.&nbsp;if miss changing a parameter somewhere, or input the wrong parameters and don’t realise)</li>
+<li>Also, makes it easier for scenario analyses, to spot where need to change hard-coded values</li>
+</ul>
+<p><strong>Try to improve speed of model where possible</strong></p>
+<ul>
+<li>Slow run time meant I introduced parallel processing for the model variants, and generally only ran 10 rather than 100 replications</li>
+</ul>
+<p><strong>Give all parameters for a given scenario in a single table</strong></p>
+<ul>
+<li>For example, initially didn’t realise that had to change consultation boundaries as well as mean and standard deviation, as this is not listed in Table 4 (although is in the text)</li>
+<li>Can be difficult to identify parameters for the scenarios if they are not provided in a table or in the script, but are only described in the article</li>
+<li>There were some discrepancies in the parameters of the scenarios between the main text of the article and the tables and figures. This could’ve been helped by more comprehensive tables or outlines of the parameters for each configuration and scenario, so that you weren’t having to rely on combining the text and tables/figures.</li>
+<li>Some parameters that could not be calculated were not provided - ie. what consultation boundaries to use when mean length of doctor consultation was 2.5 minutes</li>
+<li>Some scenarios were quite ambiguous/unclear from their description in the text, and I initially misunderstood the required parameters for the scenarios</li>
+</ul>
+<p><strong>Explain how to calculate parameters, if not provided</strong></p>
+<ul>
+<li>Was unclear how to estimate inter-arrival time (when only provided number of arrivals)</li>
+</ul>
+<p><strong>Provide code to process results into tables and/or figures</strong></p>
+<ul>
+<li>It took a little bit of time to create the tables and figures from scratch, making them visually similar to the original article</li>
+</ul>
+<p><strong>Provide code for scenarios</strong></p>
+<ul>
+<li>There were several instances where it took quite a while to understand how and where to modify the code in order to run scenarios (e.g.&nbsp;no arrivals, transferring admin work, reducing doctor intervention in deliveries)</li>
+</ul>
+<p><strong>Reduce duplication of code</strong></p>
+<ul>
+<li>The model often contained very similar code before or after warm-up. This has the potential to introduce mistakes - with a suspected (although unconfirmed) mistake being that the lower boundary for the doctor consultation times in configuration 1 differed before and after warm-up.</li>
+</ul>
+<p><strong>Including tick marks/grid lines on axes</strong></p>
+<ul>
+<li>This is so it is easier to read across and judge where a result is above or below a certain Y value</li>
+</ul>
 </section>
-<section id="scope-of-the-reproduction" class="level2">
-<h2 class="anchored" data-anchor-id="scope-of-the-reproduction">Scope of the reproduction</h2>
-<p>TBC</p>
+<section id="full-list-of-troubleshooting-steps" class="level2">
+<h2 class="anchored" data-anchor-id="full-list-of-troubleshooting-steps">Full list of troubleshooting steps</h2>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+View list
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Troubleshooting steps are grouped by theme, and the day these occurred is given in brackets at the end of each bullet.</p>
+<section id="environment" class="level3">
+<h3 class="anchored" data-anchor-id="environment">Environment</h3>
+<ul>
+<li>No environment file, and no versions for Python or Salabim in paper (2)</li>
+<li>Dependencies based on PHC.py and package versions on or prior to 14th March 2021 (2)</li>
+<li>Environment slow to build with lots of package conflicts (2)</li>
+<li>Tried only specifying Python version but still lots of conflicts (2)</li>
+<li>Switched to using mamba which returned conflict message that was much easier to understand (2)</li>
+<li>Statistics required Python 2.7 - changed this and it built successfully. (2)</li>
+<li>Add pathlib to environment (2)</li>
+<li>Salabim not working. Tried installing Pillow. Then realised mistake was that statistics on conda/PyPi is an import to allow it to work with 2.7, but actually, statistics is a built-in python module that was introduced in Python 3.4. (2)</li>
+<li>Deleted statistics and rebuilt environment, which worked fine but several more recent packages than paper, but left for now (2)</li>
+<li>Add greenlet to environment (required from salabim documentation) (2)</li>
+<li>Wasn’t working, so rebuilt environment with older versions like I’d planned originally, and it worked fine! So probably would’ve worked fine to begin with (with addition of pathlib and greenlet), if I’d not included statistics (2)</li>
+<li>Add <code>xlrd</code> and <code>pandas</code> to environment so can import the <code>.xls</code> files produced and process them, and <code>openpyxl</code> so could import <code>.xlsx</code> (although understand that these weren’t previously in environment as the provided code did not process the results) (2)</li>
+</ul>
+<p>This was time consuming - approximate time (exc. long <code>conda</code> computation time for solving environment):</p>
+<div id="0fb81fed" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>Time spent today: 89m, or 1h 29m
+Total used to date: 89m, or 1h 29m</code></pre>
+</div>
+</div>
 </section>
-<section id="reproducing-these-results" class="level2">
-<h2 class="anchored" data-anchor-id="reproducing-these-results">Reproducing these results</h2>
-<section id="repository-overview" class="level3">
-<h3 class="anchored" data-anchor-id="repository-overview">Repository overview</h3>
-<p>TBC</p>
+<section id="results-spreadsheets" class="level3">
+<h3 class="anchored" data-anchor-id="results-spreadsheets">Results spreadsheets</h3>
+<ul>
+<li>Default is to produce results with a hard coded name in main folder - modified code so this goes to an <code>outputs/</code> folder and has a specified file name (2)</li>
+<li>Script had code to produce two results spreadsheets: <code>Outputs.xlsx</code> (replication spreadsheet, which was active) and <code>Config_3(2).xlsx</code> (full average results spreadsheet, which was disabled). Spent some time comparing results between these spreadsheets, finding they had different labels and sometimes missing certain results. The results also did not exactly match (when comparing base configuration 1) but all were likely due to rounding differences. Later inspection of the code revealed some were created consistently, and some results were calculated differently, between the spreadsheets. One was also missing standard deviation. Made a choice to use one of the spreadsheets rather than the other. (2)</li>
+<li>Had to add proportion of childbirth cases referred (2)</li>
+<li>The replication spreadsheet had two OPD queue length outputs with differing results, with only one being based on the list of OPD patients (<code>waitingline_OPD</code>), whilst the other was based on a list of delivery patients (<code>an_list</code>) (3)</li>
+<li>Had to add standard deviation (3)</li>
+<li>The replication spreadsheet also had two inpatient bed utilisation metrics (one calculated manually, and one based on a Salabim Resource value)</li>
+</ul>
 </section>
-<section id="step-1.-set-up-environment" class="level3">
-<h3 class="anchored" data-anchor-id="step-1.-set-up-environment">Step 1. Set up environment</h3>
-<p>TBC</p>
+<section id="programmatically-changing-the-parameter-values" class="level3">
+<h3 class="anchored" data-anchor-id="programmatically-changing-the-parameter-values">Programmatically changing the parameter values</h3>
+<ul>
+<li>Modified the <code>main()</code> function so that the parameters provided to that functions are inputs, so that it can be run and parameters changed from a seperate script. (2)</li>
+<li>Confirming that global variables were still operating as expected, following my changes to the code. (3)</li>
+</ul>
 </section>
-<section id="step-2.-running-the-model" class="level3">
-<h3 class="anchored" data-anchor-id="step-2.-running-the-model">Step 2. Running the model</h3>
-<p>TBC</p>
+<section id="replications" class="level3">
+<h3 class="anchored" data-anchor-id="replications">Replications</h3>
+<ul>
+<li>Paper lists 100 replications, but script (for which all other parameters match up with configuration 1) is set up to run with 10 replications (2)</li>
+<li>Takes a very long time to run 100, and since results look so similar to with 10, largely only ran 10 replications (with exception of first item, Table 6) (4)</li>
+<li>These were very slow to run, so set up parallel processing to run the model variants. (4)</li>
+</ul>
 </section>
+<section id="discrepancies-in-the-article" class="level3">
+<h3 class="anchored" data-anchor-id="discrepancies-in-the-article">Discrepancies in the article</h3>
+<ul>
+<li>Configuration 4 stated 4 nurses in table but 5 nurses in the text (deduced should be 4, since described as working consecutive 8 hour shifts) (3)</li>
+<li>Table 3 caption describes all configurations as 6 inpatient and 1 labour bed, whilst Table 6 describes configuration 3 as 0 labour beds, but since no labour arrival, has no impact on results. (3)</li>
+<li>Differences in the number of arrivals for each configuration between Table 6 and section 3.3.1 (e.g.&nbsp;125 v.s. 130). As inter-arrival times were provided for these (and we use that rather than number of arrivals), this didn’t have an impact. (3)</li>
+</ul>
 </section>
-<section id="reproduction-specs-and-runtime" class="level2">
-<h2 class="anchored" data-anchor-id="reproduction-specs-and-runtime">Reproduction specs and runtime</h2>
-<p>TBC</p>
-<!-- Hint: On Linux, you can find specs by running the following commands in the terminal:
-cat /etc/os-release  # Shows operating system and version
-lscpu  # Shows computer model
-free -g  # Shows RAM in GB (combine total column) -->
+<section id="estimating-iat" class="level3">
+<h3 class="anchored" data-anchor-id="estimating-iat">Estimating IAT</h3>
+<ul>
+<li>Was unclear how to get the IAT, when only the number of arrivals is provided, and had to make rough estimates for these based on the know IAT and arrival numbers (3,5)</li>
+<li>For Figure 4, the estimate I was confident in did not reproduce results, but an estimate I didn’t think would be right did! (5)</li>
+</ul>
 </section>
-<section id="citation" class="level2">
-<h2 class="anchored" data-anchor-id="citation">Citation</h2>
-<p>TBC</p>
+<section id="consultation-boundaries" class="level3">
+<h3 class="anchored" data-anchor-id="consultation-boundaries">Consultation boundaries</h3>
+<ul>
+<li>Didn’t initially realise I needed to change the consultation lower boundary, as well as the mean and standard deviation for the appointment, as this was not listed in Table 4 (but is in the text) (3)</li>
+<li>Noticed that the original <code>PHC.py</code> script had two different boundaries before and after warm-up. Not certain if this was intentional or not, but left as is. (3)</li>
+<li>Did not provide consultation boundaries to use when mean is 2.5, so had to guess these. (4)</li>
+</ul>
 </section>
-<section id="license" class="level2">
-<h2 class="anchored" data-anchor-id="license">License</h2>
-<p>TBC</p>
+<section id="creating-tables-andor-figures" class="level3">
+<h3 class="anchored" data-anchor-id="creating-tables-andor-figures">Creating tables and/or figures</h3>
+<ul>
+<li>For each result, had to manually produce the table and/or figure as no code was provided for this (2,3,4)</li>
+</ul>
+</section>
+<section id="ambiguousunclear-scenarios" class="level3">
+<h3 class="anchored" data-anchor-id="ambiguousunclear-scenarios">Ambiguous/unclear scenarios</h3>
+<p>For each scenario, I had to identify the required parameters from the text. This was often relatively straightforward, although in some cases, it was less so -</p>
+<ul>
+<li>For Figure 2C, initially misunderstood which consultation times to use (4)</li>
+<li>For Figure 4, initially misunderstood this as adding 1 or 2 extra beds, rather than being a totaly of 1 or 2 beds (5)</li>
+<li>For in-text result 3, initially misunderstood the change in doctor intervention as being seperate from the admin change, rather than in addition to the admin change (6)</li>
+<li>For in-text result 4, it was likely unclear if the additiona of a doctor was seperate or in addition to prior changes (although regardless, the result worked out, as just needed to be utiliation “well below 100%”) (6)</li>
+</ul>
+</section>
+<section id="working-out-how-to-change-the-model-to-add-the-scenarios" class="level3">
+<h3 class="anchored" data-anchor-id="working-out-how-to-change-the-model-to-add-the-scenarios">Working out how to change the model to add the scenarios</h3>
+<ul>
+<li>Configuration has no arrivals, and was unclear how to set this in the model. Tried giving high IAT but was getting 1 antenatal arrival with every run. Instead, set ANC() and Delivery as True/False in main(), which then successfully prevented arrivals. (3)</li>
+<li>For in-text result 2, spent a while understanding how admin work was generated and use, so I knew how to add code that transfers it to the nurse. It was initially challenging to identify how to reallocate these tasks. (5)</li>
+<li>Likewise, for in-text result 3, it took a while to understand how and where to change the code to modify the doctor’s intervention in delivery cases. (6)</li>
+<li>For in-text result 5 and 7, it took a while to identify where I needed to change the script to get consistent results. For result 5, I initially made a mistake when modifying the script, replacing hard-coded values with <code>delivery_bed_n</code> when I should’ve replaced them with <code>inpatient_bed_n</code> (6,7)</li>
+</ul>
+</section>
+<section id="whether-scenario-parameters-reported-are-correct" class="level3">
+<h3 class="anchored" data-anchor-id="whether-scenario-parameters-reported-are-correct">Whether scenario parameters reported are correct</h3>
+<ul>
+<li>For in-text 7, I was unable to reproduce results, without changing the scenario from a change of 10% cases transferred to 20% cases transferred. Although we cannot be sure whether this was definitely the answer - or whether there is anything wrong elsewhere.</li>
+</ul>
+</section>
+</div>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -722,7 +843,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/quarto_site/reproduction_readme.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/evaluation/reflections.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
