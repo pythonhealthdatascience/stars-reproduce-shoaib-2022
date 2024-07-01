@@ -1104,7 +1104,7 @@ def main(
     global doctor_delivery_scenario
     global opd_ncd_to_staff
 
-    ncd_util =[]
+    ncd_util = []
     bed_util = []
 
     OPD_q_waiting_time_list = []            # stores waiting time in OPD queue for each replication
@@ -1168,7 +1168,7 @@ def main(
 
     for x in range(0, replication):
         n = np.random.randint(0, 101)
-        env = sim.Environment(trace=False, random_seed='', time_unit='minutes')
+        env = sim.Environment(trace=False, random_seed=42, time_unit='minutes')
         simulation_time = days*shifts*hours*60
         NCD_Nurse = sim.Resource("Staff nurse 1", capacity=NCD_nurse_cap )
         staff_nurse = sim.Resource("Staff nurse", capacity=3)
