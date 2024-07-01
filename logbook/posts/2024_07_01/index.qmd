@@ -22,3 +22,19 @@ Finished up summary report.
 ## Research compendium
 
 Making changes to the repository (as specified in the protocol) so it can serve as a "research compendium".
+
+* Moved all python files into a `scripts/` folder. Amended paths in these scripts, e.g. the location of `outputs/` to `../outputs` for when importing or saving results.
+* Add seed so we get consistent results between runs
+    * By default, Salabim sets random seed 1234567, but the study authors had set `sim.Environment(trace=False, random_seed='', time_unit='minutes')`, which we know from the [documentation](https://www.salabim.org/manual/Distributions.html) means no reseeding.
+    * As we want to enable reproducible results between runs (for writing up the results obtained, and for testing), modified `PHC.py` to set seed to 42 in environment.
+    * I ran one of the notebooks twice and observed no change in the results between those runs, confirming this had been set up easily and successfully.
+    * Note: Set suggestion to implement seeds during reproduction stage in the protocol, although this is focused on being able to compare your results to the original, and needing a seed if it varies too much to do so. In this case, since the number of replications was sufficient to observe minimal variation, I did not implement at that stage, and instead add them now.
+    * However, then realised I had forgot to change the seed between replications, and so was just getting the sample result for every replication. As such, modified seed so it increments with each replication (as replications are run in `PHC.py` using a for loop). Re-ran notebook twice and confirmed there was no change.
+* Changed Table 6 to run to 10 replications, alike the other outcomes, as this is simpler for reproduction and as we know that there are relatively minimal differences between 10 and 100 replications (as you can see from commit [59f6ada](https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/d34fc6894aeb14702de1c2ff29cd08fb63e22f6a/reproduction/reproduce_tab6.ipynb)).
+* Run notebooks using single command
+    * Tried running `nbconvert` from command line or `Makefile`, but fails to use environment, returning `ModuleNotFoundError: No module named 'salabim'`
+    * Tried downgrading `nbconvert` but issue persists
+    * Tried setting jupyter interpreter in VSCode settings, and that said I needed to install package `notebook`
+    * Then, realised I needed to add it as a kernel for jupyter (so it would appear when run `jupyter kernelspec list`). Did so by running `source activate shoaib2022`, `python -m ipykernel install --user --name shoaib2022`, then `source deactivate`
+* Create tests
+    * Initially explored exporting each `dict_list` from the reproduction notebooks using pickle (`with open('saved_dictionary.pkl', 'wb') as f: pickle.dump(dictionary, f)`). However, decided this was then contrary to the principles of testing, where want to be defining each parameter used in the test, so instead set this up manually for each configuration.
