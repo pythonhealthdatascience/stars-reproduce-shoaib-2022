@@ -1,6 +1,6 @@
 ---
 title: "Summary report"
-subtitle: "For computational reproducibility assessment of Author et al. Year"
+subtitle: "For computational reproducibility assessment of Shoaib and Ramamohan 2022"
 format:
   html:
     page-layout: full
@@ -8,16 +8,11 @@ echo: False
 bibliography: ../quarto_site/references.bib
 ---
 
-<!-- TODO: Remove this warning once filled out report -->
-**Please note: This is a template page and has not yet been completed**
-
-<!-- TODO: Use this skeleton to create a summary report -->
-
 ## Study
 
-> [Authors]. **[Title]**. *[Journal]* [Volume], [Edition] ([Year]). <[URL]>.
+> Shoaib M, Ramamohan V. **Simulation modeling and analysis of primary health center operations**. *SIMULATION* 98(3):183-208. (2022). <https://doi.org/10.1177/00375497211030931>.
 
-[Paragraph summarising model]
+This is a discrete-event simulation modelling primary health centres (PHCs) in India. There are four patient types: outpatients, inpatients, childbirth cases and antenatal care patients. Four model configurations are developed based on observed PHC practices or government-mandated operational guidelines. The paper explores different operational patterns for scenarios where very high utilisation was observed, to explore what might help reduce utilisation of these resources.
 
 Images on this page are sourced from @shoaib_simulation_2021, which is shared under [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/).
 
@@ -27,11 +22,20 @@ Successfully reproduced **16 out of 17 (94%)** of items in the scope in **28h 14
 
 Required troubleshooting:
 
-* [List of required changes to code]
+* **Environment** - took a while to set-up the environment with all packages and versions needed (some packages not listed in imports, and lots of confusion around statistics package which has base from Python 3.4 and a version on conda)
+* **Results spreadsheets** - there were two possible results spreadsheets, and between and within these, there were multiple metrics for the same output that sometimes had differing results. Had to identify which spreadsheet and metric to use, as well as add some outputs that were missing.
+* **Programmatically changing parameter values** - had to modify script to remove some hard-coded parameters, and to allow parameters to modified by a second script (rather than needing to directly change the model code)
+* **Replications and run time** - due to slow model run time, set up parallel processing and reduced the number of replications
+* **Identifying parameters for each scenario** - the configuration parameters were mostly provided in a table, whilst the scenarios were largely described in the text. It took some time to identify the parameters/context of each scenario, particuarly as there were sometimes discrepancies, and as some scenarioes were quite ambiguous and I initially misunderstood them
+* **Estimating parameters** - had to estimate/guess some inter-arrival times and consultation boundaries, as they were not provided, and a method to calculate them was not provided
+* **Writing code to create tables and figures**
+* **Working out how to change the model for each scenario** - for several scenarios, it took some time looking through the model code to understand how I needed to change it to implement a scenario
 
 ::: {.panel-tabset}
 
 ## Table 6
+
+Table 6. “Operational outcomes for each PHC configuration simulation. * Number of doctors/OPD cases/IPD cases/childbirth/ANC (patients)/inpatient beds/labour room” @shoaib_simulation_2021
 
 ```{python}
 import pandas as pd
@@ -45,67 +49,81 @@ dfi.export(df, f'{file}.png')
 ![Original](../original_study/tab6.png){width=49% .lightbox}
 ![Reproduction](../reproduction/outputs/tab6.png){width=49% .lightbox}
 
-<!-- Example:
-
-![Original](../original_study/article_fig2.png){width=49% .lightbox}
-![Reproduction](../reproduction/output/patients_base_3_month.png){width=49% .lightbox} -->
-
 ## Figure 2A
+
+Figure 2a. "Impact on doctor's utilisation." @shoaib_simulation_2021
 
 ![Original](../original_study/fig2a.png){width=49% .lightbox}
 ![Reproduction](../reproduction/outputs/fig2a.png){width=49% .lightbox}
 
 ## Figure 2B
 
+Figure 2b. "Impact on the NCD nurse’s utilisation." @shoaib_simulation_2021
+
 ![Original](../original_study/fig2b.png){width=49% .lightbox}
 ![Reproduction](../reproduction/outputs/fig2b.png){width=49% .lightbox}
 
 ## Figure 2C
+
+Figure 2c. "Impact on the average waiting time (minutes) in the OPD". @shoaib_simulation_2021
 
 ![Original](../original_study/fig2c.png){width=49% .lightbox}
 ![Reproduction](../reproduction/outputs/fig2c.png){width=49% .lightbox}
 
 ## Figure 2D
 
+Figure 2d. "Impact on the average waiting time (minutes) in the pharmacy". @shoaib_simulation_2021
+
 ![Original](../original_study/fig2d.png){width=49% .lightbox}
 ![Reproduction](../reproduction/outputs/fig2d.png){width=49% .lightbox}
 
 ## Figure 3A
+
+Figure 3a. "Impact on the doctor’s utilisation. Two levels of outpatient consultation times (minutes) are used". @shoaib_simulation_2021
 
 ![Original](../original_study/fig3a.png){width=49% .lightbox}
 ![Reproduction](../reproduction/outputs/fig3a.png){width=49% .lightbox}
 
 ## Figure 3B
 
+Figure 3b. "Impact on the staff nurse’s utilisation". @shoaib_simulation_2021
+
 ![Original](../original_study/fig3b.png){width=49% .lightbox}
 ![Reproduction](../reproduction/outputs/fig3b.png){width=49% .lightbox}
 
 ## Figure 3C
+
+Figure 3c. "Impact on the inpatient bed’s utilisation". @shoaib_simulation_2021
 
 ![Original](../original_study/fig3c.png){width=49% .lightbox}
 ![Reproduction](../reproduction/outputs/fig3c.png){width=49% .lightbox}
 
 ## Figure 3D
 
+Figure 3d. "Impact on the proportion of childbirth cases referred elsewhere". @shoaib_simulation_2021
+
 ![Original](../original_study/fig3d.png){width=49% .lightbox}
 ![Reproduction](../reproduction/outputs/fig3d.png){width=49% .lightbox}
 
 ## Figure 4
+
+Figure 4. "Effect of including additional labour beds on proportion of childbirth patients referred elsewhere". @shoaib_simulation_2021
 
 ![Original](../original_study/fig4.png){width=49% .lightbox}
 ![Reproduction](../reproduction/outputs/fig4.png){width=49% .lightbox}
 
 ## In-text result 1
 
-"We also note that waiting times for outpatient-related resources (laboratory, OPD consultation, etc. - not depicted in Figures 3a – 3d) increase marginally because the associated resources are also required by inpatient/childbirth/ANC cases, which increase in number in the above scenarios"
+"We also note that waiting times for **outpatient-related resources** (laboratory, OPD consultation, etc. - not depicted in Figures 3a – 3d) **increase marginally** because the associated resources are also required by inpatient/childbirth/ANC cases, which increase in number in the above scenarios" @shoaib_simulation_2021
 
+Reproduction (marginal increases from (1/1/1) through to (2/2/2)):
 ```{python}
 pd.read_csv('../reproduction/outputs/intext1.csv')
 ```
 
 ## In-text result 2
 
-"To address this, we experimented with letting the staff nurse (whose utilisation is approximately 32%) take over the administrative work. This led to a 12% drop in the utilisation level, which implied that the doctor’s utilisation still exceeded 100%. Implementing this measure resulted in increasing the staff nurse utilisation to nearly 40%."
+"To address this, we experimented with letting the staff nurse (whose utilisation is approximately 32%) take over the administrative work. This led to a **12% drop in the utilisation level**, which implied that the doctor’s utilisation still exceeded 100%. Implementing this measure resulted in increasing the **staff nurse utilisation to nearly 40%**." @shoaib_simulation_2021
 
 ```{python}
 pd.read_csv('../reproduction/outputs/intext2.csv')
@@ -113,7 +131,7 @@ pd.read_csv('../reproduction/outputs/intext2.csv')
 
 ## In-text result 3
 
-"...then considered a situation wherein the staff nurses require minimal intervention in childbirth cases. We assumed that in 50% of childbirth cases, staff nurses require no intervention by the doctor; require only one- third of the typical amount of intervention in 30% of cases, and require full intervention in the remaining 20% of cases. This led to a decrease of the doctor’s utilisation to 101% (a further decrease of approximately 1%), and an increase in the nurse’s utilisation to 40%."
+"...then considered a situation wherein the staff nurses require minimal intervention in childbirth cases. We assumed that in 50% of childbirth cases, staff nurses require no intervention by the doctor; require only one- third of the typical amount of intervention in 30% of cases, and require full intervention in the remaining 20% of cases. This led to a **decrease of the doctor’s utilisation to 101%** (a further decrease of approximately 1%), and an **increase in the nurse’s utilisation to 40%**." @shoaib_simulation_2021
 
 ```{python}
 pd.read_csv('../reproduction/outputs/intext3.csv')
@@ -121,7 +139,7 @@ pd.read_csv('../reproduction/outputs/intext3.csv')
 
 ## In-text result 4
 
-"..investigated the effect of stationing an additional doctor in the PHC. This yielded an average utilisation of well below 100% for each doctor."
+"..investigated the effect of stationing an additional doctor in the PHC. This yielded an average **utilisation of well below 100% for each doctor**." @shoaib_simulation_2021
 
 ```{python}
 pd.read_csv('../reproduction/outputs/intext4.csv')
@@ -129,7 +147,7 @@ pd.read_csv('../reproduction/outputs/intext4.csv')
 
 ## In-text result 5
 
-"We also observe that if the number of beds is reduced to four from six, the utilisation level is observed to be approximately thirty-three percent even under higher demand conditions (two inpatient and childbirth cases/day)."
+"We also observe that if the number of beds is reduced to four from six, the utilisation level is observed to be approximately **thirty-three percent** even under higher demand conditions (two inpatient and childbirth cases/day)." @shoaib_simulation_2021
 
 ```{python}
 pd.read_csv('../reproduction/outputs/intext5.csv')
@@ -137,7 +155,7 @@ pd.read_csv('../reproduction/outputs/intext5.csv')
 
 ## In-text result 6
 
-"When the administrative work alone is assigned to the staff nurse the average utilisation of the NCD nurse decreases to 100%"
+"When the administrative work alone is assigned to the staff nurse the average utilisation of the **NCD nurse decreases to 100%**" @shoaib_simulation_2021
 
 ```{python}
 pd.read_csv('../reproduction/outputs/intext6.csv')
@@ -145,7 +163,7 @@ pd.read_csv('../reproduction/outputs/intext6.csv')
 
 ## In-text result 7
 
-"Further, in addition to the administrative work when the staff nurse assisted for NCD checks (for 10% cases) the utilisation of NCD nurse dropped to 71%."
+"Further, in addition to the administrative work when the staff nurse assisted for NCD checks (for 10% cases) the **utilisation of NCD nurse dropped to 71%**." @shoaib_simulation_2021
 
 ```{python}
 pd.read_csv('../reproduction/outputs/intext7.csv')
