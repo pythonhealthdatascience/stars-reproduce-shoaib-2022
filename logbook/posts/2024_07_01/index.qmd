@@ -42,3 +42,5 @@ Making changes to the repository (as specified in the protocol) so it can serve 
     * Re-ran all using the bash script, to ensure all have been run with the seeds
 * Create tests
     * Initially explored exporting each `dict_list` from the reproduction notebooks using pickle (`with open('saved_dictionary.pkl', 'wb') as f: pickle.dump(dictionary, f)`). However, decided this was then contrary to the principles of testing, where want to be defining each parameter used in the test, so instead set this up manually for each configuration.
+    * Add `pytest` to environment
+    * Copied `.xls` results from `reproduction/outputs` to `tests/exp_results`
