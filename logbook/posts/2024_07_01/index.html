@@ -298,6 +298,8 @@ Note
 <li>Create tests
 <ul>
 <li>Initially explored exporting each <code>dict_list</code> from the reproduction notebooks using pickle (<code>with open('saved_dictionary.pkl', 'wb') as f: pickle.dump(dictionary, f)</code>). However, decided this was then contrary to the principles of testing, where want to be defining each parameter used in the test, so instead set this up manually for each configuration.</li>
+<li>Add <code>pytest</code> to environment</li>
+<li>Copied <code>.xls</code> results from <code>reproduction/outputs</code> to <code>tests/exp_results</code></li>
 </ul></li>
 </ul>
 
