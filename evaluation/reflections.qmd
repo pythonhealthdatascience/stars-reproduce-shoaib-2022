@@ -59,6 +59,10 @@ This page contains reflections on the facilitators and barriers to this reproduc
 
 * This is so it is easier to read across and judge where a result is above or below a certain Y value
 
+Bonus: **Ease of seeds in salabim**
+
+* This wasn't necessary for the reproduction due to the replication number, but I wanted to note that a great facilitator to this work was the ease of setting a seed with salabim package. I only had to change one line of code to then get consistent results between runs (unlike other simulation software like SimPy where you have to consider the use of seeds by different sampling functions). Moreover, by default, salabim would have set a seed (this was just overwridden by choice of original authors).
+
 ## Full list of troubleshooting steps
 
 ::: {.callout-note appearance="minimal" collapse=true}
@@ -123,6 +127,7 @@ calculate_times(used_to_date, times, limit=False)
 * Paper lists 100 replications, but script (for which all other parameters match up with configuration 1) is set up to run with 10 replications (2)
 * Takes a very long time to run 100, and since results look so similar to with 10, largely only ran 10 replications (with exception of first item, Table 6) (4)
 * These were very slow to run, so set up parallel processing to run the model variants. (4)
+* Changed Table 6 to also run 10 replications (8)
 
 ### Discrepancies in the article
 
@@ -163,6 +168,10 @@ For each scenario, I had to identify the required parameters from the text. This
 
 ### Whether scenario parameters reported are correct
 
-* For in-text 7, I was unable to reproduce results, without changing the scenario from a change of 10% cases transferred to 20% cases transferred. Although we cannot be sure whether this was definitely the answer - or whether there is anything wrong elsewhere.
+* For in-text 7, I was unable to reproduce results, without changing the scenario from a change of 10% cases transferred to 20% cases transferred. Although we cannot be sure whether this was definitely the answer - or whether there is anything wrong elsewhere. (7)
+
+### Seeds
+
+* Add seed so get consistent results between runs (since was not needed to assess reproduction success, added during research compendium stage) (8)
 
 :::
