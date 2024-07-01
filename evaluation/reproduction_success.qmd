@@ -8,7 +8,7 @@ Of the 17 items in the scope, 94% (16 out of 17) were considered to be **success
 
 As cited throughout, images on this page are sourced from @shoaib_simulation_2021, which is shared under [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/).
 
-Table 6 was run with 100 replications, although this took a long time and results were very similar to with 10 replications. Since all remaining results present mean results, it was felt that running 10 replications should have a fairly minimal impact on the results, and save alot of time, and so all model variants in the sensitivity analysis were run with 10 replications.
+Unless otherwise stated, items were run with 10 replications rather than 100. This is because 100 replications took a long time to run, and as results were very similar between 10 and 100 replications.
 
 ## Time-to-completion
 
