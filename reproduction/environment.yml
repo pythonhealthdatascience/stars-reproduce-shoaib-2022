@@ -4,13 +4,14 @@ channels:
 dependencies:
   - ipykernel
   - matplotlib=3.3.4
-  - nbconvert
-  - notebook
+  - nbconvert=7.10.0
+  - notebook=7.0.8
   - numpy=1.20.1
   - openpyxl=3.1.2
   - pandas=1.4.4
   - pathlib=1.0.1
   - pip=21.0.1
+  - pytest=7.4.4
   - python=3.9.19
   - xlrd=2.0.1
   - xlsxwriter=1.3.7
