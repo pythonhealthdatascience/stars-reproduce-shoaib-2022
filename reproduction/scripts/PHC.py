@@ -1166,9 +1166,15 @@ def main(
     doctor_delivery_scenario = s_doctor_delivery_scenario
     opd_ncd_to_staff = s_opd_ncd_to_staff
 
+    # Set start value to seed (will increment seed with each replication, so
+    # don't get exactly the same result with each replication)
+    seed = 0
     for x in range(0, replication):
+        # Increment seed
+        seed += 1
         n = np.random.randint(0, 101)
-        env = sim.Environment(trace=False, random_seed=42, time_unit='minutes')
+        env = sim.Environment(
+            trace=False, random_seed=seed, time_unit='minutes')
         simulation_time = days*shifts*hours*60
         NCD_Nurse = sim.Resource("Staff nurse 1", capacity=NCD_nurse_cap )
         staff_nurse = sim.Resource("Staff nurse", capacity=3)
