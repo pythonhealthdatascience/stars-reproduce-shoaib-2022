@@ -7,7 +7,57 @@ This page contains reflections on the facilitators and barriers to this reproduc
 
 ## What would have helped facilitate this reproduction?
 
-TBC
+**Provide environment (packages and versions)**
+
+* Not all packages needed will be listed in the imports (e.g. greenlet, pathlib)
+* Didn't work with latest package versions, had to backdate it for it to work
+* Struggled making environment due to confusion around base package statistics, which had mixed up with one that can be imported from conda/pypi
+* Time consuming (apx. 1h30 exc. computation time)
+
+**Make clear results with all outputs**
+
+* Spent some time comparing two alternative results spreadsheets, which had slightly different results for the same metrics, which was a little confusing
+* Also, the same spreadsheet sometimes had duplicate metrics (either with the same or differing results), which again, could be a bit confusing
+* Had to add some outputs and calculations (e.g. proportion of childbirth cases referred, standard deviation)
+
+**Write the model so it can be modified programmatically and avoid hard-coded values**
+
+* This is so you don't have to directly change parameters in the script itself.
+* Makes it easier for reproduction to run multiple versions of the model using the same script
+* Makes hidden errors less likely (e.g. if miss changing a parameter somewhere, or input the wrong parameters and don't realise)
+* Also, makes it easier for scenario analyses, to spot where need to change hard-coded values
+
+**Try to improve speed of model where possible**
+
+* Slow run time meant I introduced parallel processing for the model variants, and generally only ran 10 rather than 100 replications
+
+**Give all parameters for a given scenario in a single table**
+
+* For example, initially didn't realise that had to change consultation boundaries as well as mean and standard deviation, as this is not listed in Table 4 (although is in the text)
+* Can be difficult to identify parameters for the scenarios if they are not provided in a table or in the script, but are only described in the article
+* There were some discrepancies in the parameters of the scenarios between the main text of the article and the tables and figures. This could've been helped by more comprehensive tables or outlines of the parameters for each configuration and scenario, so that you weren't having to rely on combining the text and tables/figures.
+* Some parameters that could not be calculated were not provided - ie. what consultation boundaries to use when mean length of doctor consultation was 2.5 minutes
+* Some scenarios were quite ambiguous/unclear from their description in the text, and I initially misunderstood the required parameters for the scenarios
+
+**Explain how to calculate parameters, if not provided**
+
+* Was unclear how to estimate inter-arrival time (when only provided number of arrivals)
+
+**Provide code to process results into tables and/or figures**
+
+* It took a little bit of time to create the tables and figures from scratch, making them visually similar to the original article
+
+**Provide code for scenarios**
+
+* There were several instances where it took quite a while to understand how and where to modify the code in order to run scenarios (e.g. no arrivals, transferring admin work, reducing doctor intervention in deliveries)
+
+**Reduce duplication of code**
+
+* The model often contained very similar code before or after warm-up. This has the potential to introduce mistakes - with a suspected (although unconfirmed) mistake being that the lower boundary for the doctor consultation times in configuration 1 differed before and after warm-up.
+
+**Including tick marks/grid lines on axes**
+
+* This is so it is easier to read across and judge where a result is above or below a certain Y value
 
 ## Full list of troubleshooting steps
 
@@ -59,7 +109,7 @@ calculate_times(used_to_date, times, limit=False)
 * Default is to produce results with a hard coded name in main folder - modified code so this goes to an `outputs/` folder and has a specified file name (2)
 * Script had code to produce two results spreadsheets: `Outputs.xlsx` (replication spreadsheet, which was active) and `Config_3(2).xlsx` (full average results spreadsheet, which was disabled). Spent some time comparing results between these spreadsheets, finding they had different labels and sometimes missing certain results. The results also did not exactly match (when comparing base configuration 1) but all were likely due to rounding differences. Later inspection of the code revealed some were created consistently, and some results were calculated differently, between the spreadsheets. One was also missing standard deviation. Made a choice to use one of the spreadsheets rather than the other. (2)
 * Had to add proportion of childbirth cases referred (2)
-* The replication spreadsheet had two OPD queue length outputs with differing results, with only one being based on the list of OPD patients (`waitingline_OPD0`), whilst the other was based on a list of delivery patients (`an_list`) (3)
+* The replication spreadsheet had two OPD queue length outputs with differing results, with only one being based on the list of OPD patients (`waitingline_OPD`), whilst the other was based on a list of delivery patients (`an_list`) (3)
 * Had to add standard deviation (3)
 * The replication spreadsheet also had two inpatient bed utilisation metrics (one calculated manually, and one based on a Salabim Resource value)
 
