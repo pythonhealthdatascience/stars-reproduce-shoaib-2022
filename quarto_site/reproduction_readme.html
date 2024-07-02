@@ -234,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#reproduction-readme" id="toc-reproduction-readme" class="nav-link active" data-scroll-target="#reproduction-readme">Reproduction README</a>
+  <li><a href="#primary-health-centre-model" id="toc-primary-health-centre-model" class="nav-link active" data-scroll-target="#primary-health-centre-model">Primary Health Centre Model</a>
   <ul class="collapse">
   <li><a href="#model-summary" id="toc-model-summary" class="nav-link" data-scroll-target="#model-summary">Model summary</a></li>
   <li><a href="#scope-of-the-reproduction" id="toc-scope-of-the-reproduction" class="nav-link" data-scroll-target="#scope-of-the-reproduction">Scope of the reproduction</a></li>
@@ -274,8 +274,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="reproduction-readme" class="level1">
-<h1>Reproduction README</h1>
+<section id="primary-health-centre-model" class="level1">
+<h1>Primary Health Centre Model</h1>
 <!-- TODO: Remove this warning once filled out README -->
 <p><strong>Please note: This is a template README and has not yet been completed</strong></p>
 <!-- TODO: Fill out the README -->
@@ -342,7 +342,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="step-2.-running-the-model" class="level3">
 <h3 class="anchored" data-anchor-id="step-2.-running-the-model">Step 2. Running the model</h3>
-<!-- Add steps for running model and tests -->
+<p>To run the model, simply open and execute the provided jupyter notebooks.</p>
+<p>If you would like to execute all the notebooks sequentially with a single command, run the following command in terminal (ensuring you are within the <code>reproduction/</code> folder):</p>
+<pre><code>bash run_reproduction.sh</code></pre>
+<p>If you would like to test that the results you are obtaining from running the model are consistent with those obtained in this reproduction run the following command (again, from within the <code>reproduction/</code> folder, but ensure the conda environment is activated):</p>
+<pre><code>pytest -n auto</code></pre>
+<p>The <code>-n auto</code> prompts your machine to use <code>pytest-xdist</code>, which will parallelise the tests using multiple CPUs, with <code>auto</code> meaning that it will use as many processes as your computer has physical CPU cores.</p>
 </section>
 </section>
 <section id="reproduction-specs-and-runtime" class="level2">

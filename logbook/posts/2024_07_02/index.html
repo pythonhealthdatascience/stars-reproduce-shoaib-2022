@@ -234,6 +234,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#research-compendium" id="toc-research-compendium" class="nav-link active" data-scroll-target="#research-compendium">Research compendium</a></li>
+  <li><a href="#response-from-shoaib" id="toc-response-from-shoaib" class="nav-link" data-scroll-target="#response-from-shoaib">Response from Shoaib</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_07_02/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -266,8 +267,13 @@ Note
 <li>Got basic functionality of the test working (e.g.&nbsp;running model, saving test result to temporary directory, importing the results files)</li>
 <li>After exploring a few options, used ‘ids’ to give more informative name to each test (as otherwise just says fail for <code>param[0]</code>, <code>param[1]</code>), based on <a href="https://docs.pytest.org/en/stable/example/parametrize.html#different-options-for-test-ids">this help doc</a></li>
 <li>Add all the reproduction variable dictionaries to <code>test_model.py</code></li>
+<li>The tests were very slow to run as they ran sequentially (and for each test, it would run 10 replications of the model with particular parameters, which took a while). Add <code>pytext-xdist</code> to environment to all parallelisation of tests</li>
 </ul></li>
 </ul>
+</section>
+<section id="response-from-shoaib" class="level2">
+<h2 class="anchored" data-anchor-id="response-from-shoaib">Response from Shoaib</h2>
+<p>Received responses thanking for sharing results, sorry to hear have faced challenges, thanking for reflections as they are valuable for them as feedback (this was first coding assignment from non-programming background), and glad we were able to reproduce almost all the results. They were uncertain re: the NCD nurse data, and would need to take a closer look at that.</p>
 
 
 </section>
