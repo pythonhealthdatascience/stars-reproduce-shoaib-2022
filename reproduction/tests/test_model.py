@@ -303,7 +303,7 @@ TXT67 = [
 ]
 
 # Combine all the parameters into a single list
-parameters = TAB6 + FIG2  #+ FIG3TXT1 + FIG4 + TXT2 + TXT34 + TXT5 + TXT67
+parameters = TAB6 + FIG2 + FIG3TXT1 + FIG4 + TXT2 + TXT34 + TXT5 + TXT67
 
 
 # Create fixture with path to temporary folder to contain results from tests
