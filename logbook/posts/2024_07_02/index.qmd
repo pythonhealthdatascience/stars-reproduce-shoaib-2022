@@ -1,0 +1,21 @@
+---
+title: "Day 9"
+author: "Amy Heather"
+date: "2024-07-02"
+categories: [compendium]
+---
+
+::: {.callout-note}
+
+Continuing to work on research compendium.
+
+:::
+
+## Research compendium
+
+Continuing to make changes to repository...
+
+* Tests
+    * Got basic functionality of the test working (e.g. running model, saving test result to temporary directory, importing the results files)
+    * After exploring a few options, used 'ids' to give more informative name to each test (as otherwise just says fail for `param[0]`, `param[1]`), based on [this help doc](https://docs.pytest.org/en/stable/example/parametrize.html#different-options-for-test-ids)
+    * Add all the reproduction variable dictionaries to `test_model.py`
