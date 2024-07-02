@@ -1,9 +1,5 @@
 # Primary Health Centre Model
 
-<!-- TODO: Remove this warning once filled out README -->
-**Please note: This is a template README and has not yet been completed**
-
-<!-- TODO: Fill out the README -->
 ## Model summary
 
 > Shoaib M, Ramamohan V. **Simulation modeling and analysis of primary health center operations**. *SIMULATION* 98(3):183-208. (2022). <https://doi.org/10.1177/00375497211030931>.
@@ -88,7 +84,19 @@ The `-n auto` prompts your machine to use `pytest-xdist`, which will parallelise
 
 This reproduction was conducted on an Intel Core i7-12700H with 32GB RAM running Ubuntu 22.04.4 Linux.
 
-Expected model runtime (given these specs) is <!-- Add times -->
+Expected model runtime is **22 minutes 26 seconds**.
+
+This is given the specs above, and based on the combined runtime of the notebooks which use 10 replications (rather than 100) and parallel processing.
+
+<!-- List of times:
+* Table 6: 2m 38s
+* Fig 2: 3m 27s
+* Fig 3 Txt 1: 2m 45s
+* Fig 4: 3m 0s
+* Txt 2: 2m 29s
+* Txt 3 4: 3m 7s
+* Txt 5: 2m 11s
+* Txt 6 7: 2m 49s -->
 
 ## Citation
 
