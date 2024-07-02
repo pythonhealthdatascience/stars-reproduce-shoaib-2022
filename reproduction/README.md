@@ -1,4 +1,4 @@
-# Reproduction README
+# Primary Health Centre Model
 
 <!-- TODO: Remove this warning once filled out README -->
 **Please note: This is a template README and has not yet been completed**
@@ -68,7 +68,21 @@ Option B: **Docker**
 
 ### Step 2. Running the model
 
-<!-- Add steps for running model and tests -->
+To run the model, simply open and execute the provided jupyter notebooks.
+
+If you would like to execute all the notebooks sequentially with a single command, run the following command in terminal (ensuring you are within the `reproduction/` folder):
+
+```
+bash run_reproduction.sh
+```
+
+If you would like to test that the results you are obtaining from running the model are consistent with those obtained in this reproduction run the following command (again, from within the `reproduction/` folder, but ensure the conda environment is activated):
+
+```
+pytest -n auto
+```
+
+The `-n auto` prompts your machine to use `pytest-xdist`, which will parallelise the tests using multiple CPUs, with `auto` meaning that it will use as many processes as your computer has physical CPU cores.
 
 ## Reproduction specs and runtime
 
