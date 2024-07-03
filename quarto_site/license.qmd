@@ -3,8 +3,7 @@ title: "Open Source License"
 bibliography: ../quarto_site/references.bib
 ---
 
-<!-- TODO: Update with appropriate license -->
-This repository is licensed under the [license].
+This repository is licensed under the MIT License.
 
 ::: {.callout-note appearance="minimal" collapse=true}
 
@@ -14,25 +13,14 @@ This repository is licensed under the [license].
 
 :::
 
-<!-- TODO: Update with appropriate license -->
-This is aligned with the original study, who shared their code under [license].
+This is aligned with the original study, who shared their code under MIT License.
 
 ::: {.callout-note appearance="minimal" collapse=true}
 
 ## View license
 
-<!-- TODO: Provide relative path to embed license from the original study, as done above for the main repository license -->
-[Embedded license]
+{{< include  ../original_study/PHC--main/LICENSE >}}
 
 :::
 
-<!-- TODO: Add info about the article license -->
-The original study was published in the journal "[Journal name]". They distributed the article under [Add more details about license]
-
-::: {.callout-note appearance="minimal" collapse=true}
-
-## View copyright statement from journal
-
-<!-- TODO: Add copyright statement -->
-
-:::
+The original study was published in the journal "Simulation". As this version was not shared with permissions to copy images/tables/the paper, we identified a [green open access version](https://doi.org/10.48550/arXiv.2104.12492) of the article published on ArXiv. This version was shared under an [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/) license, and was used for the reproduction.
