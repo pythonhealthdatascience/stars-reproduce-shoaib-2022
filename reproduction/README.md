@@ -15,19 +15,17 @@ In this assessment, we attempted to reproduce 17 items: 1 table, 9 figures, and 
 ### Repository overview
 
 ```bash
-├── data
-│   └──  ...
 ├── docker
 │   └──  ...
-├── output
+├── outputs
 │   └──  ...
-├── sim
+├── scripts
 │   └──  ...
 ├── tests
 │   └──  ...
-├── environment.yaml
-├── Makefile
-└── README.md
+├── environment.yml
+├── README.md
+└── run_reproduction.sh
 ```
 
 * `docker/` - Instructions for creation of Docker container.
@@ -36,7 +34,7 @@ In this assessment, we attempted to reproduce 17 items: 1 table, 9 figures, and 
 * `tests/` - Test to check that model produces consistent results with our reproduction.
 * `environment.yml` - Instructions for creation of python environment.
 * `README.md` - This file!
-* `run_all.py` - Contains instructions to run all the jupyter nobteooks in `scripts/` in sequence.
+* `run_reproduction.sh` - Contains instructions to run all the jupyter nobteooks in `scripts/` in sequence.
 
 ### Step 1. Set up environment
 
@@ -46,7 +44,9 @@ Option A: **Conda/Mamba environment**
 
 > Create the environment using this command in your terminal: `conda env create -f environment.yaml`
 > 
-> You can use this environment in your preferred IDE, such as VSCode.
+> You can use this environment in your preferred IDE, such as VSCode (where you will be asked to select the kernel/interpreter).
+>
+> You can activate it in the terminal by running `conda activate shoaib2022`
 >
 > You can also use this file to create the environment using mamba: `mamba env create -f environment.yml`
 
@@ -55,16 +55,21 @@ Option B: **Docker**
 > You'll need `docker` installed on your local machine. You can then obtain the image by either:
 >
 > * Pulling a pre-built image from the GitHub container registry by running `docker pull ghcr.io/pythonhealthdatascience/shoaib2022:latest`, or
-> * Building the image locally from the Dockerfile by running `docker build --tag shoaib2022 .`
+> * Building the image locally from the Dockerfile by running `docker build --tag shoaib2022 . -f ./reproduction/docker/Dockerfile`
+>   * Run from parent directory of `reproduction/`
+>   * May require admin access (e.g. `sudo docker build`... on linux)
 >
 > To run the image, you should then issue the following commands in your terminal:
 >
 > * `docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022`
 > * `conda activate shoaib2022`
+> * `jupyter-lab`
+
+Then open your browser and go to <https://localhost:8080>. This will open Jupyterlab within the `reproduction/` directory.
 
 ### Step 2. Running the model
 
-To run the model, simply open and execute the provided jupyter notebooks.
+To run the model, simply open and **execute the provided jupyter notebooks**.
 
 If you would like to execute all the notebooks sequentially with a single command, run the following command in terminal (ensuring you are within the `reproduction/` folder):
 
@@ -72,7 +77,7 @@ If you would like to execute all the notebooks sequentially with a single comman
 bash run_reproduction.sh
 ```
 
-If you would like to test that the results you are obtaining from running the model are consistent with those obtained in this reproduction run the following command (again, from within the `reproduction/` folder, but ensure the conda environment is activated):
+If you would like to test that the results you are obtaining from running the model are consistent with those obtained in this reproduction, run the following command (from within the `reproduction/` folder, but ensure the conda environment is activated):
 
 ```
 pytest -n auto
@@ -84,9 +89,7 @@ The `-n auto` prompts your machine to use `pytest-xdist`, which will parallelise
 
 This reproduction was conducted on an Intel Core i7-12700H with 32GB RAM running Ubuntu 22.04.4 Linux.
 
-Expected model runtime is **22 minutes 26 seconds**.
-
-This is given the specs above, and based on the combined runtime of the notebooks which use 10 replications (rather than 100) and parallel processing.
+Expected model runtime is **22 minutes 26 seconds**. This is given the specs above, and based on the combined runtime of the notebooks which use 10 replications (rather than 100) and parallel processing.
 
 <!-- List of times:
 * Table 6: 2m 38s
