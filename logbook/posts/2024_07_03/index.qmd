@@ -64,3 +64,37 @@ All clear cut.
 #### Unmet
 
 Change to N/A for 14 as that is about forecasting.
+
+## Test-run
+
+**Mamba/conda**
+
+Tom downloaded the repository to test run the code and see if he could get the same results. He set up a mamba environment and ran pytest, and found he got the same results, and that it took apx. 8 minutes to run on his machine.
+
+Some comments from this exercise were:
+
+* The bash script `source activate shoaib2022` didn't work if he was in an active conda environment when trying to run the script
+    * I was able to replicate this error too
+* The `source deactivate` command returned an error - although the bash script would continue running fine.
+    * I likewise get this error - I presume I might have always been getting that error and previously not noticed
+* It wasn't immediately clear to him whether it was definitely running or not (as they take a few minutes each), so might be good to add a "what to expect" to the notes
+    * On reflection from this conversation, I think it would also be good to include the time expected for pytest
+* My description of pytest was ambiguous - on reading, he had assumed that it required you to have run the bash script first, before running pytest.
+
+Based on the above, I made the following changes to improve the running and clarity of the repository:
+
+* Removed `source deactivate` from the bash script
+* Clarified whether to have environments active or not when run command
+* Add detailed "what to expect" from running the bash and pytest options, explaining what should appear on the screen, and how it might then remain blank for a few minutes whilst the model runs
+* Made it clearer that pytest doesn't depend on bash
+
+**Docker**
+
+Tom then also tried to use Docker (instead of the conda environment). His reflections from this were:
+
+* He found that the container built fine.
+* However, before he could do that, he had to get set-up with docker, which now recommends docker-egine.
+* He found that, once the image was activated, he didn't need to run `conda activate shoaib2022` or `jupyter-lab` - he could simply navigate to the web address to open jupyter lab.
+* He wasn't able to get the image from the GitHub Container Registry - received an authentication error (something to do with personal access tokens)
+* He also suggested looking for a command that would trigger jupyter lab to open without the user needing to go to that web address
+* He also suggested that, after I've made some tweaks from these comments, we could also ask Alison to do a test-run (so - following these changes - it gets checked with a fresh pair of eyes)
