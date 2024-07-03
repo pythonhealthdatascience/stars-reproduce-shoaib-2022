@@ -31,5 +31,5 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          docker build . --file reproduction/docker/Dockerfile --tag ghcr.io/pythonhealthdatascience/covid19:latest
-          docker push ghcr.io/pythonhealthdatascience/covid19:latest
+          docker build . --file reproduction/docker/Dockerfile --tag ghcr.io/pythonhealthdatascience/shoaib2022:latest
+          docker push ghcr.io/pythonhealthdatascience/shoaib2022:latest
