@@ -61,7 +61,7 @@ This page contains reflections on the facilitators and barriers to this reproduc
 
 Bonus: **Ease of seeds in salabim**
 
-* This wasn't necessary for the reproduction due to the replication number, but I wanted to note that a great facilitator to this work was the ease of setting a seed with salabim package. I only had to change one line of code to then get consistent results between runs (unlike other simulation software like SimPy where you have to consider the use of seeds by different sampling functions). Moreover, by default, salabim would have set a seed (although overridden by original authors to enable them to run replications).
+* This wasn't necessary for the reproduction due to the replication number, but I wanted to note that a great facilitator to this work was the ease of setting a seed with salabim package. I only had to change one or two lines of code to then get consistent results between runs (unlike other simulation software like SimPy where you have to consider the use of seeds by different sampling functions). Moreover, by default, salabim would have set a seed (although overridden by original authors to enable them to run replications).
 
 ## Full list of troubleshooting steps
 
