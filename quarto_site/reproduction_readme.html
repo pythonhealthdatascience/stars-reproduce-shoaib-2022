@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.52">
+<meta name="generator" content="quarto-1.5.53">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -276,9 +276,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="primary-health-centre-model" class="level1">
 <h1>Primary Health Centre Model</h1>
-<!-- TODO: Remove this warning once filled out README -->
-<p><strong>Please note: This is a template README and has not yet been completed</strong></p>
-<!-- TODO: Fill out the README -->
 <section id="model-summary" class="level2">
 <h2 class="anchored" data-anchor-id="model-summary">Model summary</h2>
 <blockquote class="blockquote">
@@ -294,19 +291,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="reproducing-these-results">Reproducing these results</h2>
 <section id="repository-overview" class="level3">
 <h3 class="anchored" data-anchor-id="repository-overview">Repository overview</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> data</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> docker</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └──  ...</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> docker</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> outputs</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └──  ...</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> output</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> scripts</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └──  ...</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> sim</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> tests</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └──  ...</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> tests</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └──  ...</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> environment.yaml</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> Makefile</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> README.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> environment.yml</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> README.md</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> run_reproduction.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>docker/</code> - Instructions for creation of Docker container.</li>
 <li><code>outputs/</code> - Output files from the model.</li>
@@ -314,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>tests/</code> - Test to check that model produces consistent results with our reproduction.</li>
 <li><code>environment.yml</code> - Instructions for creation of python environment.</li>
 <li><code>README.md</code> - This file!</li>
-<li><code>run_all.py</code> - Contains instructions to run all the jupyter nobteooks in <code>scripts/</code> in sequence.</li>
+<li><code>run_reproduction.sh</code> - Contains instructions to run all the jupyter nobteooks in <code>scripts/</code> in sequence.</li>
 </ul>
 </section>
 <section id="step-1.-set-up-environment" class="level3">
@@ -323,7 +318,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Option A: <strong>Conda/Mamba environment</strong></p>
 <blockquote class="blockquote">
 <p>Create the environment using this command in your terminal: <code>conda env create -f environment.yaml</code></p>
-<p>You can use this environment in your preferred IDE, such as VSCode.</p>
+<p>You can use this environment in your preferred IDE, such as VSCode (where you will be asked to select the kernel/interpreter).</p>
+<p>You can activate it in the terminal by running <code>conda activate shoaib2022</code></p>
 <p>You can also use this file to create the environment using mamba: <code>mamba env create -f environment.yml</code></p>
 </blockquote>
 <p>Option B: <strong>Docker</strong></p>
@@ -331,21 +327,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You’ll need <code>docker</code> installed on your local machine. You can then obtain the image by either:</p>
 <ul>
 <li>Pulling a pre-built image from the GitHub container registry by running <code>docker pull ghcr.io/pythonhealthdatascience/shoaib2022:latest</code>, or</li>
-<li>Building the image locally from the Dockerfile by running <code>docker build --tag shoaib2022 .</code></li>
+<li>Building the image locally from the Dockerfile by running <code>docker build --tag shoaib2022 . -f ./reproduction/docker/Dockerfile</code>
+<ul>
+<li>Run from parent directory of <code>reproduction/</code></li>
+<li>May require admin access (e.g.&nbsp;<code>sudo docker build</code>… on linux)</li>
+</ul></li>
 </ul>
 <p>To run the image, you should then issue the following commands in your terminal:</p>
 <ul>
 <li><code>docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022</code></li>
 <li><code>conda activate shoaib2022</code></li>
+<li><code>jupyter-lab</code></li>
 </ul>
 </blockquote>
+<p>Then open your browser and go to <a href="https://localhost:8080" class="uri">https://localhost:8080</a>. This will open Jupyterlab within the <code>reproduction/</code> directory.</p>
 </section>
 <section id="step-2.-running-the-model" class="level3">
 <h3 class="anchored" data-anchor-id="step-2.-running-the-model">Step 2. Running the model</h3>
-<p>To run the model, simply open and execute the provided jupyter notebooks.</p>
+<p>To run the model, simply open and <strong>execute the provided jupyter notebooks</strong>.</p>
 <p>If you would like to execute all the notebooks sequentially with a single command, run the following command in terminal (ensuring you are within the <code>reproduction/</code> folder):</p>
 <pre><code>bash run_reproduction.sh</code></pre>
-<p>If you would like to test that the results you are obtaining from running the model are consistent with those obtained in this reproduction run the following command (again, from within the <code>reproduction/</code> folder, but ensure the conda environment is activated):</p>
+<p>If you would like to test that the results you are obtaining from running the model are consistent with those obtained in this reproduction, run the following command (from within the <code>reproduction/</code> folder, but ensure the conda environment is activated):</p>
 <pre><code>pytest -n auto</code></pre>
 <p>The <code>-n auto</code> prompts your machine to use <code>pytest-xdist</code>, which will parallelise the tests using multiple CPUs, with <code>auto</code> meaning that it will use as many processes as your computer has physical CPU cores.</p>
 </section>
@@ -353,7 +355,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="reproduction-specs-and-runtime" class="level2">
 <h2 class="anchored" data-anchor-id="reproduction-specs-and-runtime">Reproduction specs and runtime</h2>
 <p>This reproduction was conducted on an Intel Core i7-12700H with 32GB RAM running Ubuntu 22.04.4 Linux.</p>
-<p>Expected model runtime (given these specs) is <!-- Add times --></p>
+<p>Expected model runtime is <strong>22 minutes 26 seconds</strong>. This is given the specs above, and based on the combined runtime of the notebooks which use 10 replications (rather than 100) and parallel processing.</p>
+<!-- List of times:
+* Table 6: 2m 38s
+* Fig 2: 3m 27s
+* Fig 3 Txt 1: 2m 45s
+* Fig 4: 3m 0s
+* Txt 2: 2m 29s
+* Txt 3 4: 3m 7s
+* Txt 5: 2m 11s
+* Txt 6 7: 2m 49s -->
 </section>
 <section id="citation" class="level2">
 <h2 class="anchored" data-anchor-id="citation">Citation</h2>
