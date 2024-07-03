@@ -7,8 +7,8 @@ This page evaluates the extent to which the original study meets the recommendat
 
 Of the **8** essential STARS components:
 
-* **3** were met fully (✅)
-* **5** were not met (❌)
+* **2** were met fully (✅)
+* **6** were not met (❌)
 
 Of the **5** optional STARS components:
 
@@ -17,7 +17,7 @@ Of the **5** optional STARS components:
 | Component | Description | Met by study? | Evidence/location |
 | - | - | :-: | - |
 | **Essential components** |
-| Open license | Free and open-source software (FOSS) license (e.g. MIT, GNU Public License (GPL)) | ✅ Full | MIT License |
+| Open license | Free and open-source software (FOSS) license (e.g. MIT, GNU Public License (GPL)) | ❌ Not met | Not provided when published |
 | Dependency management | Specify software libraries, version numbers and sources (e.g. dependency management tools like virtualenv, conda, poetry) | ❌ Not met | - |
 | FOSS model | Coded in FOSS language (e.g. R, Julia, Python) | ✅ Fully | Python |
 | Minimum documentation | Minimal instructions (e.g. in README) that overview (a) what model does, (b) how to install and run model to obtain results, and (c) how to vary parameters to run new experiments | ❌ Not met | - |
@@ -32,3 +32,5 @@ Of the **5** optional STARS components:
 | Model interface | Provide web application interface to the model so it is accessible to less technical simulation users | ❌ Not met | - |
 | Web app hosting | Host web app online (e.g. Streamlit Community Cloud, ShinyApps hosting) | ❌ Not met | - |
 : {tbl-colwidths="[20, 35, 20, 25]"}
+
+**Note:** For this study, they have not met the criteria for an open license as this wasn't originally included with their code when it was published. However, upon request, they have kindly add one to their repository, which allowed us to use their code in this study.

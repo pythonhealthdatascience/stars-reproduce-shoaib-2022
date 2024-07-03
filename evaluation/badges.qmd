@@ -38,9 +38,9 @@ criteria = {
 eval = pd.Series({
     'archive': 0,
     'id': 0,
-    'license': 1,
+    'license': 0,
     'relevant': 1,
-    'complete': 1,
+    'complete': 0,
     'structure': 0,
     'documentation_sufficient': 0,
     'documentation_careful': 0,
@@ -111,6 +111,8 @@ Criteria related to running and reproducing results -
 '''))
 
 ```
+
+**Note:** For this study, they have not met the criteria for an open license as this wasn't originally included with their code when it was published. However, upon request, they have kindly add one to their repository, which allowed us to use their code in this study.
 
 ## Badges
 ```{python}

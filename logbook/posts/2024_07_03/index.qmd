@@ -20,47 +20,47 @@ Finished up research compendium, and discussed uncertain/unmet guidelines with T
 * README
     * Corrected and updated
 
-**ADD TIMINGS**
+## 14.00-14.20: Discussion with X about uncertainties and unmet criteria from the evaluation
 
-## Discussion with X about uncertainties and unmet criteria from the evaluation
+(Spent roughly half on badges and STARS, and other half on reporting
 
-### X-X: Badges
+### Badges
 
 #### Uncertain
 
 | Item | My comments | Discussion |
 | --- | --- | --- |
-| Includes an open license | Couldn’t remember if we’d agreed that a license added upon our request should be marked as a condition met or not. Tentatively marked as ‘1’. |
-| Complete set of materials shared (as would be needed to fully reproduce article) | Uncertain on this, as I had to modify the script alot to get results (i.e. writing scenario logic). However, arguably, I did have all the information I would need to do that? Tentatively marked as ‘1’. |
-| Artefacts are well structured/organised (e.g. to the extent that reuse and repurposing is facilitated, adhering to norms and standards of research community) | Does use object-oriented programming (which is great), but parameters are hard coded and uses global variables. Tentatively marked as ‘0’. |
+| Includes an open license | Couldn’t remember if we’d agreed that a license added upon our request should be marked as a condition met or not. Tentatively marked as ‘1’. | Not met, but caveat when mention that they add it on request |
+| Complete set of materials shared (as would be needed to fully reproduce article) | Uncertain on this, as I had to modify the script alot to get results (i.e. writing scenario logic). However, arguably, I did have all the information I would need to do that? Tentatively marked as ‘1’. | Unmet - had to make new materials to reproduce (and not just troubleshooting)
+| Artefacts are well structured/organised (e.g. to the extent that reuse and repurposing is facilitated, adhering to norms and standards of research community) | Does use object-oriented programming (which is great), but parameters are hard coded and uses global variables. Tentatively marked as ‘0’. | Agree - good enough for replication but not for reuse (mainly due to hard coding of parameters) |
 
 #### Unmet
 
-TBC
+All clear cut.
 
-### X-X: STARS
+### STARS
 
 #### Uncertain
 
 | Item | My comments | Discussion |
 | --- | --- | --- |
 | Open license. Free and open-source software (FOSS) license (e.g. MIT, GNU Public License (GPL)) | As for badges |
-| ORCID. ORCID for each study author | Have marked as not met, as there are no ORCID in the repository, although Varun Ramamohan does have ORCID ID with publication in SIMULATION. |
+| ORCID. ORCID for each study author | Have marked as not met, as there are no ORCID in the repository, although Varun Ramamohan does have ORCID ID with publication in SIMULATION. | Agree not met, to be in repositories |
 
 #### Unmet
 
-TBC
+All clear cut.
 
-### X-X: Reporting
+### Reporting
 
 #### Uncertain
 
 | Item | My comments | Discussion |
 | --- | --- | --- |
-| STRESS-DES 1.2 Model outputs. Define all quantitative performance measures that are reported, using equations where necessary. Specify how and when they are calculated during the model run along with how any measures of error such as confidence intervals are calculated. | Is what I have quoted sufficient for rating of “Partially”? |
-| ISPOR-SDM 12 Is cross validation performed and reported…comparison across similar modeling studies which deal with the same decision problem was undertaken. | Is my conclusion reasonable? |
-| ISPOR-SDM  13 Is external validation performed and reported?…the modeler(s) examined how well the model’s results match the empirical data of an actual event modeled. | There’s alot of validation work done, but not sure I can spot this, or any justification against it? |
+| STRESS-DES 1.2 Model outputs. Define all quantitative performance measures that are reported, using equations where necessary. Specify how and when they are calculated during the model run along with how any measures of error such as confidence intervals are calculated. | Is what I have quoted sufficient for rating of “Partially”? | Yes |
+| ISPOR-SDM 12 Is cross validation performed and reported…comparison across similar modeling studies which deal with the same decision problem was undertaken. | Is my conclusion reasonable? | Fine |
+| ISPOR-SDM  13 Is external validation performed and reported?…the modeler(s) examined how well the model’s results match the empirical data of an actual event modeled. | There’s alot of validation work done, but not sure I can spot this, or any justification against it? | Change to N/A |
 
 #### Unmet
 
-TBC
+Change to N/A for 14 as that is about forecasting.
