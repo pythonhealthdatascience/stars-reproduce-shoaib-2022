@@ -9,9 +9,6 @@ source activate shoaib2022
 python -m ipykernel install --user --name shoaib2022
 jupyter kernelspec list
 
-# Deactivate that (as nbconvert will use kernel_name rather than current env)
-source deactivate
-
 # Run notebooks
 jupyter nbconvert --to notebook --ExecutePreprocessor.kernel_name=shoaib2022 --execute --inplace scripts/reproduce_tab6.ipynb
 jupyter nbconvert --to notebook --ExecutePreprocessor.kernel_name=shoaib2022 --execute --inplace scripts/reproduce_fig2.ipynb
