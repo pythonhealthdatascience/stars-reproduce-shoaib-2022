@@ -2,8 +2,23 @@
 title: "Day 10"
 author: "Amy Heather"
 date: "2024-07-03"
-categories: [guidelines]
+categories: [compendium, guidelines]
 ---
+
+::: {.callout-note}
+
+Finished up research compendium, and discussed uncertain/unmet guidelines with Tom.
+
+:::
+
+
+## Research compendium
+
+* Docker
+    * Add Dockerfile and tested it - opened jupyter lab, ran one of the notebooks, and so confirmed it was working (although took a little longer to run - 5m 50s v.s. 2m 11s for in-text result 5)
+    * Activated GitHub action to host on GitHub Container Registry
+* README
+    * Corrected and updated
 
 **ADD TIMINGS**
 

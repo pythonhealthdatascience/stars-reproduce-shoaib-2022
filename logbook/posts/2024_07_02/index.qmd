@@ -20,9 +20,11 @@ Continuing to make changes to repository...
     * After exploring a few options, used 'ids' to give more informative name to each test (as otherwise just says fail for `param[0]`, `param[1]`), based on [this help doc](https://docs.pytest.org/en/stable/example/parametrize.html#different-options-for-test-ids)
     * Add all the reproduction variable dictionaries to `test_model.py`
     * The tests were very slow to run as they ran sequentially (and for each test, it would run 10 replications of the model with particular parameters, which took a while). Add `pytext-xdist` to environment to all parallelisation of tests, and instructions on how to run this to the `README.md`
+* README
+    * Add run time
 
 (But spent most of day at Coding for Reproducible Research Community Resource Development Workshop)
 
 ## Response from Shoaib
 
-Received responses thanking for sharing results, sorry to hear have faced challenges, thanking for reflections as they are valuable for them as feedback (this was first coding assignment from non-programming background), and glad we were able to reproduce almost all the results. They were uncertain re: the NCD nurse data, and would need to take a closer look at that.
+Received response thanking for sharing results, sorry to hear have faced challenges, thanking for reflections as they are valuable for them as feedback (this was first coding assignment from non-programming background), and glad we were able to reproduce almost all the results. They were uncertain re: the NCD nurse data, and would need to take a closer look at that. Have responded to say thanks again, and that we are very grateful for the work shared, and that it's not essential to look into NCD nurse data unless have time/of interest, but we were really thankful for being willing to openly share code so we could learn from it.
