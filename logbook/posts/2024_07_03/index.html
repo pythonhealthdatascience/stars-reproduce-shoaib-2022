@@ -241,6 +241,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#stars" id="toc-stars" class="nav-link" data-scroll-target="#stars">STARS</a></li>
   <li><a href="#reporting" id="toc-reporting" class="nav-link" data-scroll-target="#reporting">Reporting</a></li>
   </ul></li>
+  <li><a href="#test-run" id="toc-test-run" class="nav-link" data-scroll-target="#test-run">Test-run</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_07_03/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -397,10 +398,48 @@ Note
 <section id="unmet-2" class="level4">
 <h4 class="anchored" data-anchor-id="unmet-2">Unmet</h4>
 <p>Change to N/A for 14 as that is about forecasting.</p>
-
-
 </section>
 </section>
+</section>
+<section id="test-run" class="level2">
+<h2 class="anchored" data-anchor-id="test-run">Test-run</h2>
+<p><strong>Mamba/conda</strong></p>
+<p>Tom downloaded the repository to test run the code and see if he could get the same results. He set up a mamba environment and ran pytest, and found he got the same results, and that it took apx. 8 minutes to run on his machine.</p>
+<p>Some comments from this exercise were:</p>
+<ul>
+<li>The bash script <code>source activate shoaib2022</code> didn’t work if he was in an active conda environment when trying to run the script
+<ul>
+<li>I was able to replicate this error too</li>
+</ul></li>
+<li>The <code>source deactivate</code> command returned an error - although the bash script would continue running fine.
+<ul>
+<li>I likewise get this error - I presume I might have always been getting that error and previously not noticed</li>
+</ul></li>
+<li>It wasn’t immediately clear to him whether it was definitely running or not (as they take a few minutes each), so might be good to add a “what to expect” to the notes
+<ul>
+<li>On reflection from this conversation, I think it would also be good to include the time expected for pytest</li>
+</ul></li>
+<li>My description of pytest was ambiguous - on reading, he had assumed that it required you to have run the bash script first, before running pytest.</li>
+</ul>
+<p>Based on the above, I made the following changes to improve the running and clarity of the repository:</p>
+<ul>
+<li>Removed <code>source deactivate</code> from the bash script</li>
+<li>Clarified whether to have environments active or not when run command</li>
+<li>Add detailed “what to expect” from running the bash and pytest options, explaining what should appear on the screen, and how it might then remain blank for a few minutes whilst the model runs</li>
+<li>Made it clearer that pytest doesn’t depend on bash</li>
+</ul>
+<p><strong>Docker</strong></p>
+<p>Tom then also tried to use Docker (instead of the conda environment). His reflections from this were:</p>
+<ul>
+<li>He found that the container built fine.</li>
+<li>However, before he could do that, he had to get set-up with docker, which now recommends docker-egine.</li>
+<li>He found that, once the image was activated, he didn’t need to run <code>conda activate shoaib2022</code> or <code>jupyter-lab</code> - he could simply navigate to the web address to open jupyter lab.</li>
+<li>He wasn’t able to get the image from the GitHub Container Registry - received an authentication error (something to do with personal access tokens)</li>
+<li>He also suggested looking for a command that would trigger jupyter lab to open without the user needing to go to that web address</li>
+<li>He also suggested that, after I’ve made some tweaks from these comments, we could also ask Alison to do a test-run (so - following these changes - it gets checked with a fresh pair of eyes)</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

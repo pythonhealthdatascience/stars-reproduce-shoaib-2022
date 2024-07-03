@@ -315,14 +315,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-1.-set-up-environment" class="level3">
 <h3 class="anchored" data-anchor-id="step-1.-set-up-environment">Step 1. Set up environment</h3>
 <p>You’ll first want create an environment with the specified version of Python and the required packages installed. There are a few options…</p>
-<p>Option A: <strong>Conda/Mamba environment</strong></p>
+<section id="option-a-condamamba-environment" class="level4">
+<h4 class="anchored" data-anchor-id="option-a-condamamba-environment">Option A: Conda/Mamba environment</h4>
 <blockquote class="blockquote">
 <p>Create the environment using this command in your terminal: <code>conda env create -f environment.yaml</code></p>
 <p>You can use this environment in your preferred IDE, such as VSCode (where you will be asked to select the kernel/interpreter).</p>
 <p>You can activate it in the terminal by running <code>conda activate shoaib2022</code></p>
 <p>You can also use this file to create the environment using mamba: <code>mamba env create -f environment.yml</code></p>
 </blockquote>
-<p>Option B: <strong>Docker</strong></p>
+</section>
+<section id="option-b-docker" class="level4">
+<h4 class="anchored" data-anchor-id="option-b-docker">Option B: Docker</h4>
 <blockquote class="blockquote">
 <p>You’ll need <code>docker</code> installed on your local machine. You can then obtain the image by either:</p>
 <ul>
@@ -342,20 +345,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p>Then open your browser and go to <a href="https://localhost:8080" class="uri">https://localhost:8080</a>. This will open Jupyterlab within the <code>reproduction/</code> directory.</p>
 </section>
+</section>
 <section id="step-2.-running-the-model" class="level3">
 <h3 class="anchored" data-anchor-id="step-2.-running-the-model">Step 2. Running the model</h3>
-<p>To run the model, simply open and <strong>execute the provided jupyter notebooks</strong>.</p>
-<p>If you would like to execute all the notebooks sequentially with a single command, run the following command in terminal (ensuring you are within the <code>reproduction/</code> folder):</p>
+<p>You have three options for running the model…</p>
+<section id="option-a-execute-the-notebooks" class="level4">
+<h4 class="anchored" data-anchor-id="option-a-execute-the-notebooks">Option A: Execute the notebooks</h4>
+<p>The simplest option is to just open and execute each of the provided jupyter notebooks. You can do so within your preferred IDE (e.g.&nbsp;VSCode, JupyterLab).</p>
+</section>
+<section id="option-b-bash" class="level4">
+<h4 class="anchored" data-anchor-id="option-b-bash">Option B: Bash</h4>
+<p>If you would like to execute all the notebooks sequentially with a single command, run the following command in terminal. For this to work, ensure that:</p>
+<ul>
+<li>You are within the <code>reproduction/</code> folder</li>
+<li>You are in base (i.e.&nbsp;no virtual environments activated - so may need to run <code>deactivate</code> or <code>conda deactivate</code>)</li>
+</ul>
+<p>Then run the command:</p>
 <pre><code>bash run_reproduction.sh</code></pre>
-<p>If you would like to test that the results you are obtaining from running the model are consistent with those obtained in this reproduction, run the following command (from within the <code>reproduction/</code> folder, but ensure the conda environment is activated):</p>
+<p>If this is working, a line of text should appear as follows:</p>
+<pre><code>[NbConvertApp] Converting notebook scripts/reproduce_tab6.ipynb to notebook</code></pre>
+<p>A few minutes later, two new lines of text will appear:</p>
+<pre><code>[NbConvertApp] Writing 144091 bytes to scripts/reproduce_tab6.ipynb
+[NbConvertApp] Converting notebook scripts/reproduce_fig2.ipynb to notebook</code></pre>
+<p>These indicate that it has finished running the first notebook, saved the file, and moved onto the next notebook. It will continue for approximately 22 minutes (will differ between machines), at which point all notebooks will have been run.</p>
+</section>
+<section id="option-c-pytest" class="level4">
+<h4 class="anchored" data-anchor-id="option-c-pytest">Option C: Pytest</h4>
+<p>With pytest, you can run each of the scenarios from the notebooks, and check whether the <code>.xls</code> files returned by your computer match up to those we had generated in this reproduction. You do not need to run Options A or B beforehand, as pytest will run iterations of the model itself. For this to work, ensure that:</p>
+<ul>
+<li>You are within the <code>reproduction/</code> folder</li>
+<li>You are in the <code>shoaib2022</code> conda/mamba environment (i.e.&nbsp;<code>conda activate shoaib2022</code>)</li>
+</ul>
+<p>Then run the command:</p>
 <pre><code>pytest -n auto</code></pre>
 <p>The <code>-n auto</code> prompts your machine to use <code>pytest-xdist</code>, which will parallelise the tests using multiple CPUs, with <code>auto</code> meaning that it will use as many processes as your computer has physical CPU cores.</p>
+<p>When you run this command, you should initially see an output similar to below (although with your root directory and platform):</p>
+<pre><code>============================= test session starts ==============================
+platform linux -- Python 3.9.19, pytest-7.4.4, pluggy-1.0.0
+rootdir: /home/amy/Documents/stars/stars-reproduce-shoaib-2022/reproduction
+plugins: anyio-4.2.0, xdist-3.6.1
+14 workers [41 items]  </code></pre>
+<p>It will remain like that for a few minutes, as the models are just running, but once models start completing, you should start to see outputs from the tests appear: green dots “<span style="color:green">….</span>” (indicating that the tests were successful) and red “<span style="color:red">F</span>” (if a test fails).</p>
+<p>It should take about 36 minutes for the tests to run (though will differ between machines). Once finished, you should see a similar output to below (depending on the success of your tests):</p>
+<pre><code>================ 41 passed, 140 warnings in 2157.85s (0:35:57) =================</code></pre>
+<p>To find out more about what these tests are doing, check out the files in the <code>tests/</code> folder.</p>
+</section>
 </section>
 </section>
 <section id="reproduction-specs-and-runtime" class="level2">
 <h2 class="anchored" data-anchor-id="reproduction-specs-and-runtime">Reproduction specs and runtime</h2>
 <p>This reproduction was conducted on an Intel Core i7-12700H with 32GB RAM running Ubuntu 22.04.4 Linux.</p>
-<p>Expected model runtime is <strong>22 minutes 26 seconds</strong>. This is given the specs above, and based on the combined runtime of the notebooks which use 10 replications (rather than 100) and parallel processing.</p>
+<p>Expected model runtime is <strong>22 minutes 26 seconds</strong> (for notebooks/bash) and <strong>35 minutes 57 seconds</strong> (for pytest). This is given the specs above, and based on the combined runtime of the notebooks which use 10 replications (rather than 100) and parallel processing.</p>
 <!-- List of times:
 * Table 6: 2m 38s
 * Fig 2: 3m 27s
