@@ -40,7 +40,7 @@ In this assessment, we attempted to reproduce 17 items: 1 table, 9 figures, and 
 
 You'll first want create an environment with the specified version of Python and the required packages installed. There are a few options...
 
-Option A: **Conda/Mamba environment**
+#### Option A: Conda/Mamba environment
 
 > Create the environment using this command in your terminal: `conda env create -f environment.yaml`
 > 
@@ -50,7 +50,7 @@ Option A: **Conda/Mamba environment**
 >
 > You can also use this file to create the environment using mamba: `mamba env create -f environment.yml`
 
-Option B: **Docker**
+#### Option B: Docker
 
 > You'll need `docker` installed on your local machine. You can then obtain the image by either:
 >
@@ -69,15 +69,48 @@ Then open your browser and go to <https://localhost:8080>. This will open Jupyte
 
 ### Step 2. Running the model
 
-To run the model, simply open and **execute the provided jupyter notebooks**.
+You have three options for running the model...
 
-If you would like to execute all the notebooks sequentially with a single command, run the following command in terminal (ensuring you are within the `reproduction/` folder):
+#### Option A: Execute the notebooks
+
+The simplest option is to just open and execute each of the provided jupyter notebooks. You can do so within your preferred IDE (e.g. VSCode, JupyterLab).
+
+#### Option B: Bash
+
+If you would like to execute all the notebooks sequentially with a single command, run the following command in terminal. For this to work, ensure that:
+
+* You are within the `reproduction/` folder
+* You are in base (i.e. no virtual environments activated - so may need to run `deactivate` or `conda deactivate`)
+
+Then run the command:
 
 ```
 bash run_reproduction.sh
 ```
 
-If you would like to test that the results you are obtaining from running the model are consistent with those obtained in this reproduction, run the following command (from within the `reproduction/` folder, but ensure the conda environment is activated):
+If this is working, a line of text should appear as follows:
+
+```
+[NbConvertApp] Converting notebook scripts/reproduce_tab6.ipynb to notebook
+```
+
+A few minutes later, two new lines of text will appear:
+
+```
+[NbConvertApp] Writing 144091 bytes to scripts/reproduce_tab6.ipynb
+[NbConvertApp] Converting notebook scripts/reproduce_fig2.ipynb to notebook
+```
+
+These indicate that it has finished running the first notebook, saved the file, and moved onto the next notebook. It will continue for approximately 22 minutes (will differ between machines), at which point all notebooks will have been run.
+
+#### Option C: Pytest
+
+With pytest, you can run each of the scenarios from the notebooks, and check whether the `.xls` files returned by your computer match up to those we had generated in this reproduction. You do not need to run Options A or B beforehand, as pytest will run iterations of the model itself. For this to work, ensure that:
+
+* You are within the `reproduction/` folder
+* You are in the `shoaib2022` conda/mamba environment (i.e. `conda activate shoaib2022`)
+
+Then run the command:
 
 ```
 pytest -n auto
@@ -85,11 +118,31 @@ pytest -n auto
 
 The `-n auto` prompts your machine to use `pytest-xdist`, which will parallelise the tests using multiple CPUs, with `auto` meaning that it will use as many processes as your computer has physical CPU cores.
 
+When you run this command, you should initially see an output similar to below (although with your root directory and platform):
+
+```
+============================= test session starts ==============================
+platform linux -- Python 3.9.19, pytest-7.4.4, pluggy-1.0.0
+rootdir: /home/amy/Documents/stars/stars-reproduce-shoaib-2022/reproduction
+plugins: anyio-4.2.0, xdist-3.6.1
+14 workers [41 items]  
+```
+
+It will remain like that for a few minutes, as the models are just running, but once models start completing, you should start to see outputs from the tests appear: green dots "<span style="color:green">....</span>" (indicating that the tests were successful) and red "<span style="color:red">F</span>" (if a test fails).
+
+It should take about 36 minutes for the tests to run (though will differ between machines). Once finished, you should see a similar output to below (depending on the success of your tests):
+
+```
+================ 41 passed, 140 warnings in 2157.85s (0:35:57) =================
+```
+
+To find out more about what these tests are doing, check out the files in the `tests/` folder.
+
 ## Reproduction specs and runtime
 
 This reproduction was conducted on an Intel Core i7-12700H with 32GB RAM running Ubuntu 22.04.4 Linux.
 
-Expected model runtime is **22 minutes 26 seconds**. This is given the specs above, and based on the combined runtime of the notebooks which use 10 replications (rather than 100) and parallel processing.
+Expected model runtime is **22 minutes 26 seconds** (for notebooks/bash) and **35 minutes 57 seconds** (for pytest). This is given the specs above, and based on the combined runtime of the notebooks which use 10 replications (rather than 100) and parallel processing.
 
 <!-- List of times:
 * Table 6: 2m 38s
