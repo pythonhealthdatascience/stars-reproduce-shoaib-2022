@@ -317,33 +317,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You’ll first want create an environment with the specified version of Python and the required packages installed. There are a few options…</p>
 <section id="option-a-condamamba-environment" class="level4">
 <h4 class="anchored" data-anchor-id="option-a-condamamba-environment">Option A: Conda/Mamba environment</h4>
-<blockquote class="blockquote">
 <p>Create the environment using this command in your terminal: <code>conda env create -f environment.yaml</code></p>
 <p>You can use this environment in your preferred IDE, such as VSCode (where you will be asked to select the kernel/interpreter).</p>
 <p>You can activate it in the terminal by running <code>conda activate shoaib2022</code></p>
 <p>You can also use this file to create the environment using mamba: <code>mamba env create -f environment.yml</code></p>
-</blockquote>
 </section>
 <section id="option-b-docker" class="level4">
 <h4 class="anchored" data-anchor-id="option-b-docker">Option B: Docker</h4>
-<blockquote class="blockquote">
 <p>You’ll need <code>docker</code> installed on your local machine. You can then obtain the image by either:</p>
 <ul>
-<li>Pulling a pre-built image from the GitHub container registry by running <code>docker pull ghcr.io/pythonhealthdatascience/shoaib2022:latest</code>, or</li>
 <li>Building the image locally from the Dockerfile by running <code>docker build --tag shoaib2022 . -f ./reproduction/docker/Dockerfile</code>
 <ul>
 <li>Run from parent directory of <code>reproduction/</code></li>
 <li>May require admin access (e.g.&nbsp;<code>sudo docker build</code>… on linux)</li>
+<li>or…</li>
 </ul></li>
+<li>Pulling a pre-built image from the GitHub container registry by running <code>docker pull ghcr.io/pythonhealthdatascience/shoaib2022:latest</code></li>
 </ul>
-<p>To run the image, you should then issue the following commands in your terminal:</p>
+<p>To run the image and open up jupyter lab, you should then issue the following commands in your terminal:</p>
+<pre><code>(sleep 2 &amp;&amp; xdg-open http://localhost:8080) &amp; docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022</code></pre>
+<p>This is the same as:</p>
+<ol type="1">
+<li>Running <code>docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022</code></li>
+<li>Opening your web browser and going to <a href="https://localhost:8080" class="uri">https://localhost:8080</a>.</li>
+</ol>
+<p>Some other helpful commands:</p>
 <ul>
-<li><code>docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022</code></li>
-<li><code>conda activate shoaib2022</code></li>
-<li><code>jupyter-lab</code></li>
+<li>If you have closed your docker container and want to view the containers available, run <code>docker ps -a</code></li>
+<li>To remake the container, you should delete it (<code>docker rm shoaib2022_docker</code>) then rebuild as above</li>
+<li>To re-open an exited container, run <code>docker restart shoaib2022_docker</code>. To close it again, run <code>docker stop shoaib2022_docker</code></li>
 </ul>
-</blockquote>
-<p>Then open your browser and go to <a href="https://localhost:8080" class="uri">https://localhost:8080</a>. This will open Jupyterlab within the <code>reproduction/</code> directory.</p>
 </section>
 </section>
 <section id="step-2.-running-the-model" class="level3">
