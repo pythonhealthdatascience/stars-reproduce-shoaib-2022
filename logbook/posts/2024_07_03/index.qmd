@@ -95,6 +95,21 @@ Tom then also tried to use Docker (instead of the conda environment). His reflec
 * He found that the container built fine.
 * However, before he could do that, he had to get set-up with docker, which now recommends docker-egine.
 * He found that, once the image was activated, he didn't need to run `conda activate shoaib2022` or `jupyter-lab` - he could simply navigate to the web address to open jupyter lab.
+    * I could replicate this - it appears I just never tested it without not running those lines!
 * He wasn't able to get the image from the GitHub Container Registry - received an authentication error (something to do with personal access tokens)
+    * I could also replicate - and I'm suspicious that perhaps I hadn't double-checked if this had worked prior, and had just assumed it to
 * He also suggested looking for a command that would trigger jupyter lab to open without the user needing to go to that web address
 * He also suggested that, after I've made some tweaks from these comments, we could also ask Alison to do a test-run (so - following these changes - it gets checked with a fresh pair of eyes)
+
+Based on the above, I made the following changes:
+
+* Removed `conda activate shoaib2022` and `jupyter-lab`
+* Add some additional instructions on viewing docker containers and reopening a closed container
+* Changed default docker run command suggestion to be one that will also open the web browser
+
+Went through a few troubleshooting stages for this (which also spilled into 4th July, but included here for clarity):
+
+* Setting organisation to allow PAT tokens in the organisation settings
+* Running `docker login ghcr.io -u githubusername` and logging in with a Personal Access Token (classic) (with `write:packages` and `delete:packages`), before trying `docker pull`...
+* Rebuilding the image
+* Running `docker logout`, and then logging in again, but this time ensuring to use `sudo` (for both docker login and docker pull - docker login will succeed without sudo, but it seems docker pull required the login to have been with sudo (?)). Opened up jupyter lab using that image and all was fine.
