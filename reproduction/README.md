@@ -52,18 +52,22 @@ You can also use this file to create the environment using mamba: `mamba env cre
 
 #### Option B: Docker
 
-You'll need `docker` installed on your local machine. You can then obtain the image by either:
+You'll need `docker` installed on your local machine. There are then two options for obtaining the image.
 
-* Building the image locally from the Dockerfile by running `docker build --tag shoaib2022 . -f ./reproduction/docker/Dockerfile`
-    * Run from parent directory of `reproduction/`
-    * May require admin access (e.g. `sudo docker build`... on linux)
-    * or...
-* Pulling a pre-built image from the GitHub container registry by running `docker pull ghcr.io/pythonhealthdatascience/shoaib2022:latest`
+First (and perhaps simplest) is to build the image locally from the Dockerfile by running `docker build --tag shoaib2022 . -f ./reproduction/docker/Dockerfile`. You'll need to run from parent directory of `reproduction/`, and may require admin access (e.g. `sudo docker build`... on linux).
 
-To run the image and open up jupyter lab, you should then issue the following commands in your terminal:
+Alternatively, you can pull a pre-built image from the GitHub container registry by running `docker pull ghcr.io/pythonhealthdatascience/shoaib2022:latest`. This is stored in the package registry on GitHub, and they therefore require that you login with a personal access token to pull from there. Hence, steps to enable this are:
+
+1. Create a Personal Access Token (Classic) for your GitHub account with `write:packages` and `delete:packages` access
+2. On terminal, login using this token by running `sudo docker login ghcr.io -u githubusername` and then inputting the token when prompted for a password
+3. Finally, run `sudo docker pull ghcr.io/pythonhealthdatascience/shoaib2022`
+
+Once you have obtained the image using either of these methods, you can then set it up and open up jupyter lab by running one of the following commands in your terminal (depending on whether you built or pulled the image):
 
 ```
-(sleep 2 && xdg-open http://localhost:8080) & docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022
+(sleep 2 && xdg-open http://localhost:8080) & sudo docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022
+
+(sleep 2 && xdg-open http://localhost:8080) & sudo docker run -it -p 8080:80 --name shoaib2022_docker ghcr.io/pythonhealthdatascience/shoaib2022:latest
 ```
 
 This is the same as:
