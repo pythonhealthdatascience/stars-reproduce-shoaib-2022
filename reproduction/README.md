@@ -42,30 +42,40 @@ You'll first want create an environment with the specified version of Python and
 
 #### Option A: Conda/Mamba environment
 
-> Create the environment using this command in your terminal: `conda env create -f environment.yaml`
-> 
-> You can use this environment in your preferred IDE, such as VSCode (where you will be asked to select the kernel/interpreter).
->
-> You can activate it in the terminal by running `conda activate shoaib2022`
->
-> You can also use this file to create the environment using mamba: `mamba env create -f environment.yml`
+Create the environment using this command in your terminal: `conda env create -f environment.yaml`
+
+You can use this environment in your preferred IDE, such as VSCode (where you will be asked to select the kernel/interpreter).
+
+You can activate it in the terminal by running `conda activate shoaib2022`
+
+You can also use this file to create the environment using mamba: `mamba env create -f environment.yml`
 
 #### Option B: Docker
 
-> You'll need `docker` installed on your local machine. You can then obtain the image by either:
->
-> * Pulling a pre-built image from the GitHub container registry by running `docker pull ghcr.io/pythonhealthdatascience/shoaib2022:latest`, or
-> * Building the image locally from the Dockerfile by running `docker build --tag shoaib2022 . -f ./reproduction/docker/Dockerfile`
->   * Run from parent directory of `reproduction/`
->   * May require admin access (e.g. `sudo docker build`... on linux)
->
-> To run the image, you should then issue the following commands in your terminal:
->
-> * `docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022`
-> * `conda activate shoaib2022`
-> * `jupyter-lab`
+You'll need `docker` installed on your local machine. You can then obtain the image by either:
 
-Then open your browser and go to <https://localhost:8080>. This will open Jupyterlab within the `reproduction/` directory.
+* Building the image locally from the Dockerfile by running `docker build --tag shoaib2022 . -f ./reproduction/docker/Dockerfile`
+    * Run from parent directory of `reproduction/`
+    * May require admin access (e.g. `sudo docker build`... on linux)
+    * or...
+* Pulling a pre-built image from the GitHub container registry by running `docker pull ghcr.io/pythonhealthdatascience/shoaib2022:latest`
+
+To run the image and open up jupyter lab, you should then issue the following commands in your terminal:
+
+```
+(sleep 2 && xdg-open http://localhost:8080) & docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022
+```
+
+This is the same as:
+
+1. Running `docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022`
+2. Opening your web browser and going to <https://localhost:8080>.
+
+Some other helpful commands:
+
+* If you have closed your docker container and want to view the containers available, run `docker ps -a`
+* To remake the container, you should delete it (`docker rm shoaib2022_docker`) then rebuild as above
+* To re-open an exited container, run `docker restart shoaib2022_docker`. To close it again, run `docker stop shoaib2022_docker`
 
 ### Step 2. Running the model
 
