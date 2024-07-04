@@ -433,10 +433,29 @@ Note
 <ul>
 <li>He found that the container built fine.</li>
 <li>However, before he could do that, he had to get set-up with docker, which now recommends docker-egine.</li>
-<li>He found that, once the image was activated, he didn’t need to run <code>conda activate shoaib2022</code> or <code>jupyter-lab</code> - he could simply navigate to the web address to open jupyter lab.</li>
-<li>He wasn’t able to get the image from the GitHub Container Registry - received an authentication error (something to do with personal access tokens)</li>
+<li>He found that, once the image was activated, he didn’t need to run <code>conda activate shoaib2022</code> or <code>jupyter-lab</code> - he could simply navigate to the web address to open jupyter lab.
+<ul>
+<li>I could replicate this - it appears I just never tested it without not running those lines!</li>
+</ul></li>
+<li>He wasn’t able to get the image from the GitHub Container Registry - received an authentication error (something to do with personal access tokens)
+<ul>
+<li>I could also replicate - and I’m suspicious that perhaps I hadn’t double-checked if this had worked prior, and had just assumed it to</li>
+</ul></li>
 <li>He also suggested looking for a command that would trigger jupyter lab to open without the user needing to go to that web address</li>
 <li>He also suggested that, after I’ve made some tweaks from these comments, we could also ask Alison to do a test-run (so - following these changes - it gets checked with a fresh pair of eyes)</li>
+</ul>
+<p>Based on the above, I made the following changes:</p>
+<ul>
+<li>Removed <code>conda activate shoaib2022</code> and <code>jupyter-lab</code></li>
+<li>Add some additional instructions on viewing docker containers and reopening a closed container</li>
+<li>Changed default docker run command suggestion to be one that will also open the web browser</li>
+</ul>
+<p>Went through a few troubleshooting stages for this (which also spilled into 4th July, but included here for clarity):</p>
+<ul>
+<li>Setting organisation to allow PAT tokens in the organisation settings</li>
+<li>Running <code>docker login ghcr.io -u githubusername</code> and logging in with a Personal Access Token (classic) (with <code>write:packages</code> and <code>delete:packages</code>), before trying <code>docker pull</code>…</li>
+<li>Rebuilding the image</li>
+<li>Running <code>docker logout</code>, and then logging in again, but this time ensuring to use <code>sudo</code> (for both docker login and docker pull - docker login will succeed without sudo, but it seems docker pull required the login to have been with sudo (?)). Opened up jupyter lab using that image and all was fine.</li>
 </ul>
 
 
