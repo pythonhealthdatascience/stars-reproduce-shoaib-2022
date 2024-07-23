@@ -33,5 +33,5 @@ abstract: >-
   98(3):183-208. (2022). https://doi.org/10.1177/00375497211030931.
 license: MIT
 # TODO: Manually update with each GitHub release
-version: '0.1.0'
-date-released: '2024-06-21'
+version: '0.2.0'
+date-released: '2024-07-22'
