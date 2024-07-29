@@ -42,31 +42,60 @@ You'll first want create an environment with the specified version of Python and
 
 #### Option A: Conda/Mamba environment
 
-Create the environment using this command in your terminal: `conda env create -f environment.yaml`
+Create the environment using this command in your terminal:
+
+```
+conda env create -f environment.yaml
+```
 
 You can use this environment in your preferred IDE, such as VSCode (where you will be asked to select the kernel/interpreter).
 
-You can activate it in the terminal by running `conda activate shoaib2022`
+You can activate it in the terminal by running:
 
-You can also use this file to create the environment using mamba: `mamba env create -f environment.yml`
+```
+conda activate shoaib2022
+```
+
+You can also use this file to create the environment using mamba:
+
+```
+mamba env create -f environment.yml
+```
 
 #### Option B: Docker
 
 You'll need `docker` installed on your local machine. There are then two options for obtaining the image.
 
-First (and perhaps simplest) is to build the image locally from the Dockerfile by running `docker build --tag shoaib2022 . -f ./reproduction/docker/Dockerfile`. You'll need to run from parent directory of `reproduction/`, and may require admin access (e.g. `sudo docker build`... on linux).
+First (and perhaps simplest) is to build the image locally from the Dockerfile by running:
+
+```
+docker build --tag shoaib2022 . -f ./reproduction/docker/Dockerfile
+```
+
+You'll need to run from parent directory of `reproduction/`, and may require admin access (e.g. `sudo docker build`... on linux).
 
 Alternatively, you can pull a pre-built image from the GitHub container registry by running `docker pull ghcr.io/pythonhealthdatascience/shoaib2022:latest`. This is stored in the package registry on GitHub, and they therefore require that you login with a personal access token to pull from there. Hence, steps to enable this are:
 
 1. Create a Personal Access Token (Classic) for your GitHub account with `write:packages` and `delete:packages` access
-2. On terminal, login using this token by running `sudo docker login ghcr.io -u githubusername` and then inputting the token when prompted for a password
-3. Finally, run `sudo docker pull ghcr.io/pythonhealthdatascience/shoaib2022`
+2. On terminal, login using this token by running the following command and then inputting the token when prompted for a password:
+
+```
+sudo docker login ghcr.io -u githubusername
+```
+
+3. To pull image:
+
+```
+sudo docker pull ghcr.io/pythonhealthdatascience/shoaib2022
+```
 
 Once you have obtained the image using either of these methods, you can then set it up and open up jupyter lab by running one of the following commands in your terminal (depending on whether you built or pulled the image):
 
 ```
 (sleep 2 && xdg-open http://localhost:8080) & sudo docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022
+```
 
+```
 (sleep 2 && xdg-open http://localhost:8080) & sudo docker run -it -p 8080:80 --name shoaib2022_docker ghcr.io/pythonhealthdatascience/shoaib2022:latest
 ```
 
