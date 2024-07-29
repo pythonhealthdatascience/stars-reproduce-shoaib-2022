@@ -309,7 +309,7 @@ Note
 <section id="in-text-result-2" class="level2">
 <h2 class="anchored" data-anchor-id="in-text-result-2">9.22-9.34: In-text result 2</h2>
 <p>On reflection, I realised that I had not looked at the result for staff nurse utilisation. Add this, and it was consistent with the text. Hence, successfully reproduced at 9.34.</p>
-<div id="377e509c" class="cell" data-execution_count="1">
+<div id="b2a35ec7" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -376,7 +376,7 @@ if doctor_delivery_scenario:
     if short_int_prop &gt;= 0.4:
         doc_time = doc_time / 3</code></pre>
 <p>However, this came back wrong, with very little change in utilisation:</p>
-<div id="8d3385dd" class="cell" data-execution_count="2">
+<div id="cc2eb8f8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'intext3_wrong.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -432,7 +432,7 @@ Reflections
 <section id="problem-solving-in-text-result-3" class="level2">
 <h2 class="anchored" data-anchor-id="problem-solving-in-text-result-3">10.41-11.16, 11.28-11.47: Problem-solving in-text result 3</h2>
 <p>Noticed I hadn’t add <code>global doctor_delivery_scenario</code> to <code>Delivery_with_doctor</code>, and that I hadn’t add the scenario to the warm-up section either. However, that seemed to have no impact -</p>
-<div id="68a3d4ce" class="cell" data-execution_count="3">
+<div id="35d8c9a1" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'intext3_wrong2.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -474,7 +474,7 @@ Reflections
 <p>I tried running it with print statements after the 50% chance of doctor assignment, which confirmed that patients were being split between getting a doctor and not. I also ran with print statement around shortening of doctor time, which likewise confirmed that around 60% were having their times shortened.</p>
 <p>I looked across all the outputs and could spot only minor differences between the normal and reduced delivery results.</p>
 <p>I then tried setting the implementation up in a different way - instead of assigning people to the <code>Delivery_no_doc()</code> class, setting the intervention time to 0 in the <code>Delivery_with_doctor()</code> class. However, this made no difference:</p>
-<div id="e0abe287" class="cell" data-execution_count="4">
+<div id="1452ed18" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'intext3_wrong3.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
@@ -525,7 +525,7 @@ Reflections
 <p>Potential misinterpretation of scenarios from a text description which can be ambiguous.</p>
 </div>
 </div>
-<div id="f6e53042" class="cell" data-execution_count="5">
+<div id="0d9fc29d" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this item</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1274</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -549,7 +549,7 @@ Used 57.6% of 40 hours max</code></pre>
 <h2 class="anchored" data-anchor-id="reproducing-in-text-result-4">11.55-12.03, 12.06-12.11: Reproducing in-text result 4</h2>
 <p>It is again unclear whether the intervention in this case - adding a doctor - is in addition to or seperate to the prior interventions. As such, I will try running both options (just on top of base case, or in addition to admin and delivery changes).</p>
 <p>Either result matches up with the description, so present both as possible answers, but consder to be succesfully reproduced at 12.11</p>
-<div id="94d0ea07" class="cell" data-execution_count="6">
+<div id="783b0b0a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this item</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1383</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -601,7 +601,7 @@ Used 58.2% of 40 hours max</code></pre>
 <li>In <a href="https://www.salabim.org/manual/Resource.html">Salabim</a>, a Resource occupancy is described as “occupancy (=claimed_quantity / capacity)”, which fits with being related to utilisation.</li>
 </ul>
 <p>Hence, both methods should be providing utilisation of the beds (since both are based on time the beds are in use over the total possible time) - yet they have differing results - <strong>particularly</strong> when set to 4 beds.</p>
-<div id="d1346c02" class="cell" data-execution_count="7">
+<div id="b6977c99" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'intext5_wrong.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
@@ -634,7 +634,7 @@ Used 58.2% of 40 hours max</code></pre>
 </div>
 <p><code>ipd occ</code> is based on the <code>bed</code> SimPy resource, which is what we altered to change the number of beds. Hence, it seems the bed capacity has been altered for that, but not altered somewhere for <code>ipd bed occ</code>.</p>
 <p>I looked back at the calculation of <code>ipd bed occ</code> and noticed that bed utilisation has 6 beds hard coded into it - <code>bed_util.append(bed_time/(days*1440*6))</code>. When I amended the script to adjust the bed capacity via a parameter input to main(), I had not noticed this, and had only changed it in the simpy Resource. I amended this accordingly and re-ran. Unfortunately, this did not fix it.</p>
-<div id="6c354a0f" class="cell" data-execution_count="8">
+<div id="878ac8d9" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'intext5_wrong2.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
@@ -687,7 +687,7 @@ Reflections
 <p>This result is a variant of Figure 2B IAT 3, where we assign administrative work to the staff nurse to decrease the utilisation of the NCD nurse.</p>
 <p>In the normal model, the admin work is assigned to the doctor and the NCD nurse. We previously add a various to move the work from the doctor to the staff nurse. Similar to last time, we add another variant, this time moving work from the NCD nurse to the staff nurse. I amended the name of the boolean controlling it for the in-text results 3/4 (for clarity, distinguishing between that scenario and this one), and re-ran that notebook.</p>
 <p>The resultant NCD utilisation was 100%, as in the paper, so consider to be successfully reproduced at 15.55.</p>
-<div id="e5cb41d8" class="cell" data-execution_count="9">
+<div id="2515fe2e" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to this item</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1396</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -732,7 +732,7 @@ Main.staff_nurse_IPD += temp</code></pre>
 </ul>
 <p>I sampled from a uniform distribution to control assignment of 10% of cases to the staff nurse.</p>
 <p>Upon running the model, I found these modifications reduced the NCD nurse utilisation markedly (99% to 84%), although not as much as in the paper (100% to 71%).</p>
-<div id="62bc71c6" class="cell" data-execution_count="10">
+<div id="7874655e" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'intext7_close.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
@@ -763,7 +763,7 @@ Main.staff_nurse_IPD += temp</code></pre>
 </div>
 </div>
 <p>I tried adding a scenario with just appointments (and not the admin change), just in case this could relate to misinterpretation of the next (although wouldn’t expect it to go lower, so wasn’t optimistic). As expected, this was not the solution, and the results were higher.</p>
-<div id="0160a38d" class="cell" data-execution_count="11">
+<div id="d7568d5b" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'intext7_wrong.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div>
@@ -798,7 +798,7 @@ Main.staff_nurse_IPD += temp</code></pre>
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="eebc51bf" class="cell" data-execution_count="12">
+<div id="42c5d316" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minutes used prior to today</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>used_to_date <span class="op">=</span> <span class="dv">1262</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>

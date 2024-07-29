@@ -639,7 +639,7 @@ dependencies:
 </ul>
 <p><strong>Except for number of replications</strong>, all match up to configuration 1.</p>
 <p>Produced <code>Outputs.xlsx</code> in main folder, which moved manually to <code>reproduction/</code>, and copied to logbook folder to display below. This ran ten replications, with results in each column.</p>
-<div id="982affde" class="cell" data-execution_count="1">
+<div id="e0c0ae2f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xlrd</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -983,7 +983,7 @@ dependencies:
 <p>There is <code>REPLICATION = xlsxwriter.Workbook("Config_3(2).xlsx")</code> with results that I didn’t get. Tried uncommenting <code>REPLICATION.close()</code> and reran <code>PHC.py</code>.</p>
 <p>Also, changed save location of the output files, so they go into <code>reproduction/outputs/</code> rather than main folder, by modifying <code>PHC.py</code>.</p>
 <p>In <code>reproduction.ipynb</code>, compared results from that to the processed <code>Outputs.xls</code>. To import <code>.xlsx</code> file using <code>pd.read_excel</code>, had to add <code>openpyxl</code> to environment.</p>
-<div id="5e6f7d45" class="cell" data-execution_count="2">
+<div id="16cee5e2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>compare <span class="op">=</span> pd.read_csv(<span class="st">'t6_mean_compare.csv'</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>compare</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -1169,7 +1169,7 @@ dependencies:
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="014f289d" class="cell" data-execution_count="3">
+<div id="fba9ba61" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>

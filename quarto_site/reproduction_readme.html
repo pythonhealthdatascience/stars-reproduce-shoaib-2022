@@ -317,25 +317,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You’ll first want create an environment with the specified version of Python and the required packages installed. There are a few options…</p>
 <section id="option-a-condamamba-environment" class="level4">
 <h4 class="anchored" data-anchor-id="option-a-condamamba-environment">Option A: Conda/Mamba environment</h4>
-<p>Create the environment using this command in your terminal: <code>conda env create -f environment.yaml</code></p>
+<p>Create the environment using this command in your terminal:</p>
+<pre><code>conda env create -f environment.yaml</code></pre>
 <p>You can use this environment in your preferred IDE, such as VSCode (where you will be asked to select the kernel/interpreter).</p>
-<p>You can activate it in the terminal by running <code>conda activate shoaib2022</code></p>
-<p>You can also use this file to create the environment using mamba: <code>mamba env create -f environment.yml</code></p>
+<p>You can activate it in the terminal by running:</p>
+<pre><code>conda activate shoaib2022</code></pre>
+<p>You can also use this file to create the environment using mamba:</p>
+<pre><code>mamba env create -f environment.yml</code></pre>
 </section>
 <section id="option-b-docker" class="level4">
 <h4 class="anchored" data-anchor-id="option-b-docker">Option B: Docker</h4>
 <p>You’ll need <code>docker</code> installed on your local machine. There are then two options for obtaining the image.</p>
-<p>First (and perhaps simplest) is to build the image locally from the Dockerfile by running <code>docker build --tag shoaib2022 . -f ./reproduction/docker/Dockerfile</code>. You’ll need to run from parent directory of <code>reproduction/</code>, and may require admin access (e.g.&nbsp;<code>sudo docker build</code>… on linux).</p>
+<p>First (and perhaps simplest) is to build the image locally from the Dockerfile by running:</p>
+<pre><code>docker build --tag shoaib2022 . -f ./reproduction/docker/Dockerfile</code></pre>
+<p>You’ll need to run from parent directory of <code>reproduction/</code>, and may require admin access (e.g.&nbsp;<code>sudo docker build</code>… on linux).</p>
 <p>Alternatively, you can pull a pre-built image from the GitHub container registry by running <code>docker pull ghcr.io/pythonhealthdatascience/shoaib2022:latest</code>. This is stored in the package registry on GitHub, and they therefore require that you login with a personal access token to pull from there. Hence, steps to enable this are:</p>
 <ol type="1">
 <li>Create a Personal Access Token (Classic) for your GitHub account with <code>write:packages</code> and <code>delete:packages</code> access</li>
-<li>On terminal, login using this token by running <code>sudo docker login ghcr.io -u githubusername</code> and then inputting the token when prompted for a password</li>
-<li>Finally, run <code>sudo docker pull ghcr.io/pythonhealthdatascience/shoaib2022</code></li>
+<li>On terminal, login using this token by running the following command and then inputting the token when prompted for a password:</li>
 </ol>
+<pre><code>sudo docker login ghcr.io -u githubusername</code></pre>
+<ol start="3" type="1">
+<li>To pull image:</li>
+</ol>
+<pre><code>sudo docker pull ghcr.io/pythonhealthdatascience/shoaib2022</code></pre>
 <p>Once you have obtained the image using either of these methods, you can then set it up and open up jupyter lab by running one of the following commands in your terminal (depending on whether you built or pulled the image):</p>
-<pre><code>(sleep 2 &amp;&amp; xdg-open http://localhost:8080) &amp; sudo docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022
-
-(sleep 2 &amp;&amp; xdg-open http://localhost:8080) &amp; sudo docker run -it -p 8080:80 --name shoaib2022_docker ghcr.io/pythonhealthdatascience/shoaib2022:latest</code></pre>
+<pre><code>(sleep 2 &amp;&amp; xdg-open http://localhost:8080) &amp; sudo docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022</code></pre>
+<pre><code>(sleep 2 &amp;&amp; xdg-open http://localhost:8080) &amp; sudo docker run -it -p 8080:80 --name shoaib2022_docker ghcr.io/pythonhealthdatascience/shoaib2022:latest</code></pre>
 <p>This is the same as:</p>
 <ol type="1">
 <li>Running <code>docker run -it -p 8080:80 --name shoaib2022_docker shoaib2022</code></li>
