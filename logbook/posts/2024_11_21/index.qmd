@@ -1,0 +1,24 @@
+---
+title: "Day 11"
+author: "Amy Heather"
+date: "2024-10-21"
+categories: [evaluation]
+---
+
+::: {.callout-note}
+
+Redid badge evaluation.
+
+:::
+
+## 09.45-09.57: Revisit evaluation
+
+Revisited and revised the badge criteria to (a) make them up-to-date, and (b) make sure they are *specific* to the descriptions from each badge. Hence, redoing evaluations for all eight studies.
+
+Notes:
+
+* Reproduce: decided no as not 100% (and this is the only main change since the last evaluation, as decided to be clearer/more consistent with reported results, to just have binary yes/no depending on whether 100% or not).
+
+## Untimed: Update summary report
+
+With new badge evaluation results.
