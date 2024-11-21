@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Amy Heather">
-<meta name="dcterms.date" content="2024-07-01">
+<meta name="dcterms.date" content="2024-10-21">
 
-<title>Day 8 – Reproducing Shoaib and Ramamohan 2022</title>
+<title>Day 11 – Reproducing Shoaib and Ramamohan 2022</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -197,10 +197,9 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Day 8</h1>
+      <h1 class="title">Day 11</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">report</div>
-                <div class="quarto-category">compendium</div>
+                <div class="quarto-category">evaluation</div>
               </div>
                   </div>
   </div>
@@ -218,7 +217,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 1, 2024</p>
+        <p class="date">October 21, 2024</p>
       </div>
     </div>
     
@@ -234,11 +233,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#reflections" id="toc-reflections" class="nav-link active" data-scroll-target="#reflections">Reflections</a></li>
-  <li><a href="#summary-report" id="toc-summary-report" class="nav-link" data-scroll-target="#summary-report">Summary report</a></li>
-  <li><a href="#research-compendium" id="toc-research-compendium" class="nav-link" data-scroll-target="#research-compendium">Research compendium</a></li>
+  <li><a href="#revisit-evaluation" id="toc-revisit-evaluation" class="nav-link active" data-scroll-target="#revisit-evaluation">09.45-09.57: Revisit evaluation</a></li>
+  <li><a href="#untimed-update-summary-report" id="toc-untimed-update-summary-report" class="nav-link" data-scroll-target="#untimed-update-summary-report">Untimed: Update summary report</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_07_01/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_11_21/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -257,51 +255,20 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Reflections, summary report and research compendium.</p>
+<p>Redid badge evaluation.</p>
 </div>
 </div>
-<section id="reflections" class="level2">
-<h2 class="anchored" data-anchor-id="reflections">Reflections</h2>
-<p>Created reflections page with full list of troubleshooting steps, and a summarised list of barriers and facilitators to the reproduction, to learn from.</p>
-</section>
-<section id="summary-report" class="level2">
-<h2 class="anchored" data-anchor-id="summary-report">Summary report</h2>
-<p>Finished up summary report.</p>
-</section>
-<section id="research-compendium" class="level2">
-<h2 class="anchored" data-anchor-id="research-compendium">Research compendium</h2>
-<p>Making changes to the repository (as specified in the protocol) so it can serve as a “research compendium”.</p>
+<section id="revisit-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="revisit-evaluation">09.45-09.57: Revisit evaluation</h2>
+<p>Revisited and revised the badge criteria to (a) make them up-to-date, and (b) make sure they are <em>specific</em> to the descriptions from each badge. Hence, redoing evaluations for all eight studies.</p>
+<p>Notes:</p>
 <ul>
-<li>Moved all python files into a <code>scripts/</code> folder. Amended paths in these scripts, e.g.&nbsp;the location of <code>outputs/</code> to <code>../outputs</code> for when importing or saving results.</li>
-<li>Add seed so we get consistent results between runs
-<ul>
-<li>By default, Salabim sets random seed 1234567, but the study authors had set <code>sim.Environment(trace=False, random_seed='', time_unit='minutes')</code>, which we know from the <a href="https://www.salabim.org/manual/Distributions.html">documentation</a> means no reseeding.</li>
-<li>As we want to enable reproducible results between runs (for writing up the results obtained, and for testing), modified <code>PHC.py</code> to set seed to 42 in environment.</li>
-<li>I ran one of the notebooks twice and observed no change in the results between those runs, confirming this had been set up easily and successfully.</li>
-<li>Note: Set suggestion to implement seeds during reproduction stage in the protocol, although this is focused on being able to compare your results to the original, and needing a seed if it varies too much to do so. In this case, since the number of replications was sufficient to observe minimal variation, I did not implement at that stage, and instead add them now.</li>
-<li>However, then realised I had forgot to change the seed between replications, and so was just getting the sample result for every replication. As such, modified seed so it increments with each replication (as replications are run in <code>PHC.py</code> using a for loop). Re-ran notebook twice and confirmed there was no change.</li>
-</ul></li>
-<li>Changed Table 6 to run to 10 replications, alike the other outcomes, as this is simpler for reproduction and as we know that there are relatively minimal differences between 10 and 100 replications (as you can see from commit <a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/blob/d34fc6894aeb14702de1c2ff29cd08fb63e22f6a/reproduction/reproduce_tab6.ipynb">59f6ada</a>).</li>
-<li>Run notebooks using single command
-<ul>
-<li>Tried running <code>nbconvert</code> from command line or <code>Makefile</code>, but fails to use environment, returning <code>ModuleNotFoundError: No module named 'salabim'</code></li>
-<li>Tried downgrading <code>nbconvert</code> but issue persists</li>
-<li>Tried setting jupyter interpreter in VSCode settings, and that said I needed to install package <code>notebook</code></li>
-<li>Then, realised I needed to add it as a kernel for jupyter (so it would appear when run <code>jupyter kernelspec list</code>). Did so by running <code>source activate shoaib2022</code>, <code>python -m ipykernel install --user --name shoaib2022</code>, then <code>source deactivate</code></li>
-<li>Set this up in a bash script (to add the kernel each time (otherwise it can’t seem to find it, despite being in the kernelspec list), and to then execute the notebooks using nbconvert)</li>
-</ul></li>
-<li>Tidy up notebooks
-<ul>
-<li>Add the result being reproduced to the start of each notebook, so it is easier to reference to it</li>
-<li>Re-ran all using the bash script, to ensure all have been run with the seeds</li>
-</ul></li>
-<li>Create tests
-<ul>
-<li>Initially explored exporting each <code>dict_list</code> from the reproduction notebooks using pickle (<code>with open('saved_dictionary.pkl', 'wb') as f: pickle.dump(dictionary, f)</code>). However, decided this was then contrary to the principles of testing, where want to be defining each parameter used in the test, so instead set this up manually for each configuration.</li>
-<li>Add <code>pytest</code> to environment</li>
-<li>Copied <code>.xls</code> results from <code>reproduction/outputs</code> to <code>tests/exp_results</code></li>
-</ul></li>
+<li>Reproduce: decided no as not 100% (and this is the only main change since the last evaluation, as decided to be clearer/more consistent with reported results, to just have binary yes/no depending on whether 100% or not).</li>
 </ul>
+</section>
+<section id="untimed-update-summary-report" class="level2">
+<h2 class="anchored" data-anchor-id="untimed-update-summary-report">Untimed: Update summary report</h2>
+<p>With new badge evaluation results.</p>
 
 
 </section>
@@ -751,7 +718,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_07_01/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/edit/main/logbook/posts/2024_11_21/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pythonhealthdatascience/stars-reproduce-shoaib-2022/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
