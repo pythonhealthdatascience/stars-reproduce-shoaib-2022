@@ -2,7 +2,7 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: 'STARS: Computational reproducibility of Shoaib and Ramamohan 2022'
+title: 'Shoaib and Ramamohan 2022 computational reproducibility assessment'
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
@@ -33,5 +33,5 @@ abstract: >-
   98(3):183-208. (2022). https://doi.org/10.1177/00375497211030931.
 license: MIT
 # TODO: Manually update with each GitHub release
-version: '0.2.0'
-date-released: '2024-07-22'
+version: '1.0.0'
+date-released: '2025-01-09'
