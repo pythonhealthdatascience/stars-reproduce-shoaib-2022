@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -92,10 +92,10 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-c75bcb89907db7808f0349b764a1a524.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -458,7 +458,7 @@ Reflections
 <section id="add-sd-to-table-6" class="level2">
 <h2 class="anchored" data-anchor-id="add-sd-to-table-6">15.34-16.02 : Add SD to Table 6</h2>
 <p>Add standard deviation. Some percent change seem large as it’s comparing very small number - but actual change between the model and table 6 all are small enough that I feel happy to say this has been successfully reproduced for the mean values.</p>
-<div id="97ff652f" class="cell" data-execution_count="1">
+<div id="9f3c4679" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'table6_10rep.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -826,7 +826,7 @@ Reflections
 <li>Config 4: 170 arrivals in a day and IAT of 3</li>
 </ul>
 <p>In order to get those times:</p>
-<div id="3f46fac4" class="cell" data-execution_count="2">
+<div id="40819506" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span><span class="fl">8.6666666666666666666666666666666</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">9</span>)<span class="op">*</span><span class="dv">9</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">3</span>)<span class="op">*</span><span class="fl">8.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -846,7 +846,7 @@ Reflections
 <li>Config 1: 125 or 126 arrivals and IAT 4</li>
 <li>Config 2/3: 55 arrivals and IAT 9</li>
 </ul>
-<div id="5a4d082b" class="cell" data-execution_count="3">
+<div id="c8e0c5ec" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span><span class="fl">8.33333333333333333</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span><span class="fl">8.4</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">60</span><span class="op">/</span><span class="dv">9</span>)<span class="op">*</span><span class="fl">8.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -858,7 +858,7 @@ Reflections
 </div>
 <p>Regarding the number of hours described in the article, this is described as “6 hours per day” for the outpatients - which differs to the 8.25 hours to 9 that align with the provided patient numbers and inter-arrival times.</p>
 <p>Assuming this variation is simply related to rounding the IAT - as if we calculate these values based on there being 8.5 hours per day then round the IAT, we get the same results…</p>
-<div id="d1b2e2e3" class="cell" data-execution_count="4">
+<div id="efc7631b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IAT 3. Arrivals 170</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">170</span><span class="op">/</span><span class="fl">8.5</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -878,7 +878,7 @@ Reflections
 </div>
 </div>
 <p>As such, the inter-arrival times used were calculated as 3, 6 and 8…</p>
-<div id="e6170ee0" class="cell" data-execution_count="5">
+<div id="fbeffff4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 170, 85 and 65 arrivals</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">170</span><span class="op">/</span><span class="fl">8.5</span>))</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">60</span><span class="op">/</span>(<span class="dv">85</span><span class="op">/</span><span class="fl">8.5</span>))</span>
@@ -911,7 +911,7 @@ Challenges today
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="4c4c1042" class="cell" data-execution_count="6">
+<div id="ff757d94" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -1031,8 +1031,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1143,7 +1141,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

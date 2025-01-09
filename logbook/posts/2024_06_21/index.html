@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-c75bcb89907db7808f0349b764a1a524.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -639,7 +639,7 @@ dependencies:
 </ul>
 <p><strong>Except for number of replications</strong>, all match up to configuration 1.</p>
 <p>Produced <code>Outputs.xlsx</code> in main folder, which moved manually to <code>reproduction/</code>, and copied to logbook folder to display below. This ran ten replications, with results in each column.</p>
-<div id="04c61e68" class="cell" data-execution_count="1">
+<div id="891d2a65" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xlrd</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -667,7 +667,7 @@ dependencies:
 <th data-quarto-table-cell-role="th">9</th>
 <th data-quarto-table-cell-role="th">10</th>
 </tr>
-<tr class="odd">
+<tr class="even">
 <th data-quarto-table-cell-role="th">0</th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
@@ -983,7 +983,7 @@ dependencies:
 <p>There is <code>REPLICATION = xlsxwriter.Workbook("Config_3(2).xlsx")</code> with results that I didn’t get. Tried uncommenting <code>REPLICATION.close()</code> and reran <code>PHC.py</code>.</p>
 <p>Also, changed save location of the output files, so they go into <code>reproduction/outputs/</code> rather than main folder, by modifying <code>PHC.py</code>.</p>
 <p>In <code>reproduction.ipynb</code>, compared results from that to the processed <code>Outputs.xls</code>. To import <code>.xlsx</code> file using <code>pd.read_excel</code>, had to add <code>openpyxl</code> to environment.</p>
-<div id="bd2260e0" class="cell" data-execution_count="2">
+<div id="d478885d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>compare <span class="op">=</span> pd.read_csv(<span class="st">'t6_mean_compare.csv'</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>compare</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -1169,7 +1169,7 @@ dependencies:
 </section>
 <section id="timings" class="level2">
 <h2 class="anchored" data-anchor-id="timings">Timings</h2>
-<div id="27cb4ee1" class="cell" data-execution_count="3">
+<div id="709bfc50" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'../'</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timings <span class="im">import</span> calculate_times</span>
@@ -1286,8 +1286,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1398,7 +1396,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
